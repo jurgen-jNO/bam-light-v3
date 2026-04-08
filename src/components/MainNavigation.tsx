@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Search, ChevronDown } from "lucide-react";
-import flemishLion from "@/assets/flemish-lion.png";
-import walloonRooster from "@/assets/walloon-rooster.png";
 import bamLogo from "@/assets/bam-logo.png";
 
 interface NavItem {
@@ -115,12 +113,13 @@ const MainNavigation = () => {
           >
             <Search className="w-4 h-4" />
           </button>
-          <div className="flex items-center gap-2 border-l border-white/30 pl-3">
-            <button className="hover:opacity-80 transition-opacity" title="Vlaanderen (NL)">
-              <img src={flemishLion} alt="Vlaamse Leeuw" className="w-6 h-6 rounded-sm object-cover" />
+          <div className="flex items-center gap-1 border-l border-white/30 pl-3 text-sm font-semibold">
+            <button className="px-2 py-1 text-nav-fg hover:text-nav-hover transition-colors">
+              NL
             </button>
-            <button className="hover:opacity-80 transition-opacity" title="Wallonie (FR)">
-              <img src={walloonRooster} alt="Waalse Haan" className="w-6 h-6 rounded-sm object-cover" />
+            <span className="text-white/30">|</span>
+            <button className="px-2 py-1 text-nav-fg/60 hover:text-nav-hover transition-colors">
+              FR
             </button>
           </div>
         </div>
