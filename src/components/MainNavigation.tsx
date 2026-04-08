@@ -35,7 +35,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    label: "Publicaties & inzichten",
+    label: "Inzichten",
     children: [
       { label: "Discussion Boards", href: "#discussion-boards" },
       { label: "BAM magazine", href: "#bam-magazine" },
