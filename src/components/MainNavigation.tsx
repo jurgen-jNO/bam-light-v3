@@ -112,12 +112,12 @@ const MainNavigation = () => {
           >
             <Search className="w-4 h-4" />
           </button>
-          <div className="flex items-center gap-1 border-l border-white/30 pl-3 text-sm font-semibold">
-            <button className="px-2 py-1 text-nav-fg hover:text-nav-hover transition-colors">
+          <div className="flex items-center border-l border-white/30 pl-3 text-sm font-semibold">
+            <button className="px-1 py-1 text-nav-fg hover:text-nav-hover transition-colors">
               NL
             </button>
-            <span className="text-white/30">|</span>
-            <button className="px-2 py-1 text-nav-fg/60 hover:text-nav-hover transition-colors">
+            <span className="text-white/30 mx-0.5">|</span>
+            <button className="px-1 py-1 text-nav-fg/60 hover:text-nav-hover transition-colors">
               FR
             </button>
           </div>
