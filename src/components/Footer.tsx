@@ -22,7 +22,7 @@ const Footer = () => {
     <footer className="bg-footer text-footer-fg">
       <div className="max-w-[1400px] mx-auto px-6 py-12">
         {/* Sitemap section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pb-10 border-b border-white/10">
+        <div className="flex justify-end pb-10 border-b border-white/10">
           {sitemapColumns.map((col) => (
             <div key={col.title}>
               <h3 className="text-sm font-semibold uppercase tracking-wide mb-4">
