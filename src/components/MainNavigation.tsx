@@ -45,16 +45,6 @@ const navItems: NavItem[] = [
     ],
   },
   { label: "Job board", href: "#job-board" },
-  {
-    label: "Over BAM",
-    children: [
-      { label: "Visie & missie", href: "#visie-missie" },
-      { label: "Advocacy", href: "#advocacy" },
-      { label: "Onze leden", href: "#onze-leden" },
-      { label: "Team (incl RvB)", href: "#team" },
-      { label: "Contact", href: "#contact" },
-    ],
-  },
 ];
 
 const MainNavigation = () => {
