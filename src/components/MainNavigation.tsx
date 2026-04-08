@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Search, ChevronDown } from "lucide-react";
-import flemishLion from "@/assets/flemish-lion.png";
-import walloonRooster from "@/assets/walloon-rooster.png";
 import bamLogo from "@/assets/bam-logo.png";
 
 interface NavItem {
