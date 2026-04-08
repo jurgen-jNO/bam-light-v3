@@ -55,6 +55,11 @@ export default {
           "dropdown-border": "hsl(var(--nav-dropdown-border))",
           accent: "hsl(var(--nav-accent))",
         },
+        footer: {
+          DEFAULT: "hsl(var(--footer-bg))",
+          fg: "hsl(var(--footer-fg))",
+          muted: "hsl(var(--footer-muted))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
