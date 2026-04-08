@@ -69,21 +69,23 @@ const Footer = () => {
                   className={inputClasses}
                 />
               </div>
-              <textarea
-                placeholder="Uw bericht..."
-                maxLength={1000}
-                rows={3}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className={`${inputClasses} resize-none`}
-              />
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold bg-white/10 border border-white/20 rounded hover:bg-white/20 transition-all group"
-              >
-                Verstuur
-                <Send className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
-              </button>
+              <div className="relative">
+                <textarea
+                  placeholder="Uw bericht..."
+                  maxLength={1000}
+                  rows={2}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  className={`${inputClasses} resize-none pr-10`}
+                />
+                <button
+                  type="submit"
+                  className="absolute right-2.5 bottom-2.5 p-1.5 text-white/40 hover:text-white/80 transition-colors"
+                  aria-label="Verstuur"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                </button>
+              </div>
             </form>
           </div>
 
