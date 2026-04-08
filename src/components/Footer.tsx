@@ -6,7 +6,7 @@ const sitemapLinks = [
   { label: "Visie & missie", href: "#visie-missie" },
   { label: "Advocacy", href: "#advocacy" },
   { label: "Onze leden", href: "#onze-leden" },
-  { label: "Team (incl RvB)", href: "#team" },
+  { label: "Team", href: "#team" },
 ];
 
 const legalLinks = [
