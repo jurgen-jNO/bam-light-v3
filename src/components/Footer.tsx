@@ -1,14 +1,12 @@
-const sitemapColumns = [
-  {
-    title: "Over BAM",
-    links: [
-      { label: "Visie & missie", href: "#visie-missie" },
-      { label: "Advocacy", href: "#advocacy" },
-      { label: "Onze leden", href: "#onze-leden" },
-      { label: "Team (incl RvB)", href: "#team" },
-      { label: "Contact", href: "#contact" },
-    ],
-  },
+import { useState } from "react";
+import { Send } from "lucide-react";
+import { toast } from "sonner";
+
+const sitemapLinks = [
+  { label: "Visie & missie", href: "#visie-missie" },
+  { label: "Advocacy", href: "#advocacy" },
+  { label: "Onze leden", href: "#onze-leden" },
+  { label: "Team (incl RvB)", href: "#team" },
 ];
 
 const legalLinks = [
@@ -18,36 +16,102 @@ const legalLinks = [
 ];
 
 const Footer = () => {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      message: form.message.trim(),
+    };
+    if (!trimmed.name || !trimmed.email || !trimmed.message) {
+      toast.error("Vul alle velden in.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed.email)) {
+      toast.error("Ongeldig e-mailadres.");
+      return;
+    }
+    toast.success("Bericht verzonden!");
+    setForm({ name: "", email: "", message: "" });
+  };
+
+  const inputClasses =
+    "w-full bg-white/5 border border-white/15 rounded px-4 py-2.5 text-sm text-footer-fg placeholder:text-white/30 focus:outline-none focus:border-white/40 focus:bg-white/8 transition-all backdrop-blur-sm";
+
   return (
     <footer className="bg-footer text-footer-fg">
-      <div className="max-w-[1400px] mx-auto px-6 py-12">
-        {/* Sitemap section */}
-        <div className="flex justify-end pb-10 border-b border-white/10">
-          {sitemapColumns.map((col) => (
-            <div key={col.title}>
-              <h3 className="text-sm font-semibold uppercase tracking-wide mb-4">
-                {col.title}
-              </h3>
-              <ul className="space-y-2">
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-footer-muted hover:text-footer-fg transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+      <div className="max-w-[1400px] mx-auto px-6 py-14">
+        {/* Main footer content */}
+        <div className="flex flex-col md:flex-row gap-12 pb-10 border-b border-white/10">
+          {/* Contact form — left/center */}
+          <div className="flex-1 max-w-lg">
+            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-footer-fg">
+              Contact
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  placeholder="Naam"
+                  maxLength={100}
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className={inputClasses}
+                />
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  maxLength={255}
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className={inputClasses}
+                />
+              </div>
+              <textarea
+                placeholder="Uw bericht..."
+                maxLength={1000}
+                rows={3}
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                className={`${inputClasses} resize-none`}
+              />
+              <button
+                type="submit"
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold bg-white/10 border border-white/20 rounded hover:bg-white/20 transition-all group"
+              >
+                Verstuur
+                <Send className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+              </button>
+            </form>
+          </div>
+
+          {/* Over BAM links — right */}
+          <div className="md:ml-auto">
+            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-footer-fg">
+              Over BAM
+            </h3>
+            <ul className="space-y-2.5">
+              {sitemapLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-footer-muted hover:text-footer-fg transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
           <p className="text-sm text-footer-muted">
-            © {new Date().getFullYear()} BAM — Belgian Association of Marketing. Alle rechten voorbehouden.
+            © {new Date().getFullYear()} BAM — Belgian Association of Marketing.
+            Alle rechten voorbehouden.
           </p>
           <ul className="flex items-center gap-6">
             {legalLinks.map((link) => (
