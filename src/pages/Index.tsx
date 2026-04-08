@@ -1,10 +1,11 @@
 import MainNavigation from "@/components/MainNavigation";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <MainNavigation />
-      <main className="max-w-[1400px] mx-auto px-6 py-20">
+      <main className="flex-1 max-w-[1400px] mx-auto px-6 py-20 w-full">
         <div className="border-2 border-dashed border-border rounded-lg p-16 text-center">
           <h1 className="text-2xl font-semibold text-foreground mb-2">
             marketing.be
@@ -14,6 +15,7 @@ const Index = () => {
           </p>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

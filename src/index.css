@@ -45,6 +45,10 @@ All colors MUST be HSL.
     --nav-dropdown-border: 43 55% 55%;
     --nav-accent: 43 70% 58%;
 
+    --footer-bg: 0 0% 8%;
+    --footer-fg: 0 0% 100%;
+    --footer-muted: 0 0% 60%;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
