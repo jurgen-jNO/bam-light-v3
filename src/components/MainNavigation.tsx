@@ -1,0 +1,142 @@
+import { useState } from "react";
+import { Search, ChevronDown } from "lucide-react";
+import flemishLion from "@/assets/flemish-lion.png";
+import walloonRooster from "@/assets/walloon-rooster.png";
+import bamLogo from "@/assets/bam-logo.png";
+
+interface NavItem {
+  label: string;
+  href?: string;
+  children?: { label: string; href: string }[];
+}
+
+const navItems: NavItem[] = [
+  {
+    label: "Opleidingen",
+    children: [
+      { label: "Dagopleidingen", href: "#dagopleidingen" },
+      { label: "Meerdaagse trainingen", href: "#meerdaagse-trainingen" },
+      { label: "Op maat (van uw bedrijf)", href: "#op-maat" },
+    ],
+  },
+  {
+    label: "Evenementen",
+    children: [
+      { label: "Activiteiten", href: "#activiteiten" },
+      { label: "Awards", href: "#awards" },
+      { label: "BAM Congress", href: "#bam-congress" },
+    ],
+  },
+  {
+    label: "Communities",
+    children: [
+      { label: "Think tanks", href: "#think-tanks" },
+      { label: "Future Marketeers", href: "#future-marketeers" },
+    ],
+  },
+  {
+    label: "Publicaties & inzichten",
+    children: [
+      { label: "Discussion Boards", href: "#discussion-boards" },
+      { label: "BAM magazine", href: "#bam-magazine" },
+      { label: "Looking at 2030", href: "#looking-at-2030" },
+      { label: "Pers", href: "#pers" },
+      { label: "Nieuwsbrief", href: "#nieuwsbrief" },
+    ],
+  },
+  { label: "Job board", href: "#job-board" },
+  {
+    label: "Over BAM",
+    children: [
+      { label: "Visie & missie", href: "#visie-missie" },
+      { label: "Advocacy", href: "#advocacy" },
+      { label: "Onze leden", href: "#onze-leden" },
+      { label: "Team (incl RvB)", href: "#team" },
+      { label: "Contact", href: "#contact" },
+    ],
+  },
+];
+
+const MainNavigation = () => {
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  return (
+    <nav className="bg-nav border-b border-nav-dropdown-border relative z-50">
+      <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between h-20">
+        {/* Logo */}
+        <a href="#" className="shrink-0">
+          <img src={bamLogo} alt="BAM - Belgian Association of Marketing" className="h-12 w-auto" />
+        </a>
+
+        {/* Main nav items */}
+        <ul className="flex items-center gap-0.5 ml-8">
+          {navItems.map((item) => (
+            <li
+              key={item.label}
+              className="relative"
+              onMouseEnter={() => item.children && setOpenDropdown(item.label)}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
+              <a
+                href={item.href || "#"}
+                className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-nav-fg uppercase tracking-wide hover:text-nav-hover transition-colors"
+              >
+                {item.label}
+                {item.children && <ChevronDown className="w-3.5 h-3.5 opacity-70" />}
+              </a>
+
+              {/* Dropdown */}
+              {item.children && openDropdown === item.label && (
+                <div className="absolute top-full left-0 pt-1 min-w-[220px]">
+                  <div className="bg-nav-dropdown border border-nav-dropdown-border rounded shadow-lg py-1">
+                    {item.children.map((child) => (
+                      <a
+                        key={child.label}
+                        href={child.href}
+                        className="block px-4 py-2 text-sm text-nav-fg hover:text-nav-hover hover:bg-white/10 transition-colors"
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+
+        {/* Right side: Word lid, Login, Search, Language */}
+        <div className="flex items-center gap-3 ml-auto shrink-0">
+          <a
+            href="#word-lid"
+            className="px-4 py-1.5 text-sm font-semibold bg-card text-foreground rounded hover:bg-nav-hover transition-colors"
+          >
+            Word lid
+          </a>
+          <a
+            href="#login"
+            className="text-sm font-medium text-nav-fg hover:text-nav-hover transition-colors"
+          >
+            Login
+          </a>
+          <button
+            className="p-2 text-nav-fg hover:text-nav-hover transition-colors"
+            aria-label="Zoeken"
+          >
+            <Search className="w-4 h-4" />
+          </button>
+          <div className="flex items-center gap-2 border-l border-white/30 pl-3">
+            <button className="hover:opacity-80 transition-opacity" title="Vlaanderen (NL)">
+              <img src={flemishLion} alt="Vlaamse Leeuw" className="w-6 h-6 rounded-sm object-cover" />
+            </button>
+            <button className="hover:opacity-80 transition-opacity" title="Wallonie (FR)">
+              <img src={walloonRooster} alt="Waalse Haan" className="w-6 h-6 rounded-sm object-cover" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default MainNavigation;

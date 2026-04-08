@@ -1,16 +1,21 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import MainNavigation from "@/components/MainNavigation";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen bg-background">
+      <MainNavigation />
+      <main className="max-w-[1400px] mx-auto px-6 py-20">
+        <div className="border-2 border-dashed border-border rounded-lg p-16 text-center">
+          <h1 className="text-2xl font-semibold text-foreground mb-2">
+            marketing.be
+          </h1>
+          <p className="text-muted-foreground">
+            Wireframe — klik op de navigatie-items om de dropdown menu's te zien
+          </p>
+        </div>
+      </main>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
