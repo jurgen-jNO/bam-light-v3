@@ -51,7 +51,7 @@ const MainNavigation = () => {
     <nav className="bg-nav border-b border-nav-dropdown-border relative z-50">
       <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between h-20">
         {/* Logo */}
-        <a href="#" className="shrink-0">
+        <a href="/mobile" className="shrink-0">
           <img src={bamLogo} alt="BAM - Belgian Association of Marketing" className="h-12 w-auto" />
         </a>
 
