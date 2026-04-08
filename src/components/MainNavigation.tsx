@@ -42,7 +42,6 @@ const navItems: NavItem[] = [
       { label: "Nieuwsbrief", href: "#nieuwsbrief" },
     ],
   },
-  { label: "Job board", href: "#job-board" },
 ];
 
 const MainNavigation = () => {
