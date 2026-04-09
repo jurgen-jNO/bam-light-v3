@@ -139,14 +139,6 @@ const Mobile = () => {
                 )}
               </div>
             ))}
-            <div className="flex items-center gap-3 px-5 py-4">
-              <a href="#word-lid" className="px-4 py-2 text-sm font-semibold bg-card text-foreground rounded">
-                Word lid
-              </a>
-              <a href="#login" className="text-sm font-medium text-nav-fg">
-                Login
-              </a>
-            </div>
           </div>
         )}
       </nav>
