@@ -45,93 +45,90 @@ const Footer = () => {
   return (
     <footer className="bg-footer text-footer-fg">
       <div className="max-w-[1400px] mx-auto px-6 py-14">
-        <div className="flex flex-col md:flex-row gap-12">
-          {/* Left side: Contact + copyright */}
-          <div className="flex-1 max-w-lg space-y-10">
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-footer-fg">
-                Contact
-              </h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    placeholder="Naam"
-                    maxLength={100}
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className={inputClasses}
-                  />
-                  <input
-                    type="email"
-                    placeholder="E-mail"
-                    maxLength={255}
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className={inputClasses}
-                  />
-                </div>
-                <div className="relative">
-                  <textarea
-                    placeholder="Uw bericht..."
-                    maxLength={1000}
-                    rows={2}
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className={`${inputClasses} resize-none pr-10`}
-                  />
-                  <button
-                    type="submit"
-                    className="absolute right-2.5 bottom-2.5 p-1.5 text-white/40 hover:text-white/80 transition-colors"
-                    aria-label="Verstuur"
-                  >
-                    <Send className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div className="border-t border-white/10 pt-6">
-              <p className="text-sm text-footer-muted">
-                © {new Date().getFullYear()} BAM — Belgian Association of Marketing.
-                Alle rechten voorbehouden.
-              </p>
-            </div>
+        {/* Main footer content */}
+        <div className="flex flex-col md:flex-row gap-12 pb-10 border-b border-white/10">
+          {/* Contact form — left/center */}
+          <div className="flex-1 max-w-lg">
+            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-footer-fg">
+              Contact
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  placeholder="Naam"
+                  maxLength={100}
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className={inputClasses}
+                />
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  maxLength={255}
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className={inputClasses}
+                />
+              </div>
+              <div className="relative">
+                <textarea
+                  placeholder="Uw bericht..."
+                  maxLength={1000}
+                  rows={2}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  className={`${inputClasses} resize-none pr-10`}
+                />
+                <button
+                  type="submit"
+                  className="absolute right-2.5 bottom-2.5 p-1.5 text-white/40 hover:text-white/80 transition-colors"
+                  aria-label="Verstuur"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </form>
           </div>
 
-          {/* Right side: Over BAM + legal links */}
-          <div className="md:ml-auto space-y-10">
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-footer-fg">
-                Over BAM
-              </h3>
-              <ul className="grid grid-cols-2 gap-x-32 gap-y-2.5">
-                {sitemapLinks.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-footer-muted hover:text-footer-fg transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="border-t border-white/10 pt-6">
-              <ul className="flex items-center gap-6">
-                {legalLinks.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-footer-muted hover:text-footer-fg transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Over BAM links — right */}
+          <div className="md:ml-auto">
+            <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-footer-fg">
+              Over BAM
+            </h3>
+            <ul className="grid grid-cols-2 gap-x-32 gap-y-2.5">
+              {sitemapLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-footer-muted hover:text-footer-fg transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="flex flex-col md:flex-row items-start gap-4 pt-6">
+          <p className="flex-1 text-sm text-footer-muted">
+            © {new Date().getFullYear()} BAM — Belgian Association of Marketing.
+            Alle rechten voorbehouden.
+          </p>
+          <ul className="flex items-center gap-6 md:ml-auto">
+            {legalLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="text-sm text-footer-muted hover:text-footer-fg transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>
