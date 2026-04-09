@@ -30,6 +30,7 @@ const navItems: NavItem[] = [
     children: [
       { label: "Think tanks", href: "#think-tanks" },
       { label: "Future Marketeers", href: "#future-marketeers" },
+      { label: "BAM Leden", href: "#bam-leden" },
     ],
   },
   {
