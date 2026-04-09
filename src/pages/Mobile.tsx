@@ -89,8 +89,8 @@ const Mobile = () => {
             <img src={bamLogo} alt="BAM" className="h-9 w-auto" />
           </a>
           <div className="flex items-center gap-1">
-            <a href="#word-lid" className="p-2 text-nav-fg" aria-label="Word lid">
-              <UserPlus className="w-5 h-5" />
+            <a href="#word-lid" className="flex items-center justify-center w-8 h-8 rounded-full bg-white" aria-label="Word lid">
+              <UserPlus className="w-4 h-4 text-[hsl(45,90%,40%)]" />
             </a>
             <a href="#login" className="p-2 text-nav-fg" aria-label="Login">
               <User className="w-5 h-5" />
