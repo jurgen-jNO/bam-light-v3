@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, ChevronDown, ChevronUp, Send, Menu, X } from "lucide-react";
+import { Search, ChevronDown, ChevronUp, Send, Menu, X, UserPlus, LogIn } from "lucide-react";
 import bamLogo from "@/assets/bam-logo.png";
 import { toast } from "sonner";
 
