@@ -80,7 +80,7 @@ const Mobile = () => {
     "w-full bg-white/5 border border-white/15 rounded px-4 py-3 text-sm text-footer-fg placeholder:text-white/30 focus:outline-none focus:border-white/40 transition-all";
 
   return (
-    <div className="min-h-screen bg-black flex justify-center">
+    <div className="min-h-screen bg-[hsl(0,0%,95%)] flex justify-center">
     <div className="w-full max-w-[390px] bg-background flex flex-col min-h-screen shadow-2xl">
       {/* Mobile Header */}
       <nav className="bg-nav sticky top-0 z-50">
