@@ -10,7 +10,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    label: "Opleidingen",
+    label: "Academy",
     children: [
       { label: "Dagopleidingen", href: "#dagopleidingen" },
       { label: "Meerdaagse trainingen", href: "#meerdaagse-trainingen" },
