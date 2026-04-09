@@ -210,6 +210,7 @@ const Mobile = () => {
         </div>
       </footer>
     </div>
+    </div>
   );
 };
 
