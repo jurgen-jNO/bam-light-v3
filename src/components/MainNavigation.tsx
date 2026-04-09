@@ -33,7 +33,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    label: "Inzichten",
+    label: "Expert Views",
     children: [
       { label: "Discussion Boards", href: "#discussion-boards" },
       { label: "BAM magazine", href: "#bam-magazine" },
