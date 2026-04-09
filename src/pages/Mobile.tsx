@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, ChevronDown, ChevronUp, Send, Menu, X } from "lucide-react";
+import { Search, ChevronDown, ChevronUp, Send, Menu, X, UserPlus, LogIn } from "lucide-react";
 import bamLogo from "@/assets/bam-logo.png";
 import { toast } from "sonner";
 
@@ -88,12 +88,13 @@ const Mobile = () => {
           <a href="/" className="shrink-0">
             <img src={bamLogo} alt="BAM" className="h-9 w-auto" />
           </a>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center text-xs font-semibold">
-              <button className="px-1 py-1 text-nav-fg">NL</button>
-              <span className="text-white/30 mx-0.5">|</span>
-              <button className="px-1 py-1 text-nav-fg/60">FR</button>
-            </div>
+          <div className="flex items-center gap-1">
+            <a href="#word-lid" className="p-2 text-nav-fg" aria-label="Word lid">
+              <UserPlus className="w-5 h-5" />
+            </a>
+            <a href="#login" className="p-2 text-nav-fg" aria-label="Login">
+              <LogIn className="w-5 h-5" />
+            </a>
             <button className="p-2 text-nav-fg" aria-label="Zoeken">
               <Search className="w-5 h-5" />
             </button>
@@ -138,14 +139,6 @@ const Mobile = () => {
                 )}
               </div>
             ))}
-            <div className="flex items-center gap-3 px-5 py-4">
-              <a href="#word-lid" className="px-4 py-2 text-sm font-semibold bg-card text-foreground rounded">
-                Word lid
-              </a>
-              <a href="#login" className="text-sm font-medium text-nav-fg">
-                Login
-              </a>
-            </div>
           </div>
         )}
       </nav>
