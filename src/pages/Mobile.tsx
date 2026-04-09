@@ -27,7 +27,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    label: "Communities",
+    label: "Community Hub",
     children: [
       { label: "Think tanks", href: "#think-tanks" },
       { label: "Future Marketeers", href: "#future-marketeers" },
