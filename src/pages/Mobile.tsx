@@ -80,7 +80,8 @@ const Mobile = () => {
     "w-full bg-white/5 border border-white/15 rounded px-4 py-3 text-sm text-footer-fg placeholder:text-white/30 focus:outline-none focus:border-white/40 transition-all";
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-black flex justify-center">
+    <div className="w-full max-w-[390px] bg-background flex flex-col min-h-screen shadow-2xl">
       {/* Mobile Header */}
       <nav className="bg-nav sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 h-16">
@@ -208,6 +209,7 @@ const Mobile = () => {
           </div>
         </div>
       </footer>
+    </div>
     </div>
   );
 };
