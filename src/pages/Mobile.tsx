@@ -39,8 +39,6 @@ const navItems: NavItem[] = [
       { label: "Discussion Boards", href: "#discussion-boards" },
       { label: "BAM magazine", href: "#bam-magazine" },
       { label: "Looking at 2030", href: "#looking-at-2030" },
-      { label: "Pers", href: "#pers" },
-      { label: "Nieuwsbrief", href: "#nieuwsbrief" },
     ],
   },
 ];
