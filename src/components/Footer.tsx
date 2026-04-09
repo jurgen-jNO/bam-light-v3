@@ -96,7 +96,7 @@ const Footer = () => {
             <h3 className="text-sm font-semibold uppercase tracking-widest mb-6 text-footer-fg">
               Over BAM
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="grid grid-cols-2 gap-x-8 gap-y-2.5">
               {sitemapLinks.map((link) => (
                 <li key={link.label}>
                   <a
