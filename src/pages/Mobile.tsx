@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, ChevronDown, ChevronUp, Send, Menu, X, UserPlus, LogIn } from "lucide-react";
+import { Search, ChevronDown, ChevronUp, Send, Menu, X, UserPlus, User } from "lucide-react";
 import bamLogo from "@/assets/bam-logo.png";
 import { toast } from "sonner";
 
@@ -93,7 +93,7 @@ const Mobile = () => {
               <UserPlus className="w-5 h-5" />
             </a>
             <a href="#login" className="p-2 text-nav-fg" aria-label="Login">
-              <LogIn className="w-5 h-5" />
+              <User className="w-5 h-5" />
             </a>
             <button className="p-2 text-nav-fg" aria-label="Zoeken">
               <Search className="w-5 h-5" />
