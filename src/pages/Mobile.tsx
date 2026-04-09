@@ -48,6 +48,8 @@ const sitemapLinks = [
   { label: "Advocacy", href: "#advocacy" },
   { label: "Onze leden", href: "#onze-leden" },
   { label: "Team", href: "#team" },
+  { label: "Pers", href: "#pers" },
+  { label: "Nieuwsbrief", href: "#nieuwsbrief" },
 ];
 
 const legalLinks = [
