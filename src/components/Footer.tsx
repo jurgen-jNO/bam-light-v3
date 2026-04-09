@@ -112,12 +112,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
-          <p className="text-sm text-footer-muted">
+        <div className="flex flex-col md:flex-row items-start gap-4 pt-6">
+          <p className="flex-1 text-sm text-footer-muted">
             © {new Date().getFullYear()} BAM — Belgian Association of Marketing.
             Alle rechten voorbehouden.
           </p>
-          <ul className="flex items-center gap-6">
+          <ul className="flex items-center gap-6 md:ml-auto">
             {legalLinks.map((link) => (
               <li key={link.label}>
                 <a
