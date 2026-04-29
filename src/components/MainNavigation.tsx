@@ -22,7 +22,7 @@ const navItems: NavItem[] = [
     children: [
       { label: "Activiteiten", href: "#activiteiten" },
       { label: "Awards", href: "#awards" },
-      { label: "BAM Congress", href: "#bam-congress" },
+      { label: "Congress", href: "#congress" },
     ],
   },
   {
