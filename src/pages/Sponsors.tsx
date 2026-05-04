@@ -144,7 +144,7 @@ const Sponsors = () => {
               </p>
             </div>
             <a
-              href="/word-lid"
+              href="/word-sponsor"
               className="px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
             >
               Word sponsor →
@@ -282,7 +282,7 @@ const Sponsors = () => {
             </h2>
           </div>
           <a
-            href="/word-lid"
+            href="/word-sponsor"
             className="px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
           >
             Word sponsor →
