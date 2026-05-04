@@ -16,28 +16,97 @@ type Industrie =
 
 interface BedrijfsLid {
   id: string;
-  naam: string;
+  brand: string;
   industrie: Industrie;
-  pakket: "Growth" | "Galaxy";
-  medewerkers: number;
-  locatie: string;
-  sinds: number;
+  straat: string;
+  nr: string;
+  postcode: string;
+  gemeente: string;
+  url: string;
+  about: string;
+  telefoon: string;
+  email: string;
 }
 
 const leden: BedrijfsLid[] = [
-  { id: "1", naam: "DPG Media", industrie: "Publisher", pakket: "Galaxy", medewerkers: 5600, locatie: "Antwerpen", sinds: 2010 },
-  { id: "2", naam: "Mediahuis", industrie: "Publisher", pakket: "Galaxy", medewerkers: 3200, locatie: "Antwerpen", sinds: 2012 },
-  { id: "3", naam: "Adobe Belgium", industrie: "Technology Provider", pakket: "Galaxy", medewerkers: 180, locatie: "Diegem", sinds: 2015 },
-  { id: "4", naam: "Salesforce BeLux", industrie: "Technology Provider", pakket: "Growth", medewerkers: 220, locatie: "Brussel", sinds: 2018 },
-  { id: "5", naam: "Ads & Data", industrie: "Media Sales House", pakket: "Growth", medewerkers: 85, locatie: "Vilvoorde", sinds: 2019 },
-  { id: "6", naam: "Boondoggle", industrie: "Creative / Digital Agency", pakket: "Growth", medewerkers: 95, locatie: "Leuven", sinds: 2017 },
-  { id: "7", naam: "TBWA Belgium", industrie: "Creative / Digital Agency", pakket: "Galaxy", medewerkers: 240, locatie: "Brussel", sinds: 2009 },
-  { id: "8", naam: "Proximus", industrie: "Advertiser", pakket: "Galaxy", medewerkers: 12500, locatie: "Brussel", sinds: 2014 },
-  { id: "9", naam: "Duvel Moortgat", industrie: "Advertiser", pakket: "Growth", medewerkers: 320, locatie: "Puurs", sinds: 2016 },
-  { id: "10", naam: "GroupM Belgium", industrie: "Media Agency", pakket: "Galaxy", medewerkers: 310, locatie: "Brussel", sinds: 2011 },
-  { id: "11", naam: "Eubelius", industrie: "Legal Services", pakket: "Growth", medewerkers: 140, locatie: "Brussel", sinds: 2020 },
-  { id: "12", naam: "Ipsos Belgium", industrie: "Market Research", pakket: "Growth", medewerkers: 110, locatie: "Brussel", sinds: 2018 },
-  { id: "13", naam: "Bpost", industrie: "Mail Handler", pakket: "Galaxy", medewerkers: 24000, locatie: "Brussel", sinds: 2012 },
+  {
+    id: "1", brand: "DPG Media", industrie: "Publisher",
+    straat: "Mediaplein", nr: "1", postcode: "2018", gemeente: "Antwerpen",
+    url: "https://www.dpgmedia.be", telefoon: "+32 3 210 02 10", email: "info@dpgmedia.be",
+    about: "DPG Media is een toonaangevend mediabedrijf met sterke merken in nieuws, entertainment en online services in België en Nederland.",
+  },
+  {
+    id: "2", brand: "Mediahuis", industrie: "Publisher",
+    straat: "Katwilgweg", nr: "2", postcode: "2050", gemeente: "Antwerpen",
+    url: "https://www.mediahuis.be", telefoon: "+32 3 210 05 11", email: "info@mediahuis.be",
+    about: "Mediahuis verbindt mensen met betrouwbare journalistiek via kranten, magazines en digitale platformen in heel Europa.",
+  },
+  {
+    id: "3", brand: "Adobe Belgium", industrie: "Technology Provider",
+    straat: "Pegasuslaan", nr: "5", postcode: "1831", gemeente: "Diegem",
+    url: "https://www.adobe.com/be_nl", telefoon: "+32 2 711 17 11", email: "contact@adobe.be",
+    about: "Adobe biedt creatieve, document- en marketing-cloudoplossingen waarmee bedrijven digitale ervaringen ontwerpen en leveren.",
+  },
+  {
+    id: "4", brand: "Salesforce BeLux", industrie: "Technology Provider",
+    straat: "Avenue Marnix", nr: "23", postcode: "1000", gemeente: "Brussel",
+    url: "https://www.salesforce.com/be", telefoon: "+32 2 894 80 00", email: "belux@salesforce.com",
+    about: "Salesforce is het #1 CRM-platform en helpt bedrijven hun klanten op een nieuwe manier te verbinden via cloud, data en AI.",
+  },
+  {
+    id: "5", brand: "Ads & Data", industrie: "Media Sales House",
+    straat: "Medialaan", nr: "1", postcode: "1800", gemeente: "Vilvoorde",
+    url: "https://www.adsanddata.be", telefoon: "+32 2 255 32 11", email: "info@adsanddata.be",
+    about: "Ads & Data is de Belgische sales house die adverteerders verbindt met de sterkste audio- en videomerken via data-driven oplossingen.",
+  },
+  {
+    id: "6", brand: "Boondoggle", industrie: "Creative / Digital Agency",
+    straat: "Vaartkom", nr: "4", postcode: "3000", gemeente: "Leuven",
+    url: "https://www.boondoggle.eu", telefoon: "+32 16 31 09 50", email: "hello@boondoggle.eu",
+    about: "Boondoggle is een onafhankelijk creatief digitaal bureau dat merken bouwt via strategie, design en technologie.",
+  },
+  {
+    id: "7", brand: "TBWA Belgium", industrie: "Creative / Digital Agency",
+    straat: "Generaal Lemanstraat", nr: "55", postcode: "2018", gemeente: "Antwerpen",
+    url: "https://www.tbwa.be", telefoon: "+32 3 270 95 11", email: "info@tbwa.be",
+    about: "TBWA is The Disruption Company — een collectief van creatieve makers dat merken helpt onverwachte sprongen voorwaarts te maken.",
+  },
+  {
+    id: "8", brand: "Proximus", industrie: "Advertiser",
+    straat: "Koning Albert II-laan", nr: "27", postcode: "1030", gemeente: "Brussel",
+    url: "https://www.proximus.be", telefoon: "+32 2 202 41 11", email: "marketing@proximus.com",
+    about: "Proximus is de grootste telecomaanbieder van België en levert digitale diensten aan particulieren, bedrijven en de publieke sector.",
+  },
+  {
+    id: "9", brand: "Duvel Moortgat", industrie: "Advertiser",
+    straat: "Breendonkdorp", nr: "58", postcode: "2870", gemeente: "Puurs-Sint-Amands",
+    url: "https://www.duvelmoortgat.be", telefoon: "+32 3 860 94 00", email: "info@duvel.be",
+    about: "Duvel Moortgat is een onafhankelijke Belgische brouwerij gekend voor iconische speciaalbieren zoals Duvel, Vedett en La Chouffe.",
+  },
+  {
+    id: "10", brand: "GroupM Belgium", industrie: "Media Agency",
+    straat: "Mediaplein", nr: "1", postcode: "1000", gemeente: "Brussel",
+    url: "https://www.groupm.com/belgium", telefoon: "+32 2 333 99 11", email: "info@groupm.be",
+    about: "GroupM is de grootste mediagroep ter wereld en vormt de toekomst van media in het belang van mensen, planeet en onze klanten.",
+  },
+  {
+    id: "11", brand: "Eubelius", industrie: "Legal Services",
+    straat: "Louizalaan", nr: "99", postcode: "1050", gemeente: "Brussel",
+    url: "https://www.eubelius.com", telefoon: "+32 2 543 31 00", email: "info@eubelius.com",
+    about: "Eubelius is een onafhankelijk Belgisch advocatenkantoor dat juridisch advies levert in alle domeinen van het ondernemingsrecht.",
+  },
+  {
+    id: "12", brand: "Ipsos Belgium", industrie: "Market Research",
+    straat: "Researchdreef", nr: "65", postcode: "1070", gemeente: "Brussel",
+    url: "https://www.ipsos.com/nl-be", telefoon: "+32 2 642 47 11", email: "info.belgium@ipsos.com",
+    about: "Ipsos is een wereldwijd marktonderzoeksbureau dat merken, consumenten, markten en de samenleving écht leert begrijpen.",
+  },
+  {
+    id: "13", brand: "Bpost", industrie: "Mail Handler",
+    straat: "Muntcentrum", nr: "1", postcode: "1000", gemeente: "Brussel",
+    url: "https://www.bpost.be", telefoon: "+32 2 201 23 45", email: "info@bpost.be",
+    about: "Bpost is het toonaangevende post- en pakkettenbedrijf van België en verbindt mensen, bedrijven en overheden via fysieke en digitale kanalen.",
+  },
 ];
 
 const industries: Industrie[] = [
