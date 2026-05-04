@@ -124,9 +124,13 @@ const InschrijvenGrowth = () => {
             hint="Voornaam, Naam, Taal, Functie, GSM, E-mail, Locatie tewerkstelling"
           />
           <div className="mt-4 flex gap-3 flex-wrap">
-            <button type="button" className="px-4 py-2 text-[10px] uppercase tracking-widest border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors">
-              Download template
-            </button>
+            <a
+              href="/templates/bam-medewerkers-template.xlsx"
+              download
+              className="px-4 py-2 text-[10px] uppercase tracking-widest border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors"
+            >
+              ↓ Download Excel template
+            </a>
             <button type="button" className="px-4 py-2 text-[10px] uppercase tracking-widest border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors">
               + Medewerker handmatig toevoegen
             </button>

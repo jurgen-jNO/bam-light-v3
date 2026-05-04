@@ -5,12 +5,13 @@ const steps = [
   { n: 2, label: "Entiteiten" },
   { n: 3, label: "Contact" },
   { n: 4, label: "Facturatie" },
-  { n: 5, label: "Onboarding" },
-  { n: 6, label: "Bevestig" },
+  { n: 5, label: "Medewerkers" },
+  { n: 6, label: "Onboarding" },
+  { n: 7, label: "Bevestig" },
 ];
 
 const InschrijvenGalaxy = () => {
-  const { step, setStep, submitted, setSubmitted } = useStep(6);
+  const { step, setStep, submitted, setSubmitted } = useStep(7);
 
   return (
     <FlowShell
@@ -118,6 +119,34 @@ const InschrijvenGalaxy = () => {
       )}
 
       {step === 5 && (
+        <Section title="Medewerkers per entiteit">
+          <p className="text-xs text-foreground/60 mb-4">
+            Upload één Excel per entiteit, of gecombineerd met een kolom 'Entiteit'. Elke medewerker
+            ontvangt automatisch een uitnodiging via e-mail om zijn profiel te vervolledigen.
+          </p>
+          <UploadBox
+            label="Excel-template uploaden"
+            hint="Voornaam, Naam, E-mail, Taal, Functie, GSM, Locatie, Afdeling, LinkedIn"
+          />
+          <div className="mt-4 flex gap-3 flex-wrap">
+            <a
+              href="/templates/bam-medewerkers-template.xlsx"
+              download
+              className="px-4 py-2 text-[10px] uppercase tracking-widest border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors"
+            >
+              ↓ Download Excel template
+            </a>
+            <button type="button" className="px-4 py-2 text-[10px] uppercase tracking-widest border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors">
+              + Medewerker handmatig toevoegen
+            </button>
+            <button type="button" className="px-4 py-2 text-[10px] uppercase tracking-widest border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors">
+              Later toevoegen (via account manager)
+            </button>
+          </div>
+        </Section>
+      )}
+
+      {step === 6 && (
         <Section title="Personal onboarding">
           <p className="text-xs text-foreground/60 mb-4">
             Galaxy bevat standaard een onboarding sessie met BAM. Wanneer past het best?
@@ -138,12 +167,13 @@ const InschrijvenGalaxy = () => {
         </Section>
       )}
 
-      {step === 6 && (
+      {step === 7 && (
         <Section title="Bevestig & verstuur">
           <div className="space-y-4 mb-6">
             <Summary title="Groep" items={[["Naam", "—"], ["Entiteiten", "—"], ["Medewerkers", "—"]]} />
             <Summary title="Contactpersoon" items={[["Naam", "—"], ["E-mail", "—"]]} />
             <Summary title="Facturatie" items={[["Model", "—"]]} />
+            <Summary title="Medewerkers" items={[["Status", "Wordt na bevestiging uitgenodigd"]]} />
             <Summary title="Onboarding" items={[["Voorkeur", "—"]]} />
           </div>
           <div className="space-y-3 border-t border-dashed border-foreground/30 pt-5">
