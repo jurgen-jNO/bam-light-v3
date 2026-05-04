@@ -94,7 +94,7 @@ const MainNavigation = () => {
         {/* Right side: Word lid, Login, Search, Language */}
         <div className="flex items-center gap-3 ml-auto shrink-0">
           <a
-            href="#word-lid"
+            href="/word-lid"
             className="px-4 py-1.5 text-sm font-semibold bg-card text-foreground rounded hover:bg-nav-hover transition-colors"
           >
             Word lid
