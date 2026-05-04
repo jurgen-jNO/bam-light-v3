@@ -30,6 +30,12 @@
   code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: #f0efed; padding: 1px 5px; border-radius: 3px; }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; border: 1px solid #111; border-radius: 4px; text-decoration: none; cursor: pointer; }
+  .btn.primary { background: #111; color: #fff; }
+  .btn.ghost { background: #fff; color: #111; }
+  .btn:hover { opacity: 0.85; }
   footer { color: #999; font-size: 12px; text-align: center; margin-top: 28px; }
 </style>
 </head>
@@ -168,6 +174,10 @@ erDiagram
         <li>Eén centrale contact = <code>EMPLOYEE_LINK.role = 'central_contact'</code></li>
       </ul>
     </div>
+  </div>
+
+  <div class="actions">
+    <a href="/docs/db-structuur-leden-info.html" class="btn primary">Leden info →</a>
   </div>
 
   <footer>BAM — interne documentatie · wireframe</footer>
