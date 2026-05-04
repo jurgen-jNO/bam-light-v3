@@ -7,6 +7,7 @@ import Index from "./pages/Index.tsx";
 import Mobile from "./pages/Mobile.tsx";
 import WordLid from "./pages/WordLid.tsx";
 import Leden from "./pages/Leden.tsx";
+import Partners from "./pages/Partners.tsx";
 import InschrijvenSolo from "./pages/InschrijvenSolo.tsx";
 import InschrijvenGrowth from "./pages/InschrijvenGrowth.tsx";
 import InschrijvenGalaxy from "./pages/InschrijvenGalaxy.tsx";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/mobile" element={<Mobile />} />
           <Route path="/word-lid" element={<WordLid />} />
           <Route path="/leden" element={<Leden />} />
+          <Route path="/partners" element={<Partners />} />
           <Route path="/inschrijven/solo" element={<InschrijvenSolo />} />
           <Route path="/inschrijven/growth" element={<InschrijvenGrowth />} />
           <Route path="/inschrijven/galaxy" element={<InschrijvenGalaxy />} />
