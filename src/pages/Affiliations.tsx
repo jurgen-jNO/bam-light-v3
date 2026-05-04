@@ -2,7 +2,7 @@ import { Building2, MapPin, Globe, Phone, Mail } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
-interface Partner {
+interface Affiliation {
   id: string;
   brand: string;
   type: string;
@@ -16,22 +16,66 @@ interface Partner {
   email: string;
 }
 
-const partners: Partner[] = [
+const affiliations: Affiliation[] = [
   {
-    id: "1", brand: "UBA", type: "Strategic Partner",
-    straat: "Buro & Design Center", nr: "11", postcode: "1130", gemeente: "Brussel",
-    url: "https://www.ubabelgium.be", telefoon: "+32 2 260 05 76", email: "info@ubabelgium.be",
-    about: "UBA is de Belgische vereniging van adverteerders en verdedigt de belangen van merken die in België investeren in marketing en communicatie.",
+    id: "1",
+    brand: "IAB Belgium",
+    type: "BAM is lid van — Digital Advertising",
+    straat: "Buro & Design Center",
+    nr: "11",
+    postcode: "1130",
+    gemeente: "Brussel",
+    url: "https://iabeurope.eu",
+    telefoon: "+32 2 740 00 90",
+    email: "info@iabbelgium.be",
+    about:
+      "The Belgian Association of Marketing is the representative of IAB in Belgium. IAB Europe leidt de politieke vertegenwoordiging en industriesamenwerking voor het digitale marketing- en advertising-ecosysteem.",
   },
   {
-    id: "2", brand: "ACC Belgium", type: "Strategic Partner",
-    straat: "Reyerslaan", nr: "80", postcode: "1030", gemeente: "Brussel",
-    url: "https://www.acc.be", telefoon: "+32 2 740 00 90", email: "info@acc.be",
-    about: "ACC is de federatie van communicatiebureaus in België en vertegenwoordigt creatieve, media- en digitale agencies in de hele sector.",
+    id: "2",
+    brand: "CUBE",
+    type: "BAM is partner van — Consumer & Customer Insights",
+    straat: "Buro & Design Center",
+    nr: "11",
+    postcode: "1130",
+    gemeente: "Brussel",
+    url: "http://www.cubelgium.be",
+    telefoon: "+32 2 260 05 76",
+    email: "info@cubelgium.be",
+    about:
+      "CUBE is a community of like-minded people, who have a passion for consumer & customer understanding, by uniting research agencies with marketing professionals, buyers, suppliers, consultants, academics, students and research communities worldwide.",
+  },
+  {
+    id: "3",
+    brand: "DNCM",
+    type: "BAM is partner van — Bel-Me-Niet-Meer-lijst",
+    straat: "Koning Albert II-laan",
+    nr: "8",
+    postcode: "1000",
+    gemeente: "Brussel",
+    url: "https://www.dncm.be",
+    telefoon: "+32 2 880 73 73",
+    email: "info@dncm.be",
+    about:
+      "DNCM beheert de officiële 'Bel-Me-Niet-Meer'-lijst in België. BAM ondersteunt DNCM door de marketingcommunity te informeren over deze wettelijke verplichting binnen telemarketing.",
+  },
+  {
+    id: "4",
+    brand: "Effie Awards Belgium",
+    type: "BAM is partner van — Marketing Effectiveness",
+    straat: "Reyerslaan",
+    nr: "80",
+    postcode: "1030",
+    gemeente: "Brussel",
+    url: "https://www.effiebelgium.be",
+    telefoon: "+32 2 740 00 95",
+    email: "info@effiebelgium.be",
+    about:
+      "Effie staat voor effectiveness in marketing communications. De Effie Awards worden wereldwijd erkend als de pre-eminente prijs in de industrie en bekronen marketingideeën die aantoonbaar werken.",
   },
 ];
 
-const Partners = () => {
+const Affiliations = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <MainNavigation />
@@ -40,14 +84,14 @@ const Partners = () => {
         {/* Wireframe header */}
         <div className="border-b-2 border-dashed border-foreground/30 pb-6 mb-10">
           <p className="text-xs uppercase tracking-widest text-foreground/50 mb-2">
-            [ wireframe — partners ]
+            [ wireframe — affiliations ]
           </p>
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Onze partners</h1>
+              <h1 className="text-3xl font-bold text-foreground">Onze affiliations</h1>
               <p className="text-sm text-foreground/60 mt-2 max-w-xl">
-                BAM werkt samen met sterke strategische partners die de Belgische
-                marketingsector mee vormgeven.
+                BAM bouwt samen met andere professionele organisaties aan een
+                global marketing ecosysteem — als lid en als partner.
               </p>
             </div>
             <a
@@ -62,16 +106,16 @@ const Partners = () => {
         {/* Resultaten meta */}
         <div className="flex items-center justify-between mb-4">
           <p className="text-xs uppercase tracking-widest text-foreground/50">
-            {partners.length} partners
+            {affiliations.length} affiliations
           </p>
           <p className="text-[10px] uppercase tracking-widest text-foreground/40">
-            [ partners ]
+            [ affiliations ]
           </p>
         </div>
 
-        {/* Partners grid: 2 cols × 2 rows = capacity for 4, currently 2 */}
+        {/* Grid: 2 cols × 2 rows = 4 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {partners.map((p) => {
+          {affiliations.map((p) => {
             const cleanUrl = p.url.replace(/^https?:\/\//, "").replace(/\/$/, "");
             return (
               <div
@@ -139,4 +183,4 @@ const Partners = () => {
   );
 };
 
-export default Partners;
+export default Affiliations;
