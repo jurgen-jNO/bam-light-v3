@@ -3,7 +3,18 @@ import { Building2, Search, MapPin, Globe, Phone, Mail } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
-type SponsorTier = "Gold" | "Silver" | "Bronze";
+type SponsorTier =
+  | "Education"
+  | "BAM Goes West"
+  | "Event"
+  | "Structural"
+  | "Key Partner"
+  | "IAB"
+  | "IAB MIXX Awards"
+  | "Think Tank"
+  | "CMO"
+  | "Students / Young Professionals"
+  | "Varia";
 
 interface Sponsor {
   id: string;
