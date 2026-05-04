@@ -113,9 +113,25 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row items-start gap-4 pt-6">
-          <p className="flex-1 text-sm text-footer-muted">
-            © {new Date().getFullYear()} BAM — Belgian Association of Marketing.
-            Alle rechten voorbehouden.
+          <p className="flex-1 text-sm text-footer-muted flex items-center gap-2">
+            <span>
+              © {new Date().getFullYear()} BAM — Belgian Association of Marketing.
+              Alle rechten voorbehouden.
+            </span>
+            <a
+              href="/docs/db-structuur-leden.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Database structuur ledenpakketten"
+              title="Database structuur ledenpakketten"
+              className="text-white/20 hover:text-white/70 transition-colors shrink-0"
+            >
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 3 L22 21 L2 21 Z" />
+                <ellipse cx="12" cy="15" rx="4" ry="2.2" />
+                <circle cx="12" cy="15" r="0.9" fill="currentColor" />
+              </svg>
+            </a>
           </p>
           <ul className="flex items-center gap-6 md:ml-auto">
             {legalLinks.map((link) => (
