@@ -143,7 +143,7 @@ const packages: Package[] = [
     id: "friends",
     name: "Friends",
     tagline: "Gratis profiel",
-    audience: "Prospects en niet-betalende contacten",
+    audience: "Gratis profiel voor onze newsletters, zonder extra voordelen.",
     price: "Gratis",
     duration: "Onbeperkt",
     benefits: [
