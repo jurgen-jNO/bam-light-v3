@@ -3,7 +3,18 @@ import { Building2, Search, MapPin, Globe, Phone, Mail } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
-type SponsorTier = "Gold" | "Silver" | "Bronze";
+type SponsorTier =
+  | "Education"
+  | "BAM Goes West"
+  | "Event"
+  | "Structural"
+  | "Key Partner"
+  | "IAB"
+  | "IAB MIXX Awards"
+  | "Think Tank"
+  | "CMO"
+  | "Students / Young Professionals"
+  | "Varia";
 
 interface Sponsor {
   id: string;
@@ -21,44 +32,86 @@ interface Sponsor {
 
 const sponsors: Sponsor[] = [
   {
-    id: "1", brand: "Google Belgium", tier: "Gold",
+    id: "1", brand: "Solvay Brussels School", tier: "Education",
+    straat: "Avenue F.D. Roosevelt", nr: "42", postcode: "1050", gemeente: "Brussel",
+    url: "https://www.solvay.edu", telefoon: "+32 2 650 41 11", email: "info@solvay.edu",
+    about: "Solvay Brussels School ondersteunt de marketing community met executive education en academisch onderzoek op topniveau.",
+  },
+  {
+    id: "2", brand: "Kortrijk Xpo", tier: "BAM Goes West",
+    straat: "Doorniksesteenweg", nr: "216", postcode: "8500", gemeente: "Kortrijk",
+    url: "https://www.kortrijkxpo.com", telefoon: "+32 56 24 11 11", email: "info@kortrijkxpo.com",
+    about: "Kortrijk Xpo is host van BAM Goes West en brengt de West-Vlaamse marketing community samen rond inspirerende events.",
+  },
+  {
+    id: "3", brand: "Brussels Expo", tier: "Event",
+    straat: "Belgiëplein", nr: "1", postcode: "1020", gemeente: "Brussel",
+    url: "https://www.brussels-expo.com", telefoon: "+32 2 474 84 84", email: "info@brussels-expo.com",
+    about: "Brussels Expo is een vaste partner voor de grote BAM-events en marketingconferenties in het hart van België.",
+  },
+  {
+    id: "4", brand: "Telenet", tier: "Structural",
+    straat: "Liersesteenweg", nr: "4", postcode: "2800", gemeente: "Mechelen",
+    url: "https://www.telenet.be", telefoon: "+32 15 33 30 00", email: "info@telenet.be",
+    about: "Telenet ondersteunt BAM structureel en helpt de Belgische marketing community jaarrond te bouwen aan kennis en netwerk.",
+  },
+  {
+    id: "5", brand: "Google Belgium", tier: "Key Partner",
     straat: "Steenweg op Etterbeek", nr: "180", postcode: "1040", gemeente: "Brussel",
     url: "https://www.google.be", telefoon: "+32 2 894 60 00", email: "belgium@google.com",
-    about: "Google ondersteunt de Belgische marketingcommunity met tools, training en inzichten om merken digitaal te laten groeien.",
+    about: "Google is key partner van BAM en levert tools, training en inzichten om merken digitaal te laten groeien.",
   },
   {
-    id: "2", brand: "Meta BeLux", tier: "Gold",
-    straat: "Rue de la Régence", nr: "58", postcode: "1000", gemeente: "Brussel",
-    url: "https://www.meta.com", telefoon: "+32 2 588 99 00", email: "belux@meta.com",
-    about: "Meta verbindt mensen en merken via Facebook, Instagram en WhatsApp, en is trots partner van de Belgische marketing community.",
+    id: "6", brand: "IAB Belgium", tier: "IAB",
+    straat: "Buro & Design Center", nr: "11", postcode: "1130", gemeente: "Brussel",
+    url: "https://iabeurope.eu", telefoon: "+32 2 740 00 90", email: "info@iabbelgium.be",
+    about: "IAB Belgium vertegenwoordigt de digitale advertising industrie en werkt nauw samen met BAM rond standaarden en advocacy.",
   },
   {
-    id: "3", brand: "LinkedIn Belgium", tier: "Silver",
-    straat: "Marnixlaan", nr: "23", postcode: "1000", gemeente: "Brussel",
-    url: "https://www.linkedin.com", telefoon: "+32 2 894 80 10", email: "belgium@linkedin.com",
-    about: "LinkedIn helpt B2B-marketeers in België professionals te bereiken met relevante content en doelgerichte advertenties.",
+    id: "7", brand: "IAB MIXX Awards", tier: "IAB MIXX Awards",
+    straat: "Buro & Design Center", nr: "11", postcode: "1130", gemeente: "Brussel",
+    url: "https://www.mixxawards.be", telefoon: "+32 2 740 00 91", email: "mixx@iabbelgium.be",
+    about: "De IAB MIXX Awards bekronen de meest creatieve en effectieve digitale campagnes in België.",
   },
   {
-    id: "4", brand: "Microsoft Belgium", tier: "Silver",
-    straat: "Pegasuslaan", nr: "1", postcode: "1831", gemeente: "Diegem",
-    url: "https://www.microsoft.com/nl-be", telefoon: "+32 2 704 30 00", email: "info@microsoft.be",
-    about: "Microsoft levert cloud-, data- en AI-oplossingen die Belgische marketingteams in staat stellen efficiënter en creatiever te werken.",
+    id: "8", brand: "Vlerick Business School", tier: "Think Tank",
+    straat: "Reep", nr: "1", postcode: "9000", gemeente: "Gent",
+    url: "https://www.vlerick.com", telefoon: "+32 9 210 97 11", email: "info@vlerick.com",
+    about: "Vlerick werkt met BAM samen rond marketing think tanks en gedeeld onderzoek voor de Belgische business community.",
   },
   {
-    id: "5", brand: "Spotify Belgium", tier: "Bronze",
-    straat: "Kortrijksesteenweg", nr: "1", postcode: "9000", gemeente: "Gent",
-    url: "https://ads.spotify.com", telefoon: "+32 9 210 00 00", email: "belgium-ads@spotify.com",
-    about: "Spotify Advertising biedt merken een audio-first kanaal om de Belgische luisteraar persoonlijk en op het juiste moment te bereiken.",
+    id: "9", brand: "CMO Council Belgium", tier: "CMO",
+    straat: "Avenue Louise", nr: "65", postcode: "1050", gemeente: "Brussel",
+    url: "https://www.cmocouncil.org", telefoon: "+32 2 808 12 00", email: "belgium@cmocouncil.org",
+    about: "Het CMO-platform binnen BAM verbindt Chief Marketing Officers rond strategische thema's en peer-to-peer learning.",
   },
   {
-    id: "6", brand: "Snapchat BeLux", tier: "Bronze",
-    straat: "Avenue Louise", nr: "326", postcode: "1050", gemeente: "Brussel",
-    url: "https://forbusiness.snapchat.com", telefoon: "+32 2 808 30 00", email: "belux@snap.com",
-    about: "Snapchat helpt merken een jonge, betrokken Belgische community te bereiken via AR, video en immersieve advertentieformats.",
+    id: "10", brand: "STIMA Young", tier: "Students / Young Professionals",
+    straat: "Belliardstraat", nr: "20", postcode: "1040", gemeente: "Brussel",
+    url: "https://www.stima.be", telefoon: "+32 2 234 67 89", email: "young@stima.be",
+    about: "STIMA Young inspireert studenten en jonge marketeers door events, mentoring en awards binnen het BAM-netwerk.",
+  },
+  {
+    id: "11", brand: "Marketing.be", tier: "Varia",
+    straat: "Persstraat", nr: "12", postcode: "1000", gemeente: "Brussel",
+    url: "https://www.marketing.be", telefoon: "+32 2 555 12 34", email: "info@marketing.be",
+    about: "Marketing.be is het toonaangevende vakplatform voor de Belgische marketing community en mediapartner van BAM.",
   },
 ];
 
-const tiers: SponsorTier[] = ["Gold", "Silver", "Bronze"];
+const tiers: SponsorTier[] = [
+  "Education",
+  "BAM Goes West",
+  "Event",
+  "Structural",
+  "Key Partner",
+  "IAB",
+  "IAB MIXX Awards",
+  "Think Tank",
+  "CMO",
+  "Students / Young Professionals",
+  "Varia",
+];
 
 const Sponsors = () => {
   const [filter, setFilter] = useState<"Alle" | SponsorTier>("Alle");
