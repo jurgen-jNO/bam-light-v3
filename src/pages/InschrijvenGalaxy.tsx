@@ -1,4 +1,5 @@
 import { FlowShell, Section, Grid2, Field, Summary, Checkbox, UploadBox, inputCls, useStep } from "@/components/inschrijven/FlowShell";
+import { downloadMedewerkersTemplate } from "@/lib/downloadTemplate";
 
 const steps = [
   { n: 1, label: "Groep" },
@@ -129,13 +130,13 @@ const InschrijvenGalaxy = () => {
             hint="Voornaam, Naam, E-mail, Taal, Functie, GSM, Locatie, Afdeling, LinkedIn"
           />
           <div className="mt-4 flex gap-3 flex-wrap">
-            <a
-              href="/templates/bam-medewerkers-template.xlsx"
-              download
+            <button
+              type="button"
+              onClick={downloadMedewerkersTemplate}
               className="px-4 py-2 text-[10px] uppercase tracking-widest border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors"
             >
               ↓ Download Excel template
-            </a>
+            </button>
             <button type="button" className="px-4 py-2 text-[10px] uppercase tracking-widest border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors">
               + Medewerker handmatig toevoegen
             </button>
