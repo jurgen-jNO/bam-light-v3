@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BAM — Database structuur leden info</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, sans-serif;
+    margin: 0; padding: 40px 24px; background: #f7f7f6; color: #111;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .sub { color: #666; font-size: 14px; margin: 0 0 28px; }
+  .panel {
+    background: #fff; border: 1px solid #e5e5e3; border-radius: 8px;
+    padding: 24px; margin-bottom: 18px;
+  }
+  .panel h2 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em;
+    color: #888; margin: 0 0 14px; font-weight: 600;
+  }
+  .panel h3 {
+    font-size: 14px; margin: 18px 0 8px; font-weight: 600;
+  }
+  pre.mermaid { margin: 0; font-family: inherit; font-size: 13px; background: transparent; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px dashed #e5e5e3; vertical-align: top; }
+  th { color: #666; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+  td.col { width: 22%; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: #111; }
+  td.type { width: 14%; color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+  td.req { width: 8%; }
+  .req-pill { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px; background: #111; color: #fff; letter-spacing: 0.05em; }
+  .opt-pill { display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 3px; background: #eee; color: #666; letter-spacing: 0.05em; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: #f0efed; padding: 1px 5px; border-radius: 3px; }
+  .nav-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #666; text-decoration: none; margin-bottom: 18px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .nav-back:hover { color: #111; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600;
+    border: 1px solid #111; border-radius: 4px; text-decoration: none; cursor: pointer;
+  }
+  .btn.primary { background: #111; color: #fff; }
+  .btn.ghost { background: #fff; color: #111; }
+  .btn:hover { opacity: 0.85; }
+  footer { color: #999; font-size: 12px; text-align: center; margin-top: 28px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="/docs/db-structuur-leden.html" class="nav-back">← Pakketten structuur</a>
+  <h1>Database structuur — leden info</h1>
+  <p class="sub">Volledige datavelden voor individuele leden (PERSON) en bedrijfsleden (COMPANY + EMPLOYEE_LINK).</p>
+
+  <div class="panel">
+    <h2>Overzicht entiteiten</h2>
+    <pre class="mermaid">
+erDiagram
+    PERSON ||--o{ EMPLOYEE_LINK : "werkt bij"
+    PERSON ||--o{ INTEREST_TAG : "heeft"
+    PERSON ||--o{ CONSENT : "geeft"
+    PERSON ||--o{ EVENT_REGISTRATION : "schrijft in"
+    PERSON ||--o{ TRAINING_PARTICIPATION : "volgt"
+    COMPANY ||--o{ EMPLOYEE_LINK : "heeft medewerkers"
+    COMPANY ||--o{ COMPANY : "groep / dochter"
+    COMPANY ||--o{ ADDRESS : "heeft adressen"
+    COMPANY ||--o{ BILLING_PROFILE : "factureert via"
+    EMPLOYEE_LINK }o--|| PERSON  : "voor"
+    EMPLOYEE_LINK }o--|| COMPANY : "bij"
+    PERSON {
+        uuid id PK
+        string email UK
+    }
+    COMPANY {
+        uuid id PK
+        string vat_number UK
+        uuid parent_id FK
+    }
+    EMPLOYEE_LINK {
+        uuid id PK
+        string role
+        string invite_status
+    }
+    </pre>
+  </div>
+
+  <div class="panel">
+    <h2>PERSON — individueel lid</h2>
+    <p style="font-size:13px; margin:0 0 14px; color:#444">
+      Eén record per natuurlijke persoon. Wordt aangemaakt bij Solo / Friends / Youth / Academy
+      inschrijving, of wanneer een corporate medewerker via Excel-upload wordt uitgenodigd.
+    </p>
+
+    <h3>Identiteit</h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Verplicht</th><th>Beschrijving</th></tr></thead>
+      <tbody>
+        <tr><td class="col">id</td><td class="type">uuid (PK)</td><td class="req"><span class="req-pill">PK</span></td><td>Auto-gegenereerd</td></tr>
+        <tr><td class="col">first_name</td><td class="type">string</td><td class="req"><span class="req-pill">verpl.</span></td><td>Voornaam</td></tr>
+        <tr><td class="col">last_name</td><td class="type">string</td><td class="req"><span class="req-pill">verpl.</span></td><td>Familienaam</td></tr>
+        <tr><td class="col">email</td><td class="type">string (UK)</td><td class="req"><span class="req-pill">verpl.</span></td><td>Login + uitnodigingen, uniek</td></tr>
+        <tr><td class="col">language</td><td class="type">enum</td><td class="req"><span class="req-pill">verpl.</span></td><td><code>NL</code> | <code>FR</code> — communicatie + opleidingen</td></tr>
+        <tr><td class="col">phone</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>GSM in E.164 formaat</td></tr>
+        <tr><td class="col">birth_date</td><td class="type">date</td><td class="req"><span class="opt-pill">opt.</span></td><td>Verplicht voor Youth (≤ 30j check)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Professioneel</h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Verplicht</th><th>Beschrijving</th></tr></thead>
+      <tbody>
+        <tr><td class="col">job_title</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>Functie</td></tr>
+        <tr><td class="col">job_function</td><td class="type">enum</td><td class="req"><span class="opt-pill">opt.</span></td><td>Marketing / Sales / Communication / Digital / …</td></tr>
+        <tr><td class="col">seniority_level</td><td class="type">enum</td><td class="req"><span class="opt-pill">opt.</span></td><td>Junior / Medior / Senior / C-level</td></tr>
+        <tr><td class="col">department</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>Afdeling</td></tr>
+        <tr><td class="col">work_location</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>Stad / kantoor van tewerkstelling</td></tr>
+        <tr><td class="col">linkedin_url</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>LinkedIn profiel</td></tr>
+        <tr><td class="col">bio</td><td class="type">text</td><td class="req"><span class="opt-pill">opt.</span></td><td>Korte professionele bio (max 500 tekens)</td></tr>
+        <tr><td class="col">avatar_url</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>Profielfoto</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Onderwijs (Youth / Academy / Friends-alumni)</h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Verplicht</th><th>Beschrijving</th></tr></thead>
+      <tbody>
+        <tr><td class="col">institution_id</td><td class="type">uuid (FK)</td><td class="req"><span class="opt-pill">opt.</span></td><td>FK → <code>COMPANY</code> met industry = <em>education</em></td></tr>
+        <tr><td class="col">study_program</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>Opleidingsrichting</td></tr>
+        <tr><td class="col">graduation_year</td><td class="type">int</td><td class="req"><span class="opt-pill">opt.</span></td><td>Jaar van afstuderen</td></tr>
+        <tr><td class="col">student_id_url</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>Upload studentenkaart (Youth-validatie)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Contact & adres</h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Verplicht</th><th>Beschrijving</th></tr></thead>
+      <tbody>
+        <tr><td class="col">street</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>Privéadres — alleen bij individueel pakket</td></tr>
+        <tr><td class="col">postal_code</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td></td></tr>
+        <tr><td class="col">city</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td></td></tr>
+        <tr><td class="col">country</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>ISO-2, default <code>BE</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Account & meta</h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Verplicht</th><th>Beschrijving</th></tr></thead>
+      <tbody>
+        <tr><td class="col">password_hash</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>Pas gezet na eerste login (uitnodigingsmail)</td></tr>
+        <tr><td class="col">profile_status</td><td class="type">enum</td><td class="req"><span class="req-pill">verpl.</span></td><td><code>invited</code> · <code>incomplete</code> · <code>complete</code></td></tr>
+        <tr><td class="col">visibility</td><td class="type">enum</td><td class="req"><span class="req-pill">verpl.</span></td><td><code>public</code> (in ledenlijst) · <code>members_only</code> · <code>private</code></td></tr>
+        <tr><td class="col">created_at</td><td class="type">timestamp</td><td class="req"><span class="req-pill">verpl.</span></td><td></td></tr>
+        <tr><td class="col">last_login_at</td><td class="type">timestamp</td><td class="req"><span class="opt-pill">opt.</span></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>COMPANY — bedrijfslid / entiteit / onderwijsinstelling</h2>
+    <p style="font-size:13px; margin:0 0 14px; color:#444">
+      Eén record per juridische entiteit (BTW-nummer). Galaxy-groepen koppelen entiteiten via
+      <code>parent_id</code>. Onderwijsinstellingen krijgen <code>industry = education</code>.
+    </p>
+
+    <h3>Identiteit</h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Verplicht</th><th>Beschrijving</th></tr></thead>
+      <tbody>
+        <tr><td class="col">id</td><td class="type">uuid (PK)</td><td class="req"><span class="req-pill">PK</span></td><td></td></tr>
+        <tr><td class="col">parent_id</td><td class="type">uuid (FK)</td><td class="req"><span class="opt-pill">opt.</span></td><td>Self-FK — Galaxy groepsstructuur</td></tr>
+        <tr><td class="col">brand_name</td><td class="type">string</td><td class="req"><span class="req-pill">verpl.</span></td><td>Commerciële naam (publiek profiel)</td></tr>
+        <tr><td class="col">legal_name</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>Debiteursnaam voor facturatie</td></tr>
+        <tr><td class="col">vat_number</td><td class="type">string (UK)</td><td class="req"><span class="req-pill">verpl.</span></td><td>Format BE0123456789, uniek</td></tr>
+        <tr><td class="col">company_size</td><td class="type">enum</td><td class="req"><span class="opt-pill">opt.</span></td><td>1-10 / 11-50 / 51-250 / 250+</td></tr>
+        <tr><td class="col">industry</td><td class="type">enum</td><td class="req"><span class="opt-pill">opt.</span></td><td>Publisher · Tech Provider · Media Sales House · Creative Agency · Advertiser · Media Agency · Legal · Research · Mail Handler · <strong>Education</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Publiek profiel</h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Verplicht</th><th>Beschrijving</th></tr></thead>
+      <tbody>
+        <tr><td class="col">website</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td></td></tr>
+        <tr><td class="col">logo_url</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>PNG / SVG</td></tr>
+        <tr><td class="col">about</td><td class="type">text</td><td class="req"><span class="opt-pill">opt.</span></td><td>Max 250 woorden — getoond op ledenpagina</td></tr>
+        <tr><td class="col">linkedin_url</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td></td></tr>
+        <tr><td class="col">phone_general</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td></td></tr>
+        <tr><td class="col">email_general</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>info@…</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Adres (hoofdzetel)</h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Verplicht</th><th>Beschrijving</th></tr></thead>
+      <tbody>
+        <tr><td class="col">street</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td></td></tr>
+        <tr><td class="col">postal_code</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td></td></tr>
+        <tr><td class="col">city</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td></td></tr>
+        <tr><td class="col">country</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>ISO-2, default <code>BE</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Meta</h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Verplicht</th><th>Beschrijving</th></tr></thead>
+      <tbody>
+        <tr><td class="col">visibility</td><td class="type">enum</td><td class="req"><span class="req-pill">verpl.</span></td><td><code>public</code> · <code>members_only</code></td></tr>
+        <tr><td class="col">share_attendance</td><td class="type">boolean</td><td class="req"><span class="opt-pill">opt.</span></td><td>"X gaat naar event Y" mag publiek</td></tr>
+        <tr><td class="col">created_at</td><td class="type">timestamp</td><td class="req"><span class="req-pill">verpl.</span></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>EMPLOYEE_LINK — koppeling persoon ↔ bedrijf</h2>
+    <p style="font-size:13px; margin:0 0 14px; color:#444">
+      Verbindingstabel. Een persoon kan in meerdere bedrijven actief zijn (bv. job switch),
+      maar slechts één link is <code>active</code> per moment.
+    </p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Verplicht</th><th>Beschrijving</th></tr></thead>
+      <tbody>
+        <tr><td class="col">id</td><td class="type">uuid (PK)</td><td class="req"><span class="req-pill">PK</span></td><td></td></tr>
+        <tr><td class="col">company_id</td><td class="type">uuid (FK)</td><td class="req"><span class="req-pill">verpl.</span></td><td></td></tr>
+        <tr><td class="col">person_id</td><td class="type">uuid (FK)</td><td class="req"><span class="req-pill">verpl.</span></td><td></td></tr>
+        <tr><td class="col">role</td><td class="type">enum</td><td class="req"><span class="req-pill">verpl.</span></td><td><code>central_contact</code> · <code>admin</code> · <code>employee</code></td></tr>
+        <tr><td class="col">invite_status</td><td class="type">enum</td><td class="req"><span class="req-pill">verpl.</span></td><td><code>invited</code> · <code>accepted</code> · <code>declined</code> · <code>expired</code></td></tr>
+        <tr><td class="col">invite_token</td><td class="type">string</td><td class="req"><span class="opt-pill">opt.</span></td><td>Eenmalige token voor uitnodigingsmail</td></tr>
+        <tr><td class="col">invited_at</td><td class="type">timestamp</td><td class="req"><span class="opt-pill">opt.</span></td><td></td></tr>
+        <tr><td class="col">accepted_at</td><td class="type">timestamp</td><td class="req"><span class="opt-pill">opt.</span></td><td></td></tr>
+        <tr><td class="col">left_at</td><td class="type">timestamp</td><td class="req"><span class="opt-pill">opt.</span></td><td>Wordt gezet bij job change</td></tr>
+        <tr><td class="col">status</td><td class="type">enum</td><td class="req"><span class="req-pill">verpl.</span></td><td><code>active</code> · <code>inactive</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h2>Aanverwante tabellen</h2>
+    <table>
+      <thead><tr><th>Tabel</th><th>Doel</th></tr></thead>
+      <tbody>
+        <tr><td class="col">INTEREST_TAG</td><td>Vrije tags per persoon (Brand · CX · Data · AI · Sustainability …) voor matching met events en content</td></tr>
+        <tr><td class="col">CONSENT</td><td>GDPR-toestemmingen per kanaal: nieuwsbrief, partner-mailings, event-foto's, attendance-sharing — met timestamp + bron</td></tr>
+        <tr><td class="col">ADDRESS</td><td>Optionele extra adressen per COMPANY (vestigingen)</td></tr>
+        <tr><td class="col">BILLING_PROFILE</td><td>Facturatie-instellingen: debiteur-email, PO-referentie, betalingstermijn, facturatiemodel (centraal vs per entiteit voor Galaxy)</td></tr>
+        <tr><td class="col">EVENT_REGISTRATION</td><td>Inschrijvingen op events met prijscategorie (member / non-member / free quota)</td></tr>
+        <tr><td class="col">TRAINING_PARTICIPATION</td><td>Deelname aan opleidingen incl. ledenkorting en gratis halve dag-quota</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="actions">
+    <a href="/docs/db-structuur-leden.html" class="btn ghost">← Pakketten structuur</a>
+    <a href="#" onclick="window.print();return false;" class="btn primary">Print / PDF</a>
+  </div>
+
+  <footer>BAM — interne documentatie · wireframe</footer>
+</div>
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+</script>
+</body>
+</html>
