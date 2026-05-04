@@ -5,33 +5,6 @@ import { toast } from "sonner";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
-type SponsorTier =
-  | "Education"
-  | "BAM Goes West"
-  | "Event"
-  | "Structural"
-  | "Key Partner"
-  | "IAB"
-  | "IAB MIXX Awards"
-  | "Think Tank"
-  | "CMO"
-  | "Students / Young Professionals"
-  | "Varia";
-
-const tiers: SponsorTier[] = [
-  "Education",
-  "BAM Goes West",
-  "Event",
-  "Structural",
-  "Key Partner",
-  "IAB",
-  "IAB MIXX Awards",
-  "Think Tank",
-  "CMO",
-  "Students / Young Professionals",
-  "Varia",
-];
-
 const sponsorSchema = z.object({
   voornaam: z.string().trim().min(1, "Voornaam is verplicht").max(100),
   achternaam: z.string().trim().min(1, "Achternaam is verplicht").max(100),
@@ -48,19 +21,6 @@ const sponsorSchema = z.object({
       (v) => /^(https?:\/\/)?[\w.-]+\.[a-z]{2,}.*$/i.test(v),
       "Ongeldige URL",
     ),
-  tier: z.enum([
-    "Education",
-    "BAM Goes West",
-    "Event",
-    "Structural",
-    "Key Partner",
-    "IAB",
-    "IAB MIXX Awards",
-    "Think Tank",
-    "CMO",
-    "Students / Young Professionals",
-    "Varia",
-  ]),
   bericht: z.string().trim().max(1000).optional().or(z.literal("")),
 });
 
@@ -72,7 +32,6 @@ type FormState = {
   telefoon: string;
   bedrijf: string;
   url: string;
-  tier: SponsorTier | "";
   bericht: string;
 };
 
@@ -84,7 +43,6 @@ const initialState: FormState = {
   telefoon: "",
   bedrijf: "",
   url: "",
-  tier: "",
   bericht: "",
 };
 
@@ -248,22 +206,6 @@ const WordSponsor = () => {
                 />
                 {errors.url && (
                   <p className="text-[11px] text-destructive mt-1">{errors.url}</p>
-                )}
-              </div>
-              <div className="sm:col-span-2">
-                <label className={labelClasses}>Sponsor-tier *</label>
-                <select
-                  value={form.tier}
-                  onChange={(e) => update("tier", e.target.value as SponsorTier)}
-                  className={`${inputClasses} uppercase tracking-wide`}
-                >
-                  <option value="">Selecteer een tier...</option>
-                  {tiers.map((t) => (
-                    <option key={t} value={t}>{t}</option>
-                  ))}
-                </select>
-                {errors.tier && (
-                  <p className="text-[11px] text-destructive mt-1">{errors.tier}</p>
                 )}
               </div>
               <div className="sm:col-span-2">
