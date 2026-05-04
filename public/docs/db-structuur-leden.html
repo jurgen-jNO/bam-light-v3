@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BAM — Database structuur ledenpakketten</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, sans-serif;
+    margin: 0; padding: 40px 24px; background: #f7f7f6; color: #111;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .sub { color: #666; font-size: 14px; margin: 0 0 28px; }
+  .panel {
+    background: #fff; border: 1px solid #e5e5e3; border-radius: 8px;
+    padding: 24px; margin-bottom: 18px;
+  }
+  .panel h2 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em;
+    color: #888; margin: 0 0 14px; font-weight: 600;
+  }
+  pre.mermaid { margin: 0; font-family: inherit; font-size: 13px; background: transparent; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px dashed #e5e5e3; vertical-align: top; }
+  th { color: #666; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: #f0efed; padding: 1px 5px; border-radius: 3px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+  footer { color: #999; font-size: 12px; text-align: center; margin-top: 28px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Database structuur — ledenpakketten</h1>
+  <p class="sub">Logische datamodel achter Solo, Friends, Youth, Academy, Growth en Galaxy. Wireframe / draft.</p>
+
+  <div class="panel">
+    <h2>Entity-Relationship diagram</h2>
+    <pre class="mermaid">
+erDiagram
+    PACKAGE ||--o{ MEMBERSHIP : "kent"
+    PACKAGE {
+        string id PK "solo|friends|youth|academy|growth|galaxy"
+        string name
+        string audience "individual|company"
+        decimal price_excl_vat
+        string billing_cycle "annual|prorata|free"
+        json   benefits
+    }
+
+    PERSON ||--o{ MEMBERSHIP : "individuele inschrijving"
+    PERSON ||--o{ EMPLOYEE_LINK : "is medewerker bij"
+    PERSON {
+        uuid id PK
+        string first_name
+        string last_name
+        string email UK
+        string language "NL|FR"
+        string job_title
+        string phone
+        date   birth_date "youth check"
+        string linkedin_url
+    }
+
+    COMPANY ||--o{ MEMBERSHIP : "corporate inschrijving"
+    COMPANY ||--o{ EMPLOYEE_LINK : "heeft medewerkers"
+    COMPANY ||--o{ COMPANY : "groep / dochter"
+    COMPANY {
+        uuid id PK
+        uuid parent_id FK "Galaxy: groepsstructuur"
+        string brand_name
+        string legal_name
+        string vat_number UK
+        string industry
+        string website
+        string logo_url
+    }
+
+    MEMBERSHIP }o--|| PACKAGE : "type"
+    MEMBERSHIP {
+        uuid id PK
+        uuid package_id FK
+        uuid person_id FK "individueel pakket"
+        uuid company_id FK "corporate pakket"
+        date start_date
+        date end_date "31 december"
+        string status "pending|active|expired|cancelled"
+        boolean auto_renew
+    }
+
+    EMPLOYEE_LINK }o--|| COMPANY : "bij"
+    EMPLOYEE_LINK }o--|| PERSON  : "voor"
+    EMPLOYEE_LINK {
+        uuid id PK
+        uuid company_id FK
+        uuid person_id FK
+        string role "central_contact|employee|admin"
+        string invite_status "invited|accepted|declined"
+        timestamp invited_at
+    }
+
+    INVOICE }o--|| MEMBERSHIP : "voor"
+    INVOICE {
+        uuid id PK
+        uuid membership_id FK
+        decimal amount_excl
+        decimal vat_amount
+        string status "draft|sent|paid|overdue"
+        string po_reference
+    }
+
+    EVENT_REGISTRATION }o--|| PERSON : "door"
+    EVENT_REGISTRATION }o--|| MEMBERSHIP : "via"
+    EVENT_REGISTRATION {
+        uuid id PK
+        uuid event_id
+        uuid person_id FK
+        uuid membership_id FK
+        string price_tier "member|non_member|free_quota"
+    }
+    </pre>
+  </div>
+
+  <div class="panel">
+    <h2>Pakketten — eigenschappen</h2>
+    <table>
+      <thead><tr>
+        <th>ID</th><th>Naam</th><th>Doelgroep</th><th>Prijs (excl.)</th><th>Cyclus</th><th>Looptijd</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><code>solo</code></td><td>Solo</td><td>Individueel</td><td>€ 295</td><td>annual</td><td>365 dagen</td></tr>
+        <tr><td><code>friends</code></td><td>Friends of BAM</td><td>Individueel (alumni / freelance)</td><td>€ 95</td><td>annual</td><td>365 dagen</td></tr>
+        <tr><td><code>youth</code></td><td>Youth</td><td>Individueel (≤ 30j)</td><td>€ 75</td><td>annual</td><td>365 dagen</td></tr>
+        <tr><td><code>academy</code></td><td>Academy</td><td>Onderwijsinstelling</td><td>€ 0</td><td>free</td><td>academiejaar</td></tr>
+        <tr><td><code>growth</code></td><td>Growth</td><td>Bedrijf (alle medewerkers)</td><td>€ 3.115</td><td>annual / pro rata</td><td>tot 31/12</td></tr>
+        <tr><td><code>galaxy</code></td><td>Galaxy</td><td>Bedrijf (+250 mdw of multi-entiteit)</td><td>op maat</td><td>annual / pro rata</td><td>tot 31/12</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>Individuele pakketten</h2>
+      <p style="font-size:13px; margin:0 0 10px; color:#444">
+        <code>MEMBERSHIP.person_id</code> is gevuld, <code>company_id</code> blijft <code>NULL</code>.
+        Geen <code>EMPLOYEE_LINK</code> nodig.
+      </p>
+      <ul style="font-size:13px; padding-left:18px; margin:0; color:#444">
+        <li>Solo, Friends, Youth, Academy</li>
+        <li>1 persoon → 1 actief membership per pakket</li>
+        <li>Youth: extra check op <code>birth_date</code></li>
+        <li>Academy: extra koppeling naar onderwijsinstelling (<code>COMPANY</code> met industry = <em>education</em>)</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h2>Corporate pakketten</h2>
+      <p style="font-size:13px; margin:0 0 10px; color:#444">
+        <code>MEMBERSHIP.company_id</code> is gevuld, <code>person_id</code> blijft <code>NULL</code>.
+        Toegang per medewerker via <code>EMPLOYEE_LINK</code>.
+      </p>
+      <ul style="font-size:13px; padding-left:18px; margin:0; color:#444">
+        <li>Growth: 1 entiteit, N medewerkers</li>
+        <li>Galaxy: <code>COMPANY.parent_id</code> vormt een groep met meerdere entiteiten, elk met eigen medewerkers en (optioneel) eigen factuur</li>
+        <li>Eén centrale contact = <code>EMPLOYEE_LINK.role = 'central_contact'</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>BAM — interne documentatie · wireframe</footer>
+</div>
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "neutral", securityLevel: "loose" });
+</script>
+</body>
+</html>
