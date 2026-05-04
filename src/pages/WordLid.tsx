@@ -316,18 +316,12 @@ const WordLid = () => {
 
               {/* CTA */}
               <div className="border-t-2 border-dashed border-foreground/30 pt-6 flex flex-wrap gap-3">
-                {active.id === "solo" ? (
-                  <a
-                    href="/inschrijven/solo"
-                    className="px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
-                  >
-                    Schrijf je in voor {active.name}
-                  </a>
-                ) : (
-                  <button className="px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors">
-                    Schrijf je in voor {active.name}
-                  </button>
-                )}
+                <a
+                  href={`/inschrijven/${active.id}`}
+                  className="px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
+                >
+                  Schrijf je in voor {active.name}
+                </a>
                 <button
                   onClick={() => setSelected(null)}
                   className="px-6 py-3 border-2 border-dashed border-foreground/40 text-foreground text-xs uppercase tracking-widest font-semibold hover:bg-foreground/5 transition-colors"
