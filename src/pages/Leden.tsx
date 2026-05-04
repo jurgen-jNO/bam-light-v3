@@ -95,25 +95,22 @@ const Leden = () => {
         {/* Filter bar */}
         <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] p-4 mb-8">
           <div className="flex items-start justify-between gap-4 flex-wrap">
-            <div className="flex-1 min-w-[260px]">
+            <div className="flex-1 min-w-[260px] max-w-sm">
               <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">
                 [ filter — industrie ]
               </p>
-              <div className="flex flex-wrap gap-2">
+              <select
+                value={filter}
+                onChange={(e) => setFilter(e.target.value as "Alle" | Industrie)}
+                className="w-full bg-background border-2 border-dashed border-foreground/30 px-3 py-2 text-sm text-foreground outline-none hover:border-foreground/60 focus:border-foreground transition-colors uppercase tracking-wide"
+              >
+                <option value="Alle">Alle industrieën</option>
                 {industries.map((i) => (
-                  <button
-                    key={i}
-                    onClick={() => setFilter(i)}
-                    className={`px-3 py-1.5 text-xs uppercase tracking-wide border-2 border-dashed transition-colors ${
-                      filter === i
-                        ? "bg-foreground text-background border-foreground"
-                        : "border-foreground/30 text-foreground/70 hover:border-foreground/60 hover:text-foreground"
-                    }`}
-                  >
+                  <option key={i} value={i}>
                     {i}
-                  </button>
+                  </option>
                 ))}
-              </div>
+              </select>
             </div>
 
             <div className="min-w-[220px]">
