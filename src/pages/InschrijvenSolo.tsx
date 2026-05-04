@@ -77,33 +77,11 @@ const InschrijvenSolo = () => {
         : [...f.interests, i],
     }));
 
-  const validateStep = (): boolean => {
-    if (step === 1) {
-      if (!form.firstName.trim() || !form.lastName.trim()) return toastErr("Vul je voor- en achternaam in.");
-      if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return toastErr("Ongeldig e-mailadres.");
-      if (!form.language) return toastErr("Kies een taal.");
-    }
-    if (step === 2) {
-      if (!form.street.trim() || !form.number.trim() || !form.zip.trim() || !form.city.trim())
-        return toastErr("Vul je volledige adres in.");
-    }
-    if (step === 3) {
-      if (form.vat && !/^[A-Z]{2}[0-9A-Z]{8,12}$/i.test(form.vat.replace(/[\s.]/g, "")))
-        return toastErr("Ongeldig BTW-nummer (formaat: BE0123456789).");
-    }
-    if (step === 5) {
-      if (!form.terms) return toastErr("Je moet de algemene voorwaarden aanvaarden.");
-    }
-    return true;
-  };
-
-  const toastErr = (m: string) => { toast.error(m); return false; };
-
-  const next = () => { if (validateStep() && step < 5) setStep((s) => (s + 1) as Step); };
+  // Demo mode: stappen vrij doorklikbaar zonder validatie.
+  const next = () => step < 5 && setStep((s) => (s + 1) as Step);
   const prev = () => step > 1 && setStep((s) => (s - 1) as Step);
 
   const submit = () => {
-    if (!validateStep()) return;
     setSubmitted(true);
     toast.success("Inschrijving ontvangen!");
   };
