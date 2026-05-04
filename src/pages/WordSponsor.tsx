@@ -251,22 +251,6 @@ const WordSponsor = () => {
                 )}
               </div>
               <div className="sm:col-span-2">
-                <label className={labelClasses}>Sponsor-tier *</label>
-                <select
-                  value={form.tier}
-                  onChange={(e) => update("tier", e.target.value as SponsorTier)}
-                  className={`${inputClasses} uppercase tracking-wide`}
-                >
-                  <option value="">Selecteer een tier...</option>
-                  {tiers.map((t) => (
-                    <option key={t} value={t}>{t}</option>
-                  ))}
-                </select>
-                {errors.tier && (
-                  <p className="text-[11px] text-destructive mt-1">{errors.tier}</p>
-                )}
-              </div>
-              <div className="sm:col-span-2">
                 <label className={labelClasses}>Bericht (optioneel)</label>
                 <textarea
                   rows={4}
