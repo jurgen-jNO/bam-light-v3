@@ -3,10 +3,21 @@ import { Building2, Search } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
+type Industrie =
+  | "Publisher"
+  | "Technology Provider"
+  | "Media Sales House"
+  | "Creative / Digital Agency"
+  | "Advertiser"
+  | "Media Agency"
+  | "Legal Services"
+  | "Market Research"
+  | "Mail Handler";
+
 interface BedrijfsLid {
   id: string;
   naam: string;
-  industrie: string;
+  industrie: Industrie;
   pakket: "Growth" | "Galaxy";
   medewerkers: number;
   locatie: string;
@@ -14,25 +25,37 @@ interface BedrijfsLid {
 }
 
 const leden: BedrijfsLid[] = [
-  { id: "1", naam: "Proximus", industrie: "Telecom", pakket: "Galaxy", medewerkers: 12500, locatie: "Brussel", sinds: 2014 },
-  { id: "2", naam: "Delhaize", industrie: "Retail", pakket: "Galaxy", medewerkers: 9800, locatie: "Zellik", sinds: 2011 },
-  { id: "3", naam: "KBC", industrie: "Financieel", pakket: "Galaxy", medewerkers: 11200, locatie: "Brussel", sinds: 2009 },
-  { id: "4", naam: "Studio Brussel", industrie: "Media", pakket: "Growth", medewerkers: 85, locatie: "Brussel", sinds: 2018 },
-  { id: "5", naam: "Duvel Moortgat", industrie: "FMCG", pakket: "Growth", medewerkers: 320, locatie: "Puurs", sinds: 2016 },
-  { id: "6", naam: "Bpost", industrie: "Logistiek", pakket: "Galaxy", medewerkers: 24000, locatie: "Brussel", sinds: 2012 },
-  { id: "7", naam: "Telenet", industrie: "Telecom", pakket: "Galaxy", medewerkers: 3300, locatie: "Mechelen", sinds: 2013 },
-  { id: "8", naam: "Lotus Bakeries", industrie: "FMCG", pakket: "Growth", medewerkers: 270, locatie: "Lembeke", sinds: 2019 },
-  { id: "9", naam: "DPG Media", industrie: "Media", pakket: "Galaxy", medewerkers: 5600, locatie: "Antwerpen", sinds: 2010 },
-  { id: "10", naam: "Colruyt Group", industrie: "Retail", pakket: "Galaxy", medewerkers: 32000, locatie: "Halle", sinds: 2008 },
-  { id: "11", naam: "Belfius", industrie: "Financieel", pakket: "Galaxy", medewerkers: 6800, locatie: "Brussel", sinds: 2015 },
-  { id: "12", naam: "Boondoggle", industrie: "Agency", pakket: "Growth", medewerkers: 95, locatie: "Leuven", sinds: 2017 },
+  { id: "1", naam: "DPG Media", industrie: "Publisher", pakket: "Galaxy", medewerkers: 5600, locatie: "Antwerpen", sinds: 2010 },
+  { id: "2", naam: "Mediahuis", industrie: "Publisher", pakket: "Galaxy", medewerkers: 3200, locatie: "Antwerpen", sinds: 2012 },
+  { id: "3", naam: "Adobe Belgium", industrie: "Technology Provider", pakket: "Galaxy", medewerkers: 180, locatie: "Diegem", sinds: 2015 },
+  { id: "4", naam: "Salesforce BeLux", industrie: "Technology Provider", pakket: "Growth", medewerkers: 220, locatie: "Brussel", sinds: 2018 },
+  { id: "5", naam: "Ads & Data", industrie: "Media Sales House", pakket: "Growth", medewerkers: 85, locatie: "Vilvoorde", sinds: 2019 },
+  { id: "6", naam: "Boondoggle", industrie: "Creative / Digital Agency", pakket: "Growth", medewerkers: 95, locatie: "Leuven", sinds: 2017 },
+  { id: "7", naam: "TBWA Belgium", industrie: "Creative / Digital Agency", pakket: "Galaxy", medewerkers: 240, locatie: "Brussel", sinds: 2009 },
+  { id: "8", naam: "Proximus", industrie: "Advertiser", pakket: "Galaxy", medewerkers: 12500, locatie: "Brussel", sinds: 2014 },
+  { id: "9", naam: "Duvel Moortgat", industrie: "Advertiser", pakket: "Growth", medewerkers: 320, locatie: "Puurs", sinds: 2016 },
+  { id: "10", naam: "GroupM Belgium", industrie: "Media Agency", pakket: "Galaxy", medewerkers: 310, locatie: "Brussel", sinds: 2011 },
+  { id: "11", naam: "Eubelius", industrie: "Legal Services", pakket: "Growth", medewerkers: 140, locatie: "Brussel", sinds: 2020 },
+  { id: "12", naam: "Ipsos Belgium", industrie: "Market Research", pakket: "Growth", medewerkers: 110, locatie: "Brussel", sinds: 2018 },
+  { id: "13", naam: "Bpost", industrie: "Mail Handler", pakket: "Galaxy", medewerkers: 24000, locatie: "Brussel", sinds: 2012 },
 ];
 
-const industries = ["Alle", "Telecom", "Retail", "Financieel", "Media", "FMCG", "Logistiek", "Agency"] as const;
+const industries: Industrie[] = [
+  "Publisher",
+  "Technology Provider",
+  "Media Sales House",
+  "Creative / Digital Agency",
+  "Advertiser",
+  "Media Agency",
+  "Legal Services",
+  "Market Research",
+  "Mail Handler",
+];
 
 const Leden = () => {
-  const [filter, setFilter] = useState<(typeof industries)[number]>("Alle");
+  const [filter, setFilter] = useState<"Alle" | Industrie>("Alle");
   const [query, setQuery] = useState("");
+
 
   const filtered = useMemo(() => {
     return leden.filter((l) => {
@@ -72,25 +95,22 @@ const Leden = () => {
         {/* Filter bar */}
         <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] p-4 mb-8">
           <div className="flex items-start justify-between gap-4 flex-wrap">
-            <div className="flex-1 min-w-[260px]">
+            <div className="flex-1 min-w-[260px] max-w-sm">
               <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">
                 [ filter — industrie ]
               </p>
-              <div className="flex flex-wrap gap-2">
+              <select
+                value={filter}
+                onChange={(e) => setFilter(e.target.value as "Alle" | Industrie)}
+                className="w-full bg-background border-2 border-dashed border-foreground/30 px-3 py-2 text-sm text-foreground outline-none hover:border-foreground/60 focus:border-foreground transition-colors uppercase tracking-wide"
+              >
+                <option value="Alle">Alle industrieën</option>
                 {industries.map((i) => (
-                  <button
-                    key={i}
-                    onClick={() => setFilter(i)}
-                    className={`px-3 py-1.5 text-xs uppercase tracking-wide border-2 border-dashed transition-colors ${
-                      filter === i
-                        ? "bg-foreground text-background border-foreground"
-                        : "border-foreground/30 text-foreground/70 hover:border-foreground/60 hover:text-foreground"
-                    }`}
-                  >
+                  <option key={i} value={i}>
                     {i}
-                  </button>
+                  </option>
                 ))}
-              </div>
+              </select>
             </div>
 
             <div className="min-w-[220px]">
