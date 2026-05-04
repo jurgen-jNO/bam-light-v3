@@ -5,33 +5,6 @@ import { toast } from "sonner";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
-type SponsorTier =
-  | "Education"
-  | "BAM Goes West"
-  | "Event"
-  | "Structural"
-  | "Key Partner"
-  | "IAB"
-  | "IAB MIXX Awards"
-  | "Think Tank"
-  | "CMO"
-  | "Students / Young Professionals"
-  | "Varia";
-
-const tiers: SponsorTier[] = [
-  "Education",
-  "BAM Goes West",
-  "Event",
-  "Structural",
-  "Key Partner",
-  "IAB",
-  "IAB MIXX Awards",
-  "Think Tank",
-  "CMO",
-  "Students / Young Professionals",
-  "Varia",
-];
-
 const sponsorSchema = z.object({
   voornaam: z.string().trim().min(1, "Voornaam is verplicht").max(100),
   achternaam: z.string().trim().min(1, "Achternaam is verplicht").max(100),
@@ -48,19 +21,6 @@ const sponsorSchema = z.object({
       (v) => /^(https?:\/\/)?[\w.-]+\.[a-z]{2,}.*$/i.test(v),
       "Ongeldige URL",
     ),
-  tier: z.enum([
-    "Education",
-    "BAM Goes West",
-    "Event",
-    "Structural",
-    "Key Partner",
-    "IAB",
-    "IAB MIXX Awards",
-    "Think Tank",
-    "CMO",
-    "Students / Young Professionals",
-    "Varia",
-  ]),
   bericht: z.string().trim().max(1000).optional().or(z.literal("")),
 });
 
@@ -72,7 +32,6 @@ type FormState = {
   telefoon: string;
   bedrijf: string;
   url: string;
-  tier: SponsorTier | "";
   bericht: string;
 };
 
@@ -84,7 +43,6 @@ const initialState: FormState = {
   telefoon: "",
   bedrijf: "",
   url: "",
-  tier: "",
   bericht: "",
 };
 
