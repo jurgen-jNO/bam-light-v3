@@ -153,19 +153,10 @@ const Leden = () => {
                 key={lid.id}
                 className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] hover:bg-foreground/[0.06] hover:border-foreground/70 transition-colors p-5"
               >
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start mb-4">
                   <div className="w-12 h-12 border-2 border-dashed border-foreground/40 flex items-center justify-center bg-background">
                     <Building2 className="w-5 h-5 text-foreground/50" />
                   </div>
-                  <span
-                    className={`text-[10px] uppercase tracking-widest px-2 py-0.5 border border-dashed ${
-                      lid.pakket === "Galaxy"
-                        ? "border-foreground/60 text-foreground"
-                        : "border-foreground/30 text-foreground/60"
-                    }`}
-                  >
-                    {lid.pakket}
-                  </span>
                 </div>
 
                 <h3 className="text-lg font-bold text-foreground uppercase tracking-wide mb-1">
