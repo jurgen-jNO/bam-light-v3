@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Building2, Search } from "lucide-react";
+import { Building2, Search, MapPin, Globe, Phone, Mail } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
@@ -129,7 +129,7 @@ const Leden = () => {
   const filtered = useMemo(() => {
     return leden.filter((l) => {
       const okIndustrie = filter === "Alle" || l.industrie === filter;
-      const okQuery = !query || l.naam.toLowerCase().includes(query.toLowerCase());
+      const okQuery = !query || l.brand.toLowerCase().includes(query.toLowerCase());
       return okIndustrie && okQuery;
     });
   }, [filter, query]);
@@ -206,7 +206,7 @@ const Leden = () => {
             {filtered.length} {filtered.length === 1 ? "lid" : "leden"} gevonden
           </p>
           <p className="text-[10px] uppercase tracking-widest text-foreground/40">
-            [ bedrijfsleden — growth & galaxy ]
+            [ bedrijfsleden ]
           </p>
         </div>
 
@@ -217,38 +217,71 @@ const Leden = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filtered.map((lid) => (
-              <div
-                key={lid.id}
-                className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] hover:bg-foreground/[0.06] hover:border-foreground/70 transition-colors p-5"
-              >
-                <div className="flex items-start mb-4">
-                  <div className="w-12 h-12 border-2 border-dashed border-foreground/40 flex items-center justify-center bg-background">
-                    <Building2 className="w-5 h-5 text-foreground/50" />
+            {filtered.map((lid) => {
+              const cleanUrl = lid.url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+              return (
+                <div
+                  key={lid.id}
+                  className="flex flex-col border-2 border-dashed border-foreground/40 bg-foreground/[0.02] hover:bg-foreground/[0.06] hover:border-foreground/70 transition-colors p-5"
+                >
+                  {/* Logo + brand */}
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="w-14 h-14 shrink-0 border-2 border-dashed border-foreground/40 flex items-center justify-center bg-background">
+                      <Building2 className="w-6 h-6 text-foreground/50" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[10px] uppercase tracking-widest text-foreground/40 mb-0.5">
+                        [ logo ]
+                      </p>
+                      <h3 className="text-lg font-bold text-foreground uppercase tracking-wide leading-tight truncate">
+                        {lid.brand}
+                      </h3>
+                      <p className="text-[11px] text-foreground/60 mt-0.5">
+                        {lid.industrie}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* About */}
+                  <p className="text-xs text-foreground/75 leading-relaxed border-t border-dashed border-foreground/30 pt-3 mb-3 line-clamp-2">
+                    {lid.about}
+                  </p>
+
+                  {/* Contact details */}
+                  <div className="border-t border-dashed border-foreground/30 pt-3 space-y-2 text-xs mt-auto">
+                    <div className="flex items-start gap-2">
+                      <MapPin className="w-3.5 h-3.5 text-foreground/50 shrink-0 mt-0.5" />
+                      <span className="text-foreground/85">
+                        {lid.straat} {lid.nr}, {lid.postcode} {lid.gemeente}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Globe className="w-3.5 h-3.5 text-foreground/50 shrink-0" />
+                      <a
+                        href={lid.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-foreground/85 hover:text-foreground underline underline-offset-2 truncate"
+                      >
+                        {cleanUrl}
+                      </a>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Phone className="w-3.5 h-3.5 text-foreground/50 shrink-0" />
+                      <a href={`tel:${lid.telefoon.replace(/\s/g, "")}`} className="text-foreground/85 hover:text-foreground">
+                        {lid.telefoon}
+                      </a>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Mail className="w-3.5 h-3.5 text-foreground/50 shrink-0" />
+                      <a href={`mailto:${lid.email}`} className="text-foreground/85 hover:text-foreground truncate">
+                        {lid.email}
+                      </a>
+                    </div>
                   </div>
                 </div>
-
-                <h3 className="text-lg font-bold text-foreground uppercase tracking-wide mb-1">
-                  {lid.naam}
-                </h3>
-                <p className="text-xs text-foreground/60 mb-4">{lid.industrie}</p>
-
-                <div className="border-t border-dashed border-foreground/30 pt-3 space-y-1.5 text-xs">
-                  <div className="flex justify-between">
-                    <span className="text-foreground/50 uppercase tracking-wide">Locatie</span>
-                    <span className="text-foreground/85">{lid.locatie}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-foreground/50 uppercase tracking-wide">Medewerkers</span>
-                    <span className="text-foreground/85">{lid.medewerkers.toLocaleString("nl-BE")}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-foreground/50 uppercase tracking-wide">Lid sinds</span>
-                    <span className="text-foreground/85">{lid.sinds}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
 
