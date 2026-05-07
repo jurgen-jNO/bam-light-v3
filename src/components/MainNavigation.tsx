@@ -11,7 +11,9 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     label: "Academy",
+    href: "/agenda",
     children: [
+      { label: "Agenda", href: "/agenda" },
       { label: "Dagopleidingen", href: "#dagopleidingen" },
       { label: "Meerdaagse trainingen", href: "/event" },
       { label: "Op maat (van uw bedrijf)", href: "#op-maat" },
