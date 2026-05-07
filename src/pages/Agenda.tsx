@@ -74,24 +74,25 @@ function AgendaCard({ item, onInteresse }: { item: AgendaItem; onInteresse: (ite
 
   return (
     <article
-      className="group flex cursor-pointer flex-col overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm transition-shadow hover:shadow-md"
+      className="group flex cursor-pointer flex-col overflow-hidden rounded border border-neutral-300 bg-white transition-colors hover:bg-neutral-50"
       onClick={goDetail}
     >
-      <div className="relative aspect-video w-full bg-muted">
-        <Badge variant="secondary" className="absolute left-3 top-3">
+      <div className="relative flex aspect-video w-full items-center justify-center border-b border-dashed border-neutral-400 bg-neutral-200 text-xs text-neutral-500">
+        Card image
+        <span className="absolute left-3 top-3 rounded border border-neutral-300 bg-white px-2 py-0.5 text-[11px] uppercase tracking-wider text-neutral-600">
           {SUBTYPE_LABEL[item.subtype] ?? item.subtype}
-        </Badge>
+        </span>
         {item.is_archived && (
-          <Badge variant="outline" className="absolute right-3 top-3 bg-background">
+          <span className="absolute right-3 top-3 rounded border border-neutral-300 bg-white px-2 py-0.5 text-[11px] uppercase tracking-wider text-neutral-600">
             Archief
-          </Badge>
+          </span>
         )}
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-5">
-        <h3 className="text-lg font-semibold leading-snug">{item.titel}</h3>
-        <p className="text-sm text-muted-foreground">{dateSummary(item)}</p>
-        <p className="text-sm text-muted-foreground">
+        <h3 className="text-lg font-semibold leading-snug text-neutral-900">{item.titel}</h3>
+        <p className="text-sm text-neutral-500">{dateSummary(item)}</p>
+        <p className="text-sm text-neutral-500">
           {item.locatie_naam}, {item.adres_gemeente}
         </p>
 
@@ -99,17 +100,17 @@ function AgendaCard({ item, onInteresse }: { item: AgendaItem; onInteresse: (ite
           <div className="text-sm">
             {earlyBirdActive ? (
               <>
-                <div className="font-semibold">{formatPrice(item.early_bird_lid!)} (lid)</div>
-                <div className="text-xs text-muted-foreground">
+                <div className="font-semibold text-neutral-900">{formatPrice(item.early_bird_lid!)} (lid)</div>
+                <div className="text-xs text-neutral-500">
                   Early bird t.e.m. {formatShortDate(item.early_bird_vervaldatum!)}
                 </div>
               </>
             ) : (
-              <div className="text-muted-foreground">
-                Lid: <span className="font-semibold text-foreground">{formatPrice(item.prijs_lid ?? 0)}</span>
+              <div className="text-neutral-600">
+                Lid: <span className="font-medium text-neutral-900">{formatPrice(item.prijs_lid ?? 0)}</span>
                 {" · "}
                 Niet-lid:{" "}
-                <span className="font-semibold text-foreground">{formatPrice(item.prijs_niet_lid ?? 0)}</span>
+                <span className="font-medium text-neutral-900">{formatPrice(item.prijs_niet_lid ?? 0)}</span>
               </div>
             )}
           </div>
@@ -117,14 +118,20 @@ function AgendaCard({ item, onInteresse }: { item: AgendaItem; onInteresse: (ite
 
         <div className="mt-auto pt-2" onClick={(e) => e.stopPropagation()}>
           {!item.is_archived && (
-            <Button onClick={goDetail} className="w-full">
-              Inschrijven
-            </Button>
+            <button
+              onClick={goDetail}
+              className="w-full rounded bg-neutral-700 px-4 py-3 text-sm font-medium text-white hover:bg-neutral-800"
+            >
+              Inschrijven ›
+            </button>
           )}
           {item.is_archived && item.interesse_email_actief && (
-            <Button variant="outline" className="w-full" onClick={() => onInteresse(item)}>
+            <button
+              onClick={() => onInteresse(item)}
+              className="w-full rounded border border-neutral-300 bg-white px-4 py-3 text-sm font-medium text-neutral-700 hover:bg-neutral-100"
+            >
               Houd me op de hoogte
-            </Button>
+            </button>
           )}
         </div>
       </div>
@@ -144,10 +151,10 @@ function FilterButton({
   return (
     <button
       onClick={onClick}
-      className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
+      className={`rounded border px-4 py-1.5 text-sm transition-colors ${
         active
-          ? "border-primary bg-primary text-primary-foreground"
-          : "border-border bg-background text-foreground hover:bg-accent"
+          ? "border-neutral-700 bg-neutral-700 text-white"
+          : "border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-100"
       }`}
     >
       {children}
@@ -218,14 +225,14 @@ export default function Agenda() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-white text-neutral-800">
       <MainNavigation />
 
       {/* Sticky filter sub-nav */}
-      <div className="sticky top-0 z-30 border-b bg-background/95 backdrop-blur">
+      <div className="sticky top-0 z-30 border-b border-dashed border-neutral-400 bg-neutral-100">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-3 px-4 py-3 md:flex-row md:flex-wrap md:items-center md:gap-6">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Type</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Type</span>
             <FilterButton active={type === "opleidingen"} onClick={() => setType("opleidingen")}>
               Opleidingen
             </FilterButton>
@@ -235,7 +242,7 @@ export default function Agenda() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Status</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Status</span>
             <FilterButton active={status === "upcoming"} onClick={() => updateParams({ status: "upcoming" })}>
               Upcoming
             </FilterButton>
@@ -245,7 +252,7 @@ export default function Agenda() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Subtype</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Subtype</span>
             {SUBTYPES[type].map((s) => (
               <FilterButton
                 key={s.value}
@@ -256,7 +263,6 @@ export default function Agenda() {
               </FilterButton>
             ))}
           </div>
-
         </div>
       </div>
 
@@ -265,7 +271,7 @@ export default function Agenda() {
         {loading ? (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="overflow-hidden rounded-lg border">
+              <div key={i} className="overflow-hidden rounded border border-neutral-300">
                 <Skeleton className="aspect-video w-full" />
                 <div className="space-y-3 p-5">
                   <Skeleton className="h-5 w-3/4" />
@@ -278,8 +284,8 @@ export default function Agenda() {
           </div>
         ) : filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center gap-3 py-20 text-center">
-            <p className="text-muted-foreground">Geen resultaten voor deze filters.</p>
-            <button onClick={clearFilters} className="text-sm font-medium text-primary underline-offset-4 hover:underline">
+            <p className="text-neutral-500">Geen resultaten voor deze filters.</p>
+            <button onClick={clearFilters} className="text-sm font-medium text-neutral-700 underline underline-offset-4">
               Filters wissen
             </button>
           </div>
@@ -385,11 +391,11 @@ function CalendarView({ items, onSelect }: { items: AgendaItem[]; onSelect: (ite
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <button onClick={prev} className="rounded-md border px-3 py-1.5 text-sm hover:bg-accent">
+        <button onClick={prev} className="rounded border border-neutral-300 bg-white px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-100">
           ← Vorige
         </button>
-        <div className="text-sm font-medium text-muted-foreground">3-maanden overzicht</div>
-        <button onClick={next} className="rounded-md border px-3 py-1.5 text-sm hover:bg-accent">
+        <div className="text-sm font-medium text-neutral-500">3-maanden overzicht</div>
+        <button onClick={next} className="rounded border border-neutral-300 bg-white px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-100">
           Volgende →
         </button>
       </div>
@@ -429,11 +435,11 @@ function MonthGrid({
   const todayKey = new Date().toISOString().slice(0, 10);
 
   return (
-    <div className="rounded-lg border bg-card p-4">
-      <div className="mb-3 text-center text-sm font-semibold">
+    <div className="rounded border border-neutral-300 bg-white p-4">
+      <div className="mb-3 text-center text-sm font-semibold text-neutral-900">
         {NL_MONTH_LONG[m]} {year}
       </div>
-      <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-medium uppercase text-muted-foreground">
+      <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-medium uppercase text-neutral-500">
         {NL_DAY_SHORT.map((d) => (
           <div key={d} className="py-1">
             {d}
@@ -450,11 +456,11 @@ function MonthGrid({
           return (
             <div
               key={i}
-              className={`relative flex aspect-square flex-col items-center justify-start rounded-md border p-1 text-[11px] ${
+              className={`relative flex aspect-square flex-col items-center justify-start rounded border p-1 text-[11px] ${
                 has
-                  ? "border-primary/40 bg-primary/5 cursor-pointer hover:bg-primary/10"
-                  : "border-transparent text-muted-foreground"
-              } ${isToday ? "ring-1 ring-primary" : ""}`}
+                  ? "border-neutral-400 bg-neutral-100 cursor-pointer hover:bg-neutral-200 text-neutral-800"
+                  : "border-transparent text-neutral-400"
+              } ${isToday ? "ring-1 ring-neutral-700" : ""}`}
               onClick={() => has && dayItems.length === 1 && onSelect(dayItems[0])}
               title={has ? dayItems.map((i) => i.titel).join("\n") : undefined}
             >
@@ -464,7 +470,7 @@ function MonthGrid({
                   {dayItems.slice(0, 3).map((it, idx) => (
                     <span
                       key={idx}
-                      className={`h-1.5 w-1.5 rounded-full ${it.type === "opleiding" ? "bg-primary" : "bg-foreground"}`}
+                      className={`h-1.5 w-1.5 rounded-full ${it.type === "opleiding" ? "bg-neutral-700" : "bg-neutral-400"}`}
                     />
                   ))}
                 </div>
