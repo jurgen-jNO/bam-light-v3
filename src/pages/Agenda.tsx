@@ -255,6 +255,16 @@ export default function Agenda() {
               </FilterButton>
             ))}
           </div>
+
+          <div className="flex flex-wrap items-center gap-2 md:ml-auto">
+            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Weergave</span>
+            <FilterButton active={view === "grid"} onClick={() => updateParams({ view: null })}>
+              Grid
+            </FilterButton>
+            <FilterButton active={view === "kalender"} onClick={() => updateParams({ view: "kalender" })}>
+              Kalender
+            </FilterButton>
+          </div>
         </div>
       </div>
 
