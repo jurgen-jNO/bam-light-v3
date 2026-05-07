@@ -10,6 +10,7 @@ import { agendaMockData, type AgendaItem } from "@/data/agendaMockData";
 
 type MainType = "opleidingen" | "events";
 type StatusType = "upcoming" | "archief";
+type ViewMode = "grid" | "kalender";
 
 const SUBTYPES: Record<MainType, { value: string; label: string }[]> = {
   opleidingen: [
@@ -161,6 +162,7 @@ export default function Agenda() {
 
   const type = (params.get("type") as MainType) || "opleidingen";
   const status = (params.get("status") as StatusType) || "upcoming";
+  const view = (params.get("view") as ViewMode) || "grid";
   const subtypeParam = params.get("subtype");
   const allSubtypes = SUBTYPES[type].map((s) => s.value);
   const selectedSubtypes = subtypeParam ? subtypeParam.split(",").filter(Boolean) : allSubtypes;
@@ -254,6 +256,16 @@ export default function Agenda() {
               </FilterButton>
             ))}
           </div>
+
+          <div className="flex flex-wrap items-center gap-2 md:ml-auto">
+            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Weergave</span>
+            <FilterButton active={view === "grid"} onClick={() => updateParams({ view: null })}>
+              Grid
+            </FilterButton>
+            <FilterButton active={view === "kalender"} onClick={() => updateParams({ view: "kalender" })}>
+              Kalender
+            </FilterButton>
+          </div>
         </div>
       </div>
 
@@ -280,6 +292,11 @@ export default function Agenda() {
               Filters wissen
             </button>
           </div>
+        ) : view === "kalender" ? (
+          <CalendarView items={filtered} onSelect={(item) => {
+            const base = item.type === "opleiding" ? "/agenda/opleidingen" : "/agenda/events";
+            window.location.href = `${base}/${item.slug}`;
+          }} />
         ) : (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((item) => (
@@ -344,5 +361,123 @@ function InteresseModal({ item, onClose }: { item: AgendaItem | null; onClose: (
         )}
       </DialogContent>
     </Dialog>
+  );
+}
+
+function CalendarView({ items, onSelect }: { items: AgendaItem[]; onSelect: (item: AgendaItem) => void }) {
+  // First visible month: today's month, then 3 months total. Allow navigation.
+  const today = new Date();
+  const [anchor, setAnchor] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
+
+  // Build map: yyyy-mm-dd -> AgendaItem[]
+  const dateMap = useMemo(() => {
+    const m = new Map<string, AgendaItem[]>();
+    items.forEach((item) => {
+      item.sessies.forEach((s) => {
+        const arr = m.get(s.datum) ?? [];
+        arr.push(item);
+        m.set(s.datum, arr);
+      });
+    });
+    return m;
+  }, [items]);
+
+  const months = [0, 1, 2].map((offset) => new Date(anchor.getFullYear(), anchor.getMonth() + offset, 1));
+
+  const prev = () => setAnchor(new Date(anchor.getFullYear(), anchor.getMonth() - 1, 1));
+  const next = () => setAnchor(new Date(anchor.getFullYear(), anchor.getMonth() + 1, 1));
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <button onClick={prev} className="rounded-md border px-3 py-1.5 text-sm hover:bg-accent">
+          ← Vorige
+        </button>
+        <div className="text-sm font-medium text-muted-foreground">3-maanden overzicht</div>
+        <button onClick={next} className="rounded-md border px-3 py-1.5 text-sm hover:bg-accent">
+          Volgende →
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {months.map((m) => (
+          <MonthGrid key={`${m.getFullYear()}-${m.getMonth()}`} month={m} dateMap={dateMap} onSelect={onSelect} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const NL_MONTH_LONG = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
+const NL_DAY_SHORT = ["ma", "di", "wo", "do", "vr", "za", "zo"];
+
+function MonthGrid({
+  month,
+  dateMap,
+  onSelect,
+}: {
+  month: Date;
+  dateMap: Map<string, AgendaItem[]>;
+  onSelect: (item: AgendaItem) => void;
+}) {
+  const year = month.getFullYear();
+  const m = month.getMonth();
+  const firstDay = new Date(year, m, 1);
+  // ISO Monday=0
+  const startOffset = (firstDay.getDay() + 6) % 7;
+  const daysInMonth = new Date(year, m + 1, 0).getDate();
+  const cells: (Date | null)[] = [];
+  for (let i = 0; i < startOffset; i++) cells.push(null);
+  for (let d = 1; d <= daysInMonth; d++) cells.push(new Date(year, m, d));
+  while (cells.length % 7 !== 0) cells.push(null);
+
+  const todayKey = new Date().toISOString().slice(0, 10);
+
+  return (
+    <div className="rounded-lg border bg-card p-4">
+      <div className="mb-3 text-center text-sm font-semibold">
+        {NL_MONTH_LONG[m]} {year}
+      </div>
+      <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-medium uppercase text-muted-foreground">
+        {NL_DAY_SHORT.map((d) => (
+          <div key={d} className="py-1">
+            {d}
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-7 gap-1">
+        {cells.map((c, i) => {
+          if (!c) return <div key={i} className="aspect-square" />;
+          const key = `${c.getFullYear()}-${String(c.getMonth() + 1).padStart(2, "0")}-${String(c.getDate()).padStart(2, "0")}`;
+          const dayItems = dateMap.get(key) ?? [];
+          const has = dayItems.length > 0;
+          const isToday = key === todayKey;
+          return (
+            <div
+              key={i}
+              className={`relative flex aspect-square flex-col items-center justify-start rounded-md border p-1 text-[11px] ${
+                has
+                  ? "border-primary/40 bg-primary/5 cursor-pointer hover:bg-primary/10"
+                  : "border-transparent text-muted-foreground"
+              } ${isToday ? "ring-1 ring-primary" : ""}`}
+              onClick={() => has && dayItems.length === 1 && onSelect(dayItems[0])}
+              title={has ? dayItems.map((i) => i.titel).join("\n") : undefined}
+            >
+              <span className="font-medium">{c.getDate()}</span>
+              {has && (
+                <div className="mt-auto flex w-full flex-wrap justify-center gap-0.5">
+                  {dayItems.slice(0, 3).map((it, idx) => (
+                    <span
+                      key={idx}
+                      className={`h-1.5 w-1.5 rounded-full ${it.type === "opleiding" ? "bg-primary" : "bg-foreground"}`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
