@@ -57,7 +57,7 @@ export const agendaMockData: AgendaItem[] = [
     prijs_niet_lid: 650,
     locatie_naam: "BAM",
     adres_gemeente: "Dilbeek",
-    sessies: [{ datum: "2026-05-05", starttijd: "09:30", eindtijd: "17:00" }],
+    sessies: [{ datum: "2026-05-19", starttijd: "09:30", eindtijd: "17:00" }],
   },
   {
     id: "o3",
