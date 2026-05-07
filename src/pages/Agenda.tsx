@@ -292,6 +292,11 @@ export default function Agenda() {
               Filters wissen
             </button>
           </div>
+        ) : view === "kalender" ? (
+          <CalendarView items={filtered} onSelect={(item) => {
+            const base = item.type === "opleiding" ? "/agenda/opleidingen" : "/agenda/events";
+            window.location.href = `${base}/${item.slug}`;
+          }} />
         ) : (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filtered.map((item) => (
