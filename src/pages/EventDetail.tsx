@@ -252,11 +252,6 @@ export default function EventDetail() {
           </aside>
         </div>
 
-        {/* Block 13 — Praktische info footer strip */}
-        <div className="mt-12 rounded border border-dashed border-neutral-400 bg-neutral-100 p-4 text-xs text-neutral-600">
-          <p className="mb-2 uppercase tracking-wider text-neutral-500">schema.org Event markup (hidden for visitor, visible in source)</p>
-          <p>Start: 2026-02-24T09:30 · Einde: 2026-05-05T13:00 · Locatie: BAM, Hendrik Placestraat 43A, 1702 Dilbeek</p>
-        </div>
       </div>
 
       {/* Modal */}
