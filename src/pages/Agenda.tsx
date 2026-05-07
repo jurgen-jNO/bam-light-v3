@@ -225,14 +225,14 @@ export default function Agenda() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-white text-neutral-800">
       <MainNavigation />
 
       {/* Sticky filter sub-nav */}
-      <div className="sticky top-0 z-30 border-b bg-background/95 backdrop-blur">
+      <div className="sticky top-0 z-30 border-b border-dashed border-neutral-400 bg-neutral-100">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-3 px-4 py-3 md:flex-row md:flex-wrap md:items-center md:gap-6">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Type</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Type</span>
             <FilterButton active={type === "opleidingen"} onClick={() => setType("opleidingen")}>
               Opleidingen
             </FilterButton>
@@ -242,7 +242,7 @@ export default function Agenda() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Status</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Status</span>
             <FilterButton active={status === "upcoming"} onClick={() => updateParams({ status: "upcoming" })}>
               Upcoming
             </FilterButton>
@@ -252,7 +252,7 @@ export default function Agenda() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Subtype</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Subtype</span>
             {SUBTYPES[type].map((s) => (
               <FilterButton
                 key={s.value}
@@ -263,7 +263,6 @@ export default function Agenda() {
               </FilterButton>
             ))}
           </div>
-
         </div>
       </div>
 
@@ -272,7 +271,7 @@ export default function Agenda() {
         {loading ? (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="overflow-hidden rounded-lg border">
+              <div key={i} className="overflow-hidden rounded border border-neutral-300">
                 <Skeleton className="aspect-video w-full" />
                 <div className="space-y-3 p-5">
                   <Skeleton className="h-5 w-3/4" />
@@ -285,8 +284,8 @@ export default function Agenda() {
           </div>
         ) : filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center gap-3 py-20 text-center">
-            <p className="text-muted-foreground">Geen resultaten voor deze filters.</p>
-            <button onClick={clearFilters} className="text-sm font-medium text-primary underline-offset-4 hover:underline">
+            <p className="text-neutral-500">Geen resultaten voor deze filters.</p>
+            <button onClick={clearFilters} className="text-sm font-medium text-neutral-700 underline underline-offset-4">
               Filters wissen
             </button>
           </div>
