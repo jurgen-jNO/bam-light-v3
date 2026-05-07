@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, Menu, X, Mail, Phone } from "lucide-react";
+import MainNavigation from "@/components/MainNavigation";
 
 const sessions = [
   {
@@ -29,12 +30,12 @@ export default function EventDetail() {
 
   return (
     <div className="min-h-screen bg-white text-neutral-800">
-      {/* Wireframe top bar */}
+      <MainNavigation />
+
+      {/* Wireframe page sub-nav */}
       <header className="border-b border-dashed border-neutral-400 bg-neutral-100">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-3">
-          <div className="rounded border border-neutral-400 px-3 py-1 text-xs text-neutral-600">
-            LOGO
-          </div>
+          <span className="text-xs uppercase tracking-wider text-neutral-500">Opleiding</span>
           <nav className="hidden gap-6 text-sm text-neutral-600 md:flex">
             <a href="#programma">Programma</a>
             <a href="#docenten">Docenten</a>
