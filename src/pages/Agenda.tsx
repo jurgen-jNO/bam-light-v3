@@ -162,6 +162,7 @@ export default function Agenda() {
 
   const type = (params.get("type") as MainType) || "opleidingen";
   const status = (params.get("status") as StatusType) || "upcoming";
+  const view = (params.get("view") as ViewMode) || "grid";
   const subtypeParam = params.get("subtype");
   const allSubtypes = SUBTYPES[type].map((s) => s.value);
   const selectedSubtypes = subtypeParam ? subtypeParam.split(",").filter(Boolean) : allSubtypes;
