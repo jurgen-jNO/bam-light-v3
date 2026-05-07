@@ -38,11 +38,11 @@ export const agendaMockData: AgendaItem[] = [
     locatie_naam: "BAM",
     adres_gemeente: "Dilbeek",
     sessies: [
-      { datum: "2026-02-24", starttijd: "09:30", eindtijd: "13:00" },
-      { datum: "2026-03-10", starttijd: "09:30", eindtijd: "13:00" },
-      { datum: "2026-03-24", starttijd: "09:30", eindtijd: "13:00" },
-      { datum: "2026-04-21", starttijd: "09:30", eindtijd: "13:00" },
-      { datum: "2026-05-05", starttijd: "09:30", eindtijd: "13:00" },
+      { datum: "2026-05-12", starttijd: "09:30", eindtijd: "13:00" },
+      { datum: "2026-05-26", starttijd: "09:30", eindtijd: "13:00" },
+      { datum: "2026-06-09", starttijd: "09:30", eindtijd: "13:00" },
+      { datum: "2026-06-23", starttijd: "09:30", eindtijd: "13:00" },
+      { datum: "2026-07-07", starttijd: "09:30", eindtijd: "13:00" },
     ],
   },
   {
@@ -57,7 +57,7 @@ export const agendaMockData: AgendaItem[] = [
     prijs_niet_lid: 650,
     locatie_naam: "BAM",
     adres_gemeente: "Dilbeek",
-    sessies: [{ datum: "2026-05-05", starttijd: "09:30", eindtijd: "17:00" }],
+    sessies: [{ datum: "2026-05-19", starttijd: "09:30", eindtijd: "17:00" }],
   },
   {
     id: "o3",
