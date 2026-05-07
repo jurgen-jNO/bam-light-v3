@@ -10,6 +10,7 @@ import { agendaMockData, type AgendaItem } from "@/data/agendaMockData";
 
 type MainType = "opleidingen" | "events";
 type StatusType = "upcoming" | "archief";
+type ViewMode = "grid" | "kalender";
 
 const SUBTYPES: Record<MainType, { value: string; label: string }[]> = {
   opleidingen: [
