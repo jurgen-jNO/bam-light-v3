@@ -208,14 +208,21 @@ export default function Agenda() {
   };
 
   const filtered = useMemo(() => {
-    return agendaMockData.filter((item) => {
-      if (type === "opleidingen" && item.type !== "opleiding") return false;
-      if (type === "events" && item.type !== "event") return false;
-      if (status === "upcoming" && item.is_archived) return false;
-      if (status === "archief" && !item.is_archived) return false;
-      if (!selectedSubtypes.includes(item.subtype)) return false;
-      return true;
-    });
+    const firstDate = (item: AgendaItem) =>
+      [...item.sessies].sort((a, b) => a.datum.localeCompare(b.datum))[0]?.datum ?? "";
+    return agendaMockData
+      .filter((item) => {
+        if (type === "opleidingen" && item.type !== "opleiding") return false;
+        if (type === "events" && item.type !== "event") return false;
+        if (status === "upcoming" && item.is_archived) return false;
+        if (status === "archief" && !item.is_archived) return false;
+        if (!selectedSubtypes.includes(item.subtype)) return false;
+        return true;
+      })
+      .sort((a, b) => {
+        const cmp = firstDate(a).localeCompare(firstDate(b));
+        return status === "archief" ? -cmp : cmp;
+      });
   }, [type, status, selectedSubtypes]);
 
   const clearFilters = () => {
