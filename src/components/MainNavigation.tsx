@@ -13,7 +13,7 @@ const navItems: NavItem[] = [
     label: "Academy",
     children: [
       { label: "Dagopleidingen", href: "#dagopleidingen" },
-      { label: "Meerdaagse trainingen", href: "#meerdaagse-trainingen" },
+      { label: "Meerdaagse trainingen", href: "/event" },
       { label: "Op maat (van uw bedrijf)", href: "#op-maat" },
     ],
   },
@@ -21,7 +21,7 @@ const navItems: NavItem[] = [
     label: "Events",
     children: [
       { label: "Activiteiten", href: "#activiteiten" },
-      { label: "Awards", href: "/event" },
+      { label: "Awards", href: "#awards" },
       { label: "Congress", href: "#congress" },
     ],
   },
