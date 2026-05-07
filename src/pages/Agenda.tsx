@@ -435,11 +435,11 @@ function MonthGrid({
   const todayKey = new Date().toISOString().slice(0, 10);
 
   return (
-    <div className="rounded-lg border bg-card p-4">
-      <div className="mb-3 text-center text-sm font-semibold">
+    <div className="rounded border border-neutral-300 bg-white p-4">
+      <div className="mb-3 text-center text-sm font-semibold text-neutral-900">
         {NL_MONTH_LONG[m]} {year}
       </div>
-      <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-medium uppercase text-muted-foreground">
+      <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-medium uppercase text-neutral-500">
         {NL_DAY_SHORT.map((d) => (
           <div key={d} className="py-1">
             {d}
@@ -456,11 +456,11 @@ function MonthGrid({
           return (
             <div
               key={i}
-              className={`relative flex aspect-square flex-col items-center justify-start rounded-md border p-1 text-[11px] ${
+              className={`relative flex aspect-square flex-col items-center justify-start rounded border p-1 text-[11px] ${
                 has
-                  ? "border-primary/40 bg-primary/5 cursor-pointer hover:bg-primary/10"
-                  : "border-transparent text-muted-foreground"
-              } ${isToday ? "ring-1 ring-primary" : ""}`}
+                  ? "border-neutral-400 bg-neutral-100 cursor-pointer hover:bg-neutral-200 text-neutral-800"
+                  : "border-transparent text-neutral-400"
+              } ${isToday ? "ring-1 ring-neutral-700" : ""}`}
               onClick={() => has && dayItems.length === 1 && onSelect(dayItems[0])}
               title={has ? dayItems.map((i) => i.titel).join("\n") : undefined}
             >
@@ -470,7 +470,7 @@ function MonthGrid({
                   {dayItems.slice(0, 3).map((it, idx) => (
                     <span
                       key={idx}
-                      className={`h-1.5 w-1.5 rounded-full ${it.type === "opleiding" ? "bg-primary" : "bg-foreground"}`}
+                      className={`h-1.5 w-1.5 rounded-full ${it.type === "opleiding" ? "bg-neutral-700" : "bg-neutral-400"}`}
                     />
                   ))}
                 </div>
