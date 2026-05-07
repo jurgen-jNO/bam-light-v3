@@ -33,8 +33,6 @@ export const agendaMockData: AgendaItem[] = [
     interesse_email_actief: true,
     prijs_lid: 1450,
     prijs_niet_lid: 1850,
-    early_bird_lid: 1250,
-    early_bird_vervaldatum: "2026-06-01",
     locatie_naam: "BAM",
     adres_gemeente: "Dilbeek",
     sessies: [
