@@ -10,6 +10,7 @@ import Leden from "./pages/Leden.tsx";
 import Affiliations from "./pages/Affiliations.tsx";
 import Sponsors from "./pages/Sponsors.tsx";
 import WordSponsor from "./pages/WordSponsor.tsx";
+import EventDetail from "./pages/EventDetail.tsx";
 import InschrijvenSolo from "./pages/InschrijvenSolo.tsx";
 import InschrijvenGrowth from "./pages/InschrijvenGrowth.tsx";
 import InschrijvenGalaxy from "./pages/InschrijvenGalaxy.tsx";
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/affiliations" element={<Affiliations />} />
           <Route path="/sponsors" element={<Sponsors />} />
           <Route path="/word-sponsor" element={<WordSponsor />} />
+          <Route path="/event" element={<EventDetail />} />
           <Route path="/inschrijven/solo" element={<InschrijvenSolo />} />
           <Route path="/inschrijven/growth" element={<InschrijvenGrowth />} />
           <Route path="/inschrijven/galaxy" element={<InschrijvenGalaxy />} />
