@@ -12,6 +12,7 @@ import Sponsors from "./pages/Sponsors.tsx";
 import WordSponsor from "./pages/WordSponsor.tsx";
 import EventDetail from "./pages/EventDetail.tsx";
 import Agenda from "./pages/Agenda.tsx";
+import AgendaEvents from "./pages/AgendaEvents.tsx";
 import InschrijvenSolo from "./pages/InschrijvenSolo.tsx";
 import InschrijvenGrowth from "./pages/InschrijvenGrowth.tsx";
 import InschrijvenGalaxy from "./pages/InschrijvenGalaxy.tsx";
