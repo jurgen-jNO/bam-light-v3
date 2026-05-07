@@ -14,9 +14,9 @@ const navItems: NavItem[] = [
     href: "/agenda",
     children: [
       { label: "Agenda", href: "/agenda" },
-      { label: "Dagopleidingen", href: "#dagopleidingen" },
-      { label: "Meerdaagse trainingen", href: "/event" },
-      { label: "Op maat (van uw bedrijf)", href: "#op-maat" },
+      { label: "Dagopleidingen", href: "/agenda?type=opleidingen&subtype=dagopleiding" },
+      { label: "Meerdaagse trainingen", href: "/agenda?type=opleidingen&subtype=meerdaagse" },
+      { label: "Op maat (van uw bedrijf)", href: "/agenda?type=opleidingen&subtype=op-maat" },
     ],
   },
   {
@@ -24,9 +24,9 @@ const navItems: NavItem[] = [
     href: "/events",
     children: [
       { label: "Overzicht", href: "/events" },
-      { label: "Activiteiten", href: "#activiteiten" },
-      { label: "Awards", href: "#awards" },
-      { label: "Congress", href: "#congress" },
+      { label: "Activiteiten", href: "/events?type=events&subtype=activiteit" },
+      { label: "Awards", href: "/events?type=events&subtype=award" },
+      { label: "Congress", href: "/events?type=events&subtype=congres" },
     ],
   },
   {
