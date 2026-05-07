@@ -391,11 +391,11 @@ function CalendarView({ items, onSelect }: { items: AgendaItem[]; onSelect: (ite
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <button onClick={prev} className="rounded-md border px-3 py-1.5 text-sm hover:bg-accent">
+        <button onClick={prev} className="rounded border border-neutral-300 bg-white px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-100">
           ← Vorige
         </button>
-        <div className="text-sm font-medium text-muted-foreground">3-maanden overzicht</div>
-        <button onClick={next} className="rounded-md border px-3 py-1.5 text-sm hover:bg-accent">
+        <div className="text-sm font-medium text-neutral-500">3-maanden overzicht</div>
+        <button onClick={next} className="rounded border border-neutral-300 bg-white px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-100">
           Volgende →
         </button>
       </div>
