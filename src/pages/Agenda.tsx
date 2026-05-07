@@ -373,9 +373,16 @@ function InteresseModal({ item, onClose }: { item: AgendaItem | null; onClose: (
 }
 
 function CalendarView({ items, onSelect }: { items: AgendaItem[]; onSelect: (item: AgendaItem) => void }) {
-  // First visible month: today's month, then 3 months total. Allow navigation.
-  const today = new Date();
-  const [anchor, setAnchor] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
+  // Anchor to the earliest visible session date so the calendar matches the items below.
+  const earliest = useMemo(() => {
+    const dates = items.flatMap((i) => i.sessies.map((s) => s.datum)).sort();
+    return dates[0] ? new Date(dates[0]) : new Date();
+  }, [items]);
+  const [anchor, setAnchor] = useState(new Date(earliest.getFullYear(), earliest.getMonth(), 1));
+
+  useEffect(() => {
+    setAnchor(new Date(earliest.getFullYear(), earliest.getMonth(), 1));
+  }, [earliest]);
 
   // Build map: yyyy-mm-dd -> AgendaItem[]
   const dateMap = useMemo(() => {
