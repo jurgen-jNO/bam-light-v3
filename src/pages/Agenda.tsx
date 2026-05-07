@@ -257,15 +257,6 @@ export default function Agenda() {
             ))}
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 md:ml-auto">
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Weergave</span>
-            <FilterButton active={view === "grid"} onClick={() => updateParams({ view: null })}>
-              Grid
-            </FilterButton>
-            <FilterButton active={view === "kalender"} onClick={() => updateParams({ view: "kalender" })}>
-              Kalender
-            </FilterButton>
-          </div>
         </div>
       </div>
 
@@ -292,16 +283,20 @@ export default function Agenda() {
               Filters wissen
             </button>
           </div>
-        ) : view === "kalender" ? (
-          <CalendarView items={filtered} onSelect={(item) => {
-            const base = item.type === "opleiding" ? "/agenda/opleidingen" : "/agenda/events";
-            window.location.href = `${base}/${item.slug}`;
-          }} />
         ) : (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((item) => (
-              <AgendaCard key={item.id} item={item} onInteresse={setInteresseItem} />
-            ))}
+          <div className="space-y-10">
+            <CalendarView
+              items={filtered}
+              onSelect={(item) => {
+                const base = item.type === "opleiding" ? "/agenda/opleidingen" : "/agenda/events";
+                window.location.href = `${base}/${item.slug}`;
+              }}
+            />
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {filtered.map((item) => (
+                <AgendaCard key={item.id} item={item} onInteresse={setInteresseItem} />
+              ))}
+            </div>
           </div>
         )}
       </main>
