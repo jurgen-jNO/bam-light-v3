@@ -135,14 +135,14 @@ export const FlowShell = ({
       <main className="flex-1 max-w-[820px] mx-auto w-full px-6 py-12">
         <div className="border-b-2 border-dashed border-foreground/30 pb-6 mb-8">
           <Link
-            to="/word-lid"
+            to={backHref}
             className="flex items-center gap-2 text-xs uppercase tracking-widest text-foreground/60 hover:text-foreground mb-4 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            Terug naar pakketten
+            {backLabel}
           </Link>
           <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">
-            [ wireframe — inschrijving ]
+            {badgeLabel}
           </p>
           <h1 className="text-3xl font-bold text-foreground">{title}</h1>
           <p className="text-sm text-foreground/60 mt-2">{subtitle}</p>
