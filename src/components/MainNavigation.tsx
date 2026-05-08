@@ -104,7 +104,7 @@ const MainNavigation = () => {
             Word lid
           </a>
           <a
-            href="#login"
+            href="/login"
             className="text-sm font-medium text-nav-fg hover:text-nav-hover transition-colors"
           >
             Login

@@ -21,6 +21,7 @@ import InschrijvenYouth from "./pages/InschrijvenYouth.tsx";
 import InschrijvenFriends from "./pages/InschrijvenFriends.tsx";
 import OnboardingGrowth from "./pages/OnboardingGrowth.tsx";
 import OnboardingGalaxy from "./pages/OnboardingGalaxy.tsx";
+import Login from "./pages/Login.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/inschrijven/friends" element={<InschrijvenFriends />} />
           <Route path="/onboarding/growth" element={<OnboardingGrowth />} />
           <Route path="/onboarding/galaxy" element={<OnboardingGalaxy />} />
+          <Route path="/login" element={<Login />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
