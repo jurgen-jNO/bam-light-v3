@@ -36,7 +36,7 @@ const Login = () => {
             Terug naar home
           </Link>
           <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">[ login ]</p>
-          <h1 className="text-3xl font-bold text-foreground">Welkom terug</h1>
+          <h1 className="text-3xl font-bold text-foreground">Fictieve selectie pagina login-types</h1>
           <p className="text-sm text-foreground/60 mt-2">Kies hoe je wil inloggen.</p>
         </div>
 
