@@ -19,6 +19,8 @@ import InschrijvenGalaxy from "./pages/InschrijvenGalaxy.tsx";
 import InschrijvenAcademy from "./pages/InschrijvenAcademy.tsx";
 import InschrijvenYouth from "./pages/InschrijvenYouth.tsx";
 import InschrijvenFriends from "./pages/InschrijvenFriends.tsx";
+import OnboardingGrowth from "./pages/OnboardingGrowth.tsx";
+import OnboardingGalaxy from "./pages/OnboardingGalaxy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
