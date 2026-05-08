@@ -58,7 +58,7 @@ const AccountIndividu = () => {
   const [newsletter, setNewsletter] = useState({
     weekly: true,
     events: true,
-    jobs: false,
+    trainings: false,
     partners: false,
   });
 
