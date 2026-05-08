@@ -58,7 +58,7 @@ const AccountIndividu = () => {
   const [newsletter, setNewsletter] = useState({
     weekly: true,
     events: true,
-    jobs: false,
+    trainings: false,
     partners: false,
   });
 
@@ -146,10 +146,10 @@ const AccountIndividu = () => {
               hint="Updates over BAM events, congressen en awards."
             />
             <Toggle
-              checked={newsletter.jobs}
-              onChange={(v) => setNewsletter({ ...newsletter, jobs: v })}
-              label="Job board alerts"
-              hint="Nieuwe vacatures op marketing.be op maat van je profiel."
+              checked={newsletter.trainings}
+              onChange={(v) => setNewsletter({ ...newsletter, trainings: v })}
+              label="Opleidingen aankondigingen"
+              hint="Updates over nieuwe BAM Academy opleidingen, workshops en masterclasses."
             />
             <Toggle
               checked={newsletter.partners}
