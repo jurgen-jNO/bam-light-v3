@@ -64,7 +64,6 @@ const InschrijvenFriends = () => {
         <Section title="Bevestig & verstuur">
           <div className="space-y-4 mb-6">
             <Summary title="Profiel" items={[["Naam", "—"], ["E-mail", "—"]]} />
-            <Summary title="Lidmaatschap" items={[["Type", "Friends — gratis"]]} />
           </div>
           <div className="space-y-3 border-t border-dashed border-foreground/30 pt-5">
             <Checkbox checked={false} onChange={() => {}} label="Stuur me de maandelijkse BAM nieuwsbrief." />
