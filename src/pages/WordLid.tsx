@@ -213,7 +213,7 @@ const WordLid = () => {
             ))}
 
             {/* ====== FRIENDS — gratis profiel (geen lidmaatschap) ====== */}
-            <div className="relative p-5 bg-foreground text-background overflow-hidden flex flex-col justify-between rotate-[-0.6deg] shadow-[6px_6px_0_0_hsl(var(--foreground)/0.25)]">
+            <div className="relative self-start p-4 bg-foreground text-background overflow-hidden flex flex-col gap-3 rotate-[-0.6deg] shadow-[6px_6px_0_0_hsl(var(--foreground)/0.25)]">
               <div
                 className="absolute inset-0 opacity-[0.08] pointer-events-none"
                 style={{
