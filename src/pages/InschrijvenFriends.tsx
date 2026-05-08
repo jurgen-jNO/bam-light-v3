@@ -41,6 +41,17 @@ const InschrijvenFriends = () => {
             <Field label="Taal *">
               <select className={inputCls}><option value="">— kies —</option><option>NL</option><option>FR</option></select>
             </Field>
+            <Field label="Gender">
+              <select className={inputCls}>
+                <option value="">— kies —</option>
+                <option value="M">M</option>
+                <option value="V">V</option>
+                <option value="X">X</option>
+                <option value="Andere">Andere</option>
+                <option value="Liever niet">Zeg ik liever niet</option>
+              </select>
+            </Field>
+            <Field label="Geboortedatum"><input type="date" className={inputCls} /></Field>
             <Field label="Functie / opleiding"><input className={inputCls} /></Field>
             <Field label="Bedrijf / school"><input className={inputCls} /></Field>
           </Grid2>
