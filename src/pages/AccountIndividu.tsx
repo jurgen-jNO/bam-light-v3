@@ -7,9 +7,12 @@ import { inputCls, Field, Grid2 } from "@/components/inschrijven/FlowShell";
 import { toast } from "sonner";
 
 const INTERESTS = [
-  "Branding", "Content marketing", "SEO", "Social media", "Performance marketing",
-  "Influencer marketing", "Marketing automation", "Data & analytics", "AI & marketing",
-  "E-commerce", "Events", "Employer branding", "PR & communicatie", "Design & creatie",
+  "Digital & Technology",
+  "Sustainability, Ethics & Purpose",
+  "Marketing Leadership & Future Skills",
+  "Brand Building",
+  "Performance Marketing",
+  "Community Building",
 ];
 
 const Section = ({ title, tag, children }: { title: string; tag: string; children: React.ReactNode }) => (
