@@ -124,12 +124,22 @@ export const FlowShell = ({
             <p className="text-[10px] uppercase tracking-widest text-foreground/40 mb-2">[ bedankt ]</p>
             <h1 className="text-2xl font-bold text-foreground mb-3">{successTitle}</h1>
             {successContent}
-            <Link
-              to="/"
-              className="inline-block mt-8 px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
-            >
-              Terug naar home
-            </Link>
+            <div className="flex flex-wrap gap-3 justify-center mt-8">
+              <Link
+                to={successCtaHref}
+                className="inline-block px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
+              >
+                {successCtaLabel}
+              </Link>
+              {successSecondaryHref && successSecondaryLabel && (
+                <Link
+                  to={successSecondaryHref}
+                  className="inline-block px-6 py-3 border-2 border-dashed border-foreground/40 text-foreground text-xs uppercase tracking-widest font-semibold hover:bg-foreground/5 transition-colors"
+                >
+                  {successSecondaryLabel}
+                </Link>
+              )}
+            </div>
           </div>
         </main>
         <Footer />
