@@ -8,8 +8,7 @@ type MemberType =
   | "growth"
   | "galaxy"
   | "academy"
-  | "youth"
-  | "friends";
+  | "youth";
 
 interface Package {
   id: MemberType;
