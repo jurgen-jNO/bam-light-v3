@@ -8,8 +8,7 @@ type MemberType =
   | "growth"
   | "galaxy"
   | "academy"
-  | "youth"
-  | "friends";
+  | "youth";
 
 interface Package {
   id: MemberType;
@@ -139,25 +138,6 @@ const packages: Package[] = [
       "Toegang tot mentoring programma's",
     ],
   },
-  {
-    id: "friends",
-    name: "Friends",
-    tagline: "Gratis profiel",
-    audience: "Gratis profiel voor onze newsletters, zonder extra voordelen.",
-    price: "Gratis",
-    duration: "Onbeperkt",
-    benefits: [
-      "Persoonlijk profiel op marketing.be",
-      "Maandelijkse nieuwsbrief",
-      "Toegang tot publieke content",
-      "Aankondigingen van events en opleidingen",
-    ],
-    details: [
-      "Geen toegang tot ledenvoordelen",
-      "Upgrade naar Solo, Youth of Academy mogelijk",
-      "Geen toegang tot Think Tanks of Communities",
-    ],
-  },
 ];
 
 const WordLid = () => {
@@ -186,6 +166,7 @@ const WordLid = () => {
 
         {!active ? (
           /* ====== OVERVIEW GRID ====== */
+          <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {packages.map((pkg) => (
               <button
@@ -231,6 +212,32 @@ const WordLid = () => {
               </button>
             ))}
           </div>
+
+          {/* ====== FRIENDS — gratis profiel (geen ledenpakket) ====== */}
+          <section className="mt-10 border-2 border-dotted border-foreground/30 bg-gradient-to-br from-foreground/[0.04] to-transparent p-6 sm:p-8 rounded-sm">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div className="max-w-xl">
+                <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">
+                  [ geen lidmaatschap — gratis profiel ]
+                </p>
+                <h2 className="text-2xl font-bold text-foreground mb-2">
+                  Blijf op de hoogte met een gratis BAM Friends profiel
+                </h2>
+                <p className="text-sm text-foreground/70 leading-relaxed">
+                  Geen lid worden, maar wel onze nieuwsbrief ontvangen en op de hoogte blijven van events, opleidingen en publieke content? Maak gratis een Friends profiel aan.
+                </p>
+              </div>
+              <div className="shrink-0">
+                <a
+                  href="/inschrijven/friends"
+                  className="inline-block px-6 py-3 border-2 border-dotted border-foreground/50 text-foreground text-xs uppercase tracking-widest font-semibold hover:bg-foreground hover:text-background transition-colors whitespace-nowrap"
+                >
+                  Maak gratis profiel →
+                </a>
+              </div>
+            </div>
+          </section>
+          </>
         ) : (
           /* ====== DETAIL VIEW ====== */
           <div>
