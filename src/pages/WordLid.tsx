@@ -211,32 +211,37 @@ const WordLid = () => {
                 </div>
               </button>
             ))}
-          </div>
 
-          {/* ====== FRIENDS — gratis profiel (geen ledenpakket) ====== */}
-          <section className="mt-10 border-2 border-dotted border-foreground/30 bg-gradient-to-br from-foreground/[0.04] to-transparent p-6 sm:p-8 rounded-sm">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div className="max-w-xl">
-                <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">
-                  [ geen lidmaatschap — gratis profiel ]
+            {/* ====== FRIENDS — gratis profiel (geen lidmaatschap) ====== */}
+            <div className="relative p-5 bg-foreground text-background overflow-hidden flex flex-col justify-between rotate-[-0.6deg] shadow-[6px_6px_0_0_hsl(var(--foreground)/0.25)]">
+              <div
+                className="absolute inset-0 opacity-[0.08] pointer-events-none"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 8px)",
+                }}
+              />
+              <div className="relative">
+                <p className="text-[10px] uppercase tracking-widest text-background/60 mb-2">
+                  ✷ geen lidmaatschap
                 </p>
-                <h2 className="text-2xl font-bold text-foreground mb-2">
-                  Blijf op de hoogte met een gratis BAM Friends profiel
-                </h2>
-                <p className="text-sm text-foreground/70 leading-relaxed">
-                  Geen lid worden, maar wel onze nieuwsbrief ontvangen en op de hoogte blijven van events, opleidingen en publieke content? Maak gratis een Friends profiel aan.
+                <h3 className="text-lg font-bold leading-tight mb-2">
+                  Gratis Friends profiel
+                </h3>
+                <p className="text-xs text-background/75 leading-relaxed mb-4">
+                  Ontvang onze nieuwsbrief en blijf op de hoogte van events,
+                  opleidingen en publieke content — zonder lid te worden.
                 </p>
               </div>
-              <div className="shrink-0">
-                <a
-                  href="/inschrijven/friends"
-                  className="inline-block px-6 py-3 border-2 border-dotted border-foreground/50 text-foreground text-xs uppercase tracking-widest font-semibold hover:bg-foreground hover:text-background transition-colors whitespace-nowrap"
-                >
-                  Maak gratis profiel →
-                </a>
-              </div>
+              <a
+                href="/inschrijven/friends"
+                className="relative inline-flex items-center justify-between gap-2 px-3 py-2 bg-background text-foreground text-[11px] uppercase tracking-widest font-semibold hover:bg-background/85 transition-colors"
+              >
+                Maak gratis profiel
+                <span aria-hidden>→</span>
+              </a>
             </div>
-          </section>
+          </div>
           </>
         ) : (
           /* ====== DETAIL VIEW ====== */
