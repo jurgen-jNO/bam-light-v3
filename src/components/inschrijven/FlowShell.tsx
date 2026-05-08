@@ -114,7 +114,7 @@ export const FlowShell = ({
               <Check className="w-6 h-6 text-foreground/70" />
             </div>
             <p className="text-[10px] uppercase tracking-widest text-foreground/40 mb-2">[ bedankt ]</p>
-            <h1 className="text-2xl font-bold text-foreground mb-3">Bedankt voor je aanvraag</h1>
+            <h1 className="text-2xl font-bold text-foreground mb-3">{successTitle}</h1>
             {successContent}
             <Link
               to="/"
