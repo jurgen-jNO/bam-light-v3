@@ -213,7 +213,7 @@ const WordLid = () => {
             ))}
 
             {/* ====== FRIENDS — gratis profiel (geen lidmaatschap) ====== */}
-            <div className="relative p-5 bg-foreground text-background overflow-hidden flex flex-col justify-between rotate-[-0.6deg] shadow-[6px_6px_0_0_hsl(var(--foreground)/0.25)]">
+            <div className="relative self-start p-4 bg-foreground text-background overflow-hidden flex flex-col gap-3 rotate-[-0.6deg] shadow-[6px_6px_0_0_hsl(var(--foreground)/0.25)]">
               <div
                 className="absolute inset-0 opacity-[0.08] pointer-events-none"
                 style={{
@@ -222,15 +222,14 @@ const WordLid = () => {
                 }}
               />
               <div className="relative">
-                <p className="text-[10px] uppercase tracking-widest text-background/60 mb-2">
+                <p className="text-[10px] uppercase tracking-widest text-background/60 mb-1">
                   ✷ geen lidmaatschap
                 </p>
-                <h3 className="text-lg font-bold leading-tight mb-2">
+                <h3 className="text-base font-bold leading-tight mb-1.5">
                   Gratis Friends profiel
                 </h3>
-                <p className="text-xs text-background/75 leading-relaxed mb-4">
-                  Ontvang onze nieuwsbrief en blijf op de hoogte van events,
-                  opleidingen en publieke content — zonder lid te worden.
+                <p className="text-[11px] text-background/75 leading-snug">
+                  Ontvang onze nieuwsbrief — zonder lid te worden.
                 </p>
               </div>
               <a
