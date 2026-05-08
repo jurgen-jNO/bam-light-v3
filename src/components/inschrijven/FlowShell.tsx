@@ -87,10 +87,20 @@ interface FlowShellProps {
   onSubmit: () => void;
   submitted: boolean;
   successContent: ReactNode;
+  backHref?: string;
+  backLabel?: string;
+  successTitle?: string;
+  badgeLabel?: string;
+  submitLabel?: string;
 }
 
 export const FlowShell = ({
   title, subtitle, steps, step, setStep, children, onSubmit, submitted, successContent,
+  backHref = "/word-lid",
+  backLabel = "Terug naar pakketten",
+  successTitle = "Bedankt voor je aanvraag",
+  badgeLabel = "[ wireframe — inschrijving ]",
+  submitLabel = "Inschrijving verzenden",
 }: FlowShellProps) => {
   const last = steps[steps.length - 1].n;
 
