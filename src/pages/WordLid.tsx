@@ -139,25 +139,6 @@ const packages: Package[] = [
       "Toegang tot mentoring programma's",
     ],
   },
-  {
-    id: "friends",
-    name: "Friends",
-    tagline: "Gratis profiel",
-    audience: "Gratis profiel voor onze newsletters, zonder extra voordelen.",
-    price: "Gratis",
-    duration: "Onbeperkt",
-    benefits: [
-      "Persoonlijk profiel op marketing.be",
-      "Maandelijkse nieuwsbrief",
-      "Toegang tot publieke content",
-      "Aankondigingen van events en opleidingen",
-    ],
-    details: [
-      "Geen toegang tot ledenvoordelen",
-      "Upgrade naar Solo, Youth of Academy mogelijk",
-      "Geen toegang tot Think Tanks of Communities",
-    ],
-  },
 ];
 
 const WordLid = () => {
