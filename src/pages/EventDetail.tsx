@@ -268,6 +268,7 @@ export default function EventDetail() {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 }
