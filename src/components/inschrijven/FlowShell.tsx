@@ -206,10 +206,10 @@ export const FlowShell = ({
               </button>
             ) : (
               <button
-                onClick={() => { onSubmit(); toast.success("Inschrijving ontvangen!"); }}
+                onClick={() => { onSubmit(); toast.success(`${submitLabel} ✓`); }}
                 className="flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
               >
-                Inschrijving verzenden <Check className="w-3.5 h-3.5" />
+                {submitLabel} <Check className="w-3.5 h-3.5" />
               </button>
             )}
           </div>
