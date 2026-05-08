@@ -92,6 +92,10 @@ interface FlowShellProps {
   successTitle?: string;
   badgeLabel?: string;
   submitLabel?: string;
+  successCtaHref?: string;
+  successCtaLabel?: string;
+  successSecondaryHref?: string;
+  successSecondaryLabel?: string;
 }
 
 export const FlowShell = ({
@@ -101,6 +105,10 @@ export const FlowShell = ({
   successTitle = "Bedankt voor je aanvraag",
   badgeLabel = "[ wireframe — inschrijving ]",
   submitLabel = "Inschrijving verzenden",
+  successCtaHref = "/",
+  successCtaLabel = "Terug naar home",
+  successSecondaryHref,
+  successSecondaryLabel,
 }: FlowShellProps) => {
   const last = steps[steps.length - 1].n;
 
