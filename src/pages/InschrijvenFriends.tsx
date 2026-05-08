@@ -82,7 +82,7 @@ const InschrijvenFriends = () => {
           </div>
           <div className="mt-6 border border-dashed border-foreground/30 p-4 text-xs text-foreground/60">
             <p className="uppercase tracking-widest text-foreground/50 mb-2 text-[10px]">Tip</p>
-            <p>Ben je jonger dan 25? Kies dan <a href="/inschrijven/youth" className="underline">Youth</a> voor gratis toegang tot 10+ events per jaar.</p>
+            <p>Je bent jonger dan 25! Dus word nu gratis <a href="/inschrijven/youth" className="underline">Youth</a> lid en geniet o.a. van gratis toegang tot 10+ events per jaar!</p>
           </div>
         </Section>
       )}
