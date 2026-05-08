@@ -19,6 +19,10 @@ const InschrijvenGrowth = () => {
       onSubmit={() => setSubmitted(true)}
       submitted={submitted}
       successTitle="Welkom bij BAM"
+      successCtaLabel="Verder naar onboarding"
+      successCtaHref="/onboarding/growth"
+      successSecondaryLabel="Terug naar home"
+      successSecondaryHref="/"
       successContent={
         <>
           <p className="text-sm text-foreground/70 leading-relaxed mb-6">
