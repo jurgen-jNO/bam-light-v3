@@ -80,8 +80,8 @@ const InschrijvenFriends = () => {
             <Checkbox checked={false} onChange={() => {}} label="Stuur me de maandelijkse BAM nieuwsbrief." />
             <Checkbox checked={false} onChange={() => {}} label={<>Ik ga akkoord met de <a href="#terms" className="underline">algemene voorwaarden</a> en het <a href="#privacy" className="underline">privacybeleid</a>. *</>} />
           </div>
-          <div className="mt-6 border border-dashed border-foreground/30 p-4 text-xs text-foreground/60">
-            <p className="uppercase tracking-widest text-foreground/50 mb-2 text-[10px]">Tip</p>
+          <div className="mt-6 border border-dashed border-emerald-700/50 bg-emerald-100 text-emerald-900 p-4 text-xs">
+            <p className="uppercase tracking-widest text-emerald-800 mb-2 text-[10px]">Tip</p>
             <p>Je bent jonger dan 25! Dus word nu gratis <a href="/inschrijven/youth" className="underline">Youth</a> lid en geniet o.a. van gratis toegang tot 10+ events per jaar!</p>
           </div>
         </Section>
