@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, Menu, X, Mail, Phone } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
+import Footer from "@/components/Footer";
 
 const sessions = [
   {
