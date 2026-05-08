@@ -66,7 +66,7 @@ const AccountIndividu = () => {
   });
 
   const [interests, setInterests] = useState<string[]>([
-    "Content marketing", "AI & marketing", "Events",
+    "Brand Building", "Marketing Leadership & Future Skills", "Community Building",
   ]);
 
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -167,7 +167,7 @@ const AccountIndividu = () => {
             <p className="text-xs text-foreground/55 mb-4">
               Vink de thema's aan die je interesseren — we stemmen onze content hierop af.
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {INTERESTS.map((i) => {
                 const on = interests.includes(i);
                 return (
@@ -175,13 +175,20 @@ const AccountIndividu = () => {
                     key={i}
                     type="button"
                     onClick={() => toggleInterest(i)}
-                    className={`px-3 py-1.5 text-xs border-2 border-dashed transition-colors ${
+                    className={`flex items-start gap-3 text-left px-4 py-3 border-2 border-dashed transition-colors ${
                       on
                         ? "bg-foreground text-background border-foreground"
-                        : "border-foreground/30 text-foreground/70 hover:border-foreground/60 hover:text-foreground"
+                        : "border-foreground/30 text-foreground/80 hover:border-foreground/60 hover:text-foreground"
                     }`}
                   >
-                    {on && "✓ "}{i}
+                    <span
+                      className={`shrink-0 mt-0.5 w-4 h-4 border-2 border-dashed flex items-center justify-center ${
+                        on ? "bg-background border-background" : "border-foreground/40"
+                      }`}
+                    >
+                      {on && <Check className="w-3 h-3 text-foreground" />}
+                    </span>
+                    <span className="text-sm font-medium leading-tight">{i}</span>
                   </button>
                 );
               })}
