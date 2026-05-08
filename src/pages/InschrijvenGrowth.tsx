@@ -1,48 +1,48 @@
-import { FlowShell, Section, Grid2, Field, Summary, Checkbox, UploadBox, inputCls, useStep } from "@/components/inschrijven/FlowShell";
-import { downloadMedewerkersTemplate } from "@/lib/downloadTemplate";
+import { FlowShell, Section, Grid2, Field, Summary, Checkbox, inputCls, useStep } from "@/components/inschrijven/FlowShell";
 
 const steps = [
-  { n: 1, label: "Bedrijf" },
-  { n: 2, label: "Contact" },
-  { n: 3, label: "Facturatie" },
-  { n: 4, label: "Medewerkers" },
-  { n: 5, label: "Bevestig" },
+  { n: 1, label: "Registratie" },
+  { n: 2, label: "Facturatie" },
+  { n: 3, label: "Bevestig" },
 ];
 
 const InschrijvenGrowth = () => {
-  const { step, setStep, submitted, setSubmitted } = useStep(5);
+  const { step, setStep, submitted, setSubmitted } = useStep(3);
 
   return (
     <FlowShell
-      title="Inschrijven — Growth lidmaatschap"
+      title="Word lid — Growth"
       subtitle="€ 3.115 excl. BTW / jaar — alle medewerkers, looptijd tot 31/12 (pro rata eerste jaar)"
       steps={steps}
       step={step}
       setStep={setStep}
       onSubmit={() => setSubmitted(true)}
       submitted={submitted}
+      successTitle="Welkom bij BAM"
       successContent={
         <>
           <p className="text-sm text-foreground/70 leading-relaxed mb-6">
-            We hebben je aanvraag voor het <strong>Growth</strong> lidmaatschap goed ontvangen.
-            Je ontvangt een bevestigingsmail met de pro rata factuur en een uitnodiging om je
-            medewerkerslijst te uploaden. Een onboarding sessie met Fleur is mogelijk op aanvraag.
+            Je <strong>Growth</strong> lidmaatschap is geactiveerd. We sturen een bevestigingsmail
+            met je pro rata factuur, plus een <strong>persoonlijke link naar de onboarding</strong>{" "}
+            om je bedrijfsfiche en medewerkers in te stellen.
           </p>
           <div className="border-t border-dashed border-foreground/30 pt-5 text-left text-xs text-foreground/60 space-y-2">
             <p className="uppercase tracking-widest text-foreground/50 text-[10px] mb-2">Volgende stappen</p>
-            <p>1. Bevestigingsmail naar de centrale contactpersoon</p>
-            <p>2. Pro rata factuur via Exact Online</p>
-            <p>3. Upload medewerkers via Excel-template of handmatig</p>
-            <p>4. Welkomstmail naar elke medewerker</p>
+            <p>1. Bevestigings- en facturatiemail naar de centrale contactpersoon</p>
+            <p>2. Onboarding e-mail met link om je bedrijfsfiche te vervolledigen</p>
+            <p>3. Medewerkers toevoegen (Excel of handmatig)</p>
           </div>
         </>
       }
     >
       {step === 1 && (
-        <Section title="Bedrijfsgegevens">
+        <Section title="Registratie">
+          <p className="text-xs text-foreground/60 mb-4 border-l border-dashed border-foreground/30 pl-3">
+            We hebben enkel het hoogstnodige nodig om je lidmaatschap te starten. De rest
+            (about us, logo, medewerkers) regel je nadien in de onboarding.
+          </p>
           <Grid2>
             <Field label="Brand name *"><input className={inputCls} /></Field>
-            <Field label="Debiteursnaam (factuur)"><input className={inputCls} /></Field>
             <Field label="BTW-nummer *"><input className={inputCls} placeholder="BE0123456789" /></Field>
             <Field label="Industry">
               <select className={inputCls}>
@@ -58,50 +58,34 @@ const InschrijvenGrowth = () => {
                 <option>Mail Handler</option>
               </select>
             </Field>
-            <Field label="Website URL"><input className={inputCls} placeholder="https://" /></Field>
-            <Field label="Algemeen e-mailadres"><input className={inputCls} placeholder="info@bedrijf.be" /></Field>
-            <Field label="Telefoon"><input className={inputCls} /></Field>
+            <Field label="Website"><input className={inputCls} placeholder="https://" /></Field>
           </Grid2>
-          <div className="mt-4">
-            <Field label="About us (max 250 woorden)">
-              <textarea rows={4} className={inputCls} />
-            </Field>
-          </div>
-          <div className="mt-4">
-            <UploadBox label="Logo (PNG / SVG)" hint="Wordt getoond op je publieke profiel" />
+          <div className="mt-6 border-t border-dashed border-foreground/30 pt-5">
+            <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-3">Centrale contactpersoon</p>
+            <Grid2>
+              <Field label="Voornaam *"><input className={inputCls} /></Field>
+              <Field label="Naam *"><input className={inputCls} /></Field>
+              <Field label="E-mail *"><input type="email" className={inputCls} /></Field>
+              <Field label="Taal *">
+                <select className={inputCls}>
+                  <option value="">— kies —</option>
+                  <option>NL</option><option>FR</option>
+                </select>
+              </Field>
+            </Grid2>
           </div>
         </Section>
       )}
 
       {step === 2 && (
-        <Section title="Centrale contactpersoon">
-          <p className="text-xs text-foreground/60 mb-4 border-l border-dashed border-foreground/30 pl-3">
-            Deze persoon krijgt login en beheert bedrijfs- en medewerkersgegevens.
-          </p>
-          <Grid2>
-            <Field label="Voornaam *"><input className={inputCls} /></Field>
-            <Field label="Naam *"><input className={inputCls} /></Field>
-            <Field label="Functie"><input className={inputCls} /></Field>
-            <Field label="E-mail *"><input type="email" className={inputCls} /></Field>
-            <Field label="GSM"><input className={inputCls} /></Field>
-            <Field label="Taal *">
-              <select className={inputCls}>
-                <option value="">— kies —</option>
-                <option>NL</option><option>FR</option>
-              </select>
-            </Field>
-          </Grid2>
-        </Section>
-      )}
-
-      {step === 3 && (
         <Section title="Facturatie">
           <Grid2>
-            <Field label="Debiteur straat + nr"><input className={inputCls} /></Field>
-            <Field label="Postcode"><input className={inputCls} /></Field>
-            <Field label="Gemeente / stad"><input className={inputCls} /></Field>
-            <Field label="Land"><input className={inputCls} defaultValue="België" /></Field>
+            <Field label="Debiteursnaam"><input className={inputCls} /></Field>
             <Field label="Factuur e-mail *"><input type="email" className={inputCls} placeholder="boekhouding@..." /></Field>
+            <Field label="Straat + nr"><input className={inputCls} /></Field>
+            <Field label="Postcode"><input className={inputCls} /></Field>
+            <Field label="Gemeente"><input className={inputCls} /></Field>
+            <Field label="Land"><input className={inputCls} defaultValue="België" /></Field>
             <Field label="PO / referentie (optioneel)"><input className={inputCls} /></Field>
           </Grid2>
           <div className="mt-6 border border-dashed border-foreground/30 p-4 bg-foreground/[0.03]">
@@ -114,45 +98,22 @@ const InschrijvenGrowth = () => {
         </Section>
       )}
 
-      {step === 4 && (
-        <Section title="Medewerkers toevoegen">
-          <p className="text-xs text-foreground/60 mb-4">
-            Je kan medewerkers nu of later toevoegen. Elke medewerker krijgt een welkomstmail om
-            zijn profiel te vervolledigen.
-          </p>
-          <UploadBox
-            label="Excel-template uploaden"
-            hint="Voornaam, Naam, Taal, Functie, GSM, E-mail, Locatie tewerkstelling"
-          />
-          <div className="mt-4 flex gap-3 flex-wrap">
-            <button
-              type="button"
-              onClick={downloadMedewerkersTemplate}
-              className="px-4 py-2 text-[10px] uppercase tracking-widest border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors"
-            >
-              ↓ Download Excel template
-            </button>
-            <button type="button" className="px-4 py-2 text-[10px] uppercase tracking-widest border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors">
-              + Medewerker handmatig toevoegen
-            </button>
-            <button type="button" className="px-4 py-2 text-[10px] uppercase tracking-widest border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors">
-              Later toevoegen
-            </button>
-          </div>
-        </Section>
-      )}
-
-      {step === 5 && (
-        <Section title="Bevestig & verstuur">
+      {step === 3 && (
+        <Section title="Bevestig & word lid">
           <div className="space-y-4 mb-6">
-            <Summary title="Bedrijf" items={[["Brand", "—"], ["BTW", "—"], ["Industry", "—"]]} />
+            <Summary title="Bedrijf" items={[["Brand", "—"], ["BTW", "—"]]} />
             <Summary title="Contactpersoon" items={[["Naam", "—"], ["E-mail", "—"]]} />
             <Summary title="Facturatie" items={[["Bedrag (pro rata)", "€ 1.884,58 incl. BTW"]]} />
-            <Summary title="Medewerkers" items={[["Status", "Wordt na bevestiging toegevoegd"]]} />
+          </div>
+          <div className="border border-dashed border-foreground/30 p-4 bg-foreground/[0.03] mb-6">
+            <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">Wat na bevestiging?</p>
+            <p className="text-xs text-foreground/70 leading-relaxed">
+              Je krijgt onmiddellijk een bevestigingsmail met je factuur en een aparte e-mail met
+              een persoonlijke link naar de <strong>onboarding</strong>. Daar vul je je
+              bedrijfsfiche aan (about us, logo) en upload je je medewerkerslijst.
+            </p>
           </div>
           <div className="space-y-3 border-t border-dashed border-foreground/30 pt-5">
-            <Checkbox checked={false} onChange={() => {}} label="Ik wens een personal onboarding sessie met BAM (Fleur)." />
-            <Checkbox checked={false} onChange={() => {}} label="BAM mag deelnames van onze medewerkers publiek delen ('X gaat naar…')." />
             <Checkbox checked={false} onChange={() => {}} label={<>Ik ga akkoord met de <a href="#terms" className="underline">algemene voorwaarden</a> en het <a href="#privacy" className="underline">privacybeleid</a>. *</>} />
           </div>
         </Section>

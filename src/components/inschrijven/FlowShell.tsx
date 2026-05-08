@@ -87,10 +87,20 @@ interface FlowShellProps {
   onSubmit: () => void;
   submitted: boolean;
   successContent: ReactNode;
+  backHref?: string;
+  backLabel?: string;
+  successTitle?: string;
+  badgeLabel?: string;
+  submitLabel?: string;
 }
 
 export const FlowShell = ({
   title, subtitle, steps, step, setStep, children, onSubmit, submitted, successContent,
+  backHref = "/word-lid",
+  backLabel = "Terug naar pakketten",
+  successTitle = "Bedankt voor je aanvraag",
+  badgeLabel = "[ wireframe — inschrijving ]",
+  submitLabel = "Inschrijving verzenden",
 }: FlowShellProps) => {
   const last = steps[steps.length - 1].n;
 
@@ -104,7 +114,7 @@ export const FlowShell = ({
               <Check className="w-6 h-6 text-foreground/70" />
             </div>
             <p className="text-[10px] uppercase tracking-widest text-foreground/40 mb-2">[ bedankt ]</p>
-            <h1 className="text-2xl font-bold text-foreground mb-3">Bedankt voor je aanvraag</h1>
+            <h1 className="text-2xl font-bold text-foreground mb-3">{successTitle}</h1>
             {successContent}
             <Link
               to="/"
@@ -125,14 +135,14 @@ export const FlowShell = ({
       <main className="flex-1 max-w-[820px] mx-auto w-full px-6 py-12">
         <div className="border-b-2 border-dashed border-foreground/30 pb-6 mb-8">
           <Link
-            to="/word-lid"
+            to={backHref}
             className="flex items-center gap-2 text-xs uppercase tracking-widest text-foreground/60 hover:text-foreground mb-4 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            Terug naar pakketten
+            {backLabel}
           </Link>
           <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">
-            [ wireframe — inschrijving ]
+            {badgeLabel}
           </p>
           <h1 className="text-3xl font-bold text-foreground">{title}</h1>
           <p className="text-sm text-foreground/60 mt-2">{subtitle}</p>
@@ -196,10 +206,10 @@ export const FlowShell = ({
               </button>
             ) : (
               <button
-                onClick={() => { onSubmit(); toast.success("Inschrijving ontvangen!"); }}
+                onClick={() => { onSubmit(); toast.success(`${submitLabel} ✓`); }}
                 className="flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
               >
-                Inschrijving verzenden <Check className="w-3.5 h-3.5" />
+                {submitLabel} <Check className="w-3.5 h-3.5" />
               </button>
             )}
           </div>
