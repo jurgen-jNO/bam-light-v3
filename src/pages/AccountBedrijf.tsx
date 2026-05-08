@@ -44,22 +44,22 @@ const AccountBedrijf = () => {
   const [tab, setTab] = useState<Tab>("bedrijf");
 
   const [company, setCompany] = useState({
-    name: "Studio Halo",
+    name: "Onshore.be",
     vat: "BE0123.456.789",
-    website: "https://studiohalo.be",
+    website: "https://onshore.be",
     industry: "Branding & design",
     employees: "10-50",
     address: "Vlasmarkt 12, 9000 Gent",
-    contactEmail: "hello@studiohalo.be",
+    contactEmail: "hello@onshore.be",
     contactPhone: "+32 9 123 45 67",
     about:
-      "Studio Halo is een onafhankelijk creatief bureau in Gent dat merken bouwt met een sterke identiteit en doordachte content.",
+      "Onshore.be is een onafhankelijk creatief bureau in Gent dat merken bouwt met een sterke identiteit en doordachte content.",
   });
 
   const [employees, setEmployees] = useState<Employee[]>([
-    { id: "1", name: "Lieselot Janssens", role: "Content strateeg", email: "lieselot@studiohalo.be" },
-    { id: "2", name: "Mathias De Cock", role: "Creative director", email: "mathias@studiohalo.be" },
-    { id: "3", name: "Noor El Amrani", role: "Designer", email: "noor@studiohalo.be" },
+    { id: "1", name: "Lieselot Janssens", role: "Content strateeg", email: "lieselot@onshore.be" },
+    { id: "2", name: "Mathias De Cock", role: "Creative director", email: "mathias@onshore.be" },
+    { id: "3", name: "Noor El Amrani", role: "Designer", email: "noor@onshore.be" },
   ]);
   const [newEmp, setNewEmp] = useState({ name: "", role: "", email: "" });
 

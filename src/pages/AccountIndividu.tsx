@@ -54,7 +54,7 @@ const AccountIndividu = () => {
     lastName: "Janssens",
     email: "lieselot@voorbeeld.be",
     phone: "+32 470 12 34 56",
-    company: "Studio Halo",
+    company: "Onshore.be",
     role: "Content strateeg",
   });
 
