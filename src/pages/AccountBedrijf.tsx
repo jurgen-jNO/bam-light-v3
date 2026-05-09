@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 type Tab = "bedrijf" | "medewerkers" | "vacatures";
 
-interface Employee { id: string; name: string; role: string; email: string; }
+interface Employee { id: string; name: string; role: string; email: string; gsm: string; taal: "NL" | "FR"; }
 interface Vacancy { id: string; title: string; location: string; status: "actief" | "concept" | "gearchiveerd"; views: number; }
 
 const TabBtn = ({ active, onClick, icon: Icon, children }: any) => (
@@ -57,11 +57,11 @@ const AccountBedrijf = () => {
   });
 
   const [employees, setEmployees] = useState<Employee[]>([
-    { id: "1", name: "Lieselot Janssens", role: "Content strateeg", email: "lieselot@onshore.be" },
-    { id: "2", name: "Mathias De Cock", role: "Creative director", email: "mathias@onshore.be" },
-    { id: "3", name: "Noor El Amrani", role: "Designer", email: "noor@onshore.be" },
+    { id: "1", name: "Lieselot Janssens", role: "Content strateeg", email: "lieselot@onshore.be", gsm: "+32 470 12 34 56", taal: "NL" },
+    { id: "2", name: "Mathias De Cock", role: "Creative director", email: "mathias@onshore.be", gsm: "+32 471 23 45 67", taal: "NL" },
+    { id: "3", name: "Noor El Amrani", role: "Designer", email: "noor@onshore.be", gsm: "+32 472 34 56 78", taal: "FR" },
   ]);
-  const [newEmp, setNewEmp] = useState({ name: "", role: "", email: "" });
+  const [newEmp, setNewEmp] = useState<{ name: string; role: string; email: string; gsm: string; taal: "NL" | "FR" }>({ name: "", role: "", email: "", gsm: "", taal: "NL" });
 
   const [vacancies] = useState<Vacancy[]>([
     { id: "1", title: "Senior Brand Designer", location: "Gent · Hybride", status: "actief", views: 312 },
@@ -78,7 +78,7 @@ const AccountBedrijf = () => {
       return;
     }
     setEmployees([...employees, { id: crypto.randomUUID(), ...newEmp }]);
-    setNewEmp({ name: "", role: "", email: "" });
+    setNewEmp({ name: "", role: "", email: "", gsm: "", taal: "NL" });
     toast.success("Medewerker toegevoegd ✓");
   };
 
@@ -231,6 +231,17 @@ const AccountBedrijf = () => {
                 <Field label="Naam"><input className={inputCls} value={newEmp.name} onChange={(e) => setNewEmp({ ...newEmp, name: e.target.value })} placeholder="Voor- en achternaam" /></Field>
                 <Field label="Functie"><input className={inputCls} value={newEmp.role} onChange={(e) => setNewEmp({ ...newEmp, role: e.target.value })} placeholder="bv. Marketing Manager" /></Field>
                 <Field label="E-mail"><input type="email" className={inputCls} value={newEmp.email} onChange={(e) => setNewEmp({ ...newEmp, email: e.target.value })} placeholder="naam@bedrijf.be" /></Field>
+                <Field label="GSM"><input type="tel" className={inputCls} value={newEmp.gsm} onChange={(e) => setNewEmp({ ...newEmp, gsm: e.target.value })} placeholder="+32 4xx xx xx xx" /></Field>
+                <Field label="Taal">
+                  <select
+                    className={inputCls}
+                    value={newEmp.taal}
+                    onChange={(e) => setNewEmp({ ...newEmp, taal: e.target.value as "NL" | "FR" })}
+                  >
+                    <option value="NL">NL</option>
+                    <option value="FR">FR</option>
+                  </select>
+                </Field>
               </Grid2>
               <div className="flex flex-wrap gap-3 mt-5">
                 <button
