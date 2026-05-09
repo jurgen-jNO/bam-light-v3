@@ -231,6 +231,17 @@ const AccountBedrijf = () => {
                 <Field label="Naam"><input className={inputCls} value={newEmp.name} onChange={(e) => setNewEmp({ ...newEmp, name: e.target.value })} placeholder="Voor- en achternaam" /></Field>
                 <Field label="Functie"><input className={inputCls} value={newEmp.role} onChange={(e) => setNewEmp({ ...newEmp, role: e.target.value })} placeholder="bv. Marketing Manager" /></Field>
                 <Field label="E-mail"><input type="email" className={inputCls} value={newEmp.email} onChange={(e) => setNewEmp({ ...newEmp, email: e.target.value })} placeholder="naam@bedrijf.be" /></Field>
+                <Field label="GSM"><input type="tel" className={inputCls} value={newEmp.gsm} onChange={(e) => setNewEmp({ ...newEmp, gsm: e.target.value })} placeholder="+32 4xx xx xx xx" /></Field>
+                <Field label="Taal">
+                  <select
+                    className={inputCls}
+                    value={newEmp.taal}
+                    onChange={(e) => setNewEmp({ ...newEmp, taal: e.target.value as "NL" | "FR" })}
+                  >
+                    <option value="NL">NL</option>
+                    <option value="FR">FR</option>
+                  </select>
+                </Field>
               </Grid2>
               <div className="flex flex-wrap gap-3 mt-5">
                 <button
