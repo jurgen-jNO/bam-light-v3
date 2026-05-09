@@ -57,11 +57,11 @@ const AccountBedrijf = () => {
   });
 
   const [employees, setEmployees] = useState<Employee[]>([
-    { id: "1", name: "Lieselot Janssens", role: "Content strateeg", email: "lieselot@onshore.be" },
-    { id: "2", name: "Mathias De Cock", role: "Creative director", email: "mathias@onshore.be" },
-    { id: "3", name: "Noor El Amrani", role: "Designer", email: "noor@onshore.be" },
+    { id: "1", name: "Lieselot Janssens", role: "Content strateeg", email: "lieselot@onshore.be", gsm: "+32 470 12 34 56", taal: "NL" },
+    { id: "2", name: "Mathias De Cock", role: "Creative director", email: "mathias@onshore.be", gsm: "+32 471 23 45 67", taal: "NL" },
+    { id: "3", name: "Noor El Amrani", role: "Designer", email: "noor@onshore.be", gsm: "+32 472 34 56 78", taal: "FR" },
   ]);
-  const [newEmp, setNewEmp] = useState({ name: "", role: "", email: "" });
+  const [newEmp, setNewEmp] = useState<{ name: string; role: string; email: string; gsm: string; taal: "NL" | "FR" }>({ name: "", role: "", email: "", gsm: "", taal: "NL" });
 
   const [vacancies] = useState<Vacancy[]>([
     { id: "1", title: "Senior Brand Designer", location: "Gent · Hybride", status: "actief", views: 312 },
@@ -78,7 +78,7 @@ const AccountBedrijf = () => {
       return;
     }
     setEmployees([...employees, { id: crypto.randomUUID(), ...newEmp }]);
-    setNewEmp({ name: "", role: "", email: "" });
+    setNewEmp({ name: "", role: "", email: "", gsm: "", taal: "NL" });
     toast.success("Medewerker toegevoegd ✓");
   };
 
