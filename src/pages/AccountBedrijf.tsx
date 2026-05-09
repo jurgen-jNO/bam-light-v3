@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 type Tab = "bedrijf" | "medewerkers" | "vacatures";
 
-interface Employee { id: string; name: string; role: string; email: string; }
+interface Employee { id: string; name: string; role: string; email: string; gsm: string; taal: "NL" | "FR"; }
 interface Vacancy { id: string; title: string; location: string; status: "actief" | "concept" | "gearchiveerd"; views: number; }
 
 const TabBtn = ({ active, onClick, icon: Icon, children }: any) => (
