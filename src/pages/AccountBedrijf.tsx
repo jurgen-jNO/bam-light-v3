@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowLeft, Save, Trash2, Plus, Building2, Users, Briefcase,
+  ArrowLeft, Save, Trash2, Pencil, Plus, Building2, Users, Briefcase,
   Pencil, Archive, Eye, Upload, X, Check,
 } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
@@ -202,13 +202,22 @@ const AccountBedrijf = () => {
                     <span className="text-foreground font-medium truncate">{e.name}</span>
                     <span className="text-foreground/70 truncate">{e.role || "—"}</span>
                     <span className="text-foreground/70 truncate">{e.email}</span>
-                    <button
-                      onClick={() => setConfirm(e)}
-                      className="p-1.5 text-foreground/50 hover:text-destructive transition-colors"
-                      aria-label="Verwijder"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={() => toast.info("Bewerken — binnenkort beschikbaar")}
+                        className="p-1.5 text-foreground/50 hover:text-foreground transition-colors"
+                        aria-label="Bewerk"
+                      >
+                        <Pencil className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => setConfirm(e)}
+                        className="p-1.5 text-foreground/50 hover:text-destructive transition-colors"
+                        aria-label="Verwijder"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                 ))}
                 {employees.length === 0 && (
