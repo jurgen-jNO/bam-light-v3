@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft, Save, Trash2, Pencil, Plus, Building2, Users, Briefcase,
-  Archive, Eye, Upload, X, Check,
+  Archive, Eye, Upload, X, Check, Download,
 } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import { inputCls, Field, Grid2 } from "@/components/inschrijven/FlowShell";
+import { downloadMedewerkersTemplate } from "@/lib/downloadTemplate";
 import { toast } from "sonner";
 
 type Tab = "bedrijf" | "medewerkers" | "vacatures";
@@ -252,6 +253,12 @@ const AccountBedrijf = () => {
                 </button>
                 <button className="inline-flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors">
                   <Upload className="w-3.5 h-3.5" /> Bulk uploaden (Excel)
+                </button>
+                <button
+                  onClick={() => downloadMedewerkersTemplate()}
+                  className="inline-flex items-center gap-2 px-3 py-2.5 text-xs uppercase tracking-widest font-semibold text-foreground/70 hover:text-foreground underline underline-offset-4 decoration-dashed transition-colors"
+                >
+                  <Download className="w-3.5 h-3.5" /> Excel template downloaden
                 </button>
               </div>
             </Section>
