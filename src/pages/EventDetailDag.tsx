@@ -141,11 +141,12 @@ export default function EventDetailDag() {
               Ik schrijf me in ›
             </button>
 
-            {/* Block 07 — Programma accordion */}
+            {/* Block 07 — Dagprogramma accordion */}
             <section id="programma">
-              <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Programma</h2>
+              <h2 className="mb-1 text-2xl font-semibold text-neutral-900">Dagprogramma</h2>
+              <p className="mb-4 text-sm text-neutral-500">{eventDate} · {eventTime}</p>
               <div className="divide-y divide-neutral-300 rounded border border-neutral-300">
-                {sessions.map((s, i) => {
+                {programma.map((s, i) => {
                   const isOpen = open === i;
                   return (
                     <div key={i}>
@@ -154,20 +155,21 @@ export default function EventDetailDag() {
                         className="flex w-full items-center justify-between px-4 py-4 text-left hover:bg-neutral-50"
                       >
                         <span className="text-neutral-800">
-                          <span className="font-semibold">{s.n}</span> — {s.title}{" "}
-                          <span className="text-neutral-500">· {s.date}</span>
+                          <span className="font-semibold">{s.tijd}</span> — {s.title}
                         </span>
                         <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                       </button>
                       {isOpen && (
                         <div className="space-y-3 bg-neutral-50 px-4 pb-4 text-neutral-700">
-                          <p>{s.desc ?? "Korte omschrijving van de sessie (lorem ipsum)."}</p>
-                          <ul className="list-disc pl-6 text-sm">
-                            {(s.topics ?? ["Onderwerp A", "Onderwerp B", "Onderwerp C"]).map((t) => (
-                              <li key={t}>{t}</li>
-                            ))}
-                          </ul>
-                          <p className="text-sm text-neutral-500">Docent: {s.docent ?? "Naam Docent"}</p>
+                          <p>{s.desc}</p>
+                          {s.topics && (
+                            <ul className="list-disc pl-6 text-sm">
+                              {s.topics.map((t) => (
+                                <li key={t}>{t}</li>
+                              ))}
+                            </ul>
+                          )}
+                          {s.docent && <p className="text-sm text-neutral-500">Docent: {s.docent}</p>}
                         </div>
                       )}
                     </div>
