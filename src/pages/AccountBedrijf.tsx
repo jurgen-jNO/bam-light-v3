@@ -126,6 +126,8 @@ const AccountBedrijf = () => {
           <TabBtn active={tab === "vacatures"} onClick={() => setTab("vacatures")} icon={Briefcase}>
             Vacatures <span className="text-foreground/40">({vacancies.length})</span>
           </TabBtn>
+          <TabBtn active={tab === "events"} onClick={() => setTab("events")} icon={Calendar}>Events</TabBtn>
+          <TabBtn active={tab === "opleidingen"} onClick={() => setTab("opleidingen")} icon={GraduationCap}>Opleidingen</TabBtn>
         </div>
 
         {/* === BEDRIJF === */}
