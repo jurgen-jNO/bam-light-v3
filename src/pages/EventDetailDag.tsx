@@ -270,6 +270,26 @@ export default function EventDetailDag() {
               </button>
               <p className="text-center text-xs text-neutral-500">Contacteer Nathalie Prieto</p>
             </div>
+
+            {/* Aanwezigheid / capaciteit */}
+            <div className="mt-3 rounded border border-neutral-300 bg-white p-3 text-xs">
+              <div className="flex items-center justify-between">
+                <div className="flex -space-x-1.5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <div
+                      key={i}
+                      className="h-6 w-6 cursor-pointer rounded-full border border-white bg-neutral-200 ring-1 ring-neutral-300 transition-all duration-150 hover:z-10 hover:scale-125 hover:bg-neutral-700 hover:ring-2 hover:ring-neutral-900"
+                      title={`Lid ${i + 1}`}
+                    />
+                  ))}
+                </div>
+                <span className="text-neutral-600">+12 leden</span>
+              </div>
+              <div className="mt-2 flex justify-between border-t border-neutral-200 pt-2 text-neutral-700">
+                <span><strong className="text-neutral-900">18</strong> ingeschreven</span>
+                <span><strong className="text-neutral-900">7</strong> vrij</span>
+              </div>
+            </div>
             <div className="mt-4 flex items-center justify-end gap-2">
               <span className="mr-1 text-xs uppercase tracking-wider text-neutral-500">Deel</span>
               <a
