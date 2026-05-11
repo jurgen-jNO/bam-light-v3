@@ -316,6 +316,36 @@ const AccountBedrijf = () => {
 
         {tab === "events" && (
           <div className="space-y-6">
+            <Section tag="[ inschrijven ]" title="Medewerker inschrijven voor event">
+              <Grid2>
+                <Field label="Opkomend event">
+                  <select className={inputCls} defaultValue="">
+                    <option value="" disabled>Kies een event…</option>
+                    <option>Marketing Day 2026 — 12 mei</option>
+                    <option>BAM Awards Night — 28 mei</option>
+                    <option>Future Marketeers Congress — 14 juni</option>
+                    <option>BAM Summer BBQ — 27 juni</option>
+                    <option>Brand Strategy Masterclass — 9 september</option>
+                  </select>
+                </Field>
+                <Field label="Medewerker">
+                  <select className={inputCls} defaultValue="">
+                    <option value="" disabled>Kies een medewerker…</option>
+                    {employees.map((e) => (
+                      <option key={e.id} value={e.id}>{e.name}</option>
+                    ))}
+                  </select>
+                </Field>
+              </Grid2>
+              <button
+                type="button"
+                onClick={() => toast.success("Medewerker ingeschreven ✓")}
+                className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
+              >
+                <Plus className="w-3.5 h-3.5" /> Inschrijven
+              </button>
+            </Section>
+
             <Section tag="[ events ]" title="Events van het bedrijf">
               <p className="text-sm text-foreground/60">
                 Hier verschijnt binnenkort een overzicht van alle event-inschrijvingen van je medewerkers.
