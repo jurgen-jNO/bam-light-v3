@@ -114,11 +114,8 @@ const VacatureNieuw = () => {
               <Field label="Sollicitatie e-mail">
                 <input type="email" className={inputCls} value={form.email} onChange={(e) => set("email", e.target.value)} maxLength={120} placeholder="jobs@bedrijf.be" />
               </Field>
-              <Field label="Live van — tot">
-                <div className="grid grid-cols-2 gap-2">
-                  <input type="date" className={inputCls} value={form.startDate} onChange={(e) => set("startDate", e.target.value)} />
-                  <input type="date" className={inputCls} value={form.endDate} onChange={(e) => set("endDate", e.target.value)} />
-                </div>
+              <Field label="Live vanaf">
+                <input type="date" className={inputCls} value={form.startDate} onChange={(e) => set("startDate", e.target.value)} />
               </Field>
             </Grid2>
           </section>
