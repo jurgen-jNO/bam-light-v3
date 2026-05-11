@@ -3,19 +3,41 @@ import { ChevronDown, Menu, X, Mail, Phone, Linkedin, Facebook } from "lucide-re
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
-const sessions = [
+const eventDate = "24 feb 2026";
+const eventTime = "09:30 – 17:00";
+
+const programma = [
   {
-    n: "Sessie 1",
+    tijd: "09:30 – 10:00",
+    title: "Onthaal & koffie",
+    desc: "Welkom met koffie en kennismaking met de andere deelnemers.",
+  },
+  {
+    tijd: "10:00 – 12:30",
     title: "Strategie & doelgroepbepaling",
-    date: "24 feb 2026",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     topics: ["Marktanalyse", "Persona's", "Customer journey", "Doelstellingen & KPI's"],
     docent: "Jan Janssens",
   },
-  { n: "Sessie 2", title: "Content creatie & storytelling", date: "10 mrt 2026" },
-  { n: "Sessie 3", title: "Distributie & kanalen", date: "24 mrt 2026" },
-  { n: "Sessie 4", title: "Conversie & lead nurturing", date: "21 apr 2026" },
-  { n: "Sessie 5", title: "Meten, optimaliseren & cases", date: "5 mei 2026" },
+  {
+    tijd: "12:30 – 13:30",
+    title: "Lunch",
+    desc: "Netwerklunch.",
+  },
+  {
+    tijd: "13:30 – 15:30",
+    title: "Content creatie & storytelling",
+    desc: "Praktische oefeningen rond contentcreatie.",
+    topics: ["Tone of voice", "Formats", "Storytelling frameworks"],
+    docent: "Jan Janssens",
+  },
+  {
+    tijd: "15:45 – 17:00",
+    title: "Distributie, meten & afsluit",
+    desc: "Hoe je content verspreidt en succes meet, met afsluitende Q&A.",
+    topics: ["Kanalenmix", "KPI's", "Optimalisatie"],
+    docent: "Jan Janssens",
+  },
 ];
 
 const docenten = Array.from({ length: 6 }).map((_, i) => ({
