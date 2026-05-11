@@ -289,13 +289,12 @@ const AccountBedrijf = () => {
               </p>
 
               <div className="border-2 border-dashed border-foreground/30 opacity-70 pointer-events-none">
-                <div className="grid grid-cols-[1fr_1fr_auto_auto_auto] gap-3 px-4 py-2.5 bg-foreground/5 text-[10px] uppercase tracking-widest text-foreground/60 font-semibold">
-                  <span>Titel</span><span>Locatie</span><span>Status</span><span>Views</span><span></span>
+                <div className="grid grid-cols-[1fr_auto_auto_auto] gap-3 px-4 py-2.5 bg-foreground/5 text-[10px] uppercase tracking-widest text-foreground/60 font-semibold">
+                  <span>Titel</span><span>Status</span><span>Views</span><span></span>
                 </div>
                 {vacancies.map((v) => (
-                  <div key={v.id} className="grid grid-cols-[1fr_1fr_auto_auto_auto] gap-3 px-4 py-3 border-t-2 border-dashed border-foreground/20 items-center text-sm">
+                  <div key={v.id} className="grid grid-cols-[1fr_auto_auto_auto] gap-3 px-4 py-3 border-t-2 border-dashed border-foreground/20 items-center text-sm">
                     <span className="text-foreground font-medium truncate">{v.title}</span>
-                    <span className="text-foreground/70 truncate">{v.location}</span>
                     <span className={`text-[10px] uppercase tracking-widest px-2 py-1 border-2 border-dashed ${
                       v.status === "actief" ? "border-foreground/60 text-foreground"
                       : v.status === "concept" ? "border-foreground/30 text-foreground/60"
