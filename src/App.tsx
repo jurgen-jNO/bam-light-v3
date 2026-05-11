@@ -30,6 +30,7 @@ import LoginBedrijf from "./pages/LoginBedrijf.tsx";
 import AccountIndividu from "./pages/AccountIndividu.tsx";
 import AccountBedrijf from "./pages/AccountBedrijf.tsx";
 import VacatureNieuw from "./pages/VacatureNieuw.tsx";
+import VacatureDetail from "./pages/VacatureDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
