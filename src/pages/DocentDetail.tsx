@@ -80,15 +80,8 @@ export default function DocentDetail() {
                 <h2 className="text-xs font-semibold uppercase tracking-wide text-neutral-500 mb-2">
                   Introductievideo
                 </h2>
-                <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-neutral-900">
-                  <iframe
-                    src={docent.video}
-                    title={`Video ${docent.voornaam} ${docent.naam}`}
-                    className="absolute inset-0 w-full h-full"
-                    frameBorder={0}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
+                <div className="relative aspect-video w-full rounded-lg border-2 border-dashed border-neutral-300 bg-neutral-50 flex items-center justify-center text-xs text-neutral-400">
+                  Video
                 </div>
               </div>
 
