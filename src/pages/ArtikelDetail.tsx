@@ -137,7 +137,7 @@ const ArtikelDetail = () => {
               <ArrowLeft className="w-3.5 h-3.5" /> Terug naar overzicht
             </Link>
           </div>
-          <AdminToolbar />
+          
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10">
