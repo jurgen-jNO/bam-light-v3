@@ -17,13 +17,17 @@ const Index = () => {
             </p>
           </div>
           <div className="col-span-1 border-2 border-dashed border-border rounded-lg p-8 text-center flex flex-col items-center justify-center">
+          <Link
+            to="/vacature"
+            className="col-span-1 border-2 border-dashed border-border rounded-lg p-8 text-center flex flex-col items-center justify-center hover:bg-foreground/5 transition-colors"
+          >
             <h2 className="text-lg font-semibold text-foreground mb-2">
               Job Board
             </h2>
             <p className="text-sm text-muted-foreground">
               Bekijk de laatste marketing vacatures
             </p>
-          </div>
+          </Link>
         </div>
       </main>
       <Footer />
