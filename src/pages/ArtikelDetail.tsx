@@ -225,7 +225,7 @@ const ArtikelDetail = () => {
                 if (b.type === "visual") {
                   return (
                     <figure key={i} className="space-y-2">
-                      <WireBox label={b.caption} />
+                      <WireBox label={b.caption} ratio="aspect-[32/9]" />
                       <figcaption className="text-xs text-foreground/50 italic">
                         {b.caption}
                       </figcaption>
