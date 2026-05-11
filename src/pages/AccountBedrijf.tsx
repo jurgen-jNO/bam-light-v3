@@ -10,7 +10,7 @@ import { inputCls, Field, Grid2 } from "@/components/inschrijven/FlowShell";
 import { downloadMedewerkersTemplate } from "@/lib/downloadTemplate";
 import { toast } from "sonner";
 
-type Tab = "bedrijf" | "medewerkers" | "vacatures";
+type Tab = "bedrijf" | "medewerkers" | "vacatures" | "events" | "opleidingen";
 
 interface Employee { id: string; name: string; role: string; email: string; gsm: string; taal: "NL" | "FR"; }
 interface Vacancy { id: string; title: string; location: string; status: "actief" | "concept" | "gearchiveerd"; views: number; }
