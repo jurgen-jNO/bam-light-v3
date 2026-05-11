@@ -173,9 +173,6 @@ const VacatureDetail = () => {
                   >
                     <Mail className="w-3.5 h-3.5" /> {vacature.email}
                   </a>
-                  <p className="text-center text-[11px] text-foreground/50">
-                    Contact: <span className="text-foreground/80">{vacature.contact}</span>
-                  </p>
                 </div>
               </div>
             </div>
