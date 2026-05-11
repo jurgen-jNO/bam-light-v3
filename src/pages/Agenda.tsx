@@ -227,6 +227,8 @@ export default function Agenda() {
     }
   };
 
+  const domein = params.get("domein") || "";
+
   const filtered = useMemo(() => {
     const firstDate = (item: AgendaItem) =>
       [...item.sessies].sort((a, b) => a.datum.localeCompare(b.datum))[0]?.datum ?? "";
@@ -237,13 +239,14 @@ export default function Agenda() {
         if (status === "upcoming" && item.is_archived) return false;
         if (status === "archief" && !item.is_archived) return false;
         if (!selectedSubtypes.includes(item.subtype)) return false;
+        if (domein && domainForItem(item.id) !== domein) return false;
         return true;
       })
       .sort((a, b) => {
         const cmp = firstDate(a).localeCompare(firstDate(b));
         return status === "archief" ? -cmp : cmp;
       });
-  }, [type, status, selectedSubtypes]);
+  }, [type, status, selectedSubtypes, domein]);
 
   const clearFilters = () => {
     const p = new URLSearchParams();
