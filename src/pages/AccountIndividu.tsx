@@ -70,6 +70,12 @@ const AccountIndividu = () => {
   ]);
 
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [activeTab, setActiveTab] = useState<"gegevens" | "opleidingen">("gegevens");
+
+  const TABS = [
+    { id: "gegevens" as const, label: "Mijn gegevens" },
+    { id: "opleidingen" as const, label: "Mijn opleidingen en events" },
+  ];
 
   const toggleInterest = (i: string) =>
     setInterests((cur) => (cur.includes(i) ? cur.filter((x) => x !== i) : [...cur, i]));
