@@ -353,15 +353,15 @@ const AccountBedrijf = () => {
                 </div>
                 {[
                   { name: "Lieselot Janssens", event: "Marketing Day 2026", date: "12 mei 2026" },
+                  { name: "Noor El Amrani", event: "Marketing Day 2026", date: "12 mei 2026" },
                   { name: "Mathias De Cock", event: "BAM Awards Night", date: "28 mei 2026" },
+                  { name: "Noor El Amrani", event: "BAM Awards Night", date: "28 mei 2026" },
                   { name: "Noor El Amrani", event: "Future Marketeers Congress", date: "14 jun 2026" },
+                  { name: "Lieselot Janssens", event: "Future Marketeers Congress", date: "14 jun 2026" },
                   { name: "Lieselot Janssens", event: "BAM Summer BBQ", date: "27 jun 2026" },
                   { name: "Mathias De Cock", event: "Brand Strategy Masterclass", date: "9 sep 2026" },
-                  { name: "Noor El Amrani", event: "Marketing Day 2026", date: "12 mei 2026" },
                   { name: "Lieselot Janssens", event: "Content Strategy Bootcamp", date: "3 okt 2026" },
                   { name: "Mathias De Cock", event: "Looking at 2030 — Keynote", date: "21 okt 2026" },
-                  { name: "Noor El Amrani", event: "BAM Awards Night", date: "28 mei 2026" },
-                  { name: "Lieselot Janssens", event: "Future Marketeers Congress", date: "14 jun 2026" },
                 ].map((p, i) => (
                   <div key={i} className="grid grid-cols-[1fr_1.5fr_auto] gap-3 px-4 py-3 border-t-2 border-dashed border-foreground/20 items-center text-sm">
                     <span className="text-foreground font-medium truncate">{p.name}</span>
