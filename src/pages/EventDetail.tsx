@@ -258,7 +258,7 @@ export default function EventDetail() {
                   {Array.from({ length: 5 }).map((_, i) => (
                     <div
                       key={i}
-                      className="h-6 w-6 rounded-full border border-white bg-neutral-200 ring-1 ring-neutral-300"
+                      className="h-6 w-6 cursor-pointer rounded-full border border-white bg-neutral-200 ring-1 ring-neutral-300 transition-all duration-150 hover:z-10 hover:scale-125 hover:bg-neutral-700 hover:ring-2 hover:ring-neutral-900"
                       title={`Lid ${i + 1}`}
                     />
                   ))}
