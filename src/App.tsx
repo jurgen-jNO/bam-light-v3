@@ -13,6 +13,7 @@ import WordSponsor from "./pages/WordSponsor.tsx";
 import EventDetail from "./pages/EventDetail.tsx";
 import EventDetailDag from "./pages/EventDetailDag.tsx";
 import DocentDetail from "./pages/DocentDetail.tsx";
+import ContactDetail from "./pages/ContactDetail.tsx";
 import Agenda from "./pages/Agenda.tsx";
 import AgendaEvents from "./pages/AgendaEvents.tsx";
 import InschrijvenSolo from "./pages/InschrijvenSolo.tsx";
