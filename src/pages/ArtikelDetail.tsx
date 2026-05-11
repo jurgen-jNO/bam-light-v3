@@ -69,12 +69,38 @@ const artikel = {
         "AI is een gereedschap, geen vervanger. De magie zit nog steeds in het idee — en dat blijft mensenwerk.",
     },
     {
+      type: "paragraph" as const,
+      text: "Een rondvraag bij vijftien Belgische bureaus toont aan dat de helft van het creatieve werk in 2026 al een AI-component bevat — meestal in de research- of ideationfase. De finale executie blijft echter mensenwerk, en juist daar wordt het verschil gemaakt.",
+    },
+    {
       type: "subtitle" as const,
-      text: "3. De rol van community",
+      text: "3. Vijf principes die toonaangevende merken delen",
     },
     {
       type: "paragraph" as const,
-      text: "Merken die luisteren naar hun community bouwen sneller vertrouwen op. BAM-leden delen in 2026 vaker case studies, tools en mislukkingen — een teken van een gezonde sector.",
+      text: "Uit gesprekken met creative leads van merken als Tomorrowland, Telenet en Colruyt komen vijf gemeenschappelijke principes naar boven. Geen ervan is nieuw, maar samen vormen ze een verrassend coherent kompas:",
+    },
+    {
+      type: "list" as const,
+      items: [
+        "Begin altijd bij een scherp gedefinieerde merkbelofte — niet bij een format.",
+        "Investeer in langetermijnrelaties met makers, niet in losse opdrachten.",
+        "Behandel data als inspiratie, niet als waarheid.",
+        "Maak ruimte voor experiment in elke campagne, ook in performance-budgetten.",
+        "Meet impact op cultuur, niet alleen op conversie.",
+      ],
+    },
+    {
+      type: "subtitle" as const,
+      text: "4. De rol van community",
+    },
+    {
+      type: "paragraph" as const,
+      text: "Merken die luisteren naar hun community bouwen sneller vertrouwen op. BAM-leden delen in 2026 vaker case studies, tools en mislukkingen — een teken van een gezonde sector. Die openheid versnelt het collectieve leerproces en verhoogt de kwaliteit van het werk dat de markt bereikt.",
+    },
+    {
+      type: "paragraph" as const,
+      text: "De vraag is niet langer of merken een community moeten bouwen, maar hoe ze die op een authentieke manier blijven voeden. Wie daarin slaagt, bouwt aan een voorsprong die concurrenten niet kunnen kopiëren.",
     },
   ],
 };
@@ -203,6 +229,21 @@ const ArtikelDetail = () => {
                     >
                       {b.text}
                     </p>
+                  );
+                }
+                if (b.type === "list") {
+                  return (
+                    <ul key={i} className="space-y-2 pl-1">
+                      {b.items.map((it, j) => (
+                        <li
+                          key={j}
+                          className="flex gap-3 text-base text-foreground/80 leading-relaxed"
+                        >
+                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-foreground/50 shrink-0" />
+                          <span>{it}</span>
+                        </li>
+                      ))}
+                    </ul>
                   );
                 }
                 if (b.type === "visual") {
