@@ -112,13 +112,19 @@ const VacatureNieuw = () => {
               <Field label="Contactpersoon">
                 <input className={inputCls} value={form.contact} onChange={(e) => set("contact", e.target.value)} maxLength={80} placeholder="Voornaam Naam" />
               </Field>
-              <Field label="Sollicitatie URL">
-                <input type="url" className={inputCls} value={form.applyUrl} onChange={(e) => set("applyUrl", e.target.value)} maxLength={200} placeholder="https://…" />
-              </Field>
-              <Field label="Sollicitatie e-mail">
-                <input type="email" className={inputCls} value={form.email} onChange={(e) => set("email", e.target.value)} maxLength={120} placeholder="jobs@bedrijf.be" />
-              </Field>
             </Grid2>
+
+            <div className="mt-6 pt-6 border-t border-dashed border-foreground/20">
+              <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-3">[ solliciteren via ]</p>
+              <Grid2>
+                <Field label="Sollicitatie URL">
+                  <input type="url" className={inputCls} value={form.applyUrl} onChange={(e) => set("applyUrl", e.target.value)} maxLength={200} placeholder="https://…" />
+                </Field>
+                <Field label="Sollicitatie e-mail">
+                  <input type="email" className={inputCls} value={form.email} onChange={(e) => set("email", e.target.value)} maxLength={120} placeholder="jobs@bedrijf.be" />
+                </Field>
+              </Grid2>
+            </div>
           </section>
 
           <section className="border-2 border-dashed border-foreground/30 bg-foreground/[0.02] p-6">
