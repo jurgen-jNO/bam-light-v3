@@ -379,10 +379,63 @@ const AccountBedrijf = () => {
 
         {tab === "opleidingen" && (
           <div className="space-y-6">
-            <Section tag="[ academy ]" title="Opleidingen van het bedrijf">
-              <p className="text-sm text-foreground/60">
-                Hier verschijnt binnenkort een overzicht van alle opleidingen die je medewerkers volgen.
-              </p>
+            <Section tag="[ inschrijven ]" title="Medewerker inschrijven voor opleiding">
+              <Grid2>
+                <Field label="Opkomende opleiding">
+                  <select className={inputCls} defaultValue="">
+                    <option value="" disabled>Kies een opleiding…</option>
+                    <option>Brand Strategy Masterclass — 9 september</option>
+                    <option>Content Strategy Bootcamp — 3 oktober</option>
+                    <option>Digital Performance Training — 17 oktober</option>
+                    <option>AI for Marketeers — 7 november</option>
+                    <option>Storytelling Workshop — 21 november</option>
+                  </select>
+                </Field>
+                <Field label="Medewerker">
+                  <select className={inputCls} defaultValue="">
+                    <option value="" disabled>Kies een medewerker…</option>
+                    {employees.map((e) => (
+                      <option key={e.id} value={e.id}>{e.name}</option>
+                    ))}
+                  </select>
+                </Field>
+              </Grid2>
+              <button
+                type="button"
+                onClick={() => toast.success("Medewerker ingeschreven ✓")}
+                className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
+              >
+                <Plus className="w-3.5 h-3.5" /> Inschrijven
+              </button>
+            </Section>
+
+            <Section tag="[ academy ]" title="Opleiding deelnames">
+              <div className="border-2 border-dashed border-foreground/30">
+                <div className="grid grid-cols-[1fr_1.5fr_auto] gap-3 px-4 py-2.5 bg-foreground/5 text-[10px] uppercase tracking-widest text-foreground/60 font-semibold">
+                  <span>Deelnemer</span><span>Opleiding</span><span>Datum</span>
+                </div>
+                {[
+                  { name: "Lieselot Janssens", event: "SEO Fundamentals", date: "18 apr 2026", past: true },
+                  { name: "Mathias De Cock", event: "Copywriting Essentials", date: "25 apr 2026", past: true },
+                  { name: "Mathias De Cock", event: "Brand Strategy Masterclass", date: "9 sep 2026" },
+                  { name: "Noor El Amrani", event: "Brand Strategy Masterclass", date: "9 sep 2026" },
+                  { name: "Lieselot Janssens", event: "Content Strategy Bootcamp", date: "3 okt 2026" },
+                  { name: "Mathias De Cock", event: "Content Strategy Bootcamp", date: "3 okt 2026" },
+                  { name: "Noor El Amrani", event: "Digital Performance Training", date: "17 okt 2026" },
+                  { name: "Lieselot Janssens", event: "AI for Marketeers", date: "7 nov 2026" },
+                  { name: "Mathias De Cock", event: "AI for Marketeers", date: "7 nov 2026" },
+                  { name: "Noor El Amrani", event: "Storytelling Workshop", date: "21 nov 2026" },
+                ].map((p, i) => (
+                  <div key={i} className={`grid grid-cols-[1fr_1.5fr_auto] gap-3 px-4 py-3 border-t-2 border-dashed border-foreground/20 items-center text-sm ${p.past ? "opacity-50" : ""}`}>
+                    <span className={`font-medium truncate ${p.past ? "text-foreground/50" : "text-foreground"}`}>{p.name}</span>
+                    <span className={`truncate ${p.past ? "text-foreground/40" : "text-foreground/70"}`}>
+                      {p.event}
+                      {p.past && <span className="ml-2 text-[10px] uppercase tracking-widest text-foreground/40">· afgelopen</span>}
+                    </span>
+                    <span className={`text-xs tabular-nums whitespace-nowrap ${p.past ? "text-foreground/40" : "text-foreground/60"}`}>{p.date}</span>
+                  </div>
+                ))}
+              </div>
             </Section>
           </div>
         )}
