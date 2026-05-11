@@ -231,6 +231,21 @@ const ArtikelDetail = () => {
                     </p>
                   );
                 }
+                if (b.type === "list") {
+                  return (
+                    <ul key={i} className="space-y-2 pl-1">
+                      {b.items.map((it, j) => (
+                        <li
+                          key={j}
+                          className="flex gap-3 text-base text-foreground/80 leading-relaxed"
+                        >
+                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-foreground/50 shrink-0" />
+                          <span>{it}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                }
                 if (b.type === "visual") {
                   return (
                     <figure key={i} className="space-y-2">
