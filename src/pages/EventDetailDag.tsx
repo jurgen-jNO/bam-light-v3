@@ -3,19 +3,41 @@ import { ChevronDown, Menu, X, Mail, Phone, Linkedin, Facebook } from "lucide-re
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
-const sessions = [
+const eventDate = "24 feb 2026";
+const eventTime = "09:30 – 17:00";
+
+const programma = [
   {
-    n: "Sessie 1",
+    tijd: "09:30 – 10:00",
+    title: "Onthaal & koffie",
+    desc: "Welkom met koffie en kennismaking met de andere deelnemers.",
+  },
+  {
+    tijd: "10:00 – 12:30",
     title: "Strategie & doelgroepbepaling",
-    date: "24 feb 2026",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     topics: ["Marktanalyse", "Persona's", "Customer journey", "Doelstellingen & KPI's"],
     docent: "Jan Janssens",
   },
-  { n: "Sessie 2", title: "Content creatie & storytelling", date: "10 mrt 2026" },
-  { n: "Sessie 3", title: "Distributie & kanalen", date: "24 mrt 2026" },
-  { n: "Sessie 4", title: "Conversie & lead nurturing", date: "21 apr 2026" },
-  { n: "Sessie 5", title: "Meten, optimaliseren & cases", date: "5 mei 2026" },
+  {
+    tijd: "12:30 – 13:30",
+    title: "Lunch",
+    desc: "Netwerklunch.",
+  },
+  {
+    tijd: "13:30 – 15:30",
+    title: "Content creatie & storytelling",
+    desc: "Praktische oefeningen rond contentcreatie.",
+    topics: ["Tone of voice", "Formats", "Storytelling frameworks"],
+    docent: "Jan Janssens",
+  },
+  {
+    tijd: "15:45 – 17:00",
+    title: "Distributie, meten & afsluit",
+    desc: "Hoe je content verspreidt en succes meet, met afsluitende Q&A.",
+    topics: ["Kanalenmix", "KPI's", "Optimalisatie"],
+    docent: "Jan Janssens",
+  },
 ];
 
 const docenten = Array.from({ length: 6 }).map((_, i) => ({
@@ -81,7 +103,7 @@ export default function EventDetailDag() {
 
             {/* Block 02 — Title */}
             <section>
-              <h1 className="text-4xl font-bold text-neutral-900">Opleiding - Content Marketing</h1>
+              <h1 className="text-4xl font-bold text-neutral-900">Dagopleiding - Content Marketing</h1>
               <p className="mt-2 text-lg text-neutral-500">2026</p>
             </section>
 
@@ -119,11 +141,12 @@ export default function EventDetailDag() {
               Ik schrijf me in ›
             </button>
 
-            {/* Block 07 — Programma accordion */}
+            {/* Block 07 — Dagprogramma accordion */}
             <section id="programma">
-              <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Programma</h2>
+              <h2 className="mb-1 text-2xl font-semibold text-neutral-900">Dagprogramma</h2>
+              <p className="mb-4 text-sm text-neutral-500">{eventDate} · {eventTime}</p>
               <div className="divide-y divide-neutral-300 rounded border border-neutral-300">
-                {sessions.map((s, i) => {
+                {programma.map((s, i) => {
                   const isOpen = open === i;
                   return (
                     <div key={i}>
@@ -132,20 +155,21 @@ export default function EventDetailDag() {
                         className="flex w-full items-center justify-between px-4 py-4 text-left hover:bg-neutral-50"
                       >
                         <span className="text-neutral-800">
-                          <span className="font-semibold">{s.n}</span> — {s.title}{" "}
-                          <span className="text-neutral-500">· {s.date}</span>
+                          <span className="font-semibold">{s.tijd}</span> — {s.title}
                         </span>
                         <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                       </button>
                       {isOpen && (
                         <div className="space-y-3 bg-neutral-50 px-4 pb-4 text-neutral-700">
-                          <p>{s.desc ?? "Korte omschrijving van de sessie (lorem ipsum)."}</p>
-                          <ul className="list-disc pl-6 text-sm">
-                            {(s.topics ?? ["Onderwerp A", "Onderwerp B", "Onderwerp C"]).map((t) => (
-                              <li key={t}>{t}</li>
-                            ))}
-                          </ul>
-                          <p className="text-sm text-neutral-500">Docent: {s.docent ?? "Naam Docent"}</p>
+                          <p>{s.desc}</p>
+                          {s.topics && (
+                            <ul className="list-disc pl-6 text-sm">
+                              {s.topics.map((t) => (
+                                <li key={t}>{t}</li>
+                              ))}
+                            </ul>
+                          )}
+                          {s.docent && <p className="text-sm text-neutral-500">Docent: {s.docent}</p>}
                         </div>
                       )}
                     </div>
@@ -224,16 +248,12 @@ export default function EventDetailDag() {
           <aside className="hidden lg:block">
             <div className="sticky top-6 space-y-4 rounded border border-neutral-300 bg-neutral-50 p-5">
               <div>
-                <p className="text-xs uppercase tracking-wider text-neutral-500">Sessiedatums</p>
-                <ul className="mt-1 space-y-1 text-sm text-neutral-700">
-                  {sessions.map((s) => (
-                    <li key={s.n}>{s.date}</li>
-                  ))}
-                </ul>
+                <p className="text-xs uppercase tracking-wider text-neutral-500">Datum</p>
+                <p className="mt-1 text-sm text-neutral-700">{eventDate}</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-wider text-neutral-500">Uur</p>
-                <p className="text-sm text-neutral-700">09:30 – 13:00</p>
+                <p className="text-sm text-neutral-700">{eventTime}</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-wider text-neutral-500">Locatie</p>
