@@ -105,17 +105,17 @@ const VacatureNieuw = () => {
                   <option>Remote</option>
                 </select>
               </Field>
-              <Field label="Salarisindicatie (optioneel)">
-                <input className={inputCls} value={form.salary} onChange={(e) => set("salary", e.target.value)} maxLength={60} placeholder="bv. €3.500 — €4.500 bruto" />
+              <Field label="Live vanaf">
+                <input type="date" className={inputCls} value={form.startDate} onChange={(e) => set("startDate", e.target.value)} />
               </Field>
               <Field label="Contactpersoon">
                 <input className={inputCls} value={form.contact} onChange={(e) => set("contact", e.target.value)} maxLength={80} placeholder="Voornaam Naam" />
               </Field>
+              <Field label="Sollicitatie URL">
+                <input type="url" className={inputCls} value={form.applyUrl} onChange={(e) => set("applyUrl", e.target.value)} maxLength={200} placeholder="https://…" />
+              </Field>
               <Field label="Sollicitatie e-mail">
                 <input type="email" className={inputCls} value={form.email} onChange={(e) => set("email", e.target.value)} maxLength={120} placeholder="jobs@bedrijf.be" />
-              </Field>
-              <Field label="Live vanaf">
-                <input type="date" className={inputCls} value={form.startDate} onChange={(e) => set("startDate", e.target.value)} />
               </Field>
             </Grid2>
           </section>
