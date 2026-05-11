@@ -14,7 +14,7 @@ const navItems: NavItem[] = [
     href: "/agenda",
     children: [
       { label: "Agenda", href: "/agenda" },
-      { label: "Dagopleidingen", href: "/agenda?type=opleidingen&subtype=dagopleiding" },
+      { label: "Dagopleidingen", href: "/dagopleiding" },
       { label: "Meerdaagse trainingen", href: "/event" },
       { label: "Op maat (van uw bedrijf)", href: "/agenda?type=opleidingen&subtype=op-maat" },
     ],
