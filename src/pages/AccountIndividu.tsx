@@ -243,9 +243,14 @@ const AccountIndividu = () => {
 
         {activeTab === "opleidingen" && (
           <div className="space-y-6">
-            <Section title="Mijn opleidingen en events" tag="[ overzicht ]">
+            <Section title="Mijn opleidingen" tag="[ academy ]">
               <p className="text-sm text-foreground/60">
-                Hier verschijnt binnenkort een overzicht van je inschrijvingen en gevolgde opleidingen.
+                Hier verschijnt binnenkort een overzicht van je gevolgde en geplande opleidingen.
+              </p>
+            </Section>
+            <Section title="Mijn events" tag="[ events ]">
+              <p className="text-sm text-foreground/60">
+                Hier verschijnt binnenkort een overzicht van je event-inschrijvingen.
               </p>
             </Section>
           </div>
