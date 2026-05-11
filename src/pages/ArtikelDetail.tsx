@@ -310,16 +310,10 @@ const ArtikelDetail = () => {
             <p className="text-[10px] uppercase tracking-widest font-semibold text-foreground/50">
               [ advertentie ]
             </p>
-            <div className="border-2 border-dashed border-foreground/30 bg-foreground/[0.03] aspect-[3/4] flex flex-col items-center justify-center gap-2 text-foreground/40">
+            <div className="border-2 border-dashed border-foreground/30 bg-foreground/[0.03] w-full max-w-[300px] aspect-[1/3] flex flex-col items-center justify-center gap-2 text-foreground/40">
               <Megaphone className="w-8 h-8" />
               <span className="text-[10px] uppercase tracking-widest font-semibold">
-                Ad banner — 300×400
-              </span>
-            </div>
-            <div className="border-2 border-dashed border-foreground/30 bg-foreground/[0.03] aspect-square flex flex-col items-center justify-center gap-2 text-foreground/40">
-              <Megaphone className="w-8 h-8" />
-              <span className="text-[10px] uppercase tracking-widest font-semibold">
-                Ad banner — 300×300
+                Skyscraper — 300×900
               </span>
             </div>
           </aside>
