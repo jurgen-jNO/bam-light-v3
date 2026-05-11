@@ -276,7 +276,7 @@ const AccountBedrijf = () => {
               action={
                 <button
                   disabled
-                  className="inline-flex items-center gap-2 px-4 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground/30 text-background cursor-not-allowed"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background cursor-not-allowed"
                 >
                   <Plus className="w-3.5 h-3.5" /> Nieuwe vacature
                 </button>
