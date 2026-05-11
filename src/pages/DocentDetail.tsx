@@ -43,12 +43,8 @@ export default function DocentDetail() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Left: photo + meta */}
             <aside className="md:col-span-1">
-              <div className="aspect-[3/4] w-full overflow-hidden rounded-lg bg-neutral-100">
-                <img
-                  src={docent.foto}
-                  alt={`${docent.voornaam} ${docent.naam}`}
-                  className="w-full h-full object-cover"
-                />
+              <div className="aspect-[3/4] w-full rounded-lg border-2 border-dashed border-neutral-300 bg-neutral-50 flex items-center justify-center text-xs text-neutral-400">
+                Foto
               </div>
 
               <div className="mt-5">
