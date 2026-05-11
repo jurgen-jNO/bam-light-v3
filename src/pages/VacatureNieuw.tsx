@@ -116,14 +116,19 @@ const VacatureNieuw = () => {
 
             <div className="mt-6 pt-6 border-t border-dashed border-foreground/20">
               <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-3">[ solliciteren via ]</p>
-              <Grid2>
-                <Field label="Sollicitatie URL">
-                  <input type="url" className={inputCls} value={form.applyUrl} onChange={(e) => set("applyUrl", e.target.value)} maxLength={200} placeholder="https://…" />
-                </Field>
-                <Field label="Sollicitatie e-mail">
-                  <input type="email" className={inputCls} value={form.email} onChange={(e) => set("email", e.target.value)} maxLength={120} placeholder="jobs@bedrijf.be" />
-                </Field>
-              </Grid2>
+              <div className="flex flex-col sm:flex-row sm:items-end gap-4">
+                <div className="flex-1">
+                  <Field label="Sollicitatie URL">
+                    <input type="url" className={inputCls} value={form.applyUrl} onChange={(e) => set("applyUrl", e.target.value)} maxLength={200} placeholder="https://…" />
+                  </Field>
+                </div>
+                <div className="text-[10px] uppercase tracking-widest font-bold text-foreground/60 sm:pb-3 text-center">of</div>
+                <div className="flex-1">
+                  <Field label="Sollicitatie e-mail">
+                    <input type="email" className={inputCls} value={form.email} onChange={(e) => set("email", e.target.value)} maxLength={120} placeholder="jobs@bedrijf.be" />
+                  </Field>
+                </div>
+              </div>
             </div>
           </section>
 
