@@ -25,6 +25,22 @@ const SUBTYPES: Record<MainType, { value: string; label: string }[]> = {
   ],
 };
 
+const INTEREST_DOMAINS = [
+  "Digital & Technology",
+  "Sustainability, Ethics & Purpose",
+  "Marketing Leadership & Future Skills",
+  "Brand Building",
+  "Performance Marketing",
+  "Community Building",
+];
+
+// Deterministically assign a domain to a mock item based on its id
+const domainForItem = (id: string) => {
+  let h = 0;
+  for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) >>> 0;
+  return INTEREST_DOMAINS[h % INTEREST_DOMAINS.length];
+};
+
 const SUBTYPE_LABEL: Record<string, string> = {
   dagopleiding: "Dagopleiding",
   meerdaagse: "Meerdaagse",
