@@ -305,7 +305,7 @@ const AccountBedrijf = () => {
                     <span className={`font-medium truncate ${archived ? "text-foreground/50" : "text-foreground"}`}>
                       {v.title}{archived && <span className="ml-2 text-[10px] uppercase tracking-widest text-foreground/40">· gearchiveerd</span>}
                     </span>
-                    <span className={`text-xs tabular-nums whitespace-nowrap ${archived ? "text-foreground/40" : "text-foreground/70"}`}>{liveDates[i]}</span>
+                    <span className={`text-sm tabular-nums whitespace-nowrap text-left ${archived ? "text-foreground/50" : "text-foreground"}`}>{liveDates[i]}</span>
                     <span className={`flex items-center gap-1 text-xs tabular-nums ${archived ? "text-foreground/40" : "text-foreground/70"}`}>
                       <Eye className="w-3.5 h-3.5" />{v.views}
                     </span>
