@@ -346,7 +346,7 @@ const AccountBedrijf = () => {
               </button>
             </Section>
 
-            <Section tag="[ events ]" title="Events van het bedrijf">
+            <Section tag="[ events ]" title="Event deelnames">
               <p className="text-sm text-foreground/60">
                 Hier verschijnt binnenkort een overzicht van alle event-inschrijvingen van je medewerkers.
               </p>
