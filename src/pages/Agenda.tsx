@@ -305,6 +305,10 @@ export default function Agenda() {
             <CalendarView
               items={filtered}
               onSelect={(item) => {
+                if (item.slug === "marketingstrategie-2026") {
+                  window.location.href = "/event";
+                  return;
+                }
                 const base = item.type === "opleiding" ? "/agenda/opleidingen" : "/agenda/events";
                 window.location.href = `${base}/${item.slug}`;
               }}
