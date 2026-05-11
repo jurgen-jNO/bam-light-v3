@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, Menu, X, Mail, Phone } from "lucide-react";
+import { ChevronDown, Menu, X, Mail, Phone, Linkedin, Facebook } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
