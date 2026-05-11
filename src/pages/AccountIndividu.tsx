@@ -70,6 +70,12 @@ const AccountIndividu = () => {
   ]);
 
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [activeTab, setActiveTab] = useState<"gegevens" | "opleidingen">("gegevens");
+
+  const TABS = [
+    { id: "gegevens" as const, label: "Mijn gegevens" },
+    { id: "opleidingen" as const, label: "Mijn opleidingen en events" },
+  ];
 
   const toggleInterest = (i: string) =>
     setInterests((cur) => (cur.includes(i) ? cur.filter((x) => x !== i) : [...cur, i]));
@@ -102,6 +108,28 @@ const AccountIndividu = () => {
           </div>
         </div>
 
+        {/* Subnavigation */}
+        <div className="flex flex-wrap gap-2 border-b-2 border-dashed border-foreground/30 mb-8 -mt-2">
+          {TABS.map((t) => {
+            const on = activeTab === t.id;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setActiveTab(t.id)}
+                className={`px-4 py-2.5 text-xs uppercase tracking-widest font-semibold border-2 border-dashed border-b-0 -mb-[2px] transition-colors ${
+                  on
+                    ? "bg-foreground text-background border-foreground"
+                    : "border-transparent text-foreground/60 hover:text-foreground"
+                }`}
+              >
+                {t.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {activeTab === "gegevens" && (
         <div className="space-y-6">
           {/* Gegevens */}
           <Section title="Persoonlijke gegevens" tag="[ profiel ]">
@@ -211,6 +239,17 @@ const AccountIndividu = () => {
             </button>
           </section>
         </div>
+        )}
+
+        {activeTab === "opleidingen" && (
+          <div className="space-y-6">
+            <Section title="Mijn opleidingen en events" tag="[ overzicht ]">
+              <p className="text-sm text-foreground/60">
+                Hier verschijnt binnenkort een overzicht van je inschrijvingen en gevolgde opleidingen.
+              </p>
+            </Section>
+          </div>
+        )}
       </main>
       <Footer />
 
