@@ -248,16 +248,12 @@ export default function EventDetailDag() {
           <aside className="hidden lg:block">
             <div className="sticky top-6 space-y-4 rounded border border-neutral-300 bg-neutral-50 p-5">
               <div>
-                <p className="text-xs uppercase tracking-wider text-neutral-500">Sessiedatums</p>
-                <ul className="mt-1 space-y-1 text-sm text-neutral-700">
-                  {sessions.map((s) => (
-                    <li key={s.n}>{s.date}</li>
-                  ))}
-                </ul>
+                <p className="text-xs uppercase tracking-wider text-neutral-500">Datum</p>
+                <p className="mt-1 text-sm text-neutral-700">{eventDate}</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-wider text-neutral-500">Uur</p>
-                <p className="text-sm text-neutral-700">09:30 – 13:00</p>
+                <p className="text-sm text-neutral-700">{eventTime}</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-wider text-neutral-500">Locatie</p>
