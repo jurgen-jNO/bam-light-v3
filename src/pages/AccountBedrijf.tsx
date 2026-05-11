@@ -313,6 +313,26 @@ const AccountBedrijf = () => {
             </Section>
           </div>
         )}
+
+        {tab === "events" && (
+          <div className="space-y-6">
+            <Section tag="[ events ]" title="Events van het bedrijf">
+              <p className="text-sm text-foreground/60">
+                Hier verschijnt binnenkort een overzicht van alle event-inschrijvingen van je medewerkers.
+              </p>
+            </Section>
+          </div>
+        )}
+
+        {tab === "opleidingen" && (
+          <div className="space-y-6">
+            <Section tag="[ academy ]" title="Opleidingen van het bedrijf">
+              <p className="text-sm text-foreground/60">
+                Hier verschijnt binnenkort een overzicht van alle opleidingen die je medewerkers volgen.
+              </p>
+            </Section>
+          </div>
+        )}
       </main>
       <Footer />
 
