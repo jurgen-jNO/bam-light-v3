@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft, Save, Trash2, Pencil, Plus, Building2, Users, Briefcase,
-  Archive, Eye, Upload, X, Check, Download,
+  Archive, Eye, Upload, X, Check, Download, Calendar, GraduationCap,
 } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
