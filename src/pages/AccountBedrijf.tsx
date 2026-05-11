@@ -299,9 +299,10 @@ const AccountBedrijf = () => {
                     <span className={`font-medium truncate ${archived ? "text-foreground/50" : "text-foreground"}`}>
                       {v.title}{archived && <span className="ml-2 text-[10px] uppercase tracking-widest text-foreground/40">· gearchiveerd</span>}
                     </span>
-                    <span className={`text-xs tabular-nums ${archived ? "text-foreground/40" : "text-foreground/70"}`}>{v.views}</span>
+                    <span className={`flex items-center gap-1 text-xs tabular-nums ${archived ? "text-foreground/40" : "text-foreground/70"}`}>
+                      <Eye className="w-3.5 h-3.5" />{v.views}
+                    </span>
                     <div className="flex items-center gap-1">
-                      <button className="p-1.5 text-foreground/40" aria-label="Bekijk"><Eye className="w-4 h-4" /></button>
                       <button className="p-1.5 text-foreground/40" aria-label="Bewerk"><Pencil className="w-4 h-4" /></button>
                       <button className="p-1.5 text-foreground/40" aria-label="Archiveer"><Archive className="w-4 h-4" /></button>
                     </div>
