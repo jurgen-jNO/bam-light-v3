@@ -292,17 +292,22 @@ const AccountBedrijf = () => {
                 <div className="grid grid-cols-[1fr_auto_auto] gap-3 px-4 py-2.5 bg-foreground/5 text-[10px] uppercase tracking-widest text-foreground/60 font-semibold">
                   <span>Titel</span><span>Views</span><span></span>
                 </div>
-                {vacancies.map((v) => (
-                  <div key={v.id} className="grid grid-cols-[1fr_auto_auto] gap-3 px-4 py-3 border-t-2 border-dashed border-foreground/20 items-center text-sm">
-                    <span className="text-foreground font-medium truncate">{v.title}</span>
-                    <span className="text-foreground/70 text-xs tabular-nums">{v.views}</span>
+                {vacancies.map((v) => {
+                  const archived = v.status === "gearchiveerd";
+                  return (
+                  <div key={v.id} className={`grid grid-cols-[1fr_auto_auto] gap-3 px-4 py-3 border-t-2 border-dashed border-foreground/20 items-center text-sm ${archived ? "opacity-50" : ""}`}>
+                    <span className={`font-medium truncate ${archived ? "text-foreground/50" : "text-foreground"}`}>
+                      {v.title}{archived && <span className="ml-2 text-[10px] uppercase tracking-widest text-foreground/40">· gearchiveerd</span>}
+                    </span>
+                    <span className={`text-xs tabular-nums ${archived ? "text-foreground/40" : "text-foreground/70"}`}>{v.views}</span>
                     <div className="flex items-center gap-1">
                       <button className="p-1.5 text-foreground/40" aria-label="Bekijk"><Eye className="w-4 h-4" /></button>
                       <button className="p-1.5 text-foreground/40" aria-label="Bewerk"><Pencil className="w-4 h-4" /></button>
                       <button className="p-1.5 text-foreground/40" aria-label="Archiveer"><Archive className="w-4 h-4" /></button>
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </Section>
           </div>
