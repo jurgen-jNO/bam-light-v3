@@ -11,6 +11,7 @@ import Affiliations from "./pages/Affiliations.tsx";
 import Sponsors from "./pages/Sponsors.tsx";
 import WordSponsor from "./pages/WordSponsor.tsx";
 import EventDetail from "./pages/EventDetail.tsx";
+import EventDetailDag from "./pages/EventDetailDag.tsx";
 import Agenda from "./pages/Agenda.tsx";
 import AgendaEvents from "./pages/AgendaEvents.tsx";
 import InschrijvenSolo from "./pages/InschrijvenSolo.tsx";
