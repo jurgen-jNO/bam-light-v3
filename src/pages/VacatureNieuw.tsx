@@ -17,6 +17,7 @@ const VacatureNieuw = () => {
     department: "",
     salary: "",
     contact: "",
+    applyUrl: "",
     email: "",
     startDate: "",
     endDate: "",
