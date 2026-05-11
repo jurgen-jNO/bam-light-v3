@@ -274,12 +274,12 @@ const AccountBedrijf = () => {
               tag="[ binnenkort ]"
               title="Vacaturebeheer"
               action={
-                <button
-                  disabled
-                  className="inline-flex items-center gap-2 px-4 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background cursor-not-allowed"
+                <Link
+                  to="/account/bedrijf/vacature/nieuw"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" /> Nieuwe vacature
-                </button>
+                </Link>
               }
             >
               <p className="text-sm text-foreground/65 mb-5 leading-relaxed">
