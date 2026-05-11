@@ -12,6 +12,7 @@ import Sponsors from "./pages/Sponsors.tsx";
 import WordSponsor from "./pages/WordSponsor.tsx";
 import EventDetail from "./pages/EventDetail.tsx";
 import EventDetailDag from "./pages/EventDetailDag.tsx";
+import DocentDetail from "./pages/DocentDetail.tsx";
 import Agenda from "./pages/Agenda.tsx";
 import AgendaEvents from "./pages/AgendaEvents.tsx";
 import InschrijvenSolo from "./pages/InschrijvenSolo.tsx";
@@ -48,6 +49,7 @@ const App = () => (
           <Route path="/event" element={<EventDetail />} />
           <Route path="/event/brand-strategy" element={<EventDetail />} />
           <Route path="/dagopleiding" element={<EventDetailDag />} />
+          <Route path="/docent" element={<DocentDetail />} />
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/events" element={<AgendaEvents />} />
           <Route path="/inschrijven/solo" element={<InschrijvenSolo />} />
