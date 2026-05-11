@@ -262,7 +262,6 @@ export default function Agenda() {
       <div className="sticky top-0 z-30 border-b border-dashed border-neutral-400 bg-neutral-100">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-3 px-4 py-3 md:flex-row md:flex-wrap md:items-center md:gap-6">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Type</span>
             <FilterButton active={type === "opleidingen"} onClick={() => setType("opleidingen")}>
               Opleidingen
             </FilterButton>
@@ -272,17 +271,6 @@ export default function Agenda() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Status</span>
-            <FilterButton active={status === "upcoming"} onClick={() => updateParams({ status: "upcoming" })}>
-              Upcoming
-            </FilterButton>
-            <FilterButton active={status === "archief"} onClick={() => updateParams({ status: "archief" })}>
-              Archief
-            </FilterButton>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">Subtype</span>
             {SUBTYPES[type].map((s) => (
               <FilterButton
                 key={s.value}
@@ -293,6 +281,32 @@ export default function Agenda() {
               </FilterButton>
             ))}
           </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <select
+              value={domein}
+              onChange={(e) => updateParams({ domein: e.target.value || null })}
+              className="rounded border border-neutral-300 bg-white px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-700"
+            >
+              <option value="">Alle interessedomeinen</option>
+              {INTEREST_DOMAINS.map((d) => (
+                <option key={d} value={d}>
+                  {d}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <button
+            onClick={() =>
+              updateParams({ status: status === "archief" ? null : "archief" })
+            }
+            className={`ml-auto text-xs font-medium underline-offset-4 hover:underline ${
+              status === "archief" ? "text-neutral-900" : "text-neutral-500"
+            }`}
+          >
+            {status === "archief" ? "Archief verbergen" : "Archief tonen"}
+          </button>
         </div>
       </div>
 
