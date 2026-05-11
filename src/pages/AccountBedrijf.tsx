@@ -347,9 +347,29 @@ const AccountBedrijf = () => {
             </Section>
 
             <Section tag="[ events ]" title="Event deelnames">
-              <p className="text-sm text-foreground/60">
-                Hier verschijnt binnenkort een overzicht van alle event-inschrijvingen van je medewerkers.
-              </p>
+              <div className="border-2 border-dashed border-foreground/30">
+                <div className="grid grid-cols-[1fr_1.5fr_auto] gap-3 px-4 py-2.5 bg-foreground/5 text-[10px] uppercase tracking-widest text-foreground/60 font-semibold">
+                  <span>Deelnemer</span><span>Event</span><span>Datum</span>
+                </div>
+                {[
+                  { name: "Lieselot Janssens", event: "Marketing Day 2026", date: "12 mei 2026" },
+                  { name: "Mathias De Cock", event: "BAM Awards Night", date: "28 mei 2026" },
+                  { name: "Noor El Amrani", event: "Future Marketeers Congress", date: "14 jun 2026" },
+                  { name: "Lieselot Janssens", event: "BAM Summer BBQ", date: "27 jun 2026" },
+                  { name: "Mathias De Cock", event: "Brand Strategy Masterclass", date: "9 sep 2026" },
+                  { name: "Noor El Amrani", event: "Marketing Day 2026", date: "12 mei 2026" },
+                  { name: "Lieselot Janssens", event: "Content Strategy Bootcamp", date: "3 okt 2026" },
+                  { name: "Mathias De Cock", event: "Looking at 2030 — Keynote", date: "21 okt 2026" },
+                  { name: "Noor El Amrani", event: "BAM Awards Night", date: "28 mei 2026" },
+                  { name: "Lieselot Janssens", event: "Future Marketeers Congress", date: "14 jun 2026" },
+                ].map((p, i) => (
+                  <div key={i} className="grid grid-cols-[1fr_1.5fr_auto] gap-3 px-4 py-3 border-t-2 border-dashed border-foreground/20 items-center text-sm">
+                    <span className="text-foreground font-medium truncate">{p.name}</span>
+                    <span className="text-foreground/70 truncate">{p.event}</span>
+                    <span className="text-foreground/60 text-xs tabular-nums whitespace-nowrap">{p.date}</span>
+                  </div>
+                ))}
+              </div>
             </Section>
           </div>
         )}
