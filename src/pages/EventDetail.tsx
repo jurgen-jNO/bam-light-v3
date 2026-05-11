@@ -209,7 +209,7 @@ export default function EventDetail() {
             {/* Block 12 — Contactpersoon */}
             <section>
               <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Vragen of meer informatie?</h2>
-              <div className="flex items-center gap-4 rounded border border-neutral-300 p-4">
+              <a href="/contact" className="flex items-center gap-4 rounded border border-neutral-300 p-4 transition-colors hover:border-neutral-900 hover:bg-neutral-50">
                 <div className="h-[60px] w-[60px] shrink-0 rounded-full border border-dashed border-neutral-400 bg-neutral-200" />
                 <div className="text-sm">
                   <p className="font-semibold text-neutral-900">Nathalie Prieto</p>
@@ -217,10 +217,10 @@ export default function EventDetail() {
                   <p className="flex items-center gap-1 text-neutral-600"><Phone className="h-3 w-3" /> +32 2 000 00 00</p>
                   <p className="flex items-center gap-1 text-neutral-600">
                     <Mail className="h-3 w-3" />
-                    <a href="mailto:nathalie@bam.be" className="underline">nathalie@bam.be</a>
+                    <span className="underline">nathalie@bam.be</span>
                   </p>
                 </div>
-              </div>
+              </a>
             </section>
           </main>
 
