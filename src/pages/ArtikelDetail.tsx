@@ -11,9 +11,6 @@ import {
   Twitter,
   Link2,
   Mail,
-  Pencil,
-  Trash2,
-  Plus,
   Megaphone,
   ArrowRight,
 } from "lucide-react";
