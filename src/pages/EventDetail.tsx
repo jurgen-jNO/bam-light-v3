@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, Menu, X, Mail, Phone } from "lucide-react";
+import { ChevronDown, Menu, X, Mail, Phone, Linkedin, Facebook } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
@@ -249,6 +249,34 @@ export default function EventDetail() {
                 Inschrijven ›
               </button>
               <p className="text-center text-xs text-neutral-500">Contacteer Nathalie Prieto</p>
+            </div>
+            <div className="mt-4 flex items-center justify-end gap-2">
+              <span className="mr-1 text-xs uppercase tracking-wider text-neutral-500">Deel</span>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Deel op LinkedIn"
+                className="flex h-8 w-8 items-center justify-center rounded border border-neutral-300 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900"
+              >
+                <Linkedin className="h-4 w-4" />
+              </a>
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Deel op Facebook"
+                className="flex h-8 w-8 items-center justify-center rounded border border-neutral-300 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900"
+              >
+                <Facebook className="h-4 w-4" />
+              </a>
+              <a
+                href={`mailto:?subject=${encodeURIComponent("Opleiding - Content Marketing")}&body=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`}
+                aria-label="Deel via e-mail"
+                className="flex h-8 w-8 items-center justify-center rounded border border-neutral-300 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900"
+              >
+                <Mail className="h-4 w-4" />
+              </a>
             </div>
           </aside>
         </div>
