@@ -68,6 +68,10 @@ function AgendaCard({ item, onInteresse }: { item: AgendaItem; onInteresse: (ite
     new Date(item.early_bird_vervaldatum) > new Date();
 
   const goDetail = () => {
+    if (item.slug === "marketingstrategie-2026") {
+      navigate("/event");
+      return;
+    }
     const base = item.type === "opleiding" ? "/agenda/opleidingen" : "/agenda/events";
     navigate(`${base}/${item.slug}`);
   };
