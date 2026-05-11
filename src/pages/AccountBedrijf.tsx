@@ -289,8 +289,8 @@ const AccountBedrijf = () => {
               </p>
 
               <div className="border-2 border-dashed border-foreground/30 opacity-70 pointer-events-none">
-                <div className="grid grid-cols-[1fr_auto_auto_auto] gap-3 px-4 py-2.5 bg-foreground/5 text-[10px] uppercase tracking-widest text-foreground/60 font-semibold">
-                  <span>Titel</span><span>Live datum</span><span>Views</span><span></span>
+                <div className="grid grid-cols-[1.4fr_1fr_auto_auto] gap-3 px-4 py-2.5 bg-foreground/5 text-[10px] uppercase tracking-widest text-foreground/60 font-semibold">
+                  <span className="text-left">Titel</span><span className="text-left">Live datum</span><span>Views</span><span></span>
                 </div>
                 {vacancies.map((v, i) => {
                   const archived = v.status === "gearchiveerd";
