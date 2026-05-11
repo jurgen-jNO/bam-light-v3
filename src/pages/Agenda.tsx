@@ -346,6 +346,10 @@ export default function Agenda() {
                   window.location.href = "/event";
                   return;
                 }
+                if (item.slug === "brand-strategy-2026") {
+                  window.location.href = "/event/brand-strategy";
+                  return;
+                }
                 const base = item.type === "opleiding" ? "/agenda/opleidingen" : "/agenda/events";
                 window.location.href = `${base}/${item.slug}`;
               }}
