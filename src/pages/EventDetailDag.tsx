@@ -24,7 +24,7 @@ const docenten = Array.from({ length: 6 }).map((_, i) => ({
   company: "Company name",
 }));
 
-export default function EventDetail() {
+export default function EventDetailDag() {
   const [open, setOpen] = useState<number | null>(0);
   const [modal, setModal] = useState(false);
   const [nav, setNav] = useState(false);
