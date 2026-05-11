@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowLeft, Save, Trash2, Pencil, Plus, Building2, Users, Briefcase,
-  Archive, Eye, Upload, X, Check, Download,
+  Archive, Eye, Upload, X, Check, Download, Calendar, GraduationCap,
 } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
@@ -10,7 +10,7 @@ import { inputCls, Field, Grid2 } from "@/components/inschrijven/FlowShell";
 import { downloadMedewerkersTemplate } from "@/lib/downloadTemplate";
 import { toast } from "sonner";
 
-type Tab = "bedrijf" | "medewerkers" | "vacatures";
+type Tab = "bedrijf" | "medewerkers" | "vacatures" | "events" | "opleidingen";
 
 interface Employee { id: string; name: string; role: string; email: string; gsm: string; taal: "NL" | "FR"; }
 interface Vacancy { id: string; title: string; location: string; status: "actief" | "concept" | "gearchiveerd"; views: number; }
@@ -126,6 +126,8 @@ const AccountBedrijf = () => {
           <TabBtn active={tab === "vacatures"} onClick={() => setTab("vacatures")} icon={Briefcase}>
             Vacatures <span className="text-foreground/40">({vacancies.length})</span>
           </TabBtn>
+          <TabBtn active={tab === "events"} onClick={() => setTab("events")} icon={Calendar}>Events</TabBtn>
+          <TabBtn active={tab === "opleidingen"} onClick={() => setTab("opleidingen")} icon={GraduationCap}>Opleidingen</TabBtn>
         </div>
 
         {/* === BEDRIJF === */}
@@ -308,6 +310,26 @@ const AccountBedrijf = () => {
                   </div>
                 ))}
               </div>
+            </Section>
+          </div>
+        )}
+
+        {tab === "events" && (
+          <div className="space-y-6">
+            <Section tag="[ events ]" title="Events van het bedrijf">
+              <p className="text-sm text-foreground/60">
+                Hier verschijnt binnenkort een overzicht van alle event-inschrijvingen van je medewerkers.
+              </p>
+            </Section>
+          </div>
+        )}
+
+        {tab === "opleidingen" && (
+          <div className="space-y-6">
+            <Section tag="[ academy ]" title="Opleidingen van het bedrijf">
+              <p className="text-sm text-foreground/60">
+                Hier verschijnt binnenkort een overzicht van alle opleidingen die je medewerkers volgen.
+              </p>
             </Section>
           </div>
         )}
