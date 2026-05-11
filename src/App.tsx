@@ -30,6 +30,7 @@ import LoginBedrijf from "./pages/LoginBedrijf.tsx";
 import AccountIndividu from "./pages/AccountIndividu.tsx";
 import AccountBedrijf from "./pages/AccountBedrijf.tsx";
 import VacatureNieuw from "./pages/VacatureNieuw.tsx";
+import VacatureDetail from "./pages/VacatureDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -69,6 +70,8 @@ const App = () => (
           <Route path="/account/individu" element={<AccountIndividu />} />
           <Route path="/account/bedrijf" element={<AccountBedrijf />} />
           <Route path="/account/bedrijf/vacature/nieuw" element={<VacatureNieuw />} />
+          <Route path="/vacature" element={<VacatureDetail />} />
+          <Route path="/vacature/:id" element={<VacatureDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
