@@ -252,32 +252,22 @@ export default function EventDetail() {
             </div>
 
             {/* Aanwezigheid / capaciteit */}
-            <div className="mt-4 space-y-4 rounded border border-neutral-300 bg-white p-5">
-              <div>
-                <p className="text-xs uppercase tracking-wider text-neutral-500">Andere leden aanwezig</p>
-                <div className="mt-2 flex items-center">
-                  <div className="flex -space-x-2">
-                    {Array.from({ length: 6 }).map((_, i) => (
-                      <div
-                        key={i}
-                        className="h-8 w-8 rounded-full border-2 border-white bg-neutral-200 ring-1 ring-neutral-300"
-                        title={`Lid ${i + 1}`}
-                      />
-                    ))}
-                  </div>
-                  <span className="ml-3 text-xs text-neutral-600">+12 anderen</span>
+            <div className="mt-3 rounded border border-neutral-300 bg-white p-3 text-xs">
+              <div className="flex items-center justify-between">
+                <div className="flex -space-x-1.5">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <div
+                      key={i}
+                      className="h-6 w-6 rounded-full border border-white bg-neutral-200 ring-1 ring-neutral-300"
+                      title={`Lid ${i + 1}`}
+                    />
+                  ))}
                 </div>
+                <span className="text-neutral-600">+12 leden</span>
               </div>
-              <hr className="border-neutral-200" />
-              <div className="grid grid-cols-2 gap-3 text-center">
-                <div className="rounded border border-neutral-200 bg-neutral-50 p-3">
-                  <p className="text-xl font-semibold text-neutral-900">18</p>
-                  <p className="text-[11px] uppercase tracking-wider text-neutral-500">Ingeschreven</p>
-                </div>
-                <div className="rounded border border-neutral-200 bg-neutral-50 p-3">
-                  <p className="text-xl font-semibold text-neutral-900">7</p>
-                  <p className="text-[11px] uppercase tracking-wider text-neutral-500">Vrije plaatsen</p>
-                </div>
+              <div className="mt-2 flex justify-between border-t border-neutral-200 pt-2 text-neutral-700">
+                <span><strong className="text-neutral-900">18</strong> ingeschreven</span>
+                <span><strong className="text-neutral-900">7</strong> vrij</span>
               </div>
             </div>
 
