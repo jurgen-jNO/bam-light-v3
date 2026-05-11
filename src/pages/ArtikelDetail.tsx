@@ -104,20 +104,6 @@ const WireBox = ({
   </div>
 );
 
-const AdminToolbar = () => (
-  <div className="flex items-center gap-2 flex-wrap">
-    <button className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] uppercase tracking-widest font-semibold border-2 border-dashed border-foreground/40 hover:bg-foreground/5">
-      <Plus className="w-3 h-3" /> Nieuw artikel
-    </button>
-    <button className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] uppercase tracking-widest font-semibold border-2 border-dashed border-foreground/40 hover:bg-foreground/5">
-      <Pencil className="w-3 h-3" /> Editeren
-    </button>
-    <button className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] uppercase tracking-widest font-semibold border-2 border-dashed border-destructive/60 text-destructive hover:bg-destructive/5">
-      <Trash2 className="w-3 h-3" /> Verwijderen
-    </button>
-  </div>
-);
-
 const ArtikelDetail = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
