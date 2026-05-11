@@ -103,7 +103,7 @@ export default function EventDetailDag() {
 
             {/* Block 02 — Title */}
             <section>
-              <h1 className="text-4xl font-bold text-neutral-900">Opleiding - Content Marketing</h1>
+              <h1 className="text-4xl font-bold text-neutral-900">Dagopleiding - Content Marketing</h1>
               <p className="mt-2 text-lg text-neutral-500">2026</p>
             </section>
 
