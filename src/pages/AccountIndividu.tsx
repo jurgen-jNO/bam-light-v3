@@ -248,7 +248,7 @@ const AccountIndividu = () => {
                 Hier verschijnt binnenkort een overzicht van je gevolgde en geplande opleidingen.
               </p>
             </Section>
-            <section className="border-2 border-dashed border-foreground/20 bg-foreground/[0.05] p-6">
+            <section className="w-4/5 ml-auto border-2 border-dashed border-foreground/20 bg-foreground/[0.05] p-6">
               <p className="text-[10px] uppercase tracking-widest text-foreground/40 mb-1">[ certificaten ]</p>
               <h2 className="text-lg font-bold text-foreground/75 mb-2">Mijn certificaten</h2>
               <p className="text-sm text-foreground/50">
