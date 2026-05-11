@@ -67,7 +67,7 @@ const AccountBedrijf = () => {
   const [vacancies] = useState<Vacancy[]>([
     { id: "1", title: "Senior Brand Designer", location: "Gent · Hybride", status: "actief", views: 312 },
     { id: "2", title: "Junior Content Strateeg", location: "Gent · On-site", status: "actief", views: 98 },
-    { id: "3", title: "Stage — Social Media", location: "Gent", status: "concept", views: 0 },
+    { id: "3", title: "Stage — Social Media", location: "Gent", status: "gearchiveerd", views: 0 },
     { id: "4", title: "Account Manager", location: "Gent · Hybride", status: "gearchiveerd", views: 540 },
   ]);
 
