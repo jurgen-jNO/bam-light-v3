@@ -23,7 +23,7 @@ const artikel = {
     "Van AI-gedreven campagnes tot een hernieuwde focus op craft: we bekijken hoe sterke merken in een verzadigde markt opnieuw onderscheidend worden. Een diepgaande analyse met inzichten van vier toonaangevende makers.",
   publishedAt: "2026-05-08",
   readingTime: "8 min lezen",
-  category: "Strategie",
+  category: "Brand Building",
   cta: "Word lid van BAM",
   ctaUrl: "/word-lid",
   author: {
