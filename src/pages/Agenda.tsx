@@ -88,6 +88,10 @@ function AgendaCard({ item, onInteresse }: { item: AgendaItem; onInteresse: (ite
       navigate("/event");
       return;
     }
+    if (item.slug === "brand-strategy-2026") {
+      navigate("/event/brand-strategy");
+      return;
+    }
     const base = item.type === "opleiding" ? "/agenda/opleidingen" : "/agenda/events";
     navigate(`${base}/${item.slug}`);
   };
@@ -340,6 +344,10 @@ export default function Agenda() {
               onSelect={(item) => {
                 if (item.slug === "marketingstrategie-2026") {
                   window.location.href = "/event";
+                  return;
+                }
+                if (item.slug === "brand-strategy-2026") {
+                  window.location.href = "/event/brand-strategy";
                   return;
                 }
                 const base = item.type === "opleiding" ? "/agenda/opleidingen" : "/agenda/events";
