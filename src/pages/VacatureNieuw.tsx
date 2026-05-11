@@ -8,6 +8,7 @@ import { toast } from "sonner";
 
 const VacatureNieuw = () => {
   const navigate = useNavigate();
+  const [lang, setLang] = useState<"NL" | "FR">("NL");
   const [form, setForm] = useState({
     title: "",
     type: "Voltijds",
@@ -69,8 +70,28 @@ const VacatureNieuw = () => {
 
         <form onSubmit={onSubmit} className="space-y-6">
           <section className="border-2 border-dashed border-foreground/30 bg-foreground/[0.02] p-6">
-            <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-1">[ basis ]</p>
-            <h2 className="text-lg font-bold text-foreground mb-5">Vacature info</h2>
+            <div className="flex items-start justify-between gap-4 mb-5">
+              <div>
+                <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-1">[ basis ]</p>
+                <h2 className="text-lg font-bold text-foreground">Vacature info</h2>
+              </div>
+              <div className="inline-flex border-2 border-dashed border-foreground/40 text-[10px] uppercase tracking-widest font-bold">
+                {(["NL", "FR"] as const).map((l) => (
+                  <button
+                    key={l}
+                    type="button"
+                    onClick={() => setLang(l)}
+                    className={`px-3 py-1.5 transition-colors ${
+                      lang === l
+                        ? "bg-foreground text-background"
+                        : "text-foreground/60 hover:text-foreground"
+                    }`}
+                  >
+                    {l}
+                  </button>
+                ))}
+              </div>
+            </div>
 
             <Grid2>
               <Field label="Titel *">
