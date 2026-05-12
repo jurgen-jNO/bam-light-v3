@@ -248,12 +248,6 @@ const AccountIndividu = () => {
             </button>
           </Section>
 
-          {/* 2FA Question */}
-          <section className="border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
-            <p className="text-[10px] uppercase tracking-widest text-destructive/80 mb-1">[ extra beveiliging ]</p>
-            <h2 className="text-lg font-bold text-foreground">2FA of mail code toevoegen?</h2>
-          </section>
-
           {/* Danger zone */}
           <section className="border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
             <p className="text-[10px] uppercase tracking-widest text-destructive/80 mb-1">[ danger zone ]</p>

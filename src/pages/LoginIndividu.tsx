@@ -47,6 +47,11 @@ const LoginIndividu = () => {
             <LogIn className="w-3.5 h-3.5" /> Inloggen
           </button>
         </form>
+
+        <section className="mt-8 border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
+          <p className="text-[10px] uppercase tracking-widest text-destructive/80 mb-1">[ extra beveiliging ]</p>
+          <h2 className="text-lg font-bold text-foreground">2FA of mail code toevoegen?</h2>
+        </section>
       </main>
       <Footer />
     </div>
