@@ -29,6 +29,7 @@ import LoginIndividu from "./pages/LoginIndividu.tsx";
 import LoginBedrijf from "./pages/LoginBedrijf.tsx";
 import AccountIndividu from "./pages/AccountIndividu.tsx";
 import AccountBedrijf from "./pages/AccountBedrijf.tsx";
+import Vacatures from "./pages/Vacatures.tsx";
 import VacatureNieuw from "./pages/VacatureNieuw.tsx";
 import VacatureDetail from "./pages/VacatureDetail.tsx";
 import ArtikelDetail from "./pages/ArtikelDetail.tsx";
@@ -74,6 +75,7 @@ const App = () => (
           <Route path="/account/individu" element={<AccountIndividu />} />
           <Route path="/account/bedrijf" element={<AccountBedrijf />} />
           <Route path="/account/bedrijf/vacature/nieuw" element={<VacatureNieuw />} />
+          <Route path="/vacatures" element={<Vacatures />} />
           <Route path="/vacature" element={<VacatureDetail />} />
           <Route path="/vacature/:id" element={<VacatureDetail />} />
           <Route path="/artikel" element={<ArtikelDetail />} />
