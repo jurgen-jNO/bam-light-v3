@@ -96,6 +96,7 @@ interface FlowShellProps {
   successCtaLabel?: string;
   successSecondaryHref?: string;
   successSecondaryLabel?: string;
+  bottomContent?: ReactNode;
 }
 
 export const FlowShell = ({
@@ -109,6 +110,7 @@ export const FlowShell = ({
   successCtaLabel = "Terug naar home",
   successSecondaryHref,
   successSecondaryLabel,
+  bottomContent,
 }: FlowShellProps) => {
   const last = steps[steps.length - 1].n;
 
@@ -232,6 +234,7 @@ export const FlowShell = ({
             )}
           </div>
         </div>
+        {bottomContent}
       </main>
       <Footer />
     </div>

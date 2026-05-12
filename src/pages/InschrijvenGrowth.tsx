@@ -23,6 +23,14 @@ const InschrijvenGrowth = () => {
       successCtaHref="/onboarding/growth"
       successSecondaryLabel="Terug naar home"
       successSecondaryHref="/"
+      bottomContent={
+        step === 2 && (
+          <div className="mt-8 border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
+            <p className="text-[10px] uppercase tracking-widest text-destructive/80 mb-1">[ betaalmethode ]</p>
+            <h2 className="text-lg font-bold text-foreground">Enkel via factuur of ook via online betaling?</h2>
+          </div>
+        )
+      }
       successContent={
         <>
           <p className="text-sm text-foreground/70 leading-relaxed mb-6">
@@ -98,11 +106,6 @@ const InschrijvenGrowth = () => {
             <div className="flex justify-between text-sm text-foreground/80 py-1"><span>Pro rata aandeel (vb. 6/12)</span><span>€ 1.557,50</span></div>
             <div className="flex justify-between text-sm text-foreground/80 py-1"><span>BTW (21%)</span><span>€ 327,08</span></div>
             <div className="flex justify-between text-sm font-semibold text-foreground border-t border-dashed border-foreground/30 pt-2 mt-2"><span>Totaal incl. BTW</span><span>€ 1.884,58</span></div>
-          </div>
-
-          <div className="mt-6 border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
-            <p className="text-[10px] uppercase tracking-widest text-destructive/80 mb-1">[ betaalmethode ]</p>
-            <h2 className="text-lg font-bold text-foreground">Enkel via factuur of ook via online betaling?</h2>
           </div>
         </Section>
       )}
