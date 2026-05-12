@@ -211,6 +211,22 @@ const AccountBedrijf = () => {
                 <Save className="w-3.5 h-3.5" /> Wachtwoord updaten
               </button>
             </Section>
+
+            {/* Danger zone */}
+            <section className="border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
+              <p className="text-[10px] uppercase tracking-widest text-destructive/80 mb-1">[ danger zone ]</p>
+              <h2 className="text-lg font-bold text-foreground mb-2">Account verwijderen</h2>
+              <p className="text-sm text-foreground/65 mb-4">
+                Verwijder je account en alle gekoppelde data permanent. Dit kan niet ongedaan worden gemaakt.
+              </p>
+              <button
+                type="button"
+                onClick={() => toast.info("Binnenkort beschikbaar")}
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold border-2 border-dashed border-destructive/60 text-destructive hover:bg-destructive/10 transition-colors"
+              >
+                <Trash2 className="w-3.5 h-3.5" /> Account verwijderen
+              </button>
+            </section>
           </div>
         )}
 
