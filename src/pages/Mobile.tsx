@@ -158,10 +158,10 @@ const Mobile = () => {
           <h2 className="text-lg font-semibold text-foreground mb-2">Job Board</h2>
           <p className="text-sm text-muted-foreground mb-4">Bekijk de laatste marketing vacatures</p>
           <div className="flex justify-center gap-4">
-            <a href="/vacature" className="text-sm text-primary hover:underline font-medium">
+            <a href="/vacature" className="text-sm text-foreground underline hover:text-muted-foreground font-medium">
               Overzicht
             </a>
-            <a href="/vacature/1" className="text-sm text-primary hover:underline font-medium">
+            <a href="/vacature/1" className="text-sm text-foreground underline hover:text-muted-foreground font-medium">
               Detail
             </a>
           </div>

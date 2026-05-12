@@ -24,10 +24,10 @@ const Index = () => {
               Bekijk de laatste marketing vacatures
             </p>
             <div className="flex gap-4">
-              <Link to="/vacature" className="text-sm text-primary hover:underline font-medium">
+              <Link to="/vacature" className="text-sm text-foreground underline hover:text-muted-foreground font-medium">
                 Overzicht
               </Link>
-              <Link to="/vacature/1" className="text-sm text-primary hover:underline font-medium">
+              <Link to="/vacature/1" className="text-sm text-foreground underline hover:text-muted-foreground font-medium">
                 Detail
               </Link>
             </div>
