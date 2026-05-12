@@ -16,17 +16,22 @@ const Index = () => {
               Wireframe — klik op de navigatie-items om de dropdown menu's te zien
             </p>
           </div>
-          <Link
-            to="/vacature"
-            className="col-span-1 border-2 border-dashed border-border rounded-lg p-8 text-center flex flex-col items-center justify-center hover:bg-foreground/5 transition-colors"
-          >
+          <div className="col-span-1 border-2 border-dashed border-border rounded-lg p-8 text-center flex flex-col items-center justify-center">
             <h2 className="text-lg font-semibold text-foreground mb-2">
               Job Board
             </h2>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground mb-4">
               Bekijk de laatste marketing vacatures
             </p>
-          </Link>
+            <div className="flex gap-4">
+              <Link to="/vacature" className="text-sm text-primary hover:underline font-medium">
+                Overzicht
+              </Link>
+              <Link to="/vacature/1" className="text-sm text-primary hover:underline font-medium">
+                Detail
+              </Link>
+            </div>
+          </div>
         </div>
       </main>
       <Footer />
