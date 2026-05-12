@@ -299,7 +299,7 @@ const ArtikelDetail = () => {
               <div>
                 <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-1">[ cta ]</p>
                 <h3 className="text-xl font-bold text-foreground">
-                  Wil je meer artikels zoals dit?
+                  Ontvang onze nieuwsbrief
                 </h3>
                 <p className="text-sm text-foreground/60 mt-1">
                   Sluit je aan bij de community van BAM en ontvang elke week nieuwe inzichten.
@@ -309,7 +309,7 @@ const ArtikelDetail = () => {
                 to={artikel.ctaUrl}
                 className="inline-flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85"
               >
-                {artikel.cta} <ArrowRight className="w-3.5 h-3.5" />
+                Ontvang onze nieuwsbrief <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
