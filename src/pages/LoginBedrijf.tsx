@@ -31,7 +31,12 @@ const LoginBedrijf = () => {
             <input type="email" className={inputCls} placeholder="naam@bedrijf.be" />
           </label>
           <label className="block">
-            <span className="block text-[10px] uppercase tracking-widest text-foreground/50 mb-1.5">Wachtwoord</span>
+            <div className="flex justify-between items-center mb-1.5">
+              <span className="block text-[10px] uppercase tracking-widest text-foreground/50">Wachtwoord</span>
+              <a href="#forgot" className="text-[10px] uppercase tracking-widest text-foreground/60 hover:text-foreground transition-colors underline decoration-foreground/30 underline-offset-4">
+                Wachtwoord vergeten?
+              </a>
+            </div>
             <input type="password" className={inputCls} placeholder="••••••••" />
           </label>
           <button
