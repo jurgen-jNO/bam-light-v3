@@ -157,10 +157,10 @@ const BamMagazineLocked = () => {
               </div>
             </div>
 
-            {/* LOCKED CONTENT — fade out */}
+            {/* LOCKED CONTENT — fade out into inline login block */}
             <div className="relative">
               <div
-                className="space-y-8 pointer-events-none select-none"
+                className="space-y-8 pointer-events-none select-none max-h-[480px] overflow-hidden"
                 aria-hidden="true"
               >
                 {artikel.blocks.map((b, i) => {
@@ -184,8 +184,38 @@ const BamMagazineLocked = () => {
                   return null;
                 })}
               </div>
-              {/* Fade gradient */}
-              <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-b from-transparent via-background/85 to-background pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-b from-transparent via-background/90 to-background pointer-events-none" />
+            </div>
+
+            {/* Inline login / membership block */}
+            <div className="mt-2 border-2 border-dashed border-foreground/40 bg-foreground/[0.03] p-8 md:p-10 text-center">
+              <div className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest font-semibold text-foreground/50 mb-3">
+                <Lock className="w-3 h-3" /> Members only
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 leading-tight">
+                Lees verder als BAM-lid
+              </h2>
+              <p className="text-sm text-foreground/70 leading-relaxed mb-6 max-w-md mx-auto">
+                Dit artikel is exclusief voor leden. Log in om verder te lezen, of word vandaag
+                nog lid van de BAM-community.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  to="/word-lid"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85"
+                >
+                  Word lid van BAM <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link
+                  to="/login"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs uppercase tracking-widest font-semibold border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5"
+                >
+                  Inloggen <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+              <p className="text-[10px] uppercase tracking-widest text-foreground/40 mt-6">
+                [ login / membership block ]
+              </p>
             </div>
           </article>
 
