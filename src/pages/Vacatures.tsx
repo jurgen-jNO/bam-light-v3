@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, MapPin, Building2, Briefcase } from "lucide-react";
+import { Search, MapPin, Building2, Briefcase, Layout, Globe, Monitor, Zap, Terminal } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
@@ -15,8 +15,7 @@ const mockVacatures = [
     location: "Gent",
     company: {
       name: "Onshore.be",
-      logo: "O",
-      color: "bg-blue-100 text-blue-700",
+      icon: Layout,
     },
   },
   {
@@ -25,8 +24,7 @@ const mockVacatures = [
     location: "Brussel",
     company: {
       name: "TechCorp",
-      logo: "T",
-      color: "bg-green-100 text-green-700",
+      icon: Globe,
     },
   },
   {
@@ -35,8 +33,7 @@ const mockVacatures = [
     location: "Antwerpen",
     company: {
       name: "Creative Agency",
-      logo: "C",
-      color: "bg-purple-100 text-purple-700",
+      icon: Monitor,
     },
   },
   {
@@ -45,8 +42,7 @@ const mockVacatures = [
     location: "Leuven",
     company: {
       name: "Growth Co",
-      logo: "G",
-      color: "bg-orange-100 text-orange-700",
+      icon: Zap,
     },
   },
   {
@@ -55,8 +51,7 @@ const mockVacatures = [
     location: "Gent",
     company: {
       name: "ScaleUp",
-      logo: "S",
-      color: "bg-red-100 text-red-700",
+      icon: Terminal,
     },
   },
 ];
@@ -122,8 +117,8 @@ const Vacatures = () => {
                 <div className="flex flex-col md:flex-row gap-5 items-start md:items-center justify-between">
                   <div className="flex items-center gap-5">
                     {/* Placeholder Logo */}
-                    <div className={`w-16 h-16 shrink-0 rounded-lg flex items-center justify-center text-2xl font-bold ${job.company.color}`}>
-                      {job.company.logo}
+                    <div className="w-16 h-16 shrink-0 rounded-lg flex items-center justify-center border-2 border-dashed border-border bg-background text-muted-foreground">
+                      <job.company.icon className="w-8 h-8" />
                     </div>
                     
                     <div>
@@ -146,7 +141,7 @@ const Vacatures = () => {
                   </div>
                   
                   <div className="w-full md:w-auto mt-2 md:mt-0">
-                    <Button asChild className="w-full md:w-auto">
+                    <Button asChild variant="outline" className="w-full md:w-auto border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background rounded-none font-medium">
                       <Link to={`/vacature/${job.id}`}>
                         Details
                       </Link>
