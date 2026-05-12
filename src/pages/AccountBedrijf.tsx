@@ -111,7 +111,7 @@ const AccountBedrijf = () => {
             <div className="border-2 border-dashed border-foreground/40 px-4 py-2.5">
               <p className="text-[10px] uppercase tracking-widest text-foreground/50">Lidmaatschap</p>
               <p className="text-sm font-bold text-foreground flex items-center gap-2">
-                <Check className="w-3.5 h-3.5" /> Growth · actief
+                <Check className="w-3.5 h-3.5" /> Growth · actief · tot 14/05/27
               </p>
             </div>
           </div>
