@@ -112,6 +112,10 @@ const VacatureDetail = () => {
             </Block>
 
             <Block tag="[ takenpakket ]" title="Verantwoordelijkheden">
+              <p className="text-sm text-foreground/80 leading-relaxed mb-4">
+                Als senior brand designer ben je het creatieve geweten van het team en bewaak je de visuele samenhang doorheen elk project.
+                Je werkt nauw samen met strategen, copywriters en developers om merken tot leven te brengen — van eerste schets tot finale uitrol.
+              </p>
               <Bullets items={vacature.responsibilities} />
             </Block>
 
