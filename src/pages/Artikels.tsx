@@ -52,15 +52,13 @@ const Artikels = () => {
       <MainNavigation />
 
       <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-10">
-        
-        {/* Page Header */}
-        <div className="mb-12 border-b-4 border-foreground pb-6">
-          <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter text-foreground mb-4">
-            BAM Nieuws
-          </h1>
-          <p className="text-xl text-foreground/60 max-w-2xl">
-            Het laatste nieuws, diepgaande analyses en expert views uit de Belgische marketing community.
-          </p>
+        {/* Wireframe header */}
+        <div className="border-b-2 border-dashed border-foreground/30 pb-5 mb-8 flex items-end justify-between flex-wrap gap-4">
+          <div>
+            <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">
+              [ wireframe — artikels overzicht ]
+            </p>
+          </div>
         </div>
 
         {/* Top Section: Hero + Trending Sidebar */}
