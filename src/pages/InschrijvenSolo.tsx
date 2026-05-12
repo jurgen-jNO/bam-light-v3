@@ -297,6 +297,11 @@ const InschrijvenSolo = () => {
                   <span>Totaal incl. BTW</span><span>€ 574,75</span>
                 </div>
               </div>
+
+              <div className="mt-6 border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
+                <p className="text-[10px] uppercase tracking-widest text-destructive/80 mb-1">[ betaalmethode ]</p>
+                <h2 className="text-lg font-bold text-foreground">Enkel via factuur of ook via online betaling?</h2>
+              </div>
             </Section>
           )}
 
