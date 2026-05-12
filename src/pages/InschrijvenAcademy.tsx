@@ -101,15 +101,36 @@ const InschrijvenAcademy = () => {
 
       {step === 5 && (
         <Section title="Bevestig & verstuur">
-          <div className="space-y-4 mb-6">
-            <Summary title="Persoon" items={[["Naam", "—"], ["E-mail", "—"]]} />
-            <Summary title="Onderwijs" items={[["Instelling", "—"], ["Functie", "—"]]} />
-            <Summary title="Facturatie" items={[["Bedrag", "€ 160,00 incl. BTW"]]} />
+          <div className="mb-10">
+            <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-3">[ te bevestigen ]</p>
+            <div className="space-y-4 opacity-75">
+              <Summary title="Persoon" items={[["Naam", "—"], ["E-mail", "—"]]} />
+              <Summary title="Onderwijs" items={[["Instelling", "—"], ["Functie", "—"]]} />
+              <Summary title="Facturatie" items={[["Bedrag", "€ 160,00 incl. BTW"]]} />
+            </div>
           </div>
-          <div className="space-y-3 border-t border-dashed border-foreground/30 pt-5">
-            <Checkbox checked={false} onChange={() => {}} label="Ja, ik wil de maandelijkse BAM nieuwsbrief ontvangen." />
-            <Checkbox checked={false} onChange={() => {}} label="Ik ben geïnteresseerd om gastdocent te zijn bij BAM Academy." />
-            <Checkbox checked={false} onChange={() => {}} label={<>Ik ga akkoord met de <a href="#terms" className="underline">algemene voorwaarden</a>. *</>} />
+
+          <div className="border-t-2 border-dashed border-foreground/30 pt-8">
+            <p className="text-[10px] uppercase tracking-widest text-foreground/80 font-bold mb-4">[ aan te vullen ]</p>
+            
+            <div className="space-y-6">
+              <div className="border-2 border-dashed border-foreground/50 p-5 bg-foreground/[0.02]">
+                <p className="text-sm font-bold text-foreground mb-1">Wachtwoord aanmaken</p>
+                <p className="text-xs text-foreground/60 mb-4">Kies een wachtwoord om later in te loggen op je account.</p>
+                <Field label="Wachtwoord *">
+                  <input type="password" className={inputCls} />
+                </Field>
+              </div>
+
+              <div className="border-2 border-dashed border-foreground/50 p-5 bg-foreground/[0.02]">
+                <p className="text-sm font-bold text-foreground mb-3">Voorkeuren & Voorwaarden</p>
+                <div className="space-y-3">
+                  <Checkbox checked={false} onChange={() => {}} label="Ja, ik wil de maandelijkse BAM nieuwsbrief ontvangen." />
+                  <Checkbox checked={false} onChange={() => {}} label="Ik ben geïnteresseerd om gastdocent te zijn bij BAM Academy." />
+                  <Checkbox checked={false} onChange={() => {}} label={<>Ik ga akkoord met de <a href="#terms" className="underline">algemene voorwaarden</a>. *</>} />
+                </div>
+              </div>
+            </div>
           </div>
         </Section>
       )}
