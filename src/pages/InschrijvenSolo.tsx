@@ -30,6 +30,7 @@ interface FormState {
   invoiceEmail: string;
   // Interesses
   interests: string[];
+  password?: string;
   // Opt-ins
   newsletter: boolean;
   terms: boolean;
@@ -58,7 +59,7 @@ const initialForm: FormState = {
   birthdate: "", jobTitle: "", company: "", mobile: "", email: "",
   street: "", number: "", zip: "", city: "", country: "België",
   vat: "", invoiceEmail: "",
-  interests: [], newsletter: false, terms: false, shareConsent: false,
+  interests: [], password: "", newsletter: false, terms: false, shareConsent: false,
 };
 
 const InschrijvenSolo = () => {
@@ -354,9 +355,18 @@ const InschrijvenSolo = () => {
                   ["Factuur-mail", form.invoiceEmail || form.email],
                   ["Bedrag", "€ 574,75 incl. BTW"],
                 ]} />
-                <Summary title="Interesses" items={[
-                  ["Onderwerpen", form.interests.length ? form.interests.join(", ") : "Geen geselecteerd"],
-                ]} />
+                <div className="border border-dashed border-foreground/30 p-4 bg-foreground/[0.02]">
+                  <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-3">Wachtwoord aanmaken</p>
+                  <p className="text-xs text-foreground/60 mb-3">Kies een wachtwoord om later in te loggen op je account.</p>
+                  <Field label="Wachtwoord *">
+                    <input 
+                      type="password" 
+                      className={inputCls} 
+                      value={form.password} 
+                      onChange={(e) => update("password", e.target.value)} 
+                    />
+                  </Field>
+                </div>
               </div>
 
               <div className="space-y-3 border-t border-dashed border-foreground/30 pt-5">
