@@ -130,8 +130,8 @@ const VacatureDetail = () => {
               <div className="border-2 border-dashed border-foreground/30 bg-foreground/[0.02] p-5 space-y-5">
                 {/* logo + bedrijf */}
                 <div className="space-y-3 pb-5 border-b border-dashed border-foreground/20">
-                  <div className="w-full aspect-square border-2 border-dashed border-foreground/40 flex items-center justify-center text-foreground/50">
-                    <Building2 className="w-16 h-16" />
+                  <div className="w-full aspect-[3/1] border-2 border-dashed border-foreground/40 flex items-center justify-center text-foreground/50">
+                    <Building2 className="w-10 h-10" />
                   </div>
                   <div>
                     <p className="text-[10px] uppercase tracking-widest text-foreground/50">Bedrijf</p>
