@@ -32,6 +32,7 @@ import AccountBedrijf from "./pages/AccountBedrijf.tsx";
 import VacatureNieuw from "./pages/VacatureNieuw.tsx";
 import VacatureDetail from "./pages/VacatureDetail.tsx";
 import ArtikelDetail from "./pages/ArtikelDetail.tsx";
+import Artikels from "./pages/Artikels.tsx";
 import BamMagazine from "./pages/BamMagazine.tsx";
 import BamMagazineLocked from "./pages/BamMagazineLocked.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -77,6 +78,7 @@ const App = () => (
           <Route path="/vacature/:id" element={<VacatureDetail />} />
           <Route path="/artikel" element={<ArtikelDetail />} />
           <Route path="/artikel/:slug" element={<ArtikelDetail />} />
+          <Route path="/artikels" element={<Artikels />} />
           <Route path="/bam-magazine" element={<BamMagazine />} />
           <Route path="/bam-magazine/locked" element={<BamMagazineLocked />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -42,7 +42,7 @@ const navItems: NavItem[] = [
   {
     label: "Expert Views",
     children: [
-      { label: "Artikels", href: "/artikel" },
+      { label: "Artikels", href: "/artikels" },
       { label: "BAM magazine", href: "/bam-magazine/locked" },
       { label: "Looking at 2030", href: "#looking-at-2030" },
     ],
