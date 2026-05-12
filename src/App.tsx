@@ -33,6 +33,7 @@ import VacatureNieuw from "./pages/VacatureNieuw.tsx";
 import VacatureDetail from "./pages/VacatureDetail.tsx";
 import ArtikelDetail from "./pages/ArtikelDetail.tsx";
 import BamMagazine from "./pages/BamMagazine.tsx";
+import BamMagazineLocked from "./pages/BamMagazineLocked.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -77,6 +78,7 @@ const App = () => (
           <Route path="/artikel" element={<ArtikelDetail />} />
           <Route path="/artikel/:slug" element={<ArtikelDetail />} />
           <Route path="/bam-magazine" element={<BamMagazine />} />
+          <Route path="/bam-magazine/locked" element={<BamMagazineLocked />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
