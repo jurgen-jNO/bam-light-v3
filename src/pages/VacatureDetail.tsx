@@ -129,9 +129,9 @@ const VacatureDetail = () => {
             <div className="sticky top-6 space-y-4">
               <div className="border-2 border-dashed border-foreground/30 bg-foreground/[0.02] p-5 space-y-5">
                 {/* logo + bedrijf */}
-                <div className="flex items-center gap-3 pb-5 border-b border-dashed border-foreground/20">
-                  <div className="w-14 h-14 border-2 border-dashed border-foreground/40 flex items-center justify-center text-foreground/50">
-                    <Building2 className="w-6 h-6" />
+                <div className="space-y-3 pb-5 border-b border-dashed border-foreground/20">
+                  <div className="w-full aspect-square border-2 border-dashed border-foreground/40 flex items-center justify-center text-foreground/50">
+                    <Building2 className="w-16 h-16" />
                   </div>
                   <div>
                     <p className="text-[10px] uppercase tracking-widest text-foreground/50">Bedrijf</p>
