@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, MapPin, Building2, Briefcase, Layout, Globe, Monitor, Zap, Terminal } from "lucide-react";
+import { Search, MapPin, Building2, Briefcase, Layout, Globe, Monitor, Zap, Terminal, Calendar } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
@@ -13,6 +13,7 @@ const mockVacatures = [
     id: 1,
     title: "Senior Brand Designer",
     location: "Gent",
+    publishedAt: "2026-05-10",
     company: {
       name: "Onshore.be",
       icon: Layout,
@@ -22,6 +23,7 @@ const mockVacatures = [
     id: 2,
     title: "Digital Marketing Manager",
     location: "Brussel",
+    publishedAt: "2026-05-11",
     company: {
       name: "TechCorp",
       icon: Globe,
@@ -31,6 +33,7 @@ const mockVacatures = [
     id: 3,
     title: "Content Marketeer",
     location: "Antwerpen",
+    publishedAt: "2026-05-09",
     company: {
       name: "Creative Agency",
       icon: Monitor,
@@ -40,6 +43,7 @@ const mockVacatures = [
     id: 4,
     title: "SEO Specialist",
     location: "Leuven",
+    publishedAt: "2026-05-12",
     company: {
       name: "Growth Co",
       icon: Zap,
@@ -49,6 +53,7 @@ const mockVacatures = [
     id: 5,
     title: "Performance Marketeer",
     location: "Gent",
+    publishedAt: "2026-05-08",
     company: {
       name: "ScaleUp",
       icon: Terminal,
@@ -60,12 +65,19 @@ const Vacatures = () => {
   const [functieFilter, setFunctieFilter] = useState("");
   const [locatieFilter, setLocatieFilter] = useState("");
 
-  const filteredVacatures = mockVacatures.filter((job) => {
-    const matchesFunctie = job.title.toLowerCase().includes(functieFilter.toLowerCase()) || 
-                           job.company.name.toLowerCase().includes(functieFilter.toLowerCase());
-    const matchesLocatie = job.location.toLowerCase().includes(locatieFilter.toLowerCase());
-    return matchesFunctie && matchesLocatie;
-  });
+  const filteredVacatures = mockVacatures
+    .filter((job) => {
+      const matchesFunctie = job.title.toLowerCase().includes(functieFilter.toLowerCase()) || 
+                             job.company.name.toLowerCase().includes(functieFilter.toLowerCase());
+      const matchesLocatie = job.location.toLowerCase().includes(locatieFilter.toLowerCase());
+      return matchesFunctie && matchesLocatie;
+    })
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+  const fmt = (iso: string) => {
+    const [y, m, d] = iso.split("-");
+    return `${d}/${m}/${y.slice(2)}`;
+  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -135,6 +147,10 @@ const Vacatures = () => {
                         <div className="flex items-center gap-1.5">
                           <MapPin className="w-4 h-4" />
                           <span>{job.location}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Calendar className="w-4 h-4" />
+                          <span>{fmt(job.publishedAt)}</span>
                         </div>
                       </div>
                     </div>
