@@ -59,7 +59,7 @@ const initialForm: FormState = {
   birthdate: "", jobTitle: "", company: "", mobile: "", email: "",
   street: "", number: "", zip: "", city: "", country: "België",
   vat: "", invoiceEmail: "",
-  interests: [], newsletter: false, terms: false, shareConsent: false,
+  interests: [], password: "", newsletter: false, terms: false, shareConsent: false,
 };
 
 const InschrijvenSolo = () => {
