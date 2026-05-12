@@ -16,7 +16,14 @@ const articles = Array.from({ length: 20 }, (_, i) => ({
   intro: i === 0 
     ? "Van AI-gedreven campagnes tot een hernieuwde focus op craft: we bekijken hoe sterke merken in een verzadigde markt opnieuw onderscheidend worden. Een diepgaande analyse met inzichten van vier toonaangevende makers."
     : "Een korte en bondige inleiding die de lezer prikkelt om verder te lezen over dit specifieke marketing topic.",
-  category: ["Brand Building", "Data", "Leadership", "Creative", "Digital", "Strategy"][i % 6],
+  category: [
+    "Digital & Technology",
+    "Sustainability, Ethics & Purpose",
+    "Marketing Leadership & Future Skills",
+    "Brand Building",
+    "Performance Marketing",
+    "Community Building"
+  ][i % 6],
   date: `2026-05-${String((i % 28) + 1).padStart(2, "0")}`,
   slug: `artikel-${i + 1}`,
 }));
