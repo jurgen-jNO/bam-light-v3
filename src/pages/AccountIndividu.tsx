@@ -162,28 +162,6 @@ const AccountIndividu = () => {
             </button>
           </Section>
 
-          {/* Wachtwoord */}
-          <Section title="Wachtwoord wijzigen" tag="[ beveiliging ]">
-            <Grid2>
-              <Field label="Huidig wachtwoord">
-                <input type="password" className={inputCls} placeholder="••••••••" />
-              </Field>
-              <div className="hidden sm:block"></div>
-              <Field label="Nieuw wachtwoord">
-                <input type="password" className={inputCls} />
-              </Field>
-              <Field label="Bevestig nieuw wachtwoord">
-                <input type="password" className={inputCls} />
-              </Field>
-            </Grid2>
-            <button
-              type="button"
-              onClick={() => toast.success("Wachtwoord succesvol gewijzigd ✓")}
-              className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors"
-            >
-              <Save className="w-3.5 h-3.5" /> Wachtwoord updaten
-            </button>
-          </Section>
 
           {/* Newsletter opt-ins */}
           <Section title="Newsletter & communicatie" tag="[ opt-ins ]">
