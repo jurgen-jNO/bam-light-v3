@@ -30,6 +30,7 @@ interface FormState {
   invoiceEmail: string;
   // Interesses
   interests: string[];
+  password?: string;
   // Opt-ins
   newsletter: boolean;
   terms: boolean;
