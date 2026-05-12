@@ -156,7 +156,15 @@ const Mobile = () => {
         </div>
         <div className="border-2 border-dashed border-border rounded-lg p-8 text-center">
           <h2 className="text-lg font-semibold text-foreground mb-2">Job Board</h2>
-          <p className="text-sm text-muted-foreground">Bekijk de laatste marketing vacatures</p>
+          <p className="text-sm text-muted-foreground mb-4">Bekijk de laatste marketing vacatures</p>
+          <div className="flex justify-center gap-4">
+            <a href="/vacature" className="text-sm text-primary hover:underline font-medium">
+              Overzicht
+            </a>
+            <a href="/vacature/1" className="text-sm text-primary hover:underline font-medium">
+              Detail
+            </a>
+          </div>
         </div>
       </main>
 
