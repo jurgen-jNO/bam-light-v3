@@ -127,7 +127,7 @@ const WireBox = ({
   </div>
 );
 
-const ArtikelDetail = () => {
+const BamMagazine = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <MainNavigation />
@@ -349,4 +349,4 @@ const ArtikelDetail = () => {
   );
 };
 
-export default ArtikelDetail;
+export default BamMagazine;
