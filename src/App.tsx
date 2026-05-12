@@ -32,6 +32,7 @@ import AccountBedrijf from "./pages/AccountBedrijf.tsx";
 import VacatureNieuw from "./pages/VacatureNieuw.tsx";
 import VacatureDetail from "./pages/VacatureDetail.tsx";
 import ArtikelDetail from "./pages/ArtikelDetail.tsx";
+import BamMagazine from "./pages/BamMagazine.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
