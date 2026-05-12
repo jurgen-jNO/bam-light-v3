@@ -72,17 +72,17 @@ const Artikels = () => {
                 <WireBox label="Hero visual — 16:9" ratio="aspect-[21/9]" />
                 <div className="mt-6">
                   <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest font-semibold text-foreground/60 mb-3">
-                    <span className="px-2 py-1 bg-foreground text-background">
+                    <span className="px-2 py-1 border-2 border-dashed border-foreground/40">
                       {heroArticle.category}
                     </span>
                     <span className="inline-flex items-center gap-1.5">
                       <Calendar className="w-3 h-3" /> {fmt(heroArticle.date)}
                     </span>
                   </div>
-                  <h2 className="text-4xl md:text-5xl font-bold leading-tight text-foreground group-hover:text-primary transition-colors mb-4">
+                  <h2 className="text-4xl md:text-5xl font-bold leading-tight text-foreground group-hover:underline transition-all mb-4">
                     {heroArticle.title}
                   </h2>
-                  <p className="text-lg text-foreground/70 leading-relaxed max-w-3xl">
+                  <p className="text-lg text-foreground/70 leading-relaxed max-w-3xl border-l-2 border-dashed border-foreground/30 pl-4">
                     {heroArticle.intro}
                   </p>
                 </div>
@@ -90,18 +90,18 @@ const Artikels = () => {
             </Link>
 
             {/* Sub Hero Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-dashed border-foreground/20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t-2 border-dashed border-foreground/20">
               {subHeroArticles.map((article) => (
                 <Link key={article.id} to={`/artikel/${article.slug}`} className="group block">
                   <article>
                     <WireBox label="Afbeelding 16:9" ratio="aspect-video" />
                     <div className="mt-4">
                       <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest font-semibold text-foreground/60 mb-2">
-                        <span className="text-foreground">{article.category}</span>
+                        <span className="px-2 py-1 border-2 border-dashed border-foreground/40">{article.category}</span>
                         <span>·</span>
                         <span>{fmt(article.date)}</span>
                       </div>
-                      <h3 className="text-2xl font-bold leading-tight text-foreground group-hover:text-primary transition-colors mb-2">
+                      <h3 className="text-2xl font-bold leading-tight text-foreground group-hover:underline transition-all mb-2">
                         {article.title}
                       </h3>
                       <p className="text-sm text-foreground/70 line-clamp-3">
