@@ -121,7 +121,7 @@ export default function OpleidingOpMaat() {
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="w-4 h-4 mt-0.5 text-foreground/50 shrink-0" />
-                    <span>Voor groepen van 5 tot 200+ deelnemers</span>
+                    <span>Voor groepen van 5 tot 50 deelnemers</span>
                   </li>
                 </ul>
               </div>
