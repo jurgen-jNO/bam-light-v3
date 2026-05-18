@@ -58,6 +58,7 @@ const App = () => (
           <Route path="/event" element={<EventDetail />} />
           <Route path="/event/brand-strategy" element={<EventDetail />} />
           <Route path="/dagopleiding" element={<EventDetailDag />} />
+          <Route path="/event/big-marketing-quiz" element={<EventBigQuiz />} />
           <Route path="/docent" element={<DocentDetail />} />
           <Route path="/contact" element={<ContactDetail />} />
           <Route path="/agenda" element={<Agenda />} />
