@@ -48,9 +48,9 @@ const interestOptions = [
 
 const steps = [
   { n: 1, label: "Persoon" },
-  { n: 2, label: "Adres" },
-  { n: 3, label: "Facturatie" },
-  { n: 4, label: "Interesses" },
+  { n: 2, label: "Interesses" },
+  { n: 3, label: "Adres" },
+  { n: 4, label: "Facturatie" },
   { n: 5, label: "Bevestig" },
 ];
 
@@ -236,8 +236,8 @@ const InschrijvenSolo = () => {
             </Section>
           )}
 
-          {/* STEP 2 */}
-          {step === 2 && (
+          {/* STEP 3 — Adres */}
+          {step === 3 && (
             <Section title="Adresgegevens">
               <Grid2>
                 <Field label="Straat *">
@@ -259,8 +259,8 @@ const InschrijvenSolo = () => {
             </Section>
           )}
 
-          {/* STEP 3 */}
-          {step === 3 && (
+          {/* STEP 4 — Facturatie */}
+          {step === 4 && (
             <Section title="Facturatiegegevens">
               <p className="text-xs text-foreground/60 mb-4 border-l border-dashed border-foreground/30 pl-3">
                 Vul je BTW-nummer in als je een factuur op je bedrijf wenst. Laat leeg voor een
@@ -300,8 +300,8 @@ const InschrijvenSolo = () => {
             </Section>
           )}
 
-          {/* STEP 4 */}
-          {step === 4 && (
+          {/* STEP 2 — Interesses */}
+          {step === 2 && (
             <Section title="Interessevelden">
               <p className="text-xs text-foreground/60 mb-4">
                 Selecteer onderwerpen die jou interesseren — we gebruiken dit voor de personalisatie
