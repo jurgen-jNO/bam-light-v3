@@ -37,7 +37,8 @@ import ArtikelDetail from "./pages/ArtikelDetail.tsx";
 import Artikels from "./pages/Artikels.tsx";
 import BamMagazine from "./pages/BamMagazine.tsx";
 import BamMagazineLocked from "./pages/BamMagazineLocked.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import OpleidingOpMaat from "./pages/OpleidingOpMaat.tsx";
+import MobileOpleidingOpMaat from "./pages/mobile/MobilePages.tsx";
 import {
   MobileAgenda,
   MobileEventDetail,
@@ -70,7 +71,9 @@ import {
   MobileAccountIndividu,
   MobileAccountBedrijf,
   MobileWordLid,
+  MobileWordLid,
   MobileWordSponsor,
+  MobileOpleidingOpMaat,
 } from "./pages/mobile/MobilePages.tsx";
 
 const queryClient = new QueryClient();
@@ -96,7 +99,7 @@ const App = () => (
           <Route path="/docent" element={<DocentDetail />} />
           <Route path="/contact" element={<ContactDetail />} />
           <Route path="/agenda" element={<Agenda />} />
-          <Route path="/events" element={<AgendaEvents />} />
+          <Route path="/agenda/op-maat" element={<OpleidingOpMaat />} />
           <Route path="/inschrijven/solo" element={<InschrijvenSolo />} />
           <Route path="/inschrijven/growth" element={<InschrijvenGrowth />} />
           <Route path="/inschrijven/galaxy" element={<InschrijvenGalaxy />} />
@@ -156,6 +159,7 @@ const App = () => (
           <Route path="/mobile/account/bedrijf/vacature/nieuw" element={<MobileVacatureNieuw />} />
           <Route path="/mobile/word-lid" element={<MobileWordLid />} />
           <Route path="/mobile/word-sponsor" element={<MobileWordSponsor />} />
+          <Route path="/mobile/agenda/op-maat" element={<MobileOpleidingOpMaat />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
