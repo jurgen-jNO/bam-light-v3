@@ -162,6 +162,18 @@ export default function EventBigQuiz() {
               </div>
             </section>
 
+            <section id="tarieven">
+              <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Tarieven</h2>
+              <div className="divide-y divide-neutral-300 rounded border border-neutral-300">
+                <div className="flex items-center justify-between px-4 py-3">
+                  <span>BAM-Leden</span><span className="font-medium">Gratis</span>
+                </div>
+                <div className="flex items-center justify-between px-4 py-3">
+                  <span>BAM-Niet-leden</span><span className="font-medium">€ 99 excl. btw</span>
+                </div>
+              </div>
+            </section>
+
             {/* Block — Sprekers */}
             <section id="sprekers">
               <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Sprekers</h2>
@@ -180,34 +192,6 @@ export default function EventBigQuiz() {
                     </div>
                   </a>
                 ))}
-              </div>
-            </section>
-
-            {/* Block 08 — Inline CTA repeat */}
-            <button onClick={() => setModal(true)} className="w-full rounded bg-neutral-700 px-6 py-4 text-center font-medium text-white hover:bg-neutral-800">
-              Ik schrijf me in ›
-            </button>
-
-            {/* Block 09 — Doelgroep */}
-            <section>
-              <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Voor wie?</h2>
-              <ul className="list-disc space-y-2 pl-6 text-neutral-700">
-                <li>Marketing-, communicatie- en advertisingprofessionals</li>
-                <li>Bureaus, in-house teams en freelancers</li>
-                <li>Studenten en young professionals uit de marketingwereld</li>
-              </ul>
-            </section>
-
-            {/* Block 10 — Tarieven */}
-            <section id="tarieven">
-              <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Tarieven</h2>
-              <div className="divide-y divide-neutral-300 rounded border border-neutral-300">
-                <div className="flex items-center justify-between px-4 py-3">
-                  <span>BAM-Leden</span><span className="font-medium">Gratis</span>
-                </div>
-                <div className="flex items-center justify-between px-4 py-3">
-                  <span>BAM-Niet-leden</span><span className="font-medium">€ 99 excl. btw</span>
-                </div>
               </div>
             </section>
 
