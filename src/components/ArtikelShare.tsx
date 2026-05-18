@@ -24,9 +24,9 @@ export default function ArtikelShare({ title = "", className = "" }: ArtikelShar
       label: "Deel op Facebook",
     },
     {
-      Icon: Twitter,
+      Icon: XIcon,
       href: `https://twitter.com/intent/tweet?url=${enc(url)}&text=${enc(title)}`,
-      label: "Deel op Twitter",
+      label: "Deel op X",
     },
     {
       Icon: Mail,
