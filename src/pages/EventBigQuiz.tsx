@@ -248,6 +248,31 @@ export default function EventBigQuiz() {
                 <span><strong className="text-neutral-900">38</strong> vrij</span>
               </div>
             </div>
+
+            {/* Sponsors */}
+            <div className="mt-3 rounded border border-neutral-300 bg-white p-4 text-xs">
+              <p className="mb-3 text-xs uppercase tracking-wider text-neutral-500">Sponsors</p>
+              {[
+                { tier: "Platinum", count: 2, size: "h-10" },
+                { tier: "Gold", count: 3, size: "h-8" },
+                { tier: "Silver", count: 4, size: "h-7" },
+              ].map((t) => (
+                <div key={t.tier} className="mb-3 last:mb-0">
+                  <p className="mb-1.5 text-[10px] uppercase tracking-wider text-neutral-400">{t.tier}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {Array.from({ length: t.count }).map((_, i) => (
+                      <div
+                        key={i}
+                        className={`flex flex-1 items-center justify-center border border-dashed border-neutral-400 bg-neutral-100 text-[9px] text-neutral-500 ${t.size}`}
+                      >
+                        Logo
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
             <div className="mt-4 flex items-center justify-end gap-2">
               <span className="mr-1 text-xs uppercase tracking-wider text-neutral-500">Deel</span>
               <a
