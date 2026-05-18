@@ -403,11 +403,6 @@ const InschrijvenSolo = () => {
                         label="Ja, ik wil de maandelijkse BAM nieuwsbrief ontvangen."
                       />
                       <Checkbox
-                        checked={form.shareConsent}
-                        onChange={(v) => update("shareConsent", v)}
-                        label="BAM mag mijn deelnames aan events en opleidingen publiek delen ('ik ga naar…')."
-                      />
-                      <Checkbox
                         checked={form.terms}
                         onChange={(v) => update("terms", v)}
                         label={
