@@ -9,7 +9,6 @@ import {
   Share2,
   Facebook,
   Linkedin,
-  Twitter,
   Link2,
   Mail,
   Megaphone,
@@ -18,6 +17,7 @@ import {
   X,
 } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
+import XIcon from "@/components/icons/XIcon";
 import Footer from "@/components/Footer";
 
 const artikel = {
@@ -146,7 +146,7 @@ const BamMagazineLocked = () => {
                 <span className="text-[10px] uppercase tracking-widest font-semibold text-foreground/50 mr-1 inline-flex items-center gap-1.5">
                   <Share2 className="w-3 h-3" /> Delen
                 </span>
-                {[Linkedin, Facebook, Twitter, Mail, Link2].map((Icon, i) => (
+                {[Linkedin, Facebook, XIcon, Mail, Link2].map((Icon, i) => (
                   <button
                     key={i}
                     className="w-8 h-8 border-2 border-dashed border-foreground/30 hover:bg-foreground/5 flex items-center justify-center text-foreground/60 hover:text-foreground"

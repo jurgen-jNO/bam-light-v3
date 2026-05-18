@@ -1,5 +1,6 @@
-import { Linkedin, Facebook, Twitter, Mail, Link2, Share2 } from "lucide-react";
-import { useState } from "react";
+import { Linkedin, Facebook, Mail, Link2, Share2 } from "lucide-react";
+import XIcon from "@/components/icons/XIcon";
+import React, { useState } from "react";
 
 interface ArtikelShareProps {
   title?: string;
@@ -11,7 +12,7 @@ export default function ArtikelShare({ title = "", className = "" }: ArtikelShar
   const url = typeof window !== "undefined" ? window.location.href : "";
   const enc = encodeURIComponent;
 
-  const items: { Icon: typeof Linkedin; href?: string; onClick?: () => void; label: string }[] = [
+  const items: { Icon: React.ComponentType<{ className?: string }>; href?: string; onClick?: () => void; label: string }[] = [
     {
       Icon: Linkedin,
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`,
@@ -23,9 +24,9 @@ export default function ArtikelShare({ title = "", className = "" }: ArtikelShar
       label: "Deel op Facebook",
     },
     {
-      Icon: Twitter,
+      Icon: XIcon,
       href: `https://twitter.com/intent/tweet?url=${enc(url)}&text=${enc(title)}`,
-      label: "Deel op Twitter",
+      label: "Deel op X",
     },
     {
       Icon: Mail,
