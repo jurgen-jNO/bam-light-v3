@@ -28,6 +28,7 @@ const programma = [
     title: "Quizronde 1 – 4",
     desc: "De eerste helft van de quiz met vier uitdagende rondes rond marketing, branding, advertising en pop-culture.",
     topics: ["Marketingtrivia", "Brand recognition", "Iconische campagnes", "Pop-culture & media"],
+    presentator: "Spreker 1",
   },
   {
     tijd: "21:30 – 22:00",
@@ -39,6 +40,7 @@ const programma = [
     title: "Quizronde 5 – 8 & prijsuitreiking",
     desc: "De tweede helft van de quiz, gevolgd door de bekendmaking van de winnaars en de prijsuitreiking.",
     topics: ["Digital & social", "Data & insights", "Tiebreaker", "Prijsuitreiking"],
+    presentator: "Spreker 2",
   },
 ];
 
