@@ -1,6 +1,6 @@
 import { Linkedin, Facebook, Mail, Link2, Share2 } from "lucide-react";
 import XIcon from "@/components/icons/XIcon";
-import { useState } from "react";
+import React, { useState } from "react";
 
 interface ArtikelShareProps {
   title?: string;
