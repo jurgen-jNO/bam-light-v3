@@ -57,7 +57,7 @@ const steps = [
 const initialForm: FormState = {
   firstName: "", lastName: "", language: "", gender: "", genderOther: "",
   birthdate: "", jobTitle: "", company: "", mobile: "", email: "",
-  street: "", number: "", zip: "", city: "", country: "België", countryOther: "",
+  street: "", number: "", zip: "", city: "", country: "België",
   vat: "", invoiceEmail: "",
   interests: [], password: "", newsletter: false, terms: false, shareConsent: false,
 };
