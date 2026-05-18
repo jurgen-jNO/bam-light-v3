@@ -236,8 +236,8 @@ const InschrijvenSolo = () => {
             </Section>
           )}
 
-          {/* STEP 2 */}
-          {step === 2 && (
+          {/* STEP 3 — Adres */}
+          {step === 3 && (
             <Section title="Adresgegevens">
               <Grid2>
                 <Field label="Straat *">
