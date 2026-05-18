@@ -9,7 +9,6 @@ import {
   Share2,
   Facebook,
   Linkedin,
-  Twitter,
   Link2,
   Mail,
   Megaphone,
@@ -18,6 +17,7 @@ import {
   X,
 } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
+import XIcon from "@/components/icons/XIcon";
 import Footer from "@/components/Footer";
 
 const artikel = {
