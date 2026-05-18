@@ -48,9 +48,9 @@ const interestOptions = [
 
 const steps = [
   { n: 1, label: "Persoon" },
-  { n: 2, label: "Adres" },
-  { n: 3, label: "Facturatie" },
-  { n: 4, label: "Interesses" },
+  { n: 2, label: "Interesses" },
+  { n: 3, label: "Adres" },
+  { n: 4, label: "Facturatie" },
   { n: 5, label: "Bevestig" },
 ];
 
