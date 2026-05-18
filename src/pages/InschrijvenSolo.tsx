@@ -25,7 +25,6 @@ interface FormState {
   zip: string;
   city: string;
   country: string;
-  countryOther: string;
   // Facturatie
   vat: string;
   invoiceEmail: string;
