@@ -6,6 +6,12 @@ import Footer from "@/components/Footer";
 const eventDate = "8 oktober 2026";
 const eventTime = "19:00 – 23:00";
 
+const sprekers = Array.from({ length: 6 }).map((_, i) => ({
+  name: `Spreker ${i + 1}`,
+  func: "Quizmaster",
+  company: "BAM",
+}));
+
 const programma = [
   {
     tijd: "19:00 – 19:30",
