@@ -74,3 +74,9 @@ export const MobileAccountBedrijf = make("Bedrijfsaccount", "Beheer je organisat
 // Word lid / sponsor
 export const MobileWordLid = make("Word lid", "Sluit je aan bij BAM");
 export const MobileWordSponsor = make("Word sponsor", "Word sponsor van BAM");
+
+// Op maat
+export const MobileOpleidingOpMaat = make(
+  "Opleiding op maat",
+  "Laat een training op maat organiseren voor jouw bedrijf"
+);
