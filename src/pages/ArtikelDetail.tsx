@@ -12,6 +12,7 @@ import {
   Mail,
   Megaphone,
   ArrowRight,
+  ChevronRight,
 } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import XIcon from "@/components/icons/XIcon";
