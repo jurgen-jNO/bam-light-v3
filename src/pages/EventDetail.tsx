@@ -15,7 +15,7 @@ const sessions = [
   { n: "Sessie 2", title: "Content creatie & storytelling", date: "10 mrt 2026" },
   { n: "Sessie 3", title: "Distributie & kanalen", date: "24 mrt 2026" },
   { n: "Sessie 4", title: "Conversie & lead nurturing", date: "21 apr 2026" },
-  { n: "Sessie 5", title: "Meten, optimaliseren & cases", date: "5 mei 2026" },
+  { n: "Sessie 5", title: "Meten, optimaliseren & cases", date: "5 juni 2026" },
 ];
 
 const docenten = Array.from({ length: 6 }).map((_, i) => ({
