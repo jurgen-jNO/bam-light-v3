@@ -12,6 +12,7 @@ import {
   Mail,
   Megaphone,
   ArrowRight,
+  ChevronRight,
 } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import XIcon from "@/components/icons/XIcon";
@@ -343,6 +344,48 @@ const ArtikelDetail = () => {
           </aside>
         </div>
       </main>
+
+      {/* Anderen lazen ook */}
+      <section className="border-t-2 border-dashed border-foreground/20 bg-background">
+        <div className="max-w-[1400px] mx-auto px-6 py-16">
+          <div className="flex items-end justify-between mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">Anderen lazen ook</h2>
+            <Link to="/artikels" className="hidden sm:inline-flex items-center text-xs font-bold uppercase tracking-widest text-foreground/60 hover:text-foreground">
+              Alle artikels <ChevronRight className="w-3 h-3 ml-1" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            {[
+              { id: "a1", slug: "artikel-1", category: "Marketing", date: "12/05/26", title: "De kracht van merkverhalen in 2026", intro: "Hoe storytelling opnieuw de centrale rol opeist in moderne brandstrategieën." },
+              { id: "a2", slug: "artikel-2", category: "AI & Data", date: "08/05/26", title: "AI agents in je dagelijkse marketingstack", intro: "Praktische cases van bureaus die AI agents al inzetten voor research en creatie." },
+              { id: "a3", slug: "artikel-3", category: "Media", date: "03/05/26", title: "Retail media: de derde golf", intro: "Waarom adverteerders massaal budget verschuiven naar retail media netwerken." },
+            ].map((article) => (
+              <Link key={article.id} to={`/artikel/${article.slug}`} className="group block flex flex-col h-full">
+                <article className="flex-1 flex flex-col">
+                  <div className="aspect-[4/3] w-full border border-dashed border-foreground/30 bg-foreground/[0.03] flex flex-col items-center justify-center gap-2 text-foreground/40 group-hover:bg-foreground/5 transition-colors duration-300">
+                    <ImageIcon className="w-6 h-6" />
+                    <span className="text-[10px] uppercase tracking-widest font-semibold">Thumb</span>
+                  </div>
+                  <div className="mt-4 flex-1">
+                    <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest font-semibold text-foreground/60 mb-2">
+                      <span className="px-2 py-1 border-2 border-dashed border-foreground/40">{article.category}</span>
+                      <span>·</span>
+                      <span>{article.date}</span>
+                    </div>
+                    <h3 className="text-xl font-bold leading-snug text-foreground group-hover:underline transition-all mb-3">
+                      {article.title}
+                    </h3>
+                    <p className="text-sm text-foreground/70 line-clamp-2">{article.intro}</p>
+                  </div>
+                  <div className="mt-4 flex items-center text-xs font-bold uppercase tracking-widest text-foreground/50 group-hover:text-foreground transition-colors">
+                    Lees verder <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </article>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>
