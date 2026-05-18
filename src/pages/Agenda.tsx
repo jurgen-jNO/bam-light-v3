@@ -261,7 +261,7 @@ export default function Agenda() {
 
       {/* Sticky filter sub-nav */}
       <div className="sticky top-0 z-30 border-b border-dashed border-neutral-400 bg-neutral-100">
-        <div className="mx-auto flex max-w-[1200px] flex-col gap-3 px-4 py-3 md:flex-row md:flex-wrap md:items-center md:gap-6">
+        <div className="mx-auto flex max-w-[1200px] flex-col gap-5 px-4 py-3 md:flex-row md:flex-wrap md:items-center md:gap-10">
           <div className="flex flex-wrap items-center gap-2">
             <FilterButton active={type === "opleidingen"} onClick={() => setType("opleidingen")}>
               Opleidingen
