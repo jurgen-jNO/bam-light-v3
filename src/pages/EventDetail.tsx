@@ -230,8 +230,8 @@ export default function EventDetail() {
               <div>
                 <p className="text-xs uppercase tracking-wider text-neutral-500">Sessiedatums</p>
                 <ul className="mt-1 space-y-1 text-sm text-neutral-700">
-                  {sessions.map((s) => (
-                    <li key={s.n}>{s.date}</li>
+                  {sessions.map((s, i) => (
+                    <li key={s.n} className={i < 4 ? "text-neutral-400" : ""}>{s.date}</li>
                   ))}
                 </ul>
               </div>
