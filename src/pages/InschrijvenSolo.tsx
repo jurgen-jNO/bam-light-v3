@@ -254,8 +254,25 @@ const InschrijvenSolo = () => {
                   <input className={inputCls} value={form.city} onChange={(e) => update("city", e.target.value)} />
                 </Field>
                 <Field label="Land">
-                  <input className={inputCls} value={form.country} onChange={(e) => update("country", e.target.value)} />
+                  <select
+                    className={inputCls}
+                    value={form.country === "België" ? "België" : "Ander land"}
+                    onChange={(e) => update("country", e.target.value === "België" ? "België" : "")}
+                  >
+                    <option value="België">België</option>
+                    <option value="Ander land">Ander land</option>
+                  </select>
                 </Field>
+                {form.country !== "België" && (
+                  <Field label="Welk land?">
+                    <input
+                      className={inputCls}
+                      placeholder="bv. Nederland"
+                      value={form.country}
+                      onChange={(e) => update("country", e.target.value)}
+                    />
+                  </Field>
+                )}
               </Grid2>
             </Section>
           )}
