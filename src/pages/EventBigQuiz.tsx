@@ -162,43 +162,6 @@ export default function EventBigQuiz() {
               </div>
             </section>
 
-            {/* Block — Sprekers */}
-            <section id="sprekers">
-              <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Sprekers</h2>
-              <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-                {sprekers.map((d) => (
-                  <a
-                    key={d.name}
-                    href="/docent"
-                    className="flex items-center gap-3 rounded border border-neutral-300 p-4 transition-colors hover:border-neutral-900 hover:bg-neutral-50"
-                  >
-                    <div className="h-20 w-20 shrink-0 rounded-full border border-dashed border-neutral-400 bg-neutral-200" />
-                    <div>
-                      <p className="font-semibold text-neutral-900">{d.name}</p>
-                      <p className="text-sm text-neutral-500">{d.func}</p>
-                      <p className="text-sm text-neutral-500">{d.company}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </section>
-
-            {/* Block 08 — Inline CTA repeat */}
-            <button onClick={() => setModal(true)} className="w-full rounded bg-neutral-700 px-6 py-4 text-center font-medium text-white hover:bg-neutral-800">
-              Ik schrijf me in ›
-            </button>
-
-            {/* Block 09 — Doelgroep */}
-            <section>
-              <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Voor wie?</h2>
-              <ul className="list-disc space-y-2 pl-6 text-neutral-700">
-                <li>Marketing-, communicatie- en advertisingprofessionals</li>
-                <li>Bureaus, in-house teams en freelancers</li>
-                <li>Studenten en young professionals uit de marketingwereld</li>
-              </ul>
-            </section>
-
-            {/* Block 10 — Tarieven */}
             <section id="tarieven">
               <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Tarieven</h2>
               <div className="divide-y divide-neutral-300 rounded border border-neutral-300">
