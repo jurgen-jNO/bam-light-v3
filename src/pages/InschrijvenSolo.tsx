@@ -56,6 +56,7 @@ const steps = [
 ];
 
 const initialForm: FormState = {
+  photo: null,
   firstName: "", lastName: "", language: "", gender: "", genderOther: "",
   birthdate: "", jobTitle: "", company: "", mobile: "", email: "",
   street: "", number: "", zip: "", city: "", country: "België",
