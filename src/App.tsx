@@ -12,6 +12,7 @@ import Sponsors from "./pages/Sponsors.tsx";
 import WordSponsor from "./pages/WordSponsor.tsx";
 import EventDetail from "./pages/EventDetail.tsx";
 import EventDetailDag from "./pages/EventDetailDag.tsx";
+import EventBigQuiz from "./pages/EventBigQuiz.tsx";
 import DocentDetail from "./pages/DocentDetail.tsx";
 import ContactDetail from "./pages/ContactDetail.tsx";
 import Agenda from "./pages/Agenda.tsx";
