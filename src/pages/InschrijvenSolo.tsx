@@ -9,6 +9,7 @@ type Step = 1 | 2 | 3 | 4 | 5;
 
 interface FormState {
   // Persoonsgegevens
+  photo: string | null;
   firstName: string;
   lastName: string;
   language: "NL" | "FR" | "";
