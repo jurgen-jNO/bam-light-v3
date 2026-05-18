@@ -71,7 +71,6 @@ import {
   MobileAccountIndividu,
   MobileAccountBedrijf,
   MobileWordLid,
-  MobileWordLid,
   MobileWordSponsor,
   MobileOpleidingOpMaat,
 } from "./pages/mobile/MobilePages.tsx";
