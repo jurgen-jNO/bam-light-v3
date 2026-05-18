@@ -259,8 +259,8 @@ const InschrijvenSolo = () => {
             </Section>
           )}
 
-          {/* STEP 3 */}
-          {step === 3 && (
+          {/* STEP 4 — Facturatie */}
+          {step === 4 && (
             <Section title="Facturatiegegevens">
               <p className="text-xs text-foreground/60 mb-4 border-l border-dashed border-foreground/30 pl-3">
                 Vul je BTW-nummer in als je een factuur op je bedrijf wenst. Laat leeg voor een
