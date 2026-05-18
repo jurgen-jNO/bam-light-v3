@@ -12,7 +12,7 @@ export default function ArtikelShare({ title = "", className = "" }: ArtikelShar
   const url = typeof window !== "undefined" ? window.location.href : "";
   const enc = encodeURIComponent;
 
-  const items: { Icon: typeof Linkedin; href?: string; onClick?: () => void; label: string }[] = [
+  const items: { Icon: React.ComponentType<{ className?: string }>; href?: string; onClick?: () => void; label: string }[] = [
     {
       Icon: Linkedin,
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`,
