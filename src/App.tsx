@@ -38,7 +38,7 @@ import Artikels from "./pages/Artikels.tsx";
 import BamMagazine from "./pages/BamMagazine.tsx";
 import BamMagazineLocked from "./pages/BamMagazineLocked.tsx";
 import OpleidingOpMaat from "./pages/OpleidingOpMaat.tsx";
-import MobileOpleidingOpMaat from "./pages/mobile/MobilePages.tsx";
+import NotFound from "./pages/NotFound.tsx";
 import {
   MobileAgenda,
   MobileEventDetail,
