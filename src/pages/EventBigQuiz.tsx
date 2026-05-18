@@ -6,6 +6,12 @@ import Footer from "@/components/Footer";
 const eventDate = "8 oktober 2026";
 const eventTime = "19:00 – 23:00";
 
+const sprekers = Array.from({ length: 6 }).map((_, i) => ({
+  name: `Spreker ${i + 1}`,
+  func: "Quizmaster",
+  company: "BAM",
+}));
+
 const programma = [
   {
     tijd: "19:00 – 19:30",
@@ -153,6 +159,27 @@ export default function EventBigQuiz() {
                     </div>
                   );
                 })}
+              </div>
+            </section>
+
+            {/* Block — Sprekers */}
+            <section id="sprekers">
+              <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Sprekers</h2>
+              <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+                {sprekers.map((d) => (
+                  <a
+                    key={d.name}
+                    href="/docent"
+                    className="flex items-center gap-3 rounded border border-neutral-300 p-4 transition-colors hover:border-neutral-900 hover:bg-neutral-50"
+                  >
+                    <div className="h-20 w-20 shrink-0 rounded-full border border-dashed border-neutral-400 bg-neutral-200" />
+                    <div>
+                      <p className="font-semibold text-neutral-900">{d.name}</p>
+                      <p className="text-sm text-neutral-500">{d.func}</p>
+                      <p className="text-sm text-neutral-500">{d.company}</p>
+                    </div>
+                  </a>
+                ))}
               </div>
             </section>
 
