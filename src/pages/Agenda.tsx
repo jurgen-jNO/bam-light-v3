@@ -10,7 +10,6 @@ import { agendaMockData, type AgendaItem } from "@/data/agendaMockData";
 
 type MainType = "opleidingen" | "events";
 type StatusType = "upcoming" | "archief";
-type ViewMode = "grid" | "kalender";
 
 const SUBTYPES: Record<MainType, { value: string; label: string }[]> = {
   opleidingen: [
@@ -193,7 +192,6 @@ export default function Agenda() {
 
   const type = (params.get("type") as MainType) || "opleidingen";
   const status = (params.get("status") as StatusType) || "upcoming";
-  const view = (params.get("view") as ViewMode) || "grid";
   const subtypeParam = params.get("subtype");
   const allSubtypes = SUBTYPES[type].map((s) => s.value);
   const selectedSubtypes = subtypeParam ? subtypeParam.split(",").filter(Boolean) : allSubtypes;
@@ -338,27 +336,10 @@ export default function Agenda() {
             </button>
           </div>
         ) : (
-          <div className="space-y-10">
-            <CalendarView
-              items={filtered}
-              onSelect={(item) => {
-                if (item.slug === "marketingstrategie-2026") {
-                  window.location.href = "/event";
-                  return;
-                }
-                if (item.slug === "brand-strategy-2026") {
-                  window.location.href = "/event/brand-strategy";
-                  return;
-                }
-                const base = item.type === "opleiding" ? "/agenda/opleidingen" : "/agenda/events";
-                window.location.href = `${base}/${item.slug}`;
-              }}
-            />
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {filtered.map((item) => (
-                <AgendaCard key={item.id} item={item} onInteresse={setInteresseItem} />
-              ))}
-            </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filtered.map((item) => (
+              <AgendaCard key={item.id} item={item} onInteresse={setInteresseItem} />
+            ))}
           </div>
         )}
       </main>
