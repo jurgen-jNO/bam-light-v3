@@ -123,6 +123,13 @@ export default function EventBigQuiz() {
               </div>
             </section>
 
+            {/* Block — Video placeholder */}
+            <section>
+              <div className="flex aspect-video w-full items-center justify-center border border-dashed border-neutral-400 bg-neutral-200 text-sm text-neutral-500">
+                Video placeholder
+              </div>
+            </section>
+
             {/* Block 08 — Inline CTA */}
             <button onClick={() => setModal(true)} className="w-full rounded bg-neutral-700 px-6 py-4 text-center font-medium text-white hover:bg-neutral-800">
               Ik schrijf me in ›
