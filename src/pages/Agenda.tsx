@@ -15,7 +15,6 @@ const SUBTYPES: Record<MainType, { value: string; label: string }[]> = {
   opleidingen: [
     { value: "dagopleiding", label: "Dagopleiding" },
     { value: "meerdaagse", label: "Meerdaagse" },
-    { value: "op-maat", label: "Op maat" },
   ],
   events: [
     { value: "activiteit", label: "Activiteit" },
