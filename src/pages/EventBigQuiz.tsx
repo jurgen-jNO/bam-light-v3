@@ -12,7 +12,7 @@ const sprekers = Array.from({ length: 6 }).map((_, i) => ({
   company: "BAM",
 }));
 
-const programma = [
+const programma: { tijd: string; title: string; desc: string; topics?: string[]; presentator?: string }[] = [
   {
     tijd: "19:00 – 19:30",
     title: "Onthaal & welkomstdrink",
