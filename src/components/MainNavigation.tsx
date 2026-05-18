@@ -24,7 +24,7 @@ const navItems: NavItem[] = [
     href: "/events",
     children: [
       { label: "Overzicht", href: "/events" },
-      { label: "Activiteiten", href: "/events?type=events&subtype=activiteit" },
+      { label: "Activiteiten", href: "/event/big-marketing-quiz" },
       { label: "Awards", href: "/events?type=events&subtype=award" },
       { label: "Congress", href: "/events?type=events&subtype=congres" },
     ],
