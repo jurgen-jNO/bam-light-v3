@@ -314,20 +314,6 @@ const ArtikelDetail = () => {
               </Link>
             </div>
 
-            {/* Bottom share */}
-            <div className="mt-8 flex items-center gap-2 flex-wrap">
-              <span className="text-[10px] uppercase tracking-widest font-semibold text-foreground/50 inline-flex items-center gap-1.5 mr-1">
-                <Share2 className="w-3 h-3" /> Deel dit artikel
-              </span>
-              {[Linkedin, Facebook, XIcon, Mail, Link2].map((Icon, i) => (
-                <button
-                  key={i}
-                  className="w-8 h-8 border-2 border-dashed border-foreground/30 hover:bg-foreground/5 flex items-center justify-center text-foreground/60 hover:text-foreground"
-                >
-                  <Icon className="w-3.5 h-3.5" />
-                </button>
-              ))}
-            </div>
           </article>
 
           {/* SIDEBAR — Advertentie */}
