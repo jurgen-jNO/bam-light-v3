@@ -189,7 +189,45 @@ const InschrijvenSolo = () => {
         <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] p-6 md:p-8">
           {/* STEP 1 */}
           {step === 1 && (
-            <Section title="Persoonsgegevens">
+          <Section title="Persoonsgegevens">
+              <div className="mb-6 flex items-center gap-5">
+                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border-2 border-dashed border-foreground/30 bg-foreground/[0.03] flex items-center justify-center text-foreground/40">
+                  {form.photo ? (
+                    <img src={form.photo} alt="Profielfoto" className="h-full w-full object-cover" />
+                  ) : (
+                    <UserIcon className="h-8 w-8" />
+                  )}
+                </div>
+                <div className="flex flex-col gap-2">
+                  <p className="text-[10px] uppercase tracking-widest text-foreground/50">Profielfoto</p>
+                  <div className="flex flex-wrap gap-2">
+                    <label className="inline-flex cursor-pointer items-center gap-2 border-2 border-dashed border-foreground/40 px-3 py-2 text-[10px] uppercase tracking-widest font-semibold text-foreground hover:bg-foreground/5 transition-colors">
+                      <Upload className="h-3.5 w-3.5" />
+                      {form.photo ? "Vervangen" : "Foto uploaden"}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) update("photo", URL.createObjectURL(file));
+                          e.target.value = "";
+                        }}
+                      />
+                    </label>
+                    {form.photo && (
+                      <button
+                        type="button"
+                        onClick={() => update("photo", null)}
+                        className="inline-flex items-center gap-1 border-2 border-dashed border-foreground/40 px-3 py-2 text-[10px] uppercase tracking-widest font-semibold text-foreground hover:bg-foreground/5 transition-colors"
+                      >
+                        <X className="h-3.5 w-3.5" /> Verwijderen
+                      </button>
+                    )}
+                  </div>
+                  <p className="text-[11px] text-foreground/50">JPG of PNG · max 5 MB</p>
+                </div>
+              </div>
               <Grid2>
                 <Field label="Voornaam *">
                   <input className={inputCls} value={form.firstName} onChange={(e) => update("firstName", e.target.value)} />
