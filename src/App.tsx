@@ -38,6 +38,40 @@ import Artikels from "./pages/Artikels.tsx";
 import BamMagazine from "./pages/BamMagazine.tsx";
 import BamMagazineLocked from "./pages/BamMagazineLocked.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import {
+  MobileAgenda,
+  MobileEventDetail,
+  MobileEventDetailDag,
+  MobileAgendaEvents,
+  MobileEventBigQuiz,
+  MobileLeden,
+  MobileSponsors,
+  MobileAffiliations,
+  MobileArtikels,
+  MobileArtikelDetail,
+  MobileBamMagazine,
+  MobileBamMagazineLocked,
+  MobileDocentDetail,
+  MobileContactDetail,
+  MobileVacatures,
+  MobileVacatureDetail,
+  MobileVacatureNieuw,
+  MobileInschrijvenSolo,
+  MobileInschrijvenGrowth,
+  MobileInschrijvenGalaxy,
+  MobileInschrijvenAcademy,
+  MobileInschrijvenYouth,
+  MobileInschrijvenFriends,
+  MobileOnboardingGrowth,
+  MobileOnboardingGalaxy,
+  MobileLogin,
+  MobileLoginIndividu,
+  MobileLoginBedrijf,
+  MobileAccountIndividu,
+  MobileAccountBedrijf,
+  MobileWordLid,
+  MobileWordSponsor,
+} from "./pages/mobile/MobilePages.tsx";
 
 const queryClient = new QueryClient();
 
@@ -85,6 +119,44 @@ const App = () => (
           <Route path="/artikels" element={<Artikels />} />
           <Route path="/bam-magazine" element={<BamMagazine />} />
           <Route path="/bam-magazine/locked" element={<BamMagazineLocked />} />
+
+          {/* Mobile mirror routes */}
+          <Route path="/mobile/agenda" element={<MobileAgenda />} />
+          <Route path="/mobile/dagopleiding" element={<MobileEventDetailDag />} />
+          <Route path="/mobile/event" element={<MobileEventDetail />} />
+          <Route path="/mobile/event/brand-strategy" element={<MobileEventDetail />} />
+          <Route path="/mobile/event/big-marketing-quiz" element={<MobileEventBigQuiz />} />
+          <Route path="/mobile/events" element={<MobileAgendaEvents />} />
+          <Route path="/mobile/leden" element={<MobileLeden />} />
+          <Route path="/mobile/sponsors" element={<MobileSponsors />} />
+          <Route path="/mobile/affiliations" element={<MobileAffiliations />} />
+          <Route path="/mobile/artikels" element={<MobileArtikels />} />
+          <Route path="/mobile/artikel" element={<MobileArtikelDetail />} />
+          <Route path="/mobile/artikel/:slug" element={<MobileArtikelDetail />} />
+          <Route path="/mobile/bam-magazine" element={<MobileBamMagazine />} />
+          <Route path="/mobile/bam-magazine/locked" element={<MobileBamMagazineLocked />} />
+          <Route path="/mobile/docent" element={<MobileDocentDetail />} />
+          <Route path="/mobile/contact" element={<MobileContactDetail />} />
+          <Route path="/mobile/vacatures" element={<MobileVacatures />} />
+          <Route path="/mobile/vacature" element={<MobileVacatureDetail />} />
+          <Route path="/mobile/vacature/:id" element={<MobileVacatureDetail />} />
+          <Route path="/mobile/inschrijven/solo" element={<MobileInschrijvenSolo />} />
+          <Route path="/mobile/inschrijven/growth" element={<MobileInschrijvenGrowth />} />
+          <Route path="/mobile/inschrijven/galaxy" element={<MobileInschrijvenGalaxy />} />
+          <Route path="/mobile/inschrijven/academy" element={<MobileInschrijvenAcademy />} />
+          <Route path="/mobile/inschrijven/youth" element={<MobileInschrijvenYouth />} />
+          <Route path="/mobile/inschrijven/friends" element={<MobileInschrijvenFriends />} />
+          <Route path="/mobile/onboarding/growth" element={<MobileOnboardingGrowth />} />
+          <Route path="/mobile/onboarding/galaxy" element={<MobileOnboardingGalaxy />} />
+          <Route path="/mobile/login" element={<MobileLogin />} />
+          <Route path="/mobile/login/individu" element={<MobileLoginIndividu />} />
+          <Route path="/mobile/login/bedrijf" element={<MobileLoginBedrijf />} />
+          <Route path="/mobile/account/individu" element={<MobileAccountIndividu />} />
+          <Route path="/mobile/account/bedrijf" element={<MobileAccountBedrijf />} />
+          <Route path="/mobile/account/bedrijf/vacature/nieuw" element={<MobileVacatureNieuw />} />
+          <Route path="/mobile/word-lid" element={<MobileWordLid />} />
+          <Route path="/mobile/word-sponsor" element={<MobileWordSponsor />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
