@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { ChevronDown, Menu, X, Mail, Phone, Linkedin, Facebook } from "lucide-react";
+import { ChevronDown, Menu, X, Mail, Phone } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
+import ArtikelShare from "@/components/ArtikelShare";
 
 const eventDate = "24 feb 2026";
 const eventTime = "09:30 – 17:00";
