@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Upload, User as UserIcon, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
