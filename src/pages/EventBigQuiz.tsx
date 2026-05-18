@@ -12,7 +12,7 @@ const sprekers = Array.from({ length: 6 }).map((_, i) => ({
   company: "BAM",
 }));
 
-const programma = [
+const programma: { tijd: string; title: string; desc: string; topics?: string[]; presentator?: string }[] = [
   {
     tijd: "19:00 – 19:30",
     title: "Onthaal & welkomstdrink",
@@ -28,6 +28,7 @@ const programma = [
     title: "Quizronde 1 – 4",
     desc: "De eerste helft van de quiz met vier uitdagende rondes rond marketing, branding, advertising en pop-culture.",
     topics: ["Marketingtrivia", "Brand recognition", "Iconische campagnes", "Pop-culture & media"],
+    presentator: "Spreker 1",
   },
   {
     tijd: "21:30 – 22:00",
@@ -39,6 +40,7 @@ const programma = [
     title: "Quizronde 5 – 8 & prijsuitreiking",
     desc: "De tweede helft van de quiz, gevolgd door de bekendmaking van de winnaars en de prijsuitreiking.",
     topics: ["Digital & social", "Data & insights", "Tiebreaker", "Prijsuitreiking"],
+    presentator: "Spreker 2",
   },
 ];
 
@@ -145,14 +147,28 @@ export default function EventBigQuiz() {
                         <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                       </button>
                       {isOpen && (
-                        <div className="space-y-3 bg-neutral-50 px-4 pb-4 text-neutral-700">
-                          <p>{s.desc}</p>
-                          {s.topics && (
-                            <ul className="list-disc pl-6 text-sm">
-                              {s.topics.map((t) => (
-                                <li key={t}>{t}</li>
-                              ))}
-                            </ul>
+                        <div className="grid gap-4 bg-neutral-50 px-4 pb-4 text-neutral-700 sm:grid-cols-[1fr_auto]">
+                          <div className="space-y-3">
+                            <p>{s.desc}</p>
+                            {s.topics && (
+                              <ul className="list-disc pl-6 text-sm">
+                                {s.topics.map((t) => (
+                                  <li key={t}>{t}</li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                          {s.presentator && (
+                            <a
+                              href="/docent"
+                              className="flex h-fit items-center gap-3 self-start rounded border border-neutral-300 bg-white p-3 transition-colors hover:border-neutral-900 sm:w-48"
+                            >
+                              <div className="h-12 w-12 shrink-0 rounded-full border border-dashed border-neutral-400 bg-neutral-200" />
+                              <div>
+                                <p className="text-[10px] uppercase tracking-wider text-neutral-500">Presentator</p>
+                                <p className="text-sm font-semibold text-neutral-900">{s.presentator}</p>
+                              </div>
+                            </a>
                           )}
                         </div>
                       )}
