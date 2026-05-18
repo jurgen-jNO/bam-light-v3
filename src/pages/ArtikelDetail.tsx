@@ -14,6 +14,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
+import XIcon from "@/components/icons/XIcon";
 import Footer from "@/components/Footer";
 
 const artikel = {
