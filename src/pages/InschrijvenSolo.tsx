@@ -300,8 +300,8 @@ const InschrijvenSolo = () => {
             </Section>
           )}
 
-          {/* STEP 4 */}
-          {step === 4 && (
+          {/* STEP 2 — Interesses */}
+          {step === 2 && (
             <Section title="Interessevelden">
               <p className="text-xs text-foreground/60 mb-4">
                 Selecteer onderwerpen die jou interesseren — we gebruiken dit voor de personalisatie
