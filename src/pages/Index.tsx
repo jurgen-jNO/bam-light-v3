@@ -197,8 +197,6 @@ const Index = () => {
             <p className="text-xs uppercase tracking-widest text-muted-foreground">
               Foto / video
             </p>
-            <p className="text-xs text-muted-foreground mt-1">van het lid</p>
-          </div>
           <div className="col-span-2">
             <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
               Member testimonial
