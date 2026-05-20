@@ -107,7 +107,7 @@ const MobileShell = ({ children }: MobileShellProps) => {
         {/* Header */}
         <nav className="bg-nav sticky top-0 z-50">
           <div className="flex items-center justify-between px-4 h-16">
-            <a href="/mobile" className="shrink-0">
+            <a href="/" className="shrink-0">
               <img src={bamLogo} alt="BAM" className="h-9 w-auto" />
             </a>
             <div className="flex items-center gap-1">
