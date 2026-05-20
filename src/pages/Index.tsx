@@ -23,55 +23,36 @@ const corporateMembers = [
   "Delhaize", "AG Insurance", "Belfius", "Engie", "Luminus", "DPG Media",
 ];
 
-const usps = [
-  { titel: "Netwerk", tekst: "+5.000 marketeers, één community" },
-  { titel: "Kennis", tekst: "Opleidingen, events & magazine" },
-  { titel: "Erkenning", tekst: "BAM Awards & thought leadership" },
-  { titel: "Carrière", tekst: "Job board & mentoring" },
-];
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <MainNavigation />
       <main className="flex-1 max-w-[1400px] mx-auto px-6 py-12 w-full space-y-12">
-        {/* JOIN CTA + USPs */}
-        <section className="grid grid-cols-3 gap-6">
-          <div className="col-span-2 border-2 border-dashed border-border rounded-lg p-10">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Word lid</p>
-            <h1 className="text-3xl font-semibold text-foreground mb-3">
+        {/* JOIN CTA */}
+        <section className="border-2 border-dashed border-border rounded-lg px-8 py-5 flex items-center justify-between gap-6 flex-wrap">
+          <div className="flex items-baseline gap-4 flex-wrap">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">Word lid</p>
+            <h1 className="text-lg font-semibold text-foreground">
               De community van Belgische marketeers
             </h1>
-            <p className="text-muted-foreground mb-6 max-w-xl">
-              Sluit je aan bij BAM en groei samen met +5.000 professionals die elke dag marketing waarmaken.
-            </p>
-            <div className="flex gap-3 flex-wrap">
-              <Link
-                to="/word-lid"
-                className="inline-flex items-center px-5 py-2.5 rounded-md bg-foreground text-background text-sm font-medium hover:opacity-90"
-              >
-                Join BAM
-              </Link>
-              <Link
-                to="/word-lid"
-                className="inline-flex items-center px-5 py-2.5 rounded-md border border-border text-sm font-medium hover:bg-muted"
-              >
-                Ontdek lidmaatschappen
-              </Link>
-            </div>
           </div>
-          <div className="col-span-1 grid grid-cols-2 gap-3">
-            {usps.map((u) => (
-              <div
-                key={u.titel}
-                className="border-2 border-dashed border-border rounded-lg p-4 flex flex-col justify-center"
-              >
-                <p className="text-sm font-semibold text-foreground">{u.titel}</p>
-                <p className="text-xs text-muted-foreground mt-1">{u.tekst}</p>
-              </div>
-            ))}
+          <div className="flex gap-3 flex-wrap">
+            <Link
+              to="/word-lid"
+              className="inline-flex items-center px-4 py-2 rounded-md bg-foreground text-background text-sm font-medium hover:opacity-90"
+            >
+              Join BAM
+            </Link>
+            <Link
+              to="/word-lid"
+              className="inline-flex items-center px-4 py-2 rounded-md border border-border text-sm font-medium hover:bg-muted"
+            >
+              Ontdek lidmaatschappen
+            </Link>
           </div>
         </section>
+
 
         {/* HERO image/video */}
         <section className="border-2 border-dashed border-border rounded-lg aspect-[21/9] flex items-center justify-center bg-muted/30">
