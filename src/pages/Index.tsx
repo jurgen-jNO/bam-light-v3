@@ -275,14 +275,67 @@ const Index = () => {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-3">
-              {["Solo", "Growth", "Galaxy", "Academy", "Youth"].map((p) => (
-                <div
-                  key={p}
-                  className="border-2 border-dashed border-border rounded-lg p-4 text-center"
+              {[
+                {
+                  id: "solo",
+                  name: "Solo",
+                  tagline: "Individueel lidmaatschap",
+                  audience: "Freelancers, zelfstandigen, start-ups",
+                  price: "€ 475 excl. BTW / jaar",
+                },
+                {
+                  id: "growth",
+                  name: "Growth",
+                  tagline: "Bedrijfslidmaatschap (klein & middengroot)",
+                  audience: "KMO's en middelgrote bedrijven",
+                  price: "€ 3.115 excl. BTW / jaar",
+                },
+                {
+                  id: "galaxy",
+                  name: "Galaxy",
+                  tagline: "Corporate lidmaatschap",
+                  audience: "+250 medewerkers of groepen",
+                  price: "Op maat",
+                },
+                {
+                  id: "academy",
+                  name: "Academy",
+                  tagline: "Lidmaatschap voor docenten",
+                  audience: "Docenten marketing & communicatie",
+                  price: "€ 160 incl. BTW / jaar",
+                },
+                {
+                  id: "youth",
+                  name: "Youth",
+                  tagline: "Lidmaatschap -25 jaar",
+                  audience: "Studenten & young marketers onder 25",
+                  price: "Gratis",
+                },
+              ].map((p) => (
+                <Link
+                  key={p.id}
+                  to="/word-lid"
+                  className="group relative border-2 border-dashed border-border rounded-lg p-4 text-center overflow-hidden min-h-[110px] flex flex-col justify-center"
                 >
-                  <p className="text-sm font-semibold text-foreground">{p}</p>
-                  <p className="text-xs text-muted-foreground mt-1">lidmaatschap</p>
-                </div>
+                  <div className="transition-opacity duration-200 group-hover:opacity-0">
+                    <p className="text-sm font-semibold text-foreground">{p.name}</p>
+                    <p className="text-xs text-muted-foreground mt-1">lidmaatschap</p>
+                  </div>
+                  <div className="absolute inset-0 p-3 bg-background opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-center text-left">
+                    <p className="text-xs font-semibold text-foreground uppercase tracking-wide">
+                      {p.name}
+                    </p>
+                    <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
+                      {p.tagline}
+                    </p>
+                    <p className="text-[11px] text-foreground mt-1.5 leading-snug">
+                      {p.audience}
+                    </p>
+                    <p className="text-[11px] font-semibold text-foreground mt-1.5">
+                      {p.price}
+                    </p>
+                  </div>
+                </Link>
               ))}
               <Link
                 to="/nieuwsbrief"
