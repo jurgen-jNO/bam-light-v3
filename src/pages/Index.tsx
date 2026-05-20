@@ -192,17 +192,25 @@ const Index = () => {
         </section>
 
         {/* Testimonial / quote */}
-        <section className="border-2 border-dashed border-border rounded-lg p-12 text-center">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
-            Member testimonial
-          </p>
-          <blockquote className="text-2xl font-medium text-foreground max-w-3xl mx-auto leading-snug">
-            "BAM is voor mij dé plek waar marketeers elkaar écht ontmoeten — niet om te netwerken,
-            maar om samen het vak vooruit te helpen."
-          </blockquote>
-          <p className="text-sm text-muted-foreground mt-6">
-            — Naam Lid, Functie @ Bedrijf
-          </p>
+        <section className="border-2 border-dashed border-border rounded-lg p-10 grid grid-cols-3 gap-8 items-center">
+          <div className="col-span-1 aspect-square border-2 border-dashed border-border rounded-lg bg-muted/30 flex flex-col items-center justify-center text-center">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">
+              Foto / video
+            </p>
+            <p className="text-xs text-muted-foreground mt-1">van het lid</p>
+          </div>
+          <div className="col-span-2">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
+              Member testimonial
+            </p>
+            <blockquote className="text-2xl font-medium text-foreground leading-snug">
+              "BAM is voor mij dé plek waar marketeers elkaar écht ontmoeten — niet om te netwerken,
+              maar om samen het vak vooruit te helpen."
+            </blockquote>
+            <p className="text-sm text-muted-foreground mt-6">
+              — Naam Lid, Functie @ Bedrijf
+            </p>
+          </div>
         </section>
 
         {/* Corporate members carousel */}
