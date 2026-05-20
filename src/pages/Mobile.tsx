@@ -74,15 +74,6 @@ const Mobile = () => {
           </div>
         </section>
 
-        {/* USPs */}
-        <section className="grid grid-cols-2 gap-3">
-          {usps.map((u) => (
-            <div key={u.titel} className="border-2 border-dashed border-border rounded-lg p-3">
-              <p className="text-sm font-semibold text-foreground">{u.titel}</p>
-              <p className="text-xs text-muted-foreground mt-1">{u.tekst}</p>
-            </div>
-          ))}
-        </section>
 
         {/* HERO */}
         <section className="border-2 border-dashed border-border rounded-lg aspect-video flex items-center justify-center bg-muted/30">
