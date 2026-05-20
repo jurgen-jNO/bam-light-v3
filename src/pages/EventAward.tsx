@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, Menu, X, Mail, Phone } from "lucide-react";
+import { Menu, X, Mail, Phone } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import ArtikelShare from "@/components/ArtikelShare";
@@ -13,39 +13,8 @@ const jury = Array.from({ length: 6 }).map((_, i) => ({
   company: "BAM",
 }));
 
-const programma: { tijd: string; title: string; desc: string; topics?: string[]; presentator?: string }[] = [
-  {
-    tijd: "18:00 – 19:00",
-    title: "Walking dinner & netwerking",
-    desc: "Ontvangst van de genomineerden, juryleden en gasten met een walking dinner.",
-  },
-  {
-    tijd: "19:00 – 19:30",
-    title: "Officiële opening",
-    desc: "Welkomstwoord van de BAM-voorzitter en introductie van de juryvoorzitter.",
-  },
-  {
-    tijd: "19:30 – 21:30",
-    title: "Award-uitreiking",
-    desc: "Bekendmaking van de winnaars in alle categorieën, doorspekt met case-presentaties van de genomineerde campagnes.",
-    topics: ["Brand of the Year", "Best Campaign", "Best Use of Data", "Best Digital Experience", "Young Talent Award", "Grand Prix"],
-    presentator: "Jurylid 1",
-  },
-  {
-    tijd: "21:30 – 22:00",
-    title: "Speech laureaat",
-    desc: "Keynote van de winnaar van de Grand Prix over de campagne en het proces erachter.",
-    presentator: "Jurylid 2",
-  },
-  {
-    tijd: "22:00 – 23:30",
-    title: "Afterparty",
-    desc: "Vier de winnaars met een drink en netwerk met de Belgische marketingtop.",
-  },
-];
 
 export default function EventAward() {
-  const [open, setOpen] = useState<number | null>(0);
   const [modal, setModal] = useState(false);
   const [nav, setNav] = useState(false);
 
@@ -58,8 +27,6 @@ export default function EventAward() {
         <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-3">
           <span className="text-xs uppercase tracking-wider text-neutral-500">Award</span>
           <nav className="hidden gap-6 text-sm text-neutral-600 md:flex">
-            <a href="#programma">Programma</a>
-            <a href="#tarieven">Tarieven</a>
             <a href="#inschrijven" onClick={(e) => { e.preventDefault(); setModal(true); }}>Inschrijven</a>
           </nav>
           <button className="md:hidden" onClick={() => setNav(true)} aria-label="Menu">
@@ -75,7 +42,7 @@ export default function EventAward() {
             <button onClick={() => setNav(false)} className="self-end" aria-label="Sluit menu">
               <X className="h-5 w-5" />
             </button>
-            {["Programma", "Tarieven", "Inschrijven"].map((l) => (
+            {["Inschrijven"].map((l) => (
               <a key={l} href={`#${l.toLowerCase()}`} className="border-b border-neutral-200 pb-2 text-neutral-700" onClick={() => setNav(false)}>
                 {l}
               </a>
@@ -135,70 +102,7 @@ export default function EventAward() {
               Ik schrijf me in ›
             </button>
 
-            {/* Block 07 — Dagprogramma accordion */}
-            <section id="programma">
-              <h2 className="mb-1 text-2xl font-semibold text-neutral-900">Programma</h2>
-              <p className="mb-4 text-sm text-neutral-500">{eventDate} · {eventTime}</p>
-              <div className="divide-y divide-neutral-300 rounded border border-neutral-300">
-                {programma.map((s, i) => {
-                  const isOpen = open === i;
-                  return (
-                    <div key={i}>
-                      <button
-                        onClick={() => setOpen(isOpen ? null : i)}
-                        className="flex w-full items-center justify-between px-4 py-4 text-left hover:bg-neutral-50"
-                      >
-                        <span className="text-neutral-800">
-                          <span className="font-semibold">{s.tijd}</span> — {s.title}
-                        </span>
-                        <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
-                      </button>
-                      {isOpen && (
-                        <div className="grid gap-4 bg-neutral-50 px-4 pb-4 text-neutral-700 sm:grid-cols-[1fr_auto]">
-                          <div className="space-y-3">
-                            <p>{s.desc}</p>
-                            {s.topics && (
-                              <ul className="list-disc pl-6 text-sm">
-                                {s.topics.map((t) => (
-                                  <li key={t}>{t}</li>
-                                ))}
-                              </ul>
-                            )}
-                          </div>
-                          {s.presentator && (
-                            <a
-                              href="/docent"
-                              className="flex h-fit items-center gap-3 self-start rounded border border-neutral-300 bg-white p-3 transition-colors hover:border-neutral-900 sm:w-48"
-                            >
-                              <div className="h-12 w-12 shrink-0 rounded-full border border-dashed border-neutral-400 bg-neutral-200" />
-                              <div>
-                                <p className="text-[10px] uppercase tracking-wider text-neutral-500">Presentator</p>
-                                <p className="text-sm font-semibold text-neutral-900">{s.presentator}</p>
-                              </div>
-                            </a>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
 
-            <section id="tarieven">
-              <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Tarieven</h2>
-              <div className="divide-y divide-neutral-300 rounded border border-neutral-300">
-                <div className="flex items-center justify-between px-4 py-3">
-                  <span>BAM-Leden</span><span className="font-medium">€ 195 excl. btw</span>
-                </div>
-                <div className="flex items-center justify-between px-4 py-3">
-                  <span>BAM-Niet-leden</span><span className="font-medium">€ 295 excl. btw</span>
-                </div>
-                <div className="flex items-center justify-between px-4 py-3">
-                  <span>Tafel (10 personen)</span><span className="font-medium">€ 1.750 excl. btw</span>
-                </div>
-              </div>
-            </section>
 
             {/* Block — Jury */}
             <section id="jury">
@@ -253,12 +157,6 @@ export default function EventAward() {
               <div>
                 <p className="text-xs uppercase tracking-wider text-neutral-500">Locatie</p>
                 <p className="text-sm text-neutral-700">BAM, Dilbeek</p>
-              </div>
-              <hr className="border-neutral-300" />
-              <div className="space-y-1 text-sm">
-                <div className="flex justify-between"><span>BAM-Leden</span><span>€ 195</span></div>
-                <div className="flex justify-between"><span>Niet-leden</span><span>€ 295</span></div>
-                <p className="text-xs text-neutral-500">excl. btw</p>
               </div>
               <button id="inschrijven" onClick={() => setModal(true)} className="w-full rounded bg-neutral-900 px-4 py-3 font-medium text-white hover:bg-black">
                 Inschrijven ›
