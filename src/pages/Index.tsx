@@ -281,7 +281,7 @@ const Index = () => {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-3">
-              {["Solo", "Friends", "Growth", "Galaxy", "Academy", "Youth"].map((p) => (
+              {["Solo", "Growth", "Galaxy", "Academy", "Youth"].map((p) => (
                 <div
                   key={p}
                   className="border-2 border-dashed border-border rounded-lg p-4 text-center"
@@ -290,6 +290,16 @@ const Index = () => {
                   <p className="text-xs text-muted-foreground mt-1">lidmaatschap</p>
                 </div>
               ))}
+              <div className="border-2 border-dashed border-border rounded-lg p-4 text-center flex flex-col justify-center bg-muted/30">
+                <p className="text-sm font-semibold text-foreground">Nieuwsbrief</p>
+                <p className="text-xs text-muted-foreground mt-1 mb-2">Gratis & vrijblijvend</p>
+                <Link
+                  to="/nieuwsbrief"
+                  className="text-xs text-foreground underline hover:text-muted-foreground font-medium"
+                >
+                  Schrijf je in
+                </Link>
+              </div>
             </div>
           </div>
         </section>
