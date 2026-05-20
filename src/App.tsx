@@ -100,6 +100,7 @@ const App = () => (
           <Route path="/event/award" element={<EventAward />} />
           <Route path="/docent" element={<DocentDetail />} />
           <Route path="/contact" element={<ContactDetail />} />
+          <Route path="/team" element={<Team />} />
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/agenda/op-maat" element={<OpleidingOpMaat />} />
           <Route path="/inschrijven/solo" element={<InschrijvenSolo />} />
