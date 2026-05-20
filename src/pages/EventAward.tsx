@@ -90,10 +90,18 @@ export default function EventAward() {
               </div>
             </section>
 
-            {/* Block — Video placeholder */}
+            {/* Block — 3 smaller photo/video placeholders */}
             <section>
-              <div className="flex aspect-video w-full items-center justify-center border border-dashed border-neutral-400 bg-neutral-200 text-sm text-neutral-500">
-                Video placeholder
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="flex aspect-[4/3] items-center justify-center border border-dashed border-neutral-400 bg-neutral-200 text-xs text-neutral-500">
+                  Foto/Video 1
+                </div>
+                <div className="flex aspect-[4/3] items-center justify-center border border-dashed border-neutral-400 bg-neutral-200 text-xs text-neutral-500">
+                  Foto/Video 2
+                </div>
+                <div className="flex aspect-[4/3] items-center justify-center border border-dashed border-neutral-400 bg-neutral-200 text-xs text-neutral-500">
+                  Foto/Video 3
+                </div>
               </div>
             </section>
 
