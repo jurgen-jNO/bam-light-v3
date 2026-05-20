@@ -286,7 +286,7 @@ const Index = () => {
               ))}
               <Link
                 to="/nieuwsbrief"
-                className="border-2 border-dashed border-border rounded-lg p-4 text-center flex flex-col justify-center bg-muted/30 hover:bg-muted/50"
+                className="border-2 border-dashed border-border rounded-lg p-4 text-center flex flex-col justify-center bg-muted hover:bg-muted/80"
               >
                 <p className="text-sm font-semibold text-foreground">Nieuwsbrief</p>
                 <p className="text-xs text-muted-foreground mt-1">Gratis & vrijblijvend</p>
