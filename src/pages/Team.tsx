@@ -110,6 +110,23 @@ export default function Team() {
               ))}
             </ul>
           </section>
+
+          {/* Exco */}
+          <section className="mt-16">
+            <h2 className="text-xs font-semibold uppercase tracking-wide text-neutral-500 mb-6">
+              Executive Committee
+            </h2>
+            <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+              {["Koen Van Impe", "Annie Courbet", "Burt Riské", "Dominique Vercraeye", "Kris Michiels"].map((naam) => (
+                <li key={naam} className="flex flex-col">
+                  <div className="aspect-[3/4] w-full rounded-md border-2 border-dashed border-neutral-300 bg-neutral-50 flex items-center justify-center text-[10px] text-neutral-400 mb-3">
+                    Foto
+                  </div>
+                  <h3 className="text-sm font-bold text-neutral-900 leading-tight">{naam}</h3>
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>
       </main>
 
