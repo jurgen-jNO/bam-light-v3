@@ -50,29 +50,30 @@ const Mobile = () => {
     <MobileShell>
       <div className="space-y-8">
         {/* JOIN CTA */}
-        <section className="border-2 border-dashed border-border rounded-lg p-6">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Word lid</p>
-          <h1 className="text-xl font-semibold text-foreground mb-2 leading-snug">
+        <section className="border-2 border-dashed border-border rounded-lg p-4">
+          <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Word lid</p>
+          <h1 className="text-base font-semibold text-foreground mb-1 leading-snug">
             De community van Belgische marketeers
           </h1>
-          <p className="text-sm text-muted-foreground mb-4">
+          <p className="text-xs text-muted-foreground mb-3">
             Sluit je aan bij BAM en groei samen met +5.000 professionals.
           </p>
-          <div className="flex flex-col gap-2">
+          <div className="flex gap-2">
             <a
               href="/mobile/word-lid"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-md bg-foreground text-background text-sm font-medium"
+              className="inline-flex items-center justify-center px-3 py-1.5 rounded-md bg-foreground text-background text-xs font-medium"
             >
               Join BAM
             </a>
             <a
               href="/mobile/word-lid"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-md border border-border text-sm font-medium"
+              className="inline-flex items-center justify-center px-3 py-1.5 rounded-md border border-border text-xs font-medium"
             >
               Ontdek lidmaatschappen
             </a>
           </div>
         </section>
+
 
 
         {/* HERO */}
