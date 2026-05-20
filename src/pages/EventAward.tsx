@@ -142,41 +142,33 @@ export default function EventAward() {
                     cat: "Brand of the Year",
                     winners: [
                       { award: "Gold", agency: "FamousGrey", advertiser: "Proximus", case: "#LikeATeam", movie: "#" },
+                      { award: "Gold", agency: "TBWA", advertiser: "Telenet", case: "Together We Connect", movie: "#" },
                       { award: "Silver", agency: "Mutant", advertiser: "KBC", case: "The Bank of Every Family", movie: "#" },
+                      { award: "Silver", agency: "BBDO", advertiser: "AG Insurance", case: "Safe Together", movie: "#" },
+                      { award: "Bronze", agency: "Publicis", advertiser: "Belfius", case: "Belfius Beats", movie: "#" },
                     ],
                   },
                   {
                     cat: "Best Campaign",
                     winners: [
                       { award: "Gold", agency: "Mortierbrigade", advertiser: "Delhaize", case: "Boer Harms", movie: "#" },
+                      { award: "Silver", agency: "Happiness", advertiser: "Studio Brussel", case: "De Warmste Week", movie: "#" },
+                      { award: "Silver", agency: "Ogilvy", advertiser: "Lotus Bakeries", case: "Biscoff Moments", movie: "#" },
                       { award: "Bronze", agency: "Wunderman Thompson", advertiser: "Colruyt", case: "Lowest Prices", movie: "#" },
-                    ],
-                  },
-                  {
-                    cat: "Best Use of Data",
-                    winners: [
-                      { award: "Gold", agency: "Ogilvy", advertiser: "Coca-Cola", case: "Share a Coke", movie: "#" },
+                      { award: "Bronze", agency: "DDB", advertiser: "Volkswagen", case: "Drive Smarter", movie: "#" },
                     ],
                   },
                   {
                     cat: "Best Digital Experience",
                     winners: [
-                      { award: "Silver", agency: "Akqa", advertiser: "Nike", case: "Nike Run Club BE", movie: "#" },
-                    ],
-                  },
-                  {
-                    cat: "Young Talent Award",
-                    winners: [
-                      { award: "Gold", agency: "DDB", advertiser: "Stella Artois", case: "Joie de Bière", movie: "#" },
-                    ],
-                  },
-                  {
-                    cat: "Grand Prix",
-                    winners: [
-                      { award: "Gold", agency: "FamousGrey", advertiser: "Proximus", case: "#LikeATeam", movie: "#" },
+                      { award: "Gold", agency: "Ogilvy", advertiser: "Coca-Cola", case: "Share a Coke", movie: "#" },
+                      { award: "Gold", agency: "Akqa", advertiser: "Nike", case: "Nike Run Club BE", movie: "#" },
+                      { award: "Silver", agency: "Boondoggle", advertiser: "Bpost", case: "Track & Trace 2.0", movie: "#" },
+                      { award: "Bronze", agency: "Emakina", advertiser: "Brussels Airlines", case: "Fly Together", movie: "#" },
                     ],
                   },
                 ].map((group) => (
+
                   <div key={group.cat}>
                     <h3 className="mb-3 border-b border-neutral-300 pb-1 text-lg font-semibold text-neutral-900">{group.cat}</h3>
                     <div className="overflow-x-auto">
