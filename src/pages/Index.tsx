@@ -213,7 +213,7 @@ const Index = () => {
               Alle leden
             </Link>
           </div>
-          <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-6 gap-4 mb-6">
             {[
               { value: "###", label: "Corporate members" },
               { value: "#.###", label: "Individuele leden" },
