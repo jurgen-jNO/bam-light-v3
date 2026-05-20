@@ -105,6 +105,7 @@ export default function EventAward() {
               </div>
             </section>
 
+            {/* Block — Jury */}
             <section id="jury">
               <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Jury</h2>
               <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -124,6 +125,11 @@ export default function EventAward() {
                 ))}
               </div>
             </section>
+
+            {/* Block 08 — Inline CTA */}
+            <button onClick={() => setModal(true)} className="w-full rounded bg-neutral-700 px-6 py-4 text-center font-medium text-white hover:bg-neutral-800">
+              Ik schrijf me in ›
+            </button>
 
             {/* Block 12 — Contactpersoon */}
             <section>
