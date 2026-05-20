@@ -92,6 +92,7 @@ export default function EventAward() {
 
             {/* Block — 3 smaller photo/video placeholders */}
             <section>
+              <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Sfeerbeelden 2025</h2>
               <div className="grid gap-4 sm:grid-cols-3">
                 <div className="flex aspect-[4/3] items-center justify-center border border-dashed border-neutral-400 bg-neutral-200 text-xs text-neutral-500">
                   Foto/Video 1
