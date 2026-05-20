@@ -319,7 +319,7 @@ const Index = () => {
                 >
                   <div className="transition-opacity duration-200 group-hover:opacity-0">
                     <p className="text-sm font-semibold text-foreground">{p.name}</p>
-                    <p className="text-xs text-muted-foreground mt-1">lidmaatschap</p>
+                    <p className="text-xs text-muted-foreground mt-1">{p.tagline}</p>
                   </div>
                   <div className="absolute inset-0 p-3 bg-background opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-center text-left">
                     <p className="text-xs font-semibold text-foreground uppercase tracking-wide">
