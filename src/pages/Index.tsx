@@ -214,24 +214,24 @@ const Index = () => {
             </Link>
           </div>
           <div className="grid grid-cols-3 gap-4 mb-6">
-            <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
-              <p className="text-3xl font-semibold text-foreground">###</p>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mt-2">
-                Corporate members
-              </p>
-            </div>
-            <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
-              <p className="text-3xl font-semibold text-foreground">#.###</p>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mt-2">
-                Individuele leden
-              </p>
-            </div>
-            <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
-              <p className="text-3xl font-semibold text-foreground">##</p>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mt-2">
-                Events per jaar
-              </p>
-            </div>
+            {[
+              { value: "###", label: "Corporate members" },
+              { value: "#.###", label: "Individuele leden" },
+              { value: "##", label: "Events per jaar" },
+              { value: "##", label: "Opleidingen per jaar" },
+              { value: "##", label: "Congressen per jaar" },
+              { value: "##", label: "Think tanks" },
+            ].map((s) => (
+              <div
+                key={s.label}
+                className="border-2 border-dashed border-border rounded-lg p-6 text-center"
+              >
+                <p className="text-3xl font-semibold text-foreground">{s.value}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mt-2">
+                  {s.label}
+                </p>
+              </div>
+            ))}
           </div>
           <div className="border-2 border-dashed border-border rounded-lg p-6">
             <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
