@@ -131,6 +131,54 @@ export default function EventAward() {
               Ik schrijf me in ›
             </button>
 
+            {/* Block — Winnaars 2025 */}
+            <section>
+              <h2 className="mb-1 text-2xl font-semibold text-neutral-900">Winnaars 2025</h2>
+              <p className="mb-4 text-sm text-neutral-500">Een overzicht van de bekroonde cases van de vorige editie.</p>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-neutral-300">
+                      <th className="py-2 pr-4 font-medium text-neutral-500">Categorie</th>
+                      <th className="py-2 pr-4 font-medium text-neutral-500">Award</th>
+                      <th className="py-2 pr-4 font-medium text-neutral-500">Agency</th>
+                      <th className="py-2 pr-4 font-medium text-neutral-500">Advertiser</th>
+                      <th className="py-2 font-medium text-neutral-500">Case</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-neutral-200">
+                    {[
+                      { cat: "Brand of the Year", award: "Gold", agency: "FamousGrey", advertiser: "Proximus", case: "#LikeATeam" },
+                      { cat: "Brand of the Year", award: "Silver", agency: "Mutant", advertiser: "KBC", case: "The Bank of Every Family" },
+                      { cat: "Best Campaign", award: "Gold", agency: "Mortierbrigade", advertiser: "Delhaize", case: "Boer Harms" },
+                      { cat: "Best Campaign", award: "Bronze", agency: "Wunderman Thompson", advertiser: "Colruyt", case: "Lowest Prices" },
+                      { cat: "Best Use of Data", award: "Gold", agency: "Ogilvy", advertiser: "Coca-Cola", case: "Share a Coke" },
+                      { cat: "Best Digital Experience", award: "Silver", agency: "Akqa", advertiser: "Nike", case: "Nike Run Club BE" },
+                      { cat: "Young Talent Award", award: "Gold", agency: "DDB", advertiser: "Stella Artois", case: "Joie de Bière" },
+                      { cat: "Grand Prix", award: "Gold", agency: "FamousGrey", advertiser: "Proximus", case: "#LikeATeam" },
+                    ].map((w, i) => (
+                      <tr key={i} className="hover:bg-neutral-50">
+                        <td className="py-3 pr-4 text-neutral-700">{w.cat}</td>
+                        <td className="py-3 pr-4">
+                          <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
+                            w.award === "Gold" ? "bg-yellow-100 text-yellow-800" :
+                            w.award === "Silver" ? "bg-gray-100 text-gray-600" :
+                            "bg-amber-50 text-amber-700"
+                          }`}>
+                            {w.award}
+                          </span>
+                        </td>
+                        <td className="py-3 pr-4 text-neutral-700">{w.agency}</td>
+                        <td className="py-3 pr-4 text-neutral-700">{w.advertiser}</td>
+                        <td className="py-3 font-medium text-neutral-900">{w.case}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
             {/* Block 12 — Contactpersoon */}
             <section>
               <h2 className="mb-4 text-2xl font-semibold text-neutral-900">Vragen of meer informatie?</h2>
