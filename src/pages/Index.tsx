@@ -272,12 +272,6 @@ const Index = () => {
                 >
                   Join BAM
                 </Link>
-                <Link
-                  to="/inschrijven/solo"
-                  className="inline-flex items-center px-5 py-2.5 rounded-md border border-border text-sm font-medium hover:bg-muted"
-                >
-                  Schrijf je in
-                </Link>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-3">
