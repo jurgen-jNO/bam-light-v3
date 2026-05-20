@@ -8,7 +8,7 @@ const sitemapLinks = [
   { label: "Onze leden", href: "/leden" },
   { label: "Affiliations", href: "/affiliations" },
   { label: "Sponsors", href: "/sponsors" },
-  { label: "Team", href: "#team" },
+  { label: "Team", href: "/team" },
   { label: "Pers", href: "#pers" },
   { label: "Nieuwsbrief", href: "#nieuwsbrief" },
 ];
