@@ -16,6 +16,7 @@ import EventBigQuiz from "./pages/EventBigQuiz.tsx";
 import EventAward from "./pages/EventAward.tsx";
 import DocentDetail from "./pages/DocentDetail.tsx";
 import ContactDetail from "./pages/ContactDetail.tsx";
+import Team from "./pages/Team.tsx";
 import Agenda from "./pages/Agenda.tsx";
 import AgendaEvents from "./pages/AgendaEvents.tsx";
 import InschrijvenSolo from "./pages/InschrijvenSolo.tsx";
@@ -99,6 +100,7 @@ const App = () => (
           <Route path="/event/award" element={<EventAward />} />
           <Route path="/docent" element={<DocentDetail />} />
           <Route path="/contact" element={<ContactDetail />} />
+          <Route path="/team" element={<Team />} />
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/agenda/op-maat" element={<OpleidingOpMaat />} />
           <Route path="/inschrijven/solo" element={<InschrijvenSolo />} />
