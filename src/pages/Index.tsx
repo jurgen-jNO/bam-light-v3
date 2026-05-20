@@ -165,30 +165,53 @@ const Index = () => {
         </section>
 
         {/* Job board highlight */}
-        <section className="border-2 border-dashed border-border rounded-lg p-10 grid grid-cols-3 gap-6 items-center">
-          <div className="col-span-2">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Job board</p>
-            <h2 className="text-2xl font-semibold text-foreground mb-2">
-              Vind je volgende marketingjob
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Honderden vacatures bij de sterkste merken en bureaus van het land.
-            </p>
+        <section className="border-2 border-dashed border-border rounded-lg p-10">
+          <div className="grid grid-cols-3 gap-6 items-center mb-6">
+            <div className="col-span-2">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Job board</p>
+              <h2 className="text-2xl font-semibold text-foreground mb-2">
+                Vind je volgende marketingjob
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Honderden vacatures bij de sterkste merken en bureaus van het land.
+              </p>
+            </div>
+            <div className="flex gap-4 justify-end">
+              <Link
+                to="/vacatures"
+                className="text-sm text-foreground underline hover:text-muted-foreground font-medium"
+              >
+                Overzicht
+              </Link>
+              <Link
+                to="/vacature"
+                className="text-sm text-foreground underline hover:text-muted-foreground font-medium"
+              >
+                Detail
+              </Link>
+            </div>
           </div>
-          <div className="flex gap-4 justify-end">
-            <Link
-              to="/vacatures"
-              className="text-sm text-foreground underline hover:text-muted-foreground font-medium"
-            >
-              Overzicht
-            </Link>
-            <Link
-              to="/vacature"
-              className="text-sm text-foreground underline hover:text-muted-foreground font-medium"
-            >
-              Detail
-            </Link>
-          </div>
+          <ul className="divide-y divide-dashed divide-border border-t-2 border-b-2 border-dashed border-border">
+            {[
+              { titel: "Marketing Manager", bedrijf: "Proximus", locatie: "Brussel", type: "Voltijds" },
+              { titel: "Content Strategist", bedrijf: "DPG Media", locatie: "Antwerpen", type: "Voltijds" },
+              { titel: "Performance Marketeer", bedrijf: "Telenet", locatie: "Mechelen", type: "Voltijds" },
+              { titel: "Brand Manager", bedrijf: "Colruyt Group", locatie: "Halle", type: "Voltijds" },
+              { titel: "Digital Marketing Lead", bedrijf: "KBC", locatie: "Leuven", type: "Voltijds" },
+            ].map((v) => (
+              <li key={v.titel}>
+                <Link
+                  to="/vacature"
+                  className="grid grid-cols-12 gap-4 py-3 px-1 hover:bg-muted/40 items-center"
+                >
+                  <span className="col-span-5 text-sm font-medium text-foreground">{v.titel}</span>
+                  <span className="col-span-3 text-sm text-muted-foreground">{v.bedrijf}</span>
+                  <span className="col-span-2 text-xs text-muted-foreground">{v.locatie}</span>
+                  <span className="col-span-2 text-xs text-muted-foreground text-right">{v.type}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
         {/* Testimonial / quote */}
