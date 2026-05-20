@@ -19,12 +19,6 @@ const corporateMembers = [
   "Delhaize", "AG Insurance", "Belfius", "Engie", "Luminus", "DPG Media",
 ];
 
-const usps = [
-  { titel: "Netwerk", tekst: "+5.000 marketeers" },
-  { titel: "Kennis", tekst: "Opleidingen & events" },
-  { titel: "Erkenning", tekst: "BAM Awards" },
-  { titel: "Carrière", tekst: "Job board & mentoring" },
-];
 
 const stats = [
   { value: "###", label: "Corporate members" },
