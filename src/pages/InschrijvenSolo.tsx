@@ -64,6 +64,7 @@ const initialForm: FormState = {
 const InschrijvenSolo = () => {
   const [step, setStep] = useState<Step>(1);
   const [form, setForm] = useState<FormState>(initialForm);
+  const [thanks, setThanks] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -85,7 +86,14 @@ const InschrijvenSolo = () => {
 
   const submitRegistration = () => {
     toast.success("Inschrijving ontvangen!");
-    next();
+    setThanks(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const startProfile = () => {
+    setThanks(false);
+    setStep(5);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const submitProfile = () => {
@@ -104,8 +112,8 @@ const InschrijvenSolo = () => {
     }
   };
 
-  // ============ SUCCESS SCREEN ============
-  if (submitted) {
+  // ============ THANK YOU SCREEN (na inschrijving, voor profiel) ============
+  if (thanks) {
     return (
       <div className="min-h-screen bg-background flex flex-col">
         <MainNavigation />
@@ -128,21 +136,60 @@ const InschrijvenSolo = () => {
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-1">Volgende stap</p>
                   <p className="text-sm text-foreground/80">
-                    Check je inbox voor de bevestigingsmail. Je profiel is nu klaar!
+                    Vervolledig nu meteen je persoonlijk profiel: stel een wachtwoord in, voeg een
+                    foto toe en duid je interesses aan. Zo herkennen andere leden je en ontvang je
+                    relevante content.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="border-t border-dashed border-foreground/30 pt-5 text-left text-xs text-foreground/60 space-y-2">
+            <div className="border-t border-dashed border-foreground/30 pt-5 text-left text-xs text-foreground/60 space-y-2 mb-6">
               <p className="uppercase tracking-widest text-foreground/50 text-[10px] mb-2">Wat volgt</p>
               <p>1. Bevestigingsmail in je inbox</p>
               <p>2. Factuur via Exact Online</p>
               <p>3. Activatie van je lidmaatschap na betaling</p>
             </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={startProfile}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
+              >
+                Vervolledig je profiel <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+              <Link
+                to="/"
+                className="inline-flex items-center justify-center px-6 py-3 border-2 border-dashed border-foreground/40 text-foreground text-xs uppercase tracking-widest font-semibold hover:bg-foreground/5 transition-colors"
+              >
+                Later vervolledigen
+              </Link>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  // ============ FINAL SUCCESS (profiel opgeslagen) ============
+  if (submitted) {
+    return (
+      <div className="min-h-screen bg-background flex flex-col">
+        <MainNavigation />
+        <main className="flex-1 max-w-[700px] mx-auto w-full px-6 py-16">
+          <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] p-10 text-center">
+            <div className="w-12 h-12 mx-auto mb-5 rounded-full border-2 border-dashed border-foreground/50 flex items-center justify-center">
+              <Check className="w-6 h-6 text-foreground/70" />
+            </div>
+            <p className="text-[10px] uppercase tracking-widest text-foreground/40 mb-2">[ klaar ]</p>
+            <h1 className="text-2xl font-bold text-foreground mb-3">Je profiel is klaar</h1>
+            <p className="text-sm text-foreground/70 leading-relaxed mb-6">
+              Welkom bij BAM. Je profiel staat online en je kan meteen aan de slag.
+            </p>
             <Link
               to="/"
-              className="inline-block mt-8 px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
+              className="inline-block mt-2 px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
             >
               Terug naar home
             </Link>
@@ -152,6 +199,7 @@ const InschrijvenSolo = () => {
       </div>
     );
   }
+
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
