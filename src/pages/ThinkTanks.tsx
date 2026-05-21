@@ -17,7 +17,7 @@ const thinkTanks: ThinkTank[] = [
     title: "Sustainability",
     description:
       "De Think Tank Sustainability wilt de duurzame ontwikkeling van de activiteiten van marketeers bevorderen, met aandacht voor de fundamentele rol van marketeers binnen product- en servicemarketing.",
-    cta: "Engageer je in de Think Tank Sustainability",
+    cta: "Sluit je aan",
     email: "sarah.vyverman@marketing.be",
   },
   {
@@ -25,7 +25,7 @@ const thinkTanks: ThinkTank[] = [
     title: "MarTech & Data with IAB",
     description:
       "De technologische ontwikkelingen gebeuren aan een razendsnel tempo. De Think Tank MarTech & Data with IAB helpt marketeers en bedrijven bij het maken van goede keuzes.",
-    cta: "Engageer je in de Think Tank MarTech & Data with IAB",
+    cta: "Sluit je aan",
     email: "sarah.vyverman@marketing.be",
   },
   {
@@ -33,7 +33,7 @@ const thinkTanks: ThinkTank[] = [
     title: "Diversity & Inclusion",
     description:
       "Hoe maak je marketing vandaag de dag meer inclusief? Het is een vraag die de Think Tank Diversity & Inclusion zich elke dag opnieuw stelt en waarop het antwoord niet eenvoudig blijkt. Net daarom streeft de Think Tank ernaar om de concepten 'diversiteit' en 'inclusie' in de marketingstrategie van bedrijven te integreren.",
-    cta: "Engageer je in de Think Tank Diversity & Inclusion",
+    cta: "Sluit je aan",
     email: "sarah.vyverman@marketing.be",
   },
   {
@@ -41,7 +41,7 @@ const thinkTanks: ThinkTank[] = [
     title: "Ethics",
     description:
       "Ethiek gaat vaak over het bewandelen van een fijne lijn. De Think Tank Ethics koestert de ambitie om marketing en ethiek met elkaar te verweven, over de wettelijke aanpak heen.",
-    cta: "Engageer je in de Think Tank Ethics",
+    cta: "Sluit je aan",
     email: "sarah.vyverman@marketing.be",
   },
   {
@@ -49,7 +49,7 @@ const thinkTanks: ThinkTank[] = [
     title: "Health & Wellbeing",
     description:
       "De Think Tank Health & Wellbeing focust op de gezondheid en het welzijn van individuen. Ze wilt marketeers helpen om een positieve maatschappelijke, ecologische en economische impact te hebben, waarbij de Think Tank marketeers over sectoren heen met elkaar in contact brengt. Bovendien wilt de Think Tank marketeers bijstaan in het integreren van health & wellbeing in hun business op een ethische en correcte manier.",
-    cta: "Engageer je in de Think Tank Health & Wellbeing",
+    cta: "Sluit je aan",
     email: "sarah.vyverman@marketing.be",
   },
 ];
