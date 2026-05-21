@@ -16,10 +16,13 @@ type SponsorTier =
   | "Students / Young Professionals"
   | "Varia";
 
+type SponsorLevel = "Platinum" | "Gold" | "Silver";
+
 interface Sponsor {
   id: string;
   brand: string;
   tier: SponsorTier;
+  level: SponsorLevel;
   straat: string;
   nr: string;
   postcode: string;
@@ -32,98 +35,86 @@ interface Sponsor {
 
 const sponsors: Sponsor[] = [
   {
-    id: "1", brand: "Solvay Brussels School", tier: "Education",
+    id: "1", brand: "Solvay Brussels School", tier: "Education", level: "Gold",
     straat: "Avenue F.D. Roosevelt", nr: "42", postcode: "1050", gemeente: "Brussel",
     url: "https://www.solvay.edu", telefoon: "+32 2 650 41 11", email: "info@solvay.edu",
     about: "Solvay Brussels School ondersteunt de marketing community met executive education en academisch onderzoek op topniveau.",
   },
   {
-    id: "2", brand: "Kortrijk Xpo", tier: "BAM Goes West",
+    id: "2", brand: "Kortrijk Xpo", tier: "BAM Goes West", level: "Silver",
     straat: "Doorniksesteenweg", nr: "216", postcode: "8500", gemeente: "Kortrijk",
     url: "https://www.kortrijkxpo.com", telefoon: "+32 56 24 11 11", email: "info@kortrijkxpo.com",
     about: "Kortrijk Xpo is host van BAM Goes West en brengt de West-Vlaamse marketing community samen rond inspirerende events.",
   },
   {
-    id: "3", brand: "Brussels Expo", tier: "Event",
+    id: "3", brand: "Brussels Expo", tier: "Event", level: "Gold",
     straat: "Belgiëplein", nr: "1", postcode: "1020", gemeente: "Brussel",
     url: "https://www.brussels-expo.com", telefoon: "+32 2 474 84 84", email: "info@brussels-expo.com",
     about: "Brussels Expo is een vaste partner voor de grote BAM-events en marketingconferenties in het hart van België.",
   },
   {
-    id: "4", brand: "Telenet", tier: "Structural",
+    id: "4", brand: "Telenet", tier: "Structural", level: "Platinum",
     straat: "Liersesteenweg", nr: "4", postcode: "2800", gemeente: "Mechelen",
     url: "https://www.telenet.be", telefoon: "+32 15 33 30 00", email: "info@telenet.be",
     about: "Telenet ondersteunt BAM structureel en helpt de Belgische marketing community jaarrond te bouwen aan kennis en netwerk.",
   },
   {
-    id: "5", brand: "Google Belgium", tier: "Key Partner",
+    id: "5", brand: "Google Belgium", tier: "Key Partner", level: "Platinum",
     straat: "Steenweg op Etterbeek", nr: "180", postcode: "1040", gemeente: "Brussel",
     url: "https://www.google.be", telefoon: "+32 2 894 60 00", email: "belgium@google.com",
     about: "Google is key partner van BAM en levert tools, training en inzichten om merken digitaal te laten groeien.",
   },
   {
-    id: "6", brand: "IAB Belgium", tier: "IAB",
+    id: "6", brand: "IAB Belgium", tier: "IAB", level: "Gold",
     straat: "Buro & Design Center", nr: "11", postcode: "1130", gemeente: "Brussel",
     url: "https://iabeurope.eu", telefoon: "+32 2 740 00 90", email: "info@iabbelgium.be",
     about: "IAB Belgium vertegenwoordigt de digitale advertising industrie en werkt nauw samen met BAM rond standaarden en advocacy.",
   },
   {
-    id: "7", brand: "IAB MIXX Awards", tier: "IAB MIXX Awards",
+    id: "7", brand: "IAB MIXX Awards", tier: "IAB MIXX Awards", level: "Silver",
     straat: "Buro & Design Center", nr: "11", postcode: "1130", gemeente: "Brussel",
     url: "https://www.mixxawards.be", telefoon: "+32 2 740 00 91", email: "mixx@iabbelgium.be",
     about: "De IAB MIXX Awards bekronen de meest creatieve en effectieve digitale campagnes in België.",
   },
   {
-    id: "8", brand: "Vlerick Business School", tier: "Think Tank",
+    id: "8", brand: "Vlerick Business School", tier: "Think Tank", level: "Platinum",
     straat: "Reep", nr: "1", postcode: "9000", gemeente: "Gent",
     url: "https://www.vlerick.com", telefoon: "+32 9 210 97 11", email: "info@vlerick.com",
     about: "Vlerick werkt met BAM samen rond marketing think tanks en gedeeld onderzoek voor de Belgische business community.",
   },
   {
-    id: "9", brand: "CMO Council Belgium", tier: "CMO",
+    id: "9", brand: "CMO Council Belgium", tier: "CMO", level: "Gold",
     straat: "Avenue Louise", nr: "65", postcode: "1050", gemeente: "Brussel",
     url: "https://www.cmocouncil.org", telefoon: "+32 2 808 12 00", email: "belgium@cmocouncil.org",
     about: "Het CMO-platform binnen BAM verbindt Chief Marketing Officers rond strategische thema's en peer-to-peer learning.",
   },
   {
-    id: "10", brand: "STIMA Young", tier: "Students / Young Professionals",
+    id: "10", brand: "STIMA Young", tier: "Students / Young Professionals", level: "Silver",
     straat: "Belliardstraat", nr: "20", postcode: "1040", gemeente: "Brussel",
     url: "https://www.stima.be", telefoon: "+32 2 234 67 89", email: "young@stima.be",
     about: "STIMA Young inspireert studenten en jonge marketeers door events, mentoring en awards binnen het BAM-netwerk.",
   },
   {
-    id: "11", brand: "Marketing.be", tier: "Varia",
+    id: "11", brand: "Marketing.be", tier: "Varia", level: "Silver",
     straat: "Persstraat", nr: "12", postcode: "1000", gemeente: "Brussel",
     url: "https://www.marketing.be", telefoon: "+32 2 555 12 34", email: "info@marketing.be",
     about: "Marketing.be is het toonaangevende vakplatform voor de Belgische marketing community en mediapartner van BAM.",
   },
 ];
 
-const tiers: SponsorTier[] = [
-  "Education",
-  "BAM Goes West",
-  "Event",
-  "Structural",
-  "Key Partner",
-  "IAB",
-  "IAB MIXX Awards",
-  "Think Tank",
-  "CMO",
-  "Students / Young Professionals",
-  "Varia",
-];
+const levels: SponsorLevel[] = ["Platinum", "Gold", "Silver"];
 
 const Sponsors = () => {
-  const [filter, setFilter] = useState<"Alle" | SponsorTier>("Alle");
+  const [level, setLevel] = useState<"Alle" | SponsorLevel>("Alle");
   const [query, setQuery] = useState("");
 
   const filtered = useMemo(() => {
     return sponsors.filter((s) => {
-      const okTier = filter === "Alle" || s.tier === filter;
+      const okLevel = level === "Alle" || s.level === level;
       const okQuery = !query || s.brand.toLowerCase().includes(query.toLowerCase());
-      return okTier && okQuery;
+      return okLevel && okQuery;
     });
-  }, [filter, query]);
+  }, [level, query]);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -155,20 +146,37 @@ const Sponsors = () => {
         {/* Filter bar */}
         <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] p-4 mb-8">
           <div className="flex items-start justify-between gap-4 flex-wrap">
-            <div className="flex-1 min-w-[260px] max-w-sm">
+            <div className="flex-1 min-w-[260px]">
               <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">
-                [ filter — tier ]
+                [ filter — level ]
               </p>
-              <select
-                value={filter}
-                onChange={(e) => setFilter(e.target.value as "Alle" | SponsorTier)}
-                className="w-full bg-background border-2 border-dashed border-foreground/30 px-3 py-2 text-sm text-foreground outline-none hover:border-foreground/60 focus:border-foreground transition-colors uppercase tracking-wide"
-              >
-                <option value="Alle">Alle tiers</option>
-                {tiers.map((t) => (
-                  <option key={t} value={t}>{t}</option>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() => setLevel("Alle")}
+                  className={`px-4 py-2 text-xs uppercase tracking-widest font-semibold border-2 border-dashed transition-colors ${
+                    level === "Alle"
+                      ? "bg-foreground text-background border-foreground"
+                      : "bg-background text-foreground border-foreground/30 hover:border-foreground/60"
+                  }`}
+                >
+                  Alle
+                </button>
+                {levels.map((l) => (
+                  <button
+                    key={l}
+                    type="button"
+                    onClick={() => setLevel(l)}
+                    className={`px-4 py-2 text-xs uppercase tracking-widest font-semibold border-2 border-dashed transition-colors ${
+                      level === l
+                        ? "bg-foreground text-background border-foreground"
+                        : "bg-background text-foreground border-foreground/30 hover:border-foreground/60"
+                    }`}
+                  >
+                    {l}
+                  </button>
                 ))}
-              </select>
+              </div>
             </div>
 
             <div className="min-w-[220px]">
@@ -219,7 +227,7 @@ const Sponsors = () => {
                     </div>
                     <div className="min-w-0">
                       <p className="text-[10px] uppercase tracking-widest text-foreground/40 mb-0.5">
-                        [ logo ]
+                        [ logo · {s.level} ]
                       </p>
                       <h3 className="text-lg font-bold text-foreground uppercase tracking-wide leading-tight truncate">
                         {s.brand}
