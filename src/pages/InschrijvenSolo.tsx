@@ -542,6 +542,11 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
   </div>
 );
 
+const Grid2 = ({ children }: { children: React.ReactNode }) => (
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">{children}</div>
+);
+
+
 const Field = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <label className="block">
     <span className="block text-[10px] uppercase tracking-widest text-foreground/50 mb-1.5">{label}</span>
