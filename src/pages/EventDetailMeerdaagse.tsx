@@ -8,15 +8,15 @@ const sessions = [
   {
     n: "Sessie 1",
     title: "Strategie & doelgroepbepaling",
-    date: "24 feb 2026",
+    date: "7 jul 2026",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     topics: ["Marktanalyse", "Persona's", "Customer journey", "Doelstellingen & KPI's"],
     docent: "Jan Janssens",
   },
-  { n: "Sessie 2", title: "Content creatie & storytelling", date: "10 mrt 2026" },
-  { n: "Sessie 3", title: "Distributie & kanalen", date: "24 mrt 2026" },
-  { n: "Sessie 4", title: "Conversie & lead nurturing", date: "21 apr 2026" },
-  { n: "Sessie 5", title: "Meten, optimaliseren & cases", date: "5 juni 2026" },
+  { n: "Sessie 2", title: "Content creatie & storytelling", date: "21 jul 2026" },
+  { n: "Sessie 3", title: "Distributie & kanalen", date: "4 aug 2026" },
+  { n: "Sessie 4", title: "Conversie & lead nurturing", date: "18 aug 2026" },
+  { n: "Sessie 5", title: "Meten, optimaliseren & cases", date: "1 sep 2026" },
 ];
 
 const docenten = Array.from({ length: 6 }).map((_, i) => ({
