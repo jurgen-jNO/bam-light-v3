@@ -59,14 +59,72 @@ const WireBox = ({
 );
 
 const Artikels = () => {
-  const heroArticle = articles[0];
-  const subHeroArticles = articles.slice(1, 3);
-  const trendingArticles = articles.slice(3, 8);
-  const gridArticles = articles.slice(8);
+  const [domein, setDomein] = useState("");
+  const [query, setQuery] = useState("");
+
+  const filteredArticles = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return articles.filter((a) => {
+      const matchDomein = !domein || a.category === domein;
+      const matchQuery =
+        !q ||
+        a.title.toLowerCase().includes(q) ||
+        a.intro.toLowerCase().includes(q) ||
+        a.category.toLowerCase().includes(q);
+      return matchDomein && matchQuery;
+    });
+  }, [domein, query]);
+
+  const hasFilters = !!domein || !!query.trim();
+  const heroArticle = filteredArticles[0] ?? articles[0];
+  const subHeroArticles = hasFilters ? [] : filteredArticles.slice(1, 3);
+  const trendingArticles = hasFilters ? [] : filteredArticles.slice(3, 8);
+  const gridArticles = hasFilters ? filteredArticles.slice(1) : filteredArticles.slice(8);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <MainNavigation />
+
+      {/* Sticky filter sub-nav */}
+      <div className="sticky top-0 z-30 border-b border-dashed border-neutral-400 bg-neutral-100">
+        <div className="mx-auto flex max-w-[1400px] flex-col gap-3 px-6 py-3 md:flex-row md:flex-wrap md:items-center md:gap-6">
+          <select
+            value={domein}
+            onChange={(e) => setDomein(e.target.value)}
+            className="rounded border border-neutral-300 bg-white px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-100 focus:outline-none focus:ring-1 focus:ring-neutral-700"
+          >
+            <option value="">Alle interessedomeinen</option>
+            {INTEREST_DOMAINS.map((d) => (
+              <option key={d} value={d}>
+                {d}
+              </option>
+            ))}
+          </select>
+
+          <div className="relative flex-1 md:max-w-md">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Zoek in artikels..."
+              className="w-full rounded border border-neutral-300 bg-white py-1.5 pl-9 pr-3 text-sm text-neutral-700 placeholder:text-neutral-400 focus:outline-none focus:ring-1 focus:ring-neutral-700"
+            />
+          </div>
+
+          {hasFilters && (
+            <button
+              onClick={() => {
+                setDomein("");
+                setQuery("");
+              }}
+              className="text-xs font-medium text-neutral-700 underline underline-offset-4 md:ml-auto"
+            >
+              Filters wissen
+            </button>
+          )}
+        </div>
+      </div>
 
       <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-10">
         {/* Wireframe header */}
@@ -77,6 +135,23 @@ const Artikels = () => {
             </p>
           </div>
         </div>
+
+        {filteredArticles.length === 0 ? (
+          <div className="flex flex-col items-center justify-center gap-3 py-20 text-center">
+            <p className="text-foreground/60">Geen artikels gevonden voor deze filters.</p>
+            <button
+              onClick={() => {
+                setDomein("");
+                setQuery("");
+              }}
+              className="text-sm font-medium text-foreground underline underline-offset-4"
+            >
+              Filters wissen
+            </button>
+          </div>
+        ) : (
+        <>
+
 
         {/* Top Section: Hero + Trending Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-8 mb-16">
