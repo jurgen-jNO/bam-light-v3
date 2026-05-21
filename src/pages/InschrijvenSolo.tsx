@@ -43,14 +43,12 @@ const visibleSteps = [
 ];
 
 const interestOptions = [
-  "Netwerken & events",
-  "Marketing & communicatie",
-  "Ondernemerschap",
-  "Innovatie & technologie",
-  "Duurzaamheid",
-  "Leadership",
-  "Sales & business development",
-  "HR & talent",
+  "Digital & Technology",
+  "Sustainability, Ethics & Purpose",
+  "Marketing Leadership & Future Skills",
+  "Brand Building",
+  "Performance Marketing",
+  "Community Building",
 ];
 
 const initialForm: FormState = {
