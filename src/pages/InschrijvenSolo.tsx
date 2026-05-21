@@ -35,12 +35,6 @@ interface FormState {
   terms: boolean;
 }
 
-const visibleSteps = [
-  { n: 1, label: "Persoon" },
-  { n: 2, label: "Adres" },
-  { n: 3, label: "Facturatie" },
-  { n: 4, label: "Bevestig" },
-];
 
 const interestOptions = [
   "Digital & Technology",
@@ -228,40 +222,6 @@ const InschrijvenSolo = () => {
           </p>
         </div>
 
-        {/* Stepper — toont enkel de 4 hoofdstappen; profiel & interesses zijn verborgen substappen */}
-        <ol className="flex items-center justify-between mb-10 gap-1">
-          {visibleSteps.map((s, i) => {
-            const active = step === s.n;
-            const done = step > s.n || step > 4; // stap 5/6 = stap 4 is afgerond
-            return (
-              <li key={s.n} className="flex-1 flex items-center gap-1">
-                <div className="flex flex-col items-center w-full">
-                  <div
-                    className={`w-7 h-7 md:w-8 md:h-8 border-2 border-dashed flex items-center justify-center text-[10px] md:text-xs font-semibold ${
-                      done
-                        ? "bg-foreground text-background border-foreground"
-                        : active
-                        ? "border-foreground text-foreground bg-foreground/5"
-                        : "border-foreground/30 text-foreground/40"
-                    }`}
-                  >
-                    {done ? <Check className="w-3 h-3 md:w-3.5 md:h-3.5" /> : s.n}
-                  </div>
-                  <span
-                    className={`mt-2 text-[9px] md:text-[10px] uppercase tracking-widest text-center ${
-                      active ? "text-foreground" : "text-foreground/40"
-                    }`}
-                  >
-                    {s.label}
-                  </span>
-                </div>
-                {i < visibleSteps.length - 1 && (
-                  <div className="flex-1 border-t-2 border-dashed border-foreground/25 -mt-5" />
-                )}
-              </li>
-            );
-          })}
-        </ol>
         <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] p-6 md:p-8">
           {/* STEP 1 — Persoonsgegevens */}
           {step === 1 && (
