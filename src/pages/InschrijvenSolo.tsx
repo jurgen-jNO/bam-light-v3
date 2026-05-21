@@ -5,7 +5,7 @@ import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
 
-type Step = 1 | 2 | 3 | 4 | 5 | 6;
+type Step = 1 | 2 | 3 | 4 | 5;
 
 interface FormState {
   // Persoonsgegevens
@@ -26,6 +26,8 @@ interface FormState {
   vat: string;
   invoiceEmail: string;
   // Profiel
+  password: string;
+  passwordConfirm: string;
   photo: string | null;
   interests: string[];
   // Opt-ins
@@ -56,6 +58,7 @@ const initialForm: FormState = {
   jobTitle: "", company: "", mobile: "", email: "",
   street: "", number: "", zip: "", city: "", country: "België",
   vat: "", invoiceEmail: "",
+  password: "", passwordConfirm: "",
   photo: null, interests: [],
   newsletter: false, terms: false,
 };
@@ -79,7 +82,7 @@ const InschrijvenSolo = () => {
   };
 
   // Demo mode: stappen vrij doorklikbaar zonder validatie.
-  const next = () => step < 6 && setStep((s) => (s + 1) as Step);
+  const next = () => step < 5 && setStep((s) => (s + 1) as Step);
   const prev = () => step > 1 && setStep((s) => (s - 1) as Step);
 
   const submitRegistration = () => {
@@ -376,96 +379,112 @@ const InschrijvenSolo = () => {
             </Section>
           )}
 
-          {/* STEP 5 — Profielfoto */}
+          {/* STEP 5 — Profiel vervolledigen */}
           {step === 5 && (
-            <Section title="Profielfoto">
+            <Section title="Vervolledig je profiel">
               <p className="text-xs text-foreground/60 mb-6 border-l border-dashed border-foreground/30 pl-3">
-                Voeg een professionele profielfoto toe zodat andere leden je herkennen op events.
-                Je kan dit ook later nog doen.
+                Stel een wachtwoord in voor je account, voeg een profielfoto toe en duid je
+                interesses aan. Zo herkennen andere leden je en ontvang je relevante content.
               </p>
 
-              <div className="flex flex-col items-center">
-                <div
-                  className={`w-40 h-40 border-2 border-dashed flex items-center justify-center mb-4 overflow-hidden ${
-                    form.photo ? "border-foreground/50" : "border-foreground/30 bg-foreground/[0.03]"
-                  }`}
-                >
-                  {form.photo ? (
-                    <img src={form.photo} alt="Profielfoto" className="w-full h-full object-cover" />
-                  ) : (
-                    <Upload className="w-8 h-8 text-foreground/30" />
-                  )}
-                </div>
-
-                <div className="flex gap-2">
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    accept="image/*"
-                    onChange={handlePhotoUpload}
-                    className="hidden"
-                  />
-                  <button
-                    onClick={() => fileInputRef.current?.click()}
-                    className="flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-widest font-semibold border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors"
-                  >
-                    <Upload className="w-3.5 h-3.5" />
-                    {form.photo ? "Foto wijzigen" : "Foto uploaden"}
-                  </button>
-                  {form.photo && (
-                    <button
-                      onClick={() => update("photo", null)}
-                      className="flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-widest font-semibold border-2 border-dashed border-destructive/40 text-destructive hover:bg-destructive/5 transition-colors"
-                    >
-                      <X className="w-3.5 h-3.5" />
-                      Verwijderen
-                    </button>
-                  )}
-                </div>
-
-                {!form.photo && (
-                  <button
-                    onClick={next}
-                    className="mt-4 text-xs text-foreground/50 underline hover:text-foreground transition-colors"
-                  >
-                    Overslaan voor nu
-                  </button>
-                )}
+              {/* Login aanmaken */}
+              <div className="mb-8">
+                <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-3">[ login aanmaken ]</p>
+                <Grid2>
+                  <Field label="Wachtwoord *">
+                    <input
+                      type="password"
+                      className={inputCls}
+                      placeholder="min. 8 tekens"
+                      value={form.password}
+                      onChange={(e) => update("password", e.target.value)}
+                    />
+                  </Field>
+                  <Field label="Bevestig wachtwoord *">
+                    <input
+                      type="password"
+                      className={inputCls}
+                      placeholder="herhaal wachtwoord"
+                      value={form.passwordConfirm}
+                      onChange={(e) => update("passwordConfirm", e.target.value)}
+                    />
+                  </Field>
+                </Grid2>
+                <p className="text-[11px] text-foreground/50 mt-2">
+                  Je e-mail <strong className="text-foreground/70">{form.email || "—"}</strong> wordt je gebruikersnaam.
+                </p>
               </div>
-            </Section>
-          )}
 
-          {/* STEP 6 — Interesses */}
-          {step === 6 && (
-            <Section title="Interesses">
-              <p className="text-xs text-foreground/60 mb-6 border-l border-dashed border-foreground/30 pl-3">
-                Selecteer de onderwerpen die je interesseren. Zo kunnen we je op de hoogte houden
-                van relevante events en community-activiteiten.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {interestOptions.map((interest) => (
-                  <button
-                    key={interest}
-                    onClick={() => toggleInterest(interest)}
-                    className={`flex items-center gap-3 p-4 border-2 border-dashed text-left transition-colors ${
-                      form.interests.includes(interest)
-                        ? "border-foreground bg-foreground/[0.05]"
-                        : "border-foreground/30 hover:border-foreground/50"
+              {/* Profielfoto */}
+              <div className="mb-8 pt-6 border-t border-dashed border-foreground/20">
+                <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-3">[ profielfoto ]</p>
+                <div className="flex items-center gap-5">
+                  <div
+                    className={`w-28 h-28 shrink-0 border-2 border-dashed flex items-center justify-center overflow-hidden ${
+                      form.photo ? "border-foreground/50" : "border-foreground/30 bg-foreground/[0.03]"
                     }`}
                   >
-                    <div
-                      className={`shrink-0 w-4 h-4 border-2 border-dashed flex items-center justify-center ${
+                    {form.photo ? (
+                      <img src={form.photo} alt="Profielfoto" className="w-full h-full object-cover" />
+                    ) : (
+                      <Upload className="w-7 h-7 text-foreground/30" />
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <input
+                      type="file"
+                      ref={fileInputRef}
+                      accept="image/*"
+                      onChange={handlePhotoUpload}
+                      className="hidden"
+                    />
+                    <button
+                      onClick={() => fileInputRef.current?.click()}
+                      className="flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-widest font-semibold border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors"
+                    >
+                      <Upload className="w-3.5 h-3.5" />
+                      {form.photo ? "Foto wijzigen" : "Foto uploaden"}
+                    </button>
+                    {form.photo && (
+                      <button
+                        onClick={() => update("photo", null)}
+                        className="flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-widest font-semibold border-2 border-dashed border-destructive/40 text-destructive hover:bg-destructive/5 transition-colors"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                        Verwijderen
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Interesses */}
+              <div className="pt-6 border-t border-dashed border-foreground/20">
+                <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-3">[ interesses ]</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {interestOptions.map((interest) => (
+                    <button
+                      key={interest}
+                      onClick={() => toggleInterest(interest)}
+                      className={`flex items-center gap-3 p-3 border-2 border-dashed text-left transition-colors ${
                         form.interests.includes(interest)
-                          ? "bg-foreground border-foreground"
-                          : "border-foreground/40"
+                          ? "border-foreground bg-foreground/[0.05]"
+                          : "border-foreground/30 hover:border-foreground/50"
                       }`}
                     >
-                      {form.interests.includes(interest) && <Check className="w-3 h-3 text-background" />}
-                    </div>
-                    <span className="text-sm text-foreground/80">{interest}</span>
-                  </button>
-                ))}
+                      <div
+                        className={`shrink-0 w-4 h-4 border-2 border-dashed flex items-center justify-center ${
+                          form.interests.includes(interest)
+                            ? "bg-foreground border-foreground"
+                            : "border-foreground/40"
+                        }`}
+                      >
+                        {form.interests.includes(interest) && <Check className="w-3 h-3 text-background" />}
+                      </div>
+                      <span className="text-sm text-foreground/80">{interest}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </Section>
           )}
@@ -486,7 +505,7 @@ const InschrijvenSolo = () => {
               >
                 Inschrijving verzenden <Check className="w-3.5 h-3.5" />
               </button>
-            ) : step === 6 ? (
+            ) : step === 5 ? (
               <button
                 onClick={submitProfile}
                 className="flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
@@ -498,7 +517,7 @@ const InschrijvenSolo = () => {
                 onClick={next}
                 className="flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
               >
-                {step === 5 ? "Volgende" : "Volgende"} <ArrowRight className="w-3.5 h-3.5" />
+                Volgende <ArrowRight className="w-3.5 h-3.5" />
               </button>
             )}
           </div>
@@ -526,6 +545,7 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 const Grid2 = ({ children }: { children: React.ReactNode }) => (
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">{children}</div>
 );
+
 
 const Field = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <label className="block">
