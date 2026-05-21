@@ -1,6 +1,7 @@
 import { Mail, Phone, ArrowRight } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
+import teamPhoto from "@/assets/team-photo.png";
 
 const team = [
   {
