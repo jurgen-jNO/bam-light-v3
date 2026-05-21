@@ -94,12 +94,6 @@ const Affiliations = () => {
                 global marketing ecosysteem — als lid en als partner.
               </p>
             </div>
-            <a
-              href="/word-lid"
-              className="px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
-            >
-              Word lid →
-            </a>
           </div>
         </div>
 
