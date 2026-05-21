@@ -195,12 +195,10 @@ const Sponsors = () => {
                 te laten groeien, leren en verbinden.
               </p>
             </div>
-            <a
-              href="/word-sponsor"
-              className="px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
-            >
+            <button type="button" onClick={() => setSponsorOpen(true)} className={triggerClass}>
               Word sponsor →
-            </a>
+            </button>
+
           </div>
         </div>
 
