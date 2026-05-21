@@ -179,8 +179,6 @@ const InschrijvenSolo = () => {
           </p>
         </div>
 
-        {/* Stepper */}
-        <ol className="flex items-center justify-between mb-10 gap-1">
         {/* Stepper — toont enkel de 4 hoofdstappen; profiel & interesses zijn verborgen substappen */}
         <ol className="flex items-center justify-between mb-10 gap-1">
           {visibleSteps.map((s, i) => {
