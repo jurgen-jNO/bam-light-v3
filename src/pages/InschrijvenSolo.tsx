@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { ArrowLeft, ArrowRight, Check, Mail } from "lucide-react";
+import { useState, useRef } from "react";
+import { ArrowLeft, ArrowRight, Check, Mail, Upload, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
 
-type Step = 1 | 2 | 3 | 4;
+type Step = 1 | 2 | 3 | 4 | 5 | 6;
 
 interface FormState {
   // Persoonsgegevens
@@ -25,6 +25,9 @@ interface FormState {
   // Facturatie
   vat: string;
   invoiceEmail: string;
+  // Profiel
+  photo: string | null;
+  interests: string[];
   // Opt-ins
   newsletter: boolean;
   terms: boolean;
@@ -35,6 +38,19 @@ const steps = [
   { n: 2, label: "Adres" },
   { n: 3, label: "Facturatie" },
   { n: 4, label: "Bevestig" },
+  { n: 5, label: "Profiel" },
+  { n: 6, label: "Interesses" },
+];
+
+const interestOptions = [
+  "Netwerken & events",
+  "Marketing & communicatie",
+  "Ondernemerschap",
+  "Innovatie & technologie",
+  "Duurzaamheid",
+  "Leadership",
+  "Sales & business development",
+  "HR & talent",
 ];
 
 const initialForm: FormState = {
@@ -42,6 +58,7 @@ const initialForm: FormState = {
   jobTitle: "", company: "", mobile: "", email: "",
   street: "", number: "", zip: "", city: "", country: "België",
   vat: "", invoiceEmail: "",
+  photo: null, interests: [],
   newsletter: false, terms: false,
 };
 
@@ -49,17 +66,43 @@ const InschrijvenSolo = () => {
   const [step, setStep] = useState<Step>(1);
   const [form, setForm] = useState<FormState>(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) =>
     setForm((f) => ({ ...f, [k]: v }));
 
+  const toggleInterest = (interest: string) => {
+    setForm((f) => ({
+      ...f,
+      interests: f.interests.includes(interest)
+        ? f.interests.filter((i) => i !== interest)
+        : [...f.interests, interest],
+    }));
+  };
+
   // Demo mode: stappen vrij doorklikbaar zonder validatie.
-  const next = () => step < 4 && setStep((s) => (s + 1) as Step);
+  const next = () => step < 6 && setStep((s) => (s + 1) as Step);
   const prev = () => step > 1 && setStep((s) => (s - 1) as Step);
 
-  const submit = () => {
-    setSubmitted(true);
+  const submitRegistration = () => {
     toast.success("Inschrijving ontvangen!");
+    next();
+  };
+
+  const submitProfile = () => {
+    setSubmitted(true);
+    toast.success("Profiel opgeslagen!");
+  };
+
+  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        update("photo", reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   // ============ SUCCESS SCREEN ============
@@ -76,9 +119,8 @@ const InschrijvenSolo = () => {
             <h1 className="text-2xl font-bold text-foreground mb-3">Bedankt voor je aanvraag</h1>
             <p className="text-sm text-foreground/70 leading-relaxed mb-6">
               We hebben je inschrijving voor het <strong>Solo</strong> lidmaatschap goed ontvangen.
-              Je ontvangt zo dadelijk een bevestigingsmail op <strong>{form.email}</strong> met een
-              link om je <strong>persoonlijk profiel te vervolledigen</strong> (profielfoto, interesses, ...)
-              en je factuur.
+              Je ontvangt zo dadelijk een bevestigingsmail op <strong>{form.email}</strong> met je
+              factuur en accountgegevens.
             </p>
 
             <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.03] p-5 text-left mb-6">
@@ -87,7 +129,7 @@ const InschrijvenSolo = () => {
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-1">Volgende stap</p>
                   <p className="text-sm text-foreground/80">
-                    Check je inbox en klik op de link in onze e-mail om je profiel af te werken.
+                    Check je inbox voor de bevestigingsmail. Je profiel is nu klaar!
                   </p>
                 </div>
               </div>
@@ -96,9 +138,8 @@ const InschrijvenSolo = () => {
             <div className="border-t border-dashed border-foreground/30 pt-5 text-left text-xs text-foreground/60 space-y-2">
               <p className="uppercase tracking-widest text-foreground/50 text-[10px] mb-2">Wat volgt</p>
               <p>1. Bevestigingsmail in je inbox</p>
-              <p>2. Profiel vervolledigen via persoonlijke link</p>
-              <p>3. Factuur via Exact Online</p>
-              <p>4. Activatie van je lidmaatschap na betaling</p>
+              <p>2. Factuur via Exact Online</p>
+              <p>3. Activatie van je lidmaatschap na betaling</p>
             </div>
             <Link
               to="/"
@@ -135,21 +176,21 @@ const InschrijvenSolo = () => {
             € 475 excl. BTW / jaar — automatische verlenging na 12 maanden (3m vooropzeg)
           </p>
           <p className="text-xs text-foreground/60 mt-3 border-l-2 border-dashed border-foreground/30 pl-3">
-            We vragen nu enkel de noodzakelijke gegevens. Na bevestiging ontvang je een mail
-            met een link om je profiel (foto, interesses, ...) te vervolledigen.
+            We vragen nu enkel de noodzakelijke gegevens. Na bevestiging vul je meteen je profiel aan
+            zodat andere leden je kunnen ontdekken.
           </p>
         </div>
 
         {/* Stepper */}
-        <ol className="flex items-center justify-between mb-10 gap-2">
+        <ol className="flex items-center justify-between mb-10 gap-1">
           {steps.map((s, i) => {
             const active = step === s.n;
             const done = step > s.n;
             return (
-              <li key={s.n} className="flex-1 flex items-center gap-2">
+              <li key={s.n} className="flex-1 flex items-center gap-1">
                 <div className="flex flex-col items-center w-full">
                   <div
-                    className={`w-8 h-8 border-2 border-dashed flex items-center justify-center text-xs font-semibold ${
+                    className={`w-7 h-7 md:w-8 md:h-8 border-2 border-dashed flex items-center justify-center text-[10px] md:text-xs font-semibold ${
                       done
                         ? "bg-foreground text-background border-foreground"
                         : active
@@ -157,10 +198,10 @@ const InschrijvenSolo = () => {
                         : "border-foreground/30 text-foreground/40"
                     }`}
                   >
-                    {done ? <Check className="w-3.5 h-3.5" /> : s.n}
+                    {done ? <Check className="w-3 h-3 md:w-3.5 md:h-3.5" /> : s.n}
                   </div>
                   <span
-                    className={`mt-2 text-[10px] uppercase tracking-widest ${
+                    className={`mt-2 text-[9px] md:text-[10px] uppercase tracking-widest text-center ${
                       active ? "text-foreground" : "text-foreground/40"
                     }`}
                   >
@@ -316,16 +357,6 @@ const InschrijvenSolo = () => {
                 </div>
               </div>
 
-              <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.03] p-5 mb-6">
-                <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 mt-0.5 text-foreground/60 shrink-0" />
-                  <p className="text-xs text-foreground/70 leading-relaxed">
-                    Na het versturen ontvang je een <strong>bevestigingsmail</strong> met een persoonlijke link
-                    om je profiel (foto, interesses, ...) te vervolledigen.
-                  </p>
-                </div>
-              </div>
-
               <div className="border-2 border-dashed border-foreground/50 p-5 bg-foreground/[0.02]">
                 <p className="text-sm font-bold text-foreground mb-3">Voorkeuren & Voorwaarden</p>
                 <div className="space-y-3">
@@ -349,6 +380,100 @@ const InschrijvenSolo = () => {
             </Section>
           )}
 
+          {/* STEP 5 — Profielfoto */}
+          {step === 5 && (
+            <Section title="Profielfoto">
+              <p className="text-xs text-foreground/60 mb-6 border-l border-dashed border-foreground/30 pl-3">
+                Voeg een professionele profielfoto toe zodat andere leden je herkennen op events.
+                Je kan dit ook later nog doen.
+              </p>
+
+              <div className="flex flex-col items-center">
+                <div
+                  className={`w-40 h-40 border-2 border-dashed flex items-center justify-center mb-4 overflow-hidden ${
+                    form.photo ? "border-foreground/50" : "border-foreground/30 bg-foreground/[0.03]"
+                  }`}
+                >
+                  {form.photo ? (
+                    <img src={form.photo} alt="Profielfoto" className="w-full h-full object-cover" />
+                  ) : (
+                    <Upload className="w-8 h-8 text-foreground/30" />
+                  )}
+                </div>
+
+                <div className="flex gap-2">
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    accept="image/*"
+                    onChange={handlePhotoUpload}
+                    className="hidden"
+                  />
+                  <button
+                    onClick={() => fileInputRef.current?.click()}
+                    className="flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-widest font-semibold border-2 border-dashed border-foreground/40 text-foreground hover:bg-foreground/5 transition-colors"
+                  >
+                    <Upload className="w-3.5 h-3.5" />
+                    {form.photo ? "Foto wijzigen" : "Foto uploaden"}
+                  </button>
+                  {form.photo && (
+                    <button
+                      onClick={() => update("photo", null)}
+                      className="flex items-center gap-2 px-4 py-2 text-xs uppercase tracking-widest font-semibold border-2 border-dashed border-destructive/40 text-destructive hover:bg-destructive/5 transition-colors"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                      Verwijderen
+                    </button>
+                  )}
+                </div>
+
+                {!form.photo && (
+                  <button
+                    onClick={next}
+                    className="mt-4 text-xs text-foreground/50 underline hover:text-foreground transition-colors"
+                  >
+                    Overslaan voor nu
+                  </button>
+                )}
+              </div>
+            </Section>
+          )}
+
+          {/* STEP 6 — Interesses */}
+          {step === 6 && (
+            <Section title="Interesses">
+              <p className="text-xs text-foreground/60 mb-6 border-l border-dashed border-foreground/30 pl-3">
+                Selecteer de onderwerpen die je interesseren. Zo kunnen we je op de hoogte houden
+                van relevante events en community-activiteiten.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {interestOptions.map((interest) => (
+                  <button
+                    key={interest}
+                    onClick={() => toggleInterest(interest)}
+                    className={`flex items-center gap-3 p-4 border-2 border-dashed text-left transition-colors ${
+                      form.interests.includes(interest)
+                        ? "border-foreground bg-foreground/[0.05]"
+                        : "border-foreground/30 hover:border-foreground/50"
+                    }`}
+                  >
+                    <div
+                      className={`shrink-0 w-4 h-4 border-2 border-dashed flex items-center justify-center ${
+                        form.interests.includes(interest)
+                          ? "bg-foreground border-foreground"
+                          : "border-foreground/40"
+                      }`}
+                    >
+                      {form.interests.includes(interest) && <Check className="w-3 h-3 text-background" />}
+                    </div>
+                    <span className="text-sm text-foreground/80">{interest}</span>
+                  </button>
+                ))}
+              </div>
+            </Section>
+          )}
+
           {/* Nav buttons */}
           <div className="flex items-center justify-between mt-8 pt-6 border-t-2 border-dashed border-foreground/30">
             <button
@@ -358,19 +483,26 @@ const InschrijvenSolo = () => {
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Vorige
             </button>
-            {step < 4 ? (
+            {step === 4 ? (
+              <button
+                onClick={submitRegistration}
+                className="flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
+              >
+                Inschrijving verzenden <Check className="w-3.5 h-3.5" />
+              </button>
+            ) : step === 6 ? (
+              <button
+                onClick={submitProfile}
+                className="flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
+              >
+                Profiel opslaan <Check className="w-3.5 h-3.5" />
+              </button>
+            ) : (
               <button
                 onClick={next}
                 className="flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
               >
-                Volgende <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            ) : (
-              <button
-                onClick={submit}
-                className="flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
-              >
-                Inschrijving verzenden <Check className="w-3.5 h-3.5" />
+                {step === 5 ? "Volgende" : "Volgende"} <ArrowRight className="w-3.5 h-3.5" />
               </button>
             )}
           </div>
@@ -438,3 +570,4 @@ const Checkbox = ({
 );
 
 export default InschrijvenSolo;
+
