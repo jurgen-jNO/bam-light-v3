@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ChevronDown, Menu, X, Mail, Phone } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
@@ -225,11 +226,13 @@ export default function EventDetail() {
             </section>
 
             {/* Q-box */}
-            <section className="mt-10 border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
-              <p className="text-sm font-medium text-destructive/80">
-                [ meerdaagse opleiding met sessie inschrijvingen ]
-              </p>
-            </section>
+            <Link to="/event/meerdaagse">
+              <section className="mt-10 cursor-pointer border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6 transition-colors hover:bg-destructive/[0.06]">
+                <p className="text-sm font-medium text-destructive/80">
+                  [ meerdaagse opleiding met sessie inschrijvingen ]
+                </p>
+              </section>
+            </Link>
           </main>
 
           {/* STICKY SIDEBAR */}
