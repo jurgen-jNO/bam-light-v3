@@ -127,6 +127,7 @@ const App = () => (
           <Route path="/artikels" element={<Artikels />} />
           <Route path="/bam-magazine" element={<BamMagazine />} />
           <Route path="/bam-magazine/locked" element={<BamMagazineLocked />} />
+          <Route path="/think-tanks" element={<ThinkTanks />} />
 
           {/* Mobile mirror routes */}
           <Route path="/mobile/agenda" element={<MobileAgenda />} />
