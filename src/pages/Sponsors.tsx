@@ -118,6 +118,23 @@ const levels: SponsorLevel[] = ["Platinum", "Gold", "Silver"];
 const Sponsors = () => {
   const [level, setLevel] = useState<"Alle" | SponsorLevel>("Alle");
   const [query, setQuery] = useState("");
+  const [sponsorOpen, setSponsorOpen] = useState(false);
+  const [form, setForm] = useState({ naam: "", bedrijf: "", functie: "", email: "", gsm: "" });
+
+  const handleSponsorSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.naam.trim() || !form.bedrijf.trim() || !form.email.trim()) {
+      toast({ title: "Vul de verplichte velden in", variant: "destructive" });
+      return;
+    }
+    toast({ title: "Bedankt!", description: "We nemen snel contact met je op." });
+    setForm({ naam: "", bedrijf: "", functie: "", email: "", gsm: "" });
+    setSponsorOpen(false);
+  };
+
+  const triggerClass =
+    "px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors";
+
 
   const filtered = useMemo(() => {
     return sponsors.filter((s) => {
