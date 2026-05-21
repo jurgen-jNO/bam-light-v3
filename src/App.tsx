@@ -137,6 +137,7 @@ const App = () => (
           <Route path="/mobile/event/big-marketing-quiz" element={<MobileEventBigQuiz />} />
           <Route path="/mobile/events" element={<MobileAgendaEvents />} />
           <Route path="/mobile/leden" element={<MobileLeden />} />
+          <Route path="/mobile/think-tanks" element={<MobileThinkTanks />} />
           <Route path="/mobile/sponsors" element={<MobileSponsors />} />
           <Route path="/mobile/affiliations" element={<MobileAffiliations />} />
           <Route path="/mobile/artikels" element={<MobileArtikels />} />
