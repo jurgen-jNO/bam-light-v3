@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, MapPin, Building2, Briefcase, Layout, Globe, Monitor, Zap, Terminal, Calendar } from "lucide-react";
+import { Search, MapPin, Building2, Briefcase, Layout, Globe, Monitor, Zap, Terminal, Calendar, Plus } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
@@ -84,11 +84,19 @@ const Vacatures = () => {
       <MainNavigation />
       
       <main className="flex-1 w-full max-w-[1200px] mx-auto px-6 py-12 md:py-20">
-        <div className="mb-10 text-center md:text-left">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Job Board</h1>
-          <p className="text-muted-foreground max-w-2xl">
-            Vind de nieuwste uitdagingen in marketing. Zoek op functie, bedrijf of regio.
-          </p>
+        <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div className="text-center md:text-left">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Job Board</h1>
+            <p className="text-muted-foreground max-w-2xl">
+              Vind de nieuwste uitdagingen in marketing. Zoek op functie, bedrijf of regio.
+            </p>
+          </div>
+          <Button asChild className="w-full md:w-auto shrink-0 gap-2">
+            <Link to="/vacature/nieuw">
+              <Plus className="w-4 h-4" />
+              Voeg jouw vacature toe
+            </Link>
+          </Button>
         </div>
 
         {/* Search Section */}
