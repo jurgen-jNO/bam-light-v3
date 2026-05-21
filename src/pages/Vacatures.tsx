@@ -91,7 +91,7 @@ const Vacatures = () => {
               Vind de nieuwste uitdagingen in marketing. Zoek op functie, bedrijf of regio.
             </p>
           </div>
-          <Button asChild className="w-full md:w-auto shrink-0 gap-2">
+          <Button asChild variant="outline" className="w-full md:w-auto shrink-0 gap-2 border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background rounded-none font-medium">
             <Link to="/vacature/nieuw">
               <Plus className="w-4 h-4" />
               Voeg jouw vacature toe
