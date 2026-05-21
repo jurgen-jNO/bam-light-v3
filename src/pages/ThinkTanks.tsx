@@ -148,6 +148,13 @@ const ThinkTanks = () => {
             </div>
           </a>
         </section>
+
+        {/* Q-box */}
+        <section className="mt-10 border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
+          <p className="text-sm font-medium text-destructive/80">
+            [ Q — meerdaagse opleiding met sessie inschrijvingen ]
+          </p>
+        </section>
       </main>
 
       <Footer />
