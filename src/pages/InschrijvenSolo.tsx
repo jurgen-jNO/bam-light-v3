@@ -33,13 +33,11 @@ interface FormState {
   terms: boolean;
 }
 
-const steps = [
+const visibleSteps = [
   { n: 1, label: "Persoon" },
   { n: 2, label: "Adres" },
   { n: 3, label: "Facturatie" },
   { n: 4, label: "Bevestig" },
-  { n: 5, label: "Profiel" },
-  { n: 6, label: "Interesses" },
 ];
 
 const interestOptions = [
