@@ -5,7 +5,7 @@ import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
 
-type Step = 1 | 2 | 3 | 4 | 5 | 6;
+type Step = 1 | 2 | 3 | 4 | 5;
 
 interface FormState {
   // Persoonsgegevens
@@ -26,6 +26,8 @@ interface FormState {
   vat: string;
   invoiceEmail: string;
   // Profiel
+  password: string;
+  passwordConfirm: string;
   photo: string | null;
   interests: string[];
   // Opt-ins
@@ -56,6 +58,7 @@ const initialForm: FormState = {
   jobTitle: "", company: "", mobile: "", email: "",
   street: "", number: "", zip: "", city: "", country: "België",
   vat: "", invoiceEmail: "",
+  password: "", passwordConfirm: "",
   photo: null, interests: [],
   newsletter: false, terms: false,
 };
@@ -79,7 +82,7 @@ const InschrijvenSolo = () => {
   };
 
   // Demo mode: stappen vrij doorklikbaar zonder validatie.
-  const next = () => step < 6 && setStep((s) => (s + 1) as Step);
+  const next = () => step < 5 && setStep((s) => (s + 1) as Step);
   const prev = () => step > 1 && setStep((s) => (s - 1) as Step);
 
   const submitRegistration = () => {
