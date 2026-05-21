@@ -1,4 +1,5 @@
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, Phone } from "lucide-react";
+
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
