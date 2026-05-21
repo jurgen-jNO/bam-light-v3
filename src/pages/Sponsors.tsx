@@ -120,6 +120,39 @@ const Sponsors = () => {
     <div className="min-h-screen bg-background flex flex-col">
       <MainNavigation />
 
+      {/* Sticky filter sub-nav */}
+      <div className="sticky top-0 z-30 border-b border-dashed border-neutral-400 bg-neutral-100">
+        <div className="mx-auto flex max-w-[1200px] flex-col gap-4 px-4 py-3 md:flex-row md:flex-wrap md:items-center md:gap-6">
+          <div className="flex flex-wrap items-center gap-2">
+            {(["Alle", ...levels] as const).map((l) => (
+              <button
+                key={l}
+                type="button"
+                onClick={() => setLevel(l)}
+                className={`rounded border px-3 py-1.5 text-sm font-medium transition-colors ${
+                  level === l
+                    ? "border-neutral-900 bg-neutral-900 text-white"
+                    : "border-neutral-300 bg-white text-neutral-700 hover:bg-neutral-50"
+                }`}
+              >
+                {l}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2 rounded border border-neutral-300 bg-white px-3 py-1.5 md:ml-auto md:min-w-[260px]">
+            <Search className="h-4 w-4 text-neutral-500" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Zoek sponsor..."
+              className="flex-1 bg-transparent text-sm text-neutral-800 outline-none placeholder:text-neutral-400"
+            />
+          </div>
+        </div>
+      </div>
+
       <main className="flex-1 max-w-[1100px] mx-auto w-full px-6 py-12">
         {/* Wireframe header */}
         <div className="border-b-2 border-dashed border-foreground/30 pb-6 mb-10">
@@ -143,59 +176,7 @@ const Sponsors = () => {
           </div>
         </div>
 
-        {/* Filter bar */}
-        <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] p-4 mb-8">
-          <div className="flex items-start justify-between gap-4 flex-wrap">
-            <div className="flex-1 min-w-[260px]">
-              <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">
-                [ filter — level ]
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={() => setLevel("Alle")}
-                  className={`px-4 py-2 text-xs uppercase tracking-widest font-semibold border-2 border-dashed transition-colors ${
-                    level === "Alle"
-                      ? "bg-foreground text-background border-foreground"
-                      : "bg-background text-foreground border-foreground/30 hover:border-foreground/60"
-                  }`}
-                >
-                  Alle
-                </button>
-                {levels.map((l) => (
-                  <button
-                    key={l}
-                    type="button"
-                    onClick={() => setLevel(l)}
-                    className={`px-4 py-2 text-xs uppercase tracking-widest font-semibold border-2 border-dashed transition-colors ${
-                      level === l
-                        ? "bg-foreground text-background border-foreground"
-                        : "bg-background text-foreground border-foreground/30 hover:border-foreground/60"
-                    }`}
-                  >
-                    {l}
-                  </button>
-                ))}
-              </div>
-            </div>
 
-            <div className="min-w-[220px]">
-              <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">
-                [ zoek ]
-              </p>
-              <div className="flex items-center gap-2 border-2 border-dashed border-foreground/30 px-3 py-1.5 bg-background">
-                <Search className="w-3.5 h-3.5 text-foreground/50" />
-                <input
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Zoek sponsor..."
-                  className="bg-transparent text-sm outline-none flex-1 placeholder:text-foreground/40"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
 
         {/* Resultaten meta */}
         <div className="flex items-center justify-between mb-4">
