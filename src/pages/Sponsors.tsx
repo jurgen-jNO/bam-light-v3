@@ -296,18 +296,68 @@ const Sponsors = () => {
               Steun de Belgische marketing community.
             </h2>
           </div>
-          <a
-            href="/word-sponsor"
-            className="px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors"
-          >
+          <button type="button" onClick={() => setSponsorOpen(true)} className={triggerClass}>
             Word sponsor →
-          </a>
+          </button>
         </div>
       </main>
+
+      {/* Word sponsor dialog */}
+      <Dialog open={sponsorOpen} onOpenChange={setSponsorOpen}>
+        <DialogContent className="sm:max-w-[480px] border-2 border-dashed border-foreground/40">
+          <DialogHeader>
+            <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-1">
+              [ word sponsor — contact ]
+            </p>
+            <DialogTitle className="text-2xl font-bold">Word BAM sponsor</DialogTitle>
+            <DialogDescription>
+              Laat je gegevens achter en we nemen snel contact met je op.
+            </DialogDescription>
+          </DialogHeader>
+
+          <form onSubmit={handleSponsorSubmit} className="space-y-3 mt-2">
+            {[
+              { key: "naam", label: "Naam *", type: "text", required: true, max: 100 },
+              { key: "bedrijf", label: "Bedrijf *", type: "text", required: true, max: 100 },
+              { key: "functie", label: "Functie", type: "text", required: false, max: 100 },
+              { key: "email", label: "E-mail *", type: "email", required: true, max: 255 },
+              { key: "gsm", label: "GSM", type: "tel", required: false, max: 30 },
+            ].map((f) => (
+              <div key={f.key}>
+                <label className="text-[10px] uppercase tracking-widest text-foreground/60 mb-1 block">
+                  {f.label}
+                </label>
+                <input
+                  type={f.type}
+                  required={f.required}
+                  maxLength={f.max}
+                  value={form[f.key as keyof typeof form]}
+                  onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
+                  className="w-full border-2 border-dashed border-foreground/30 bg-background px-3 py-2 text-sm outline-none focus:border-foreground transition-colors"
+                />
+              </div>
+            ))}
+
+            <DialogFooter className="pt-2">
+              <button
+                type="button"
+                onClick={() => setSponsorOpen(false)}
+                className="px-4 py-2 text-xs uppercase tracking-widest text-foreground/70 hover:text-foreground"
+              >
+                Annuleer
+              </button>
+              <button type="submit" className={triggerClass}>
+                Versturen →
+              </button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
   );
 };
+
 
 export default Sponsors;
