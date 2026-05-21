@@ -2,6 +2,17 @@ import { useMemo, useState } from "react";
 import { Building2, Search, MapPin, Globe, Phone, Mail } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { toast } from "@/hooks/use-toast";
+
 
 type SponsorTier =
   | "Education"
