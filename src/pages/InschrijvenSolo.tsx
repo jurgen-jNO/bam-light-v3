@@ -484,6 +484,7 @@ const InschrijvenSolo = () => {
                 </div>
               </div>
             </Section>
+          )}
 
           {/* Nav buttons */}
           <div className="flex items-center justify-between mt-8 pt-6 border-t-2 border-dashed border-foreground/30">
