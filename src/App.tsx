@@ -11,6 +11,7 @@ import Affiliations from "./pages/Affiliations.tsx";
 import Sponsors from "./pages/Sponsors.tsx";
 import WordSponsor from "./pages/WordSponsor.tsx";
 import EventDetail from "./pages/EventDetail.tsx";
+import EventDetailMeerdaagse from "./pages/EventDetailMeerdaagse.tsx";
 import EventDetailDag from "./pages/EventDetailDag.tsx";
 import EventBigQuiz from "./pages/EventBigQuiz.tsx";
 import EventAward from "./pages/EventAward.tsx";
@@ -98,6 +99,7 @@ const App = () => (
           <Route path="/word-sponsor" element={<WordSponsor />} />
           <Route path="/event" element={<EventDetail />} />
           <Route path="/event/brand-strategy" element={<EventDetail />} />
+          <Route path="/event/meerdaagse" element={<EventDetailMeerdaagse />} />
           <Route path="/dagopleiding" element={<EventDetailDag />} />
           <Route path="/event/big-marketing-quiz" element={<EventBigQuiz />} />
           <Route path="/event/award" element={<EventAward />} />
@@ -135,6 +137,7 @@ const App = () => (
           <Route path="/mobile/dagopleiding" element={<MobileEventDetailDag />} />
           <Route path="/mobile/event" element={<MobileEventDetail />} />
           <Route path="/mobile/event/brand-strategy" element={<MobileEventDetail />} />
+          <Route path="/mobile/event/meerdaagse" element={<MobileEventDetail />} />
           <Route path="/mobile/event/big-marketing-quiz" element={<MobileEventBigQuiz />} />
           <Route path="/mobile/events" element={<MobileAgendaEvents />} />
           <Route path="/mobile/leden" element={<MobileLeden />} />
