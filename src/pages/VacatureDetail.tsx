@@ -149,7 +149,7 @@ const VacatureDetail = () => {
                   <Meta icon={MapPin} label="Locatie" value={`${vacature.location} · ${vacature.workmode}`} />
                   <Meta icon={Clock} label="Type" value={`${vacature.type} · ${vacature.seniority}`} />
                   <Meta icon={Users} label="Bedrijfsgrootte" value={`${vacature.company.employees} medewerkers`} />
-                  <Meta icon={Calendar} label="Live" value={`${fmt(vacature.startDate)} — ${fmt(vacature.endDate)}`} />
+                  <Meta icon={Calendar} label="Solliciteer" value={fmt(vacature.endDate)} />
                   <Meta icon={Building2} label="Adres" value={vacature.company.address} />
                   <Meta
                     icon={Globe}
