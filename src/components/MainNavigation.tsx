@@ -36,6 +36,7 @@ const navItems: NavItem[] = [
       { label: "BAM Leden", href: "/leden" },
       { label: "Onze Sponsors", href: "/sponsors" },
       { label: "Affiliates", href: "/affiliations" },
+      { label: "Job Board", href: "/vacatures" },
     ],
   },
   {
