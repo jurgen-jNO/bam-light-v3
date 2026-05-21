@@ -33,13 +33,11 @@ interface FormState {
   terms: boolean;
 }
 
-const steps = [
+const visibleSteps = [
   { n: 1, label: "Persoon" },
   { n: 2, label: "Adres" },
   { n: 3, label: "Facturatie" },
   { n: 4, label: "Bevestig" },
-  { n: 5, label: "Profiel" },
-  { n: 6, label: "Interesses" },
 ];
 
 const interestOptions = [
@@ -181,11 +179,11 @@ const InschrijvenSolo = () => {
           </p>
         </div>
 
-        {/* Stepper */}
+        {/* Stepper — toont enkel de 4 hoofdstappen; profiel & interesses zijn verborgen substappen */}
         <ol className="flex items-center justify-between mb-10 gap-1">
-          {steps.map((s, i) => {
+          {visibleSteps.map((s, i) => {
             const active = step === s.n;
-            const done = step > s.n;
+            const done = step > s.n || step > 4; // stap 5/6 = stap 4 is afgerond
             return (
               <li key={s.n} className="flex-1 flex items-center gap-1">
                 <div className="flex flex-col items-center w-full">
@@ -208,15 +206,13 @@ const InschrijvenSolo = () => {
                     {s.label}
                   </span>
                 </div>
-                {i < steps.length - 1 && (
+                {i < visibleSteps.length - 1 && (
                   <div className="flex-1 border-t-2 border-dashed border-foreground/25 -mt-5" />
                 )}
               </li>
             );
           })}
         </ol>
-
-        {/* Form panel */}
         <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] p-6 md:p-8">
           {/* STEP 1 — Persoonsgegevens */}
           {step === 1 && (
