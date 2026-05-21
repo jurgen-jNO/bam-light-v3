@@ -484,10 +484,6 @@ const InschrijvenSolo = () => {
                 </div>
               </div>
             </Section>
-          )}
-              </div>
-            </Section>
-          )}
 
           {/* Nav buttons */}
           <div className="flex items-center justify-between mt-8 pt-6 border-t-2 border-dashed border-foreground/30">
@@ -498,22 +494,6 @@ const InschrijvenSolo = () => {
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Vorige
             </button>
-            {step === 4 ? (
-              <button
-                onClick={submitRegistration}
-                className="flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
-              >
-                Inschrijving verzenden <Check className="w-3.5 h-3.5" />
-              </button>
-            ) : step === 6 ? (
-              <button
-                onClick={submitProfile}
-                className="flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
-              >
-                Profiel opslaan <Check className="w-3.5 h-3.5" />
-              </button>
-            ) : (
-              <button
             {step === 4 ? (
               <button
                 onClick={submitRegistration}
@@ -536,15 +516,26 @@ const InschrijvenSolo = () => {
                 Volgende <ArrowRight className="w-3.5 h-3.5" />
               </button>
             )}
+          </div>
+        </div>
+
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+// ===== helpers =====
+const inputCls =
+  "w-full bg-background border-2 border-dashed border-foreground/30 px-3 py-2 text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-foreground/70 transition-colors";
+
+const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div>
     <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-1">[ stap ]</p>
     <h2 className="text-lg font-bold text-foreground mb-5">{title}</h2>
     {children}
   </div>
-);
-
-const Grid2 = ({ children }: { children: React.ReactNode }) => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">{children}</div>
 );
 
 const Field = ({ label, children }: { label: string; children: React.ReactNode }) => (
