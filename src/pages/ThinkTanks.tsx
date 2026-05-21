@@ -112,28 +112,25 @@ const ThinkTanks = () => {
         </div>
 
         {/* Contact block */}
-        <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] p-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div>
-              <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-2">
-                [ contacteer ons ]
-              </p>
-              <h2 className="text-2xl font-bold text-foreground mb-3">
-                Wil je mee ideeën uitwisselen?
-              </h2>
-              <p className="text-sm text-foreground/70 max-w-lg">
-                Voel jij je aangesproken door één van deze topics en wil je mee ideeën uitwisselen? Sluit je aan bij een Think Tank door een mailtje te sturen naar Sarah Vyverman.
+        <section>
+          <h2 className="mb-4 text-2xl font-semibold text-foreground">
+            Vragen of meer informatie?
+          </h2>
+          <a
+            href="mailto:sarah.vyverman@marketing.be?subject=Interesse%20in%20een%20BAM%20Think%20Tank"
+            className="flex items-center gap-4 rounded border border-neutral-300 p-4 transition-colors hover:border-neutral-900 hover:bg-neutral-50"
+          >
+            <div className="h-[60px] w-[60px] shrink-0 rounded-full border border-dashed border-neutral-400 bg-neutral-200" />
+            <div className="text-sm">
+              <p className="font-semibold text-neutral-900">Sarah Vyverman</p>
+              <p className="text-neutral-500">Coördinator Think Tanks</p>
+              <p className="flex items-center gap-1 text-neutral-600">
+                <Mail className="h-3 w-3" />
+                <span className="underline">sarah.vyverman@marketing.be</span>
               </p>
             </div>
-            <a
-              href="mailto:sarah.vyverman@marketing.be?subject=Interesse%20in%20een%20BAM%20Think%20Tank"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background text-xs uppercase tracking-widest font-semibold hover:bg-foreground/85 transition-colors shrink-0"
-            >
-              <Mail className="w-4 h-4" />
-              Contacteer ons
-            </a>
-          </div>
-        </div>
+          </a>
+        </section>
       </main>
 
       <Footer />
