@@ -81,32 +81,49 @@ const ThinkTanks = () => {
           {thinkTanks.map((tt) => (
             <div
               key={tt.id}
-              className="flex flex-col border-2 border-dashed border-foreground/40 bg-foreground/[0.02] hover:bg-foreground/[0.06] hover:border-foreground/70 transition-colors p-6"
+              className="flex flex-col border-2 border-dashed border-foreground/40 bg-foreground/[0.02] hover:bg-foreground/[0.06] hover:border-foreground/70 transition-colors"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 shrink-0 border-2 border-dashed border-foreground/40 flex items-center justify-center bg-background">
-                  <span className="text-lg font-bold text-foreground/60">
-                    {tt.title.charAt(0)}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-foreground leading-tight">
-                  {tt.title}
-                </h3>
+              {/* Visual placeholder */}
+              <div className="relative aspect-[16/9] w-full border-b-2 border-dashed border-foreground/40 bg-foreground/[0.04] overflow-hidden">
+                <svg
+                  className="absolute inset-0 w-full h-full text-foreground/20"
+                  preserveAspectRatio="none"
+                  viewBox="0 0 100 100"
+                >
+                  <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth="0.3" strokeDasharray="1 1" vectorEffect="non-scaling-stroke" />
+                  <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" strokeWidth="0.3" strokeDasharray="1 1" vectorEffect="non-scaling-stroke" />
+                </svg>
+                <span className="absolute top-2 left-2 text-[9px] uppercase tracking-widest text-foreground/40">
+                  [ visual — {tt.id} ]
+                </span>
               </div>
 
-              <p className="text-sm text-foreground/75 leading-relaxed mb-6 flex-1">
-                {tt.description}
-              </p>
+              <div className="flex flex-col p-6 flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 shrink-0 border-2 border-dashed border-foreground/40 flex items-center justify-center bg-background">
+                    <span className="text-lg font-bold text-foreground/60">
+                      {tt.title.charAt(0)}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground leading-tight">
+                    {tt.title}
+                  </h3>
+                </div>
 
-              <a
-                href={`mailto:${tt.email}?subject=${encodeURIComponent(tt.cta)}`}
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-foreground/80 hover:text-foreground transition-colors group"
-              >
-                <span className="border-b-2 border-dashed border-foreground/40 pb-0.5 group-hover:border-foreground/70">
-                  {tt.cta}
-                </span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </a>
+                <p className="text-sm text-foreground/75 leading-relaxed mb-6 flex-1">
+                  {tt.description}
+                </p>
+
+                <a
+                  href={`mailto:${tt.email}?subject=${encodeURIComponent(tt.cta)}`}
+                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-foreground/80 hover:text-foreground transition-colors group"
+                >
+                  <span className="border-b-2 border-dashed border-foreground/40 pb-0.5 group-hover:border-foreground/70">
+                    {tt.cta}
+                  </span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
             </div>
           ))}
         </div>
