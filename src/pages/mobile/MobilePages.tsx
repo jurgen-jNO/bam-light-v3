@@ -31,6 +31,7 @@ export const MobileEventBigQuiz = make(
 
 // Community
 export const MobileLeden = make("BAM Leden", "Ontdek de aangesloten organisaties");
+export const MobileThinkTanks = make("Think Tanks", "Samenwerken rond specifieke marketing thema's");
 export const MobileSponsors = make("Onze Sponsors", "Met dank aan onze partners");
 export const MobileAffiliations = make("Affiliates", "Onze internationale partners");
 

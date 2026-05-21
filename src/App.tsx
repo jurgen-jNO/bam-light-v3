@@ -40,7 +40,9 @@ import Artikels from "./pages/Artikels.tsx";
 import BamMagazine from "./pages/BamMagazine.tsx";
 import BamMagazineLocked from "./pages/BamMagazineLocked.tsx";
 import OpleidingOpMaat from "./pages/OpleidingOpMaat.tsx";
+import ThinkTanks from "./pages/ThinkTanks.tsx";
 import NotFound from "./pages/NotFound.tsx";
+
 import {
   MobileAgenda,
   MobileEventDetail,
@@ -48,6 +50,7 @@ import {
   MobileAgendaEvents,
   MobileEventBigQuiz,
   MobileLeden,
+  MobileThinkTanks,
   MobileSponsors,
   MobileAffiliations,
   MobileArtikels,
@@ -125,6 +128,7 @@ const App = () => (
           <Route path="/artikels" element={<Artikels />} />
           <Route path="/bam-magazine" element={<BamMagazine />} />
           <Route path="/bam-magazine/locked" element={<BamMagazineLocked />} />
+          <Route path="/think-tanks" element={<ThinkTanks />} />
 
           {/* Mobile mirror routes */}
           <Route path="/mobile/agenda" element={<MobileAgenda />} />
@@ -134,6 +138,7 @@ const App = () => (
           <Route path="/mobile/event/big-marketing-quiz" element={<MobileEventBigQuiz />} />
           <Route path="/mobile/events" element={<MobileAgendaEvents />} />
           <Route path="/mobile/leden" element={<MobileLeden />} />
+          <Route path="/mobile/think-tanks" element={<MobileThinkTanks />} />
           <Route path="/mobile/sponsors" element={<MobileSponsors />} />
           <Route path="/mobile/affiliations" element={<MobileAffiliations />} />
           <Route path="/mobile/artikels" element={<MobileArtikels />} />
