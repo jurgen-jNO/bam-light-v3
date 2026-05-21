@@ -2,6 +2,9 @@ import { Mail, Phone, ArrowRight } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import teamPhoto from "@/assets/team-photo.png";
+import fleurPhoto from "@/assets/team-fleur.png";
+import nathaliePhoto from "@/assets/team-nathalie.png";
+import sarahPhoto from "@/assets/team-sarah.png";
 
 const team = [
   {
@@ -11,6 +14,7 @@ const team = [
     gsm: "0476 86 32 80",
     email: "fleur.parnet@marketing.be",
     href: "/contact",
+    foto: fleurPhoto,
   },
   {
     voornaam: "Nathalie",
@@ -19,6 +23,7 @@ const team = [
     gsm: "0472 10 20 85",
     email: "nathalie@marketing.be",
     href: "/contact",
+    foto: nathaliePhoto,
   },
   {
     voornaam: "Sarah",
@@ -27,6 +32,7 @@ const team = [
     gsm: "0472 51 66 76",
     email: "sarah@marketing.be",
     href: "/contact",
+    foto: sarahPhoto,
   },
   {
     voornaam: "Joke",
@@ -35,8 +41,10 @@ const team = [
     gsm: "0471 42 14 24",
     email: "joke.denul@marketing.be",
     href: "/contact",
+    foto: null,
   },
 ];
+
 
 export default function Team() {
   return (
