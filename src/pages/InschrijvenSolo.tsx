@@ -1,21 +1,17 @@
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Check, Upload, User as UserIcon, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
 
-type Step = 1 | 2 | 3 | 4 | 5;
+type Step = 1 | 2 | 3 | 4;
 
 interface FormState {
   // Persoonsgegevens
-  photo: string | null;
   firstName: string;
   lastName: string;
   language: "NL" | "FR" | "";
-  gender: "M" | "V" | "X" | "Andere" | "Liever niet" | "";
-  genderOther: string;
-  birthdate: string;
   jobTitle: string;
   company: string;
   mobile: string;
@@ -29,39 +25,24 @@ interface FormState {
   // Facturatie
   vat: string;
   invoiceEmail: string;
-  // Interesses
-  interests: string[];
-  password?: string;
   // Opt-ins
   newsletter: boolean;
   terms: boolean;
-  shareConsent: boolean;
 }
-
-const interestOptions = [
-  "Digital & Technology",
-  "Sustainability, Ethics & Purpose",
-  "Marketing Leadership & Future Skills",
-  "Brand Building",
-  "Performance Marketing",
-  "Community Building",
-];
 
 const steps = [
   { n: 1, label: "Persoon" },
-  { n: 2, label: "Interesses" },
-  { n: 3, label: "Adres" },
-  { n: 4, label: "Facturatie" },
-  { n: 5, label: "Bevestig" },
+  { n: 2, label: "Adres" },
+  { n: 3, label: "Facturatie" },
+  { n: 4, label: "Bevestig" },
 ];
 
 const initialForm: FormState = {
-  photo: null,
-  firstName: "", lastName: "", language: "", gender: "", genderOther: "",
-  birthdate: "", jobTitle: "", company: "", mobile: "", email: "",
+  firstName: "", lastName: "", language: "",
+  jobTitle: "", company: "", mobile: "", email: "",
   street: "", number: "", zip: "", city: "", country: "België",
   vat: "", invoiceEmail: "",
-  interests: [], password: "", newsletter: false, terms: false, shareConsent: false,
+  newsletter: false, terms: false,
 };
 
 const InschrijvenSolo = () => {
@@ -72,16 +53,8 @@ const InschrijvenSolo = () => {
   const update = <K extends keyof FormState>(k: K, v: FormState[K]) =>
     setForm((f) => ({ ...f, [k]: v }));
 
-  const toggleInterest = (i: string) =>
-    setForm((f) => ({
-      ...f,
-      interests: f.interests.includes(i)
-        ? f.interests.filter((x) => x !== i)
-        : [...f.interests, i],
-    }));
-
   // Demo mode: stappen vrij doorklikbaar zonder validatie.
-  const next = () => step < 5 && setStep((s) => (s + 1) as Step);
+  const next = () => step < 4 && setStep((s) => (s + 1) as Step);
   const prev = () => step > 1 && setStep((s) => (s - 1) as Step);
 
   const submit = () => {
@@ -103,16 +76,29 @@ const InschrijvenSolo = () => {
             <h1 className="text-2xl font-bold text-foreground mb-3">Bedankt voor je aanvraag</h1>
             <p className="text-sm text-foreground/70 leading-relaxed mb-6">
               We hebben je inschrijving voor het <strong>Solo</strong> lidmaatschap goed ontvangen.
-              Je ontvangt zo dadelijk een bevestigingsmail op <strong>{form.email}</strong> met je
-              factuur. Zodra de betaling verwerkt is, ben je officieel BAM-lid en krijg je toegang
-              tot al je voordelen.
+              Je ontvangt zo dadelijk een bevestigingsmail op <strong>{form.email}</strong> met een
+              link om je <strong>persoonlijk profiel te vervolledigen</strong> (profielfoto, interesses, ...)
+              en je factuur.
             </p>
+
+            <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.03] p-5 text-left mb-6">
+              <div className="flex items-start gap-3">
+                <Mail className="w-4 h-4 mt-0.5 text-foreground/60 shrink-0" />
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-1">Volgende stap</p>
+                  <p className="text-sm text-foreground/80">
+                    Check je inbox en klik op de link in onze e-mail om je profiel af te werken.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <div className="border-t border-dashed border-foreground/30 pt-5 text-left text-xs text-foreground/60 space-y-2">
-              <p className="uppercase tracking-widest text-foreground/50 text-[10px] mb-2">Volgende stappen</p>
+              <p className="uppercase tracking-widest text-foreground/50 text-[10px] mb-2">Wat volgt</p>
               <p>1. Bevestigingsmail in je inbox</p>
-              <p>2. Factuur via Exact Online</p>
-              <p>3. Activatie van je profiel na betaling</p>
-              <p>4. Welkomstmail met onboarding & voordelen</p>
+              <p>2. Profiel vervolledigen via persoonlijke link</p>
+              <p>3. Factuur via Exact Online</p>
+              <p>4. Activatie van je lidmaatschap na betaling</p>
             </div>
             <Link
               to="/"
@@ -147,6 +133,10 @@ const InschrijvenSolo = () => {
           <h1 className="text-3xl font-bold text-foreground">Inschrijven — Solo lidmaatschap</h1>
           <p className="text-sm text-foreground/60 mt-2">
             € 475 excl. BTW / jaar — automatische verlenging na 12 maanden (3m vooropzeg)
+          </p>
+          <p className="text-xs text-foreground/60 mt-3 border-l-2 border-dashed border-foreground/30 pl-3">
+            We vragen nu enkel de noodzakelijke gegevens. Na bevestiging ontvang je een mail
+            met een link om je profiel (foto, interesses, ...) te vervolledigen.
           </p>
         </div>
 
@@ -187,47 +177,9 @@ const InschrijvenSolo = () => {
 
         {/* Form panel */}
         <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.02] p-6 md:p-8">
-          {/* STEP 1 */}
+          {/* STEP 1 — Persoonsgegevens */}
           {step === 1 && (
-          <Section title="Persoonsgegevens">
-              <div className="mb-6 flex items-center gap-5">
-                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full border-2 border-dashed border-foreground/30 bg-foreground/[0.03] flex items-center justify-center text-foreground/40">
-                  {form.photo ? (
-                    <img src={form.photo} alt="Profielfoto" className="h-full w-full object-cover" />
-                  ) : (
-                    <UserIcon className="h-8 w-8" />
-                  )}
-                </div>
-                <div className="flex flex-col gap-2">
-                  <p className="text-[10px] uppercase tracking-widest text-foreground/50">Profielfoto</p>
-                  <div className="flex flex-wrap gap-2">
-                    <label className="inline-flex cursor-pointer items-center gap-2 border-2 border-dashed border-foreground/40 px-3 py-2 text-[10px] uppercase tracking-widest font-semibold text-foreground hover:bg-foreground/5 transition-colors">
-                      <Upload className="h-3.5 w-3.5" />
-                      {form.photo ? "Vervangen" : "Foto uploaden"}
-                      <input
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={(e) => {
-                          const file = e.target.files?.[0];
-                          if (file) update("photo", URL.createObjectURL(file));
-                          e.target.value = "";
-                        }}
-                      />
-                    </label>
-                    {form.photo && (
-                      <button
-                        type="button"
-                        onClick={() => update("photo", null)}
-                        className="inline-flex items-center gap-1 border-2 border-dashed border-foreground/40 px-3 py-2 text-[10px] uppercase tracking-widest font-semibold text-foreground hover:bg-foreground/5 transition-colors"
-                      >
-                        <X className="h-3.5 w-3.5" /> Verwijderen
-                      </button>
-                    )}
-                  </div>
-                  <p className="text-[11px] text-foreground/50">JPG of PNG · max 5 MB</p>
-                </div>
-              </div>
+            <Section title="Persoonsgegevens">
               <Grid2>
                 <Field label="Voornaam *">
                   <input className={inputCls} value={form.firstName} onChange={(e) => update("firstName", e.target.value)} />
@@ -238,7 +190,7 @@ const InschrijvenSolo = () => {
                 <Field label="E-mail *">
                   <input type="email" className={inputCls} value={form.email} onChange={(e) => update("email", e.target.value)} />
                 </Field>
-                <Field label="GSM">
+                <Field label="GSM *">
                   <input className={inputCls} value={form.mobile} onChange={(e) => update("mobile", e.target.value)} />
                 </Field>
                 <Field label="Taal *">
@@ -248,25 +200,7 @@ const InschrijvenSolo = () => {
                     <option value="FR">Frans</option>
                   </select>
                 </Field>
-                <Field label="Gender">
-                  <select className={inputCls} value={form.gender} onChange={(e) => update("gender", e.target.value as FormState["gender"])}>
-                    <option value="">— kies —</option>
-                    <option value="M">M</option>
-                    <option value="V">V</option>
-                    <option value="X">X</option>
-                    <option value="Andere">Andere</option>
-                    <option value="Liever niet">Zeg ik liever niet</option>
-                  </select>
-                </Field>
-                {form.gender === "Andere" && (
-                  <Field label="Andere (vrij tekstveld)">
-                    <input className={inputCls} value={form.genderOther} onChange={(e) => update("genderOther", e.target.value)} />
-                  </Field>
-                )}
-                <Field label="Geboortedatum">
-                  <input type="date" className={inputCls} value={form.birthdate} onChange={(e) => update("birthdate", e.target.value)} />
-                </Field>
-                <Field label="Functietitel / opleiding">
+                <Field label="Functietitel">
                   <input className={inputCls} value={form.jobTitle} onChange={(e) => update("jobTitle", e.target.value)} />
                 </Field>
                 <Field label="Bedrijf">
@@ -276,8 +210,8 @@ const InschrijvenSolo = () => {
             </Section>
           )}
 
-          {/* STEP 3 — Adres */}
-          {step === 3 && (
+          {/* STEP 2 — Adres */}
+          {step === 2 && (
             <Section title="Adresgegevens">
               <Grid2>
                 <Field label="Straat *">
@@ -316,8 +250,8 @@ const InschrijvenSolo = () => {
             </Section>
           )}
 
-          {/* STEP 4 — Facturatie */}
-          {step === 4 && (
+          {/* STEP 3 — Facturatie */}
+          {step === 3 && (
             <Section title="Facturatiegegevens">
               <p className="text-xs text-foreground/60 mb-4 border-l border-dashed border-foreground/30 pl-3">
                 Vul je BTW-nummer in als je een factuur op je bedrijf wenst. Laat leeg voor een
@@ -357,51 +291,16 @@ const InschrijvenSolo = () => {
             </Section>
           )}
 
-          {/* STEP 2 — Interesses */}
-          {step === 2 && (
-            <Section title="Interessevelden">
-              <p className="text-xs text-foreground/60 mb-4">
-                Selecteer onderwerpen die jou interesseren — we gebruiken dit voor de personalisatie
-                van de nieuwsbrief en sitecontent.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {interestOptions.map((opt) => {
-                  const checked = form.interests.includes(opt);
-                  return (
-                    <button
-                      key={opt}
-                      type="button"
-                      onClick={() => toggleInterest(opt)}
-                      className={`flex items-center gap-3 p-3 border-2 border-dashed text-left text-sm transition-colors ${
-                        checked
-                          ? "border-foreground bg-foreground/10 text-foreground"
-                          : "border-foreground/30 text-foreground/70 hover:border-foreground/60"
-                      }`}
-                    >
-                      <span
-                        className={`w-4 h-4 border-2 border-dashed flex items-center justify-center ${
-                          checked ? "bg-foreground border-foreground" : "border-foreground/40"
-                        }`}
-                      >
-                        {checked && <Check className="w-3 h-3 text-background" />}
-                      </span>
-                      {opt}
-                    </button>
-                  );
-                })}
-              </div>
-            </Section>
-          )}
-
-          {/* STEP 5 */}
-          {step === 5 && (
+          {/* STEP 4 — Bevestig */}
+          {step === 4 && (
             <Section title="Bevestig & verstuur">
-              <div className="mb-10">
-                <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-3">[ te bevestigen ]</p>
-                <div className="space-y-4 opacity-75">
+              <div className="mb-8">
+                <p className="text-[10px] uppercase tracking-widest text-foreground/50 mb-3">[ overzicht ]</p>
+                <div className="space-y-4 opacity-90">
                   <Summary title="Persoon" items={[
                     ["Naam", `${form.firstName} ${form.lastName}`],
                     ["E-mail", form.email],
+                    ["GSM", form.mobile || "—"],
                     ["Taal", form.language || "—"],
                     ["Functie", form.jobTitle || "—"],
                     ["Bedrijf", form.company || "—"],
@@ -417,43 +316,34 @@ const InschrijvenSolo = () => {
                 </div>
               </div>
 
-              <div className="border-t-2 border-dashed border-foreground/30 pt-8">
-                <p className="text-[10px] uppercase tracking-widest text-foreground/80 font-bold mb-4">[ aan te vullen ]</p>
-                
-                <div className="space-y-6">
-                  <div className="border-2 border-dashed border-foreground/50 p-5 bg-foreground/[0.02]">
-                    <p className="text-sm font-bold text-foreground mb-1">Wachtwoord aanmaken</p>
-                    <p className="text-xs text-foreground/60 mb-4">Kies een wachtwoord om later in te loggen op je account.</p>
-                    <Field label="Wachtwoord *">
-                      <input 
-                        type="password" 
-                        className={inputCls} 
-                        value={form.password} 
-                        onChange={(e) => update("password", e.target.value)} 
-                      />
-                    </Field>
-                  </div>
+              <div className="border-2 border-dashed border-foreground/40 bg-foreground/[0.03] p-5 mb-6">
+                <div className="flex items-start gap-3">
+                  <Mail className="w-4 h-4 mt-0.5 text-foreground/60 shrink-0" />
+                  <p className="text-xs text-foreground/70 leading-relaxed">
+                    Na het versturen ontvang je een <strong>bevestigingsmail</strong> met een persoonlijke link
+                    om je profiel (foto, interesses, ...) te vervolledigen.
+                  </p>
+                </div>
+              </div>
 
-                  <div className="border-2 border-dashed border-foreground/50 p-5 bg-foreground/[0.02]">
-                    <p className="text-sm font-bold text-foreground mb-3">Voorkeuren & Voorwaarden</p>
-                    <div className="space-y-3">
-                      <Checkbox
-                        checked={form.newsletter}
-                        onChange={(v) => update("newsletter", v)}
-                        label="Ja, ik wil de maandelijkse BAM nieuwsbrief ontvangen."
-                      />
-                      <Checkbox
-                        checked={form.terms}
-                        onChange={(v) => update("terms", v)}
-                        label={
-                          <>
-                            Ik ga akkoord met de <a href="#terms" className="underline">algemene voorwaarden</a> en
-                            het <a href="#privacy" className="underline">privacybeleid</a>. *
-                          </>
-                        }
-                      />
-                    </div>
-                  </div>
+              <div className="border-2 border-dashed border-foreground/50 p-5 bg-foreground/[0.02]">
+                <p className="text-sm font-bold text-foreground mb-3">Voorkeuren & Voorwaarden</p>
+                <div className="space-y-3">
+                  <Checkbox
+                    checked={form.newsletter}
+                    onChange={(v) => update("newsletter", v)}
+                    label="Ja, ik wil de maandelijkse BAM nieuwsbrief ontvangen."
+                  />
+                  <Checkbox
+                    checked={form.terms}
+                    onChange={(v) => update("terms", v)}
+                    label={
+                      <>
+                        Ik ga akkoord met de <a href="#terms" className="underline">algemene voorwaarden</a> en
+                        het <a href="#privacy" className="underline">privacybeleid</a>. *
+                      </>
+                    }
+                  />
                 </div>
               </div>
             </Section>
@@ -468,7 +358,7 @@ const InschrijvenSolo = () => {
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Vorige
             </button>
-            {step < 5 ? (
+            {step < 4 ? (
               <button
                 onClick={next}
                 className="flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-semibold bg-foreground text-background hover:bg-foreground/85 transition-colors"
