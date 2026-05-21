@@ -50,6 +50,7 @@ import {
   MobileAgendaEvents,
   MobileEventBigQuiz,
   MobileLeden,
+  MobileThinkTanks,
   MobileSponsors,
   MobileAffiliations,
   MobileArtikels,
