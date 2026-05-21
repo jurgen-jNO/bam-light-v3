@@ -50,7 +50,7 @@ const LoginIndividu = () => {
 
         <section className="mt-8 border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
           <p className="text-[10px] uppercase tracking-widest text-destructive/80 mb-1">[ extra beveiliging ]</p>
-          <h2 className="text-lg font-bold text-foreground">2FA of mail code toevoegen?</h2>
+          <h2 className="text-lg font-bold text-foreground">2FA toevoegen!</h2>
         </section>
       </main>
       <Footer />
