@@ -40,7 +40,8 @@ import Artikels from "./pages/Artikels.tsx";
 import BamMagazine from "./pages/BamMagazine.tsx";
 import BamMagazineLocked from "./pages/BamMagazineLocked.tsx";
 import OpleidingOpMaat from "./pages/OpleidingOpMaat.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import ThinkTanks from "./pages/ThinkTanks.tsx";
+
 import {
   MobileAgenda,
   MobileEventDetail,
