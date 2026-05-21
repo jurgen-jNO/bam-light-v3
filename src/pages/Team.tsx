@@ -83,9 +83,15 @@ export default function Team() {
                   key={m.email}
                   className="border border-neutral-200 rounded-lg p-5 hover:border-neutral-400 transition-colors flex flex-col"
                 >
-                  <div className="aspect-[3/4] w-28 rounded-md border-2 border-dashed border-neutral-300 bg-neutral-50 flex items-center justify-center text-[10px] text-neutral-400 mb-4">
-                    Foto
-                  </div>
+                  {m.foto ? (
+                    <div className="aspect-[3/4] w-28 rounded-md overflow-hidden bg-neutral-50 mb-4">
+                      <img src={m.foto} alt={`${m.voornaam} ${m.naam}`} className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <div className="aspect-[3/4] w-28 rounded-md border-2 border-dashed border-neutral-300 bg-neutral-50 flex items-center justify-center text-[10px] text-neutral-400 mb-4">
+                      Foto
+                    </div>
+                  )}
                   <h3 className="text-lg font-bold text-neutral-900 leading-tight">
                     {m.voornaam} {m.naam}
                   </h3>
