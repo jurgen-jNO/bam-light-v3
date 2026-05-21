@@ -1,6 +1,7 @@
 import { Mail, Phone, ArrowRight } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
+import teamPhoto from "@/assets/team-photo.png";
 
 const team = [
   {
@@ -59,8 +60,8 @@ export default function Team() {
           </header>
 
           {/* Team photo */}
-          <div className="aspect-[21/9] w-full rounded-lg border-2 border-dashed border-neutral-300 bg-neutral-50 flex items-center justify-center text-xs text-neutral-400 mb-12">
-            Teamfoto
+          <div className="aspect-[21/9] w-full rounded-lg overflow-hidden bg-neutral-50 mb-12">
+            <img src={teamPhoto} alt="BAM teamfoto" className="w-full h-full object-cover" />
           </div>
 
           {/* Members */}
