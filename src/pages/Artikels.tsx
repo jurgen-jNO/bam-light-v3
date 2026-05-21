@@ -1,7 +1,17 @@
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, Image as ImageIcon, ChevronRight } from "lucide-react";
+import { ArrowRight, Calendar, Image as ImageIcon, ChevronRight, Search } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
+
+const INTEREST_DOMAINS = [
+  "Digital & Technology",
+  "Sustainability, Ethics & Purpose",
+  "Marketing Leadership & Future Skills",
+  "Brand Building",
+  "Performance Marketing",
+  "Community Building",
+];
 
 // Genereer 20 artikels
 const articles = Array.from({ length: 20 }, (_, i) => ({
