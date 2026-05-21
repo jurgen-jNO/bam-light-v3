@@ -376,6 +376,9 @@ const InschrijvenSolo = () => {
                   />
                 </div>
               </div>
+            </Section>
+          )}
+
           {/* STEP 5 — Profiel vervolledigen */}
           {step === 5 && (
             <Section title="Vervolledig je profiel">
