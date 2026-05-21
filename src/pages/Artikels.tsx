@@ -78,7 +78,11 @@ const Artikels = () => {
   const hasFilters = !!domein || !!query.trim();
   const heroArticle = filteredArticles[0] ?? articles[0];
   const subHeroArticles = hasFilters ? [] : filteredArticles.slice(1, 3);
-  const trendingArticles = hasFilters ? [] : filteredArticles.slice(3, 8);
+  const trendingArticles = hasFilters
+    ? []
+    : INTEREST_DOMAINS.map((d) => articles.find((a) => a.category === d)).filter(
+        (a): a is (typeof articles)[number] => Boolean(a),
+      );
   const gridArticles = hasFilters ? filteredArticles.slice(1) : filteredArticles.slice(8);
 
   return (
