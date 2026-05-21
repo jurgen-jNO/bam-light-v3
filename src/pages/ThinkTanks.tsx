@@ -77,7 +77,7 @@ const ThinkTanks = () => {
         </div>
 
         {/* Think Tanks grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {thinkTanks.map((tt) => (
             <div
               key={tt.id}
