@@ -281,7 +281,8 @@ const Artikels = () => {
             Laad meer artikels
           </button>
         </div>
-
+        </>
+        )}
       </main>
 
       <Footer />
