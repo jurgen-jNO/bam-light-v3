@@ -92,12 +92,45 @@ const Vacatures = () => {
               Vind de nieuwste uitdagingen in marketing. Zoek op functie, bedrijf of regio.
             </p>
           </div>
-          <Button asChild className="w-full md:w-auto shrink-0 gap-2 bg-foreground text-background hover:bg-foreground/90 rounded-none font-medium">
-            <Link to="/vacature/nieuw">
-              <Plus className="w-4 h-4" />
-              Voeg jouw vacature toe
-            </Link>
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="w-full md:w-auto shrink-0 gap-2 bg-foreground text-background hover:bg-foreground/90 rounded-none font-medium">
+                <Plus className="w-4 h-4" />
+                Voeg jouw vacature toe
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[480px] rounded-none border-2 border-foreground">
+              <DialogHeader>
+                <DialogTitle className="text-2xl">Voeg jouw vacature toe</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-4 pt-2">
+                <div className="border-2 border-foreground p-5">
+                  <h3 className="font-semibold text-foreground mb-1">BAM bedrijfslid?</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Log in en maak gratis een vacature aan.
+                  </p>
+                  <Button asChild className="w-full gap-2 bg-foreground text-background hover:bg-foreground/90 rounded-none font-medium">
+                    <Link to="/login">
+                      <LogIn className="w-4 h-4" />
+                      Log in
+                    </Link>
+                  </Button>
+                </div>
+                <div className="border-2 border-dashed border-foreground p-5">
+                  <h3 className="font-semibold text-foreground mb-1">Geen BAM bedrijfslid?</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Neem contact met ons op. Een vacature plaatsen kost €500.
+                  </p>
+                  <Button asChild variant="outline" className="w-full gap-2 border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background rounded-none font-medium">
+                    <Link to="/contact">
+                      <Mail className="w-4 h-4" />
+                      Contacteer ons
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
 
         {/* Search Section */}
