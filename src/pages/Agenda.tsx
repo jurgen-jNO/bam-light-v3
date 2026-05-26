@@ -7,6 +7,21 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { agendaMockData, type AgendaItem } from "@/data/agendaMockData";
+import { Monitor, Users, Blend } from "lucide-react";
+
+type Format = "virtueel" | "klassikaal" | "hybride";
+const formatForItem = (item: AgendaItem): Format => {
+  if (item.type !== "opleiding") return "klassikaal";
+  if (item.subtype === "meerdaagse") return "hybride";
+  let h = 0;
+  for (let i = 0; i < item.id.length; i++) h = (h * 31 + item.id.charCodeAt(i)) >>> 0;
+  return h % 2 === 0 ? "klassikaal" : "virtueel";
+};
+const FORMAT_META: Record<Format, { label: string; Icon: typeof Monitor }> = {
+  virtueel: { label: "Virtueel", Icon: Monitor },
+  klassikaal: { label: "Klassikaal", Icon: Users },
+  hybride: { label: "Hybride", Icon: Blend },
+};
 
 type MainType = "opleidingen" | "events";
 type StatusType = "upcoming" | "archief";
