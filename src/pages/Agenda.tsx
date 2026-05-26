@@ -116,9 +116,24 @@ function AgendaCard({ item, onInteresse }: { item: AgendaItem; onInteresse: (ite
     >
       <div className="relative flex aspect-video w-full items-center justify-center border-b border-dashed border-neutral-400 bg-neutral-200 text-xs text-neutral-500">
         Card image
-        <span className="absolute left-3 top-3 rounded border border-neutral-300 bg-white px-2 py-0.5 text-[11px] uppercase tracking-wider text-neutral-600">
-          {SUBTYPE_LABEL[item.subtype] ?? item.subtype}
-        </span>
+        <div className="absolute left-3 top-3 flex items-center gap-1.5">
+          <span className="rounded border border-neutral-300 bg-white px-2 py-0.5 text-[11px] uppercase tracking-wider text-neutral-600">
+            {SUBTYPE_LABEL[item.subtype] ?? item.subtype}
+          </span>
+          {item.type === "opleiding" && (() => {
+            const f = formatForItem(item);
+            const { label, Icon } = FORMAT_META[f];
+            return (
+              <span
+                title={label}
+                className="inline-flex items-center gap-1 rounded border border-neutral-300 bg-white px-2 py-0.5 text-[11px] uppercase tracking-wider text-neutral-600"
+              >
+                <Icon className="h-3 w-3" />
+                {label}
+              </span>
+            );
+          })()}
+        </div>
         {item.is_archived && (
           <span className="absolute right-3 top-3 rounded border border-neutral-300 bg-white px-2 py-0.5 text-[11px] uppercase tracking-wider text-neutral-600">
             Archief
