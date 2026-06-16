@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BAM — Database structuur per bedrijf</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Inter, sans-serif;
+    margin: 0; padding: 40px 24px; background: #f7f7f6; color: #111;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .sub { color: #666; font-size: 14px; margin: 0 0 28px; }
+  .panel {
+    background: #fff; border: 1px solid #e5e5e3; border-radius: 8px;
+    padding: 24px; margin-bottom: 18px;
+  }
+  .panel h2 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em;
+    color: #888; margin: 0 0 14px; font-weight: 600;
+  }
+  .panel h3 {
+    font-size: 15px; margin: 0 0 4px; font-weight: 600;
+  }
+  .panel .ent-sub { font-size: 12px; color: #888; margin: 0 0 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px dashed #e5e5e3; vertical-align: top; }
+  th { color: #666; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; }
+  td.field { white-space: nowrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+  td.type { color: #555; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; white-space: nowrap; }
+  td.note { color: #444; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; background: #f0efed; padding: 1px 5px; border-radius: 3px; }
+  .pill { display:inline-block; font-size:10px; padding:1px 6px; border-radius:3px; background:#eee; color:#444; margin-left:6px; letter-spacing:0.05em; text-transform:uppercase;}
+  .pill.pk { background:#111; color:#fff; }
+  .pill.fk { background:#e8f0ff; color:#1a4ed8; }
+  .pill.uk { background:#fff3cd; color:#7a5b00; }
+  .pill.req{ background:#fde2e2; color:#a11212; }
+  .toc { display:flex; flex-wrap:wrap; gap:6px; margin: 0 0 20px; }
+  .toc a { font-size:11px; text-transform:uppercase; letter-spacing:0.12em; padding:6px 10px; border:1px solid #ddd; border-radius:4px; text-decoration:none; color:#111; background:#fff;}
+  .toc a:hover { background:#111; color:#fff; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; border: 1px solid #111; border-radius: 4px; text-decoration: none; cursor: pointer; }
+  .btn.primary { background: #111; color: #fff; }
+  .btn.ghost { background: #fff; color: #111; }
+  .section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: #888; margin: 28px 0 10px; font-weight: 600; }
+  footer { color: #999; font-size: 12px; text-align: center; margin-top: 28px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Database structuur — alle data per bedrijf</h1>
+  <p class="sub">Volledig veldoverzicht van elke entiteit die aan één <code>bedrijf</code>-record hangt. Wireframe / draft.</p>
+
+  <nav class="toc">
+    <a href="#core">1. Bedrijfsprofiel</a>
+    <a href="#contact">2. Contacten</a>
+    <a href="#lid">3. Lidmaatschap</a>
+    <a href="#factuur">4. Facturatie</a>
+    <a href="#inschr">5. Inschrijvingen</a>
+    <a href="#vacature">6. Vacatures</a>
+    <a href="#sponsor">7. Sponsoring</a>
+    <a href="#awards">8. Awards</a>
+    <a href="#magazine">9. Magazine</a>
+    <a href="#relaties">10. Relaties</a>
+    <a href="#systeem">11. Systeem</a>
+  </nav>
+
+  <!-- ============================================================ -->
+  <div class="panel" id="core">
+    <h2>1. Bedrijfsprofiel — core</h2>
+
+    <h3>bedrijf</h3>
+    <p class="ent-sub">1 record per lid-bedrijf · cardinaliteit: hoofdtabel</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td class="note">Primary key</td></tr>
+        <tr><td class="field">parent_id <span class="pill fk">FK</span></td><td class="type">uuid → bedrijf.id</td><td class="note">Groepsstructuur (Galaxy: dochters)</td></tr>
+        <tr><td class="field">brand_naam <span class="pill req">REQ</span></td><td class="type">text</td><td class="note">Handelsnaam, publiek zichtbaar</td></tr>
+        <tr><td class="field">juridische_naam</td><td class="type">text</td><td class="note">Officiële naam op factuur</td></tr>
+        <tr><td class="field">btw_nummer <span class="pill uk">UK</span></td><td class="type">text</td><td class="note">Bv. BE0123.456.789</td></tr>
+        <tr><td class="field">kbo_nummer</td><td class="type">text</td><td class="note">Ondernemingsnummer</td></tr>
+        <tr><td class="field">industrie</td><td class="type">enum</td><td class="note">Publisher, Technology Provider, Media SalesHouse, Creative/Digital Agency, Advertiser, Media Agency, Legal Services, Market Research, Mail Handler, Education</td></tr>
+        <tr><td class="field">about_nl</td><td class="type">text</td><td class="note">Korte beschrijving NL</td></tr>
+        <tr><td class="field">about_fr</td><td class="type">text</td><td class="note">Korte beschrijving FR</td></tr>
+        <tr><td class="field">website</td><td class="type">url</td><td></td></tr>
+        <tr><td class="field">linkedin_url</td><td class="type">url</td><td></td></tr>
+        <tr><td class="field">telefoon_centraal</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">email_centraal</td><td class="type">email</td><td>Algemeen mailadres</td></tr>
+        <tr><td class="field">logo_url</td><td class="type">url</td><td>Logo op site, magazine, events</td></tr>
+        <tr><td class="field">taal_voorkeur</td><td class="type">enum NL|FR|EN</td><td>Default communicatietaal</td></tr>
+        <tr><td class="field">status</td><td class="type">enum</td><td>prospect, actief, on-hold, opgezegd, inactief</td></tr>
+        <tr><td class="field">aangemaakt_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">laatst_gewijzigd_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">aangemaakt_door <span class="pill fk">FK</span></td><td class="type">uuid → contact.id</td><td>Admin die record creëerde</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:24px">bedrijf_adres</h3>
+    <p class="ent-sub">1‑op‑n · meerdere vestigingen mogelijk</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid → bedrijf.id</td><td></td></tr>
+        <tr><td class="field">label</td><td class="type">text</td><td>Bv. "Hoofdzetel Antwerpen"</td></tr>
+        <tr><td class="field">straat</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">nr</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">bus</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">postcode</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">gemeente</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">provincie</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">land</td><td class="type">iso2</td><td>Default BE</td></tr>
+        <tr><td class="field">is_hoofdzetel</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">is_facturatieadres</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">is_verzendadres</td><td class="type">bool</td><td>Voor magazine print</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="panel" id="contact">
+    <h2>2. Contactpersonen / users</h2>
+
+    <h3>contact</h3>
+    <p class="ent-sub">1‑op‑n · medewerkers verbonden aan het bedrijf</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid → bedrijf.id</td><td></td></tr>
+        <tr><td class="field">voornaam</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">achternaam</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">aanspreking</td><td class="type">enum dhr|mevr|x</td><td></td></tr>
+        <tr><td class="field">functie</td><td class="type">text</td><td>Job title</td></tr>
+        <tr><td class="field">afdeling</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">email <span class="pill uk">UK</span></td><td class="type">email</td><td>Login-identifier</td></tr>
+        <tr><td class="field">telefoon_vast</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">gsm</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">linkedin_url</td><td class="type">url</td><td></td></tr>
+        <tr><td class="field">geboortedatum</td><td class="type">date</td><td>Voor Youth-check</td></tr>
+        <tr><td class="field">taal</td><td class="type">enum NL|FR|EN</td><td></td></tr>
+        <tr><td class="field">foto_url</td><td class="type">url</td><td></td></tr>
+        <tr><td class="field">rol_in_account</td><td class="type">enum</td><td>admin, facturatie, standaard, read-only</td></tr>
+        <tr><td class="field">is_primary_contact</td><td class="type">bool</td><td>Centraal aanspreekpunt</td></tr>
+        <tr><td class="field">is_facturatie_contact</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">is_docent</td><td class="type">bool</td><td>Geeft opleidingen</td></tr>
+        <tr><td class="field">account_status</td><td class="type">enum</td><td>uitgenodigd, actief, geblokkeerd, vertrokken</td></tr>
+        <tr><td class="field">uitgenodigd_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">activatie_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">laatste_login_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">vertrokken_op</td><td class="type">date</td><td>Wanneer niet meer bij bedrijf</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:24px">contact_mailing_voorkeur</h3>
+    <p class="ent-sub">1‑op‑1 per contact · opt-ins</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">contact_id <span class="pill pk">PK</span> <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">newsletter_algemeen</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">agenda_alerts</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">jobs_alerts</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">magazine_digitaal</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">thinktank_uitnodigingen</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">awards_communicatie</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">laatst_bevestigd_op</td><td class="type">timestamp</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="panel" id="lid">
+    <h2>3. Lidmaatschap & pakket</h2>
+
+    <h3>lidmaatschap</h3>
+    <p class="ent-sub">1‑op‑n (historisch) · 1 actief per bedrijf</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">pakket</td><td class="type">enum</td><td>solo, friends, youth, academy, growth, galaxy</td></tr>
+        <tr><td class="field">start_datum</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">eind_datum</td><td class="type">date</td><td>Default 31/12</td></tr>
+        <tr><td class="field">status</td><td class="type">enum</td><td>pending, actief, on-hold, opgezegd, verlopen</td></tr>
+        <tr><td class="field">verlengt_automatisch</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">aantal_seats</td><td class="type">int</td><td>Max users in pakket</td></tr>
+        <tr><td class="field">seats_gebruikt</td><td class="type">int</td><td>Berekend</td></tr>
+        <tr><td class="field">prijs_jaar_excl</td><td class="type">decimal</td><td></td></tr>
+        <tr><td class="field">prorata_factor</td><td class="type">decimal</td><td>Bij start mid-jaar</td></tr>
+        <tr><td class="field">kortingscode</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">korting_pct</td><td class="type">decimal</td><td></td></tr>
+        <tr><td class="field">onboarding_voltooid_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">opgezegd_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">opzegging_reden</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">notes_interne</td><td class="type">text</td><td>Account manager notities</td></tr>
+        <tr><td class="field">account_manager_id <span class="pill fk">FK</span></td><td class="type">uuid → bam_user.id</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="panel" id="factuur">
+    <h2>4. Facturatie</h2>
+
+    <h3>facturatie_instellingen</h3>
+    <p class="ent-sub">1‑op‑1 per bedrijf</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">bedrijf_id <span class="pill pk">PK</span> <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">facturatie_email</td><td class="type">email</td><td></td></tr>
+        <tr><td class="field">facturatie_adres_id <span class="pill fk">FK</span></td><td class="type">uuid → bedrijf_adres.id</td><td></td></tr>
+        <tr><td class="field">po_nummer_vereist</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">default_po_nummer</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">iban</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">bic</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">btw_regime</td><td class="type">enum</td><td>BE, intracom, extra-EU</td></tr>
+        <tr><td class="field">betaaltermijn_dagen</td><td class="type">int</td><td>Default 30</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:24px">factuur</h3>
+    <p class="ent-sub">1‑op‑n</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">factuurnummer <span class="pill uk">UK</span></td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">type</td><td class="type">enum</td><td>lidmaatschap, inschrijving, sponsoring, credit</td></tr>
+        <tr><td class="field">gekoppeld_aan_id</td><td class="type">uuid</td><td>polymorf: lidmaatschap, inschrijving, sponsorship</td></tr>
+        <tr><td class="field">datum</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">vervaldatum</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">bedrag_excl</td><td class="type">decimal</td><td></td></tr>
+        <tr><td class="field">btw_pct</td><td class="type">decimal</td><td></td></tr>
+        <tr><td class="field">btw_bedrag</td><td class="type">decimal</td><td></td></tr>
+        <tr><td class="field">bedrag_incl</td><td class="type">decimal</td><td></td></tr>
+        <tr><td class="field">munt</td><td class="type">iso EUR</td><td></td></tr>
+        <tr><td class="field">status</td><td class="type">enum</td><td>draft, verzonden, betaald, overdue, credited</td></tr>
+        <tr><td class="field">betaalwijze</td><td class="type">enum</td><td>overschrijving, kaart, SEPA, credit</td></tr>
+        <tr><td class="field">betaald_op</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">po_nummer</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">pdf_url</td><td class="type">url</td><td></td></tr>
+        <tr><td class="field">verzonden_naar</td><td class="type">email</td><td></td></tr>
+        <tr><td class="field">herinneringen_verzonden</td><td class="type">int</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="panel" id="inschr">
+    <h2>5. Inschrijvingen op opleidingen & events</h2>
+
+    <h3>inschrijving</h3>
+    <p class="ent-sub">n‑op‑n via contact ↔ agenda_item</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">contact_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td>De deelnemer</td></tr>
+        <tr><td class="field">agenda_item_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td>Opleiding of event</td></tr>
+        <tr><td class="field">type</td><td class="type">enum</td><td>opleiding, event</td></tr>
+        <tr><td class="field">subtype</td><td class="type">enum</td><td>dagopleiding, meerdaagse, op-maat, activiteit, award, congres, big-quiz</td></tr>
+        <tr><td class="field">format</td><td class="type">enum</td><td>virtueel, klassikaal, hybride</td></tr>
+        <tr><td class="field">tarief_type</td><td class="type">enum</td><td>lid, niet-lid, early-bird, gratis-quota</td></tr>
+        <tr><td class="field">prijs_betaald_excl</td><td class="type">decimal</td><td></td></tr>
+        <tr><td class="field">korting_toegepast</td><td class="type">decimal</td><td></td></tr>
+        <tr><td class="field">status</td><td class="type">enum</td><td>ingeschreven, wachtlijst, geannuleerd, no-show, aanwezig</td></tr>
+        <tr><td class="field">ingeschreven_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">ingeschreven_door <span class="pill fk">FK</span></td><td class="type">uuid → contact.id</td><td>Bv. office manager</td></tr>
+        <tr><td class="field">geannuleerd_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">annulering_reden</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">factuur_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td>Nullable</td></tr>
+        <tr><td class="field">dieet_wensen</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">toegankelijkheid</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">extra_opmerkingen</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">certificaat_url</td><td class="type">url</td><td>Na voltooiing</td></tr>
+        <tr><td class="field">evaluatie_score</td><td class="type">int 1-5</td><td>Post-event survey</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:24px">inschrijving_sessie</h3>
+    <p class="ent-sub">1‑op‑n per inschrijving · voor meerdaagse opleidingen</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">inschrijving_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">sessie_id <span class="pill fk">FK</span></td><td class="type">uuid → agenda_sessie.id</td><td></td></tr>
+        <tr><td class="field">aanwezig</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">check_in_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">vervangen_door_contact_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td>Collega die plaats overnam</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:24px">interesse_lijst</h3>
+    <p class="ent-sub">n‑op‑n light · voor items met <code>interesse_email_actief</code></p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">contact_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">agenda_item_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">aangemeld_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">notificatie_verzonden_op</td><td class="type">timestamp</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="panel" id="vacature">
+    <h2>6. Vacatures (Job board)</h2>
+
+    <h3>vacature</h3>
+    <p class="ent-sub">1‑op‑n</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">titel</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">slug <span class="pill uk">UK</span></td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">beschrijving</td><td class="type">richtext</td><td></td></tr>
+        <tr><td class="field">vereisten</td><td class="type">richtext</td><td></td></tr>
+        <tr><td class="field">aanbod</td><td class="type">richtext</td><td></td></tr>
+        <tr><td class="field">contract_type</td><td class="type">enum</td><td>vast, freelance, stage, interim</td></tr>
+        <tr><td class="field">tewerkstelling_pct</td><td class="type">int</td><td>Bv. 100, 80</td></tr>
+        <tr><td class="field">ervaring_niveau</td><td class="type">enum</td><td>junior, medior, senior, lead</td></tr>
+        <tr><td class="field">locatie_gemeente</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">remote_policy</td><td class="type">enum</td><td>on-site, hybride, remote</td></tr>
+        <tr><td class="field">salaris_min</td><td class="type">decimal</td><td>Optioneel</td></tr>
+        <tr><td class="field">salaris_max</td><td class="type">decimal</td><td>Optioneel</td></tr>
+        <tr><td class="field">taal_vereisten</td><td class="type">text[]</td><td>NL, FR, EN</td></tr>
+        <tr><td class="field">apply_url</td><td class="type">url</td><td>Externe ATS link</td></tr>
+        <tr><td class="field">apply_email</td><td class="type">email</td><td></td></tr>
+        <tr><td class="field">recruiter_contact_id <span class="pill fk">FK</span></td><td class="type">uuid → contact.id</td><td></td></tr>
+        <tr><td class="field">gepubliceerd_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">verloopt_op</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">status</td><td class="type">enum</td><td>draft, gepubliceerd, gesloten, verlopen</td></tr>
+        <tr><td class="field">aantal_views</td><td class="type">int</td><td></td></tr>
+        <tr><td class="field">aantal_clicks_apply</td><td class="type">int</td><td></td></tr>
+        <tr><td class="field">is_featured</td><td class="type">bool</td><td>Premium positie</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:24px">sollicitatie <span style="color:#999;font-weight:400;font-size:11px">(optioneel)</span></h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">vacature_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">kandidaat_naam</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">kandidaat_email</td><td class="type">email</td><td></td></tr>
+        <tr><td class="field">cv_url</td><td class="type">url</td><td></td></tr>
+        <tr><td class="field">motivatie</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">ontvangen_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">status</td><td class="type">enum</td><td>nieuw, bekeken, contact, afgewezen, aangenomen</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="panel" id="sponsor">
+    <h2>7. Sponsoring</h2>
+
+    <h3>sponsorship</h3>
+    <p class="ent-sub">1‑op‑n</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">programma</td><td class="type">enum</td><td>awards, congres, big-quiz, magazine, jaarsponsor, event</td></tr>
+        <tr><td class="field">event_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td>Nullable, indien event-specifiek</td></tr>
+        <tr><td class="field">editie_jaar</td><td class="type">int</td><td></td></tr>
+        <tr><td class="field">niveau</td><td class="type">enum</td><td>Gold, Silver, Bronze, Partner, Custom</td></tr>
+        <tr><td class="field">bedrag_excl</td><td class="type">decimal</td><td></td></tr>
+        <tr><td class="field">periode_van</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">periode_tot</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">voordelen_json</td><td class="type">json</td><td>{logo_site, logo_magazine, screens_event, gastsprekerslot, ...}</td></tr>
+        <tr><td class="field">logo_versie_url</td><td class="type">url</td><td>Specifiek voor dit pakket</td></tr>
+        <tr><td class="field">status</td><td class="type">enum</td><td>offerte, bevestigd, actief, afgelopen</td></tr>
+        <tr><td class="field">factuur_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">contract_pdf_url</td><td class="type">url</td><td></td></tr>
+        <tr><td class="field">contactpersoon_id <span class="pill fk">FK</span></td><td class="type">uuid → contact.id</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="panel" id="awards">
+    <h2>8. Awards-deelnames</h2>
+
+    <h3>award_deelname</h3>
+    <p class="ent-sub">n‑op‑n bedrijf ↔ award_editie</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td>Indienend bedrijf</td></tr>
+        <tr><td class="field">award_editie_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td>Bv. BAM Awards 2026</td></tr>
+        <tr><td class="field">categorie</td><td class="type">enum</td><td>Best Use of Data, Best Brand Activation, ...</td></tr>
+        <tr><td class="field">case_titel</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">case_brand</td><td class="type">text</td><td>Klant indien agency</td></tr>
+        <tr><td class="field">co_indieners <span class="pill fk">FK[]</span></td><td class="type">uuid[] → bedrijf.id</td><td>Partners op de case</td></tr>
+        <tr><td class="field">case_pdf_url</td><td class="type">url</td><td></td></tr>
+        <tr><td class="field">case_video_url</td><td class="type">url</td><td></td></tr>
+        <tr><td class="field">budget_range</td><td class="type">enum</td><td>&lt;50k, 50-200k, 200k-1M, &gt;1M</td></tr>
+        <tr><td class="field">ingediend_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">betaald_inschrijvingsgeld</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">factuur_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">jury_score</td><td class="type">decimal</td><td></td></tr>
+        <tr><td class="field">status</td><td class="type">enum</td><td>draft, ingediend, shortlist, genomineerd, winnaar, niet-bekroond</td></tr>
+        <tr><td class="field">prijs_metaal</td><td class="type">enum</td><td>gold, silver, bronze (indien winnaar)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="panel" id="magazine">
+    <h2>9. BAM Magazine & content-toegang</h2>
+
+    <h3>magazine_abonnement</h3>
+    <p class="ent-sub">1‑op‑n per contact</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">contact_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">type</td><td class="type">enum</td><td>digitaal, print, beide</td></tr>
+        <tr><td class="field">verzendadres_id <span class="pill fk">FK</span></td><td class="type">uuid → bedrijf_adres.id</td><td>Voor print</td></tr>
+        <tr><td class="field">aantal_exemplaren</td><td class="type">int</td><td>Default 1</td></tr>
+        <tr><td class="field">start_datum</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">eind_datum</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">status</td><td class="type">enum</td><td>actief, gepauzeerd, opgezegd</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:24px">artikel_interactie <span style="color:#999;font-weight:400;font-size:11px">(optioneel analytics)</span></h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">contact_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">artikel_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">gelezen_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">leestijd_sec</td><td class="type">int</td><td></td></tr>
+        <tr><td class="field">bookmark</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">gedeeld_kanaal</td><td class="type">enum</td><td>email, linkedin, x, copy-link</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="panel" id="relaties">
+    <h2>10. Affiliaties, Think Tanks & relaties</h2>
+
+    <h3>bedrijf_affiliation</h3>
+    <p class="ent-sub">n‑op‑n bedrijf ↔ affiliation</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">affiliation_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td>Bv. WFA, EACA, IAB</td></tr>
+        <tr><td class="field">sinds</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">tot</td><td class="type">date</td><td>Nullable</td></tr>
+        <tr><td class="field">rol</td><td class="type">enum</td><td>lid, board, partner</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:24px">thinktank_deelname</h3>
+    <p class="ent-sub">n‑op‑n contact ↔ thinktank</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">contact_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">thinktank_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">rol</td><td class="type">enum</td><td>lid, lead, observer</td></tr>
+        <tr><td class="field">sinds</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">tot</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">aanwezigheid_pct</td><td class="type">decimal</td><td>Berekend</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:24px">docent_profiel</h3>
+    <p class="ent-sub">1‑op‑1 per contact met <code>is_docent=true</code></p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">contact_id <span class="pill pk">PK</span> <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bio_nl</td><td class="type">richtext</td><td></td></tr>
+        <tr><td class="field">bio_fr</td><td class="type">richtext</td><td></td></tr>
+        <tr><td class="field">expertises</td><td class="type">text[]</td><td>Tags</td></tr>
+        <tr><td class="field">talen_doceren</td><td class="type">text[]</td><td>NL, FR, EN</td></tr>
+        <tr><td class="field">tarief_dag</td><td class="type">decimal</td><td>Optioneel</td></tr>
+        <tr><td class="field">publiek_profiel</td><td class="type">bool</td><td>Zichtbaar op site</td></tr>
+        <tr><td class="field">slug</td><td class="type">text</td><td>/docenten/:slug</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="panel" id="systeem">
+    <h2>11. Systeem · audit · integraties</h2>
+
+    <h3>bedrijf_audit_log</h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">bigint</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">actor_id <span class="pill fk">FK</span></td><td class="type">uuid → contact.id of bam_user.id</td><td></td></tr>
+        <tr><td class="field">actie</td><td class="type">enum</td><td>create, update, delete, login, invite, ...</td></tr>
+        <tr><td class="field">entiteit</td><td class="type">text</td><td>Tabelnaam</td></tr>
+        <tr><td class="field">entiteit_id</td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">diff_json</td><td class="type">jsonb</td><td>Voor/na</td></tr>
+        <tr><td class="field">ip_adres</td><td class="type">inet</td><td></td></tr>
+        <tr><td class="field">user_agent</td><td class="type">text</td><td></td></tr>
+        <tr><td class="field">timestamp</td><td class="type">timestamp</td><td></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:24px">consent_log</h3>
+    <p class="ent-sub">GDPR · per contact</p>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">bigint</td><td></td></tr>
+        <tr><td class="field">contact_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">consent_type</td><td class="type">enum</td><td>terms, privacy, marketing, foto-gebruik</td></tr>
+        <tr><td class="field">versie</td><td class="type">text</td><td>Bv. v2.1</td></tr>
+        <tr><td class="field">gegeven</td><td class="type">bool</td><td></td></tr>
+        <tr><td class="field">timestamp</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">ip_adres</td><td class="type">inet</td><td></td></tr>
+        <tr><td class="field">bron</td><td class="type">text</td><td>onboarding, account-page, popup</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top:24px">integratie / api_key <span style="color:#999;font-weight:400;font-size:11px">(Galaxy)</span></h3>
+    <table>
+      <thead><tr><th>Veld</th><th>Type</th><th>Toelichting</th></tr></thead>
+      <tbody>
+        <tr><td class="field">id <span class="pill pk">PK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">bedrijf_id <span class="pill fk">FK</span></td><td class="type">uuid</td><td></td></tr>
+        <tr><td class="field">naam</td><td class="type">text</td><td>Bv. "ingebed jobboard productie"</td></tr>
+        <tr><td class="field">type</td><td class="type">enum</td><td>job-feed, sso, embed, webhook</td></tr>
+        <tr><td class="field">key_hash</td><td class="type">text</td><td>Nooit plain text</td></tr>
+        <tr><td class="field">scopes</td><td class="type">text[]</td><td></td></tr>
+        <tr><td class="field">aangemaakt_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">laatst_gebruikt_op</td><td class="type">timestamp</td><td></td></tr>
+        <tr><td class="field">verloopt_op</td><td class="type">date</td><td></td></tr>
+        <tr><td class="field">status</td><td class="type">enum</td><td>actief, ingetrokken</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="actions">
+    <a href="/docs/db-structuur-leden.html" class="btn ghost">← Ledenpakketten</a>
+    <a href="/docs/db-structuur-leden-info.html" class="btn ghost">Leden info →</a>
+  </div>
+
+  <footer>BAM — interne documentatie · wireframe</footer>
+</div>
+</body>
+</html>
