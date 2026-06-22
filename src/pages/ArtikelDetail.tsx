@@ -13,6 +13,9 @@ import {
   Megaphone,
   ArrowRight,
   ChevronRight,
+  FileText,
+  Download,
+  ExternalLink,
 } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import XIcon from "@/components/icons/XIcon";
@@ -293,6 +296,49 @@ const ArtikelDetail = () => {
                 }
                 return null;
               })}
+            </div>
+
+            {/* Bronnen & Downloads */}
+            <div className="mt-12 grid md:grid-cols-2 gap-6">
+              <div className="border-2 border-dashed border-foreground/30 bg-foreground/[0.02] p-6">
+                <p className="text-[10px] uppercase tracking-widest font-semibold text-foreground/50 mb-3">[ bronnen ]</p>
+                <h3 className="text-lg font-bold text-foreground mb-4">Bronnen</h3>
+                <ul className="space-y-3">
+                  {[
+                    { label: "WARC — Marketing Trends Report 2026", url: "#" },
+                    { label: "Kantar — Creative Effectiveness Study", url: "#" },
+                    { label: "BAM Insights — Belgian Brand Index", url: "#" },
+                    { label: "Cannes Lions — Creative Craft Awards", url: "#" },
+                  ].map((s, i) => (
+                    <li key={i}>
+                      <a href={s.url} className="group flex items-start gap-2 text-sm text-foreground/80 hover:text-foreground">
+                        <ExternalLink className="w-3.5 h-3.5 mt-0.5 shrink-0 text-foreground/50 group-hover:text-foreground" />
+                        <span className="underline-offset-4 group-hover:underline">{s.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="border-2 border-dashed border-foreground/30 bg-foreground/[0.02] p-6">
+                <p className="text-[10px] uppercase tracking-widest font-semibold text-foreground/50 mb-3">[ downloads ]</p>
+                <h3 className="text-lg font-bold text-foreground mb-4">Documenten</h3>
+                <ul className="space-y-3">
+                  {[
+                    { label: "Volledig rapport (PDF)", meta: "2.4 MB · PDF" },
+                    { label: "Samenvatting voor directie (PDF)", meta: "480 KB · PDF" },
+                    { label: "Data & grafieken (XLSX)", meta: "120 KB · XLSX" },
+                  ].map((d, i) => (
+                    <li key={i}>
+                      <a href="#" className="group flex items-center gap-3 text-sm text-foreground/80 hover:text-foreground">
+                        <FileText className="w-4 h-4 shrink-0 text-foreground/50 group-hover:text-foreground" />
+                        <span className="flex-1 underline-offset-4 group-hover:underline">{d.label}</span>
+                        <span className="text-[10px] uppercase tracking-widest text-foreground/45">{d.meta}</span>
+                        <Download className="w-3.5 h-3.5 shrink-0 text-foreground/50 group-hover:text-foreground" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* CTA */}
