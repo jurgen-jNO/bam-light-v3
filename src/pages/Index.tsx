@@ -5,11 +5,10 @@ import { agendaMockData } from "@/data/agendaMockData";
 
 const upcoming = agendaMockData
   .filter((i) => !i.is_archived)
-  .sort((a, b) => a.sessies[0].datum.localeCompare(b.sessies[0].datum))
-  .slice(0, 6);
+  .sort((a, b) => a.sessies[0].datum.localeCompare(b.sessies[0].datum));
 
-const events = upcoming.filter((i) => i.type === "event").slice(0, 3);
-const trainings = upcoming.filter((i) => i.type === "opleiding").slice(0, 3);
+const events = upcoming.filter((i) => i.type === "event").slice(0, 2);
+const trainings = upcoming.filter((i) => i.type === "opleiding").slice(0, 2);
 
 const articles = [
   { titel: "De staat van marketing in België 2026", auteur: "Redactie BAM", datum: "12 mei 2026" },
