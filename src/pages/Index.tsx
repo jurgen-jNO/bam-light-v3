@@ -137,6 +137,30 @@ const Index = () => {
           </div>
         </section>
 
+        {/* JOIN CTA */}
+        <section className="border-2 border-dashed border-border rounded-lg px-8 py-5 flex items-center justify-between gap-6 flex-wrap">
+          <div className="flex items-baseline gap-4 flex-wrap">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">Word lid</p>
+            <h1 className="text-lg font-semibold text-foreground">
+              De community van Belgische marketeers
+            </h1>
+          </div>
+          <div className="flex gap-3 flex-wrap">
+            <Link
+              to="/word-lid"
+              className="inline-flex items-center px-4 py-2 rounded-md bg-foreground text-background text-sm font-medium hover:opacity-90"
+            >
+              Join BAM
+            </Link>
+            <Link
+              to="/word-lid"
+              className="inline-flex items-center px-4 py-2 rounded-md border border-border text-sm font-medium hover:bg-muted"
+            >
+              Ontdek lidmaatschappen
+            </Link>
+          </div>
+        </section>
+
         {/* Recent articles */}
         <section>
           <div className="flex items-baseline justify-between mb-4">
