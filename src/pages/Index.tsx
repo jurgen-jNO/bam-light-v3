@@ -18,6 +18,13 @@ const articles = [
   { titel: "Community-led growth in B2B", auteur: "Marie Peeters", datum: "20 apr 2026" },
 ];
 
+const articlesRow2 = [
+  { titel: "Sustainability reporting als marketingkatalysator", auteur: "Liesbeth Maes", datum: "14 apr 2026" },
+  { titel: "First-party data zonder cookies", auteur: "Pieter Verhoeven", datum: "10 apr 2026" },
+  { titel: "De terugkeer van branded entertainment", auteur: "Eva De Smet", datum: "3 apr 2026" },
+  { titel: "Creativiteit meetbaar maken", auteur: "Jens Vandenberghe", datum: "28 mrt 2026" },
+];
+
 const corporateMembers = [
   "Proximus", "KBC", "Telenet", "Colruyt", "Bpost", "Brussels Airlines",
   "Delhaize", "AG Insurance", "Belfius", "Engie", "Luminus", "DPG Media",
@@ -219,6 +226,25 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-4 gap-4">
             {articles.map((a) => (
+              <Link
+                key={a.titel}
+                to="/artikel"
+                className="border-2 border-dashed border-border rounded-lg overflow-hidden hover:bg-muted/40"
+              >
+                <div className="aspect-[4/3] bg-muted/30 border-b-2 border-dashed border-border flex items-center justify-center">
+                  <span className="text-xs text-muted-foreground">Cover</span>
+                </div>
+                <div className="p-4">
+                  <p className="text-sm font-medium text-foreground line-clamp-2">{a.titel}</p>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    {a.auteur} · {a.datum}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="grid grid-cols-4 gap-4 mt-4">
+            {articlesRow2.map((a) => (
               <Link
                 key={a.titel}
                 to="/artikel"
