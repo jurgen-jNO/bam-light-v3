@@ -243,6 +243,25 @@ const Index = () => {
               </Link>
             ))}
           </div>
+          <div className="grid grid-cols-4 gap-4 mt-4">
+            {articlesRow2.map((a) => (
+              <Link
+                key={a.titel}
+                to="/artikel"
+                className="border-2 border-dashed border-border rounded-lg overflow-hidden hover:bg-muted/40"
+              >
+                <div className="aspect-[4/3] bg-muted/30 border-b-2 border-dashed border-border flex items-center justify-center">
+                  <span className="text-xs text-muted-foreground">Cover</span>
+                </div>
+                <div className="p-4">
+                  <p className="text-sm font-medium text-foreground line-clamp-2">{a.titel}</p>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    {a.auteur} · {a.datum}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* Job board highlight */}
