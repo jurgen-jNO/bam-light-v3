@@ -63,57 +63,60 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Upcoming events */}
-          <div className="col-span-1">
-            <div className="flex items-baseline justify-between mb-3">
-              <h2 className="text-base font-semibold text-foreground">Upcoming events</h2>
-              <Link to="/agenda/events" className="text-sm text-foreground underline hover:text-muted-foreground">
-                Alle events
-              </Link>
-            </div>
-            <div className="space-y-3">
-              {events.map((e) => (
-                <Link
-                  key={e.id}
-                  to="/event"
-                  className="block border-2 border-dashed border-border rounded-lg p-3 hover:bg-muted/40"
-                >
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                    {e.subtype} · {e.sessies[0].datum}
-                  </p>
-                  <p className="text-sm font-medium text-foreground mt-1">{e.titel}</p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {e.locatie_naam}, {e.adres_gemeente}
-                  </p>
+          {/* Upcoming events + trainings */}
+          <div className="col-span-1 space-y-6">
+            {/* Upcoming events */}
+            <div>
+              <div className="flex items-baseline justify-between mb-3">
+                <h2 className="text-base font-semibold text-foreground">Upcoming events</h2>
+                <Link to="/agenda/events" className="text-sm text-foreground underline hover:text-muted-foreground">
+                  Alle events
                 </Link>
-              ))}
+              </div>
+              <div className="space-y-3">
+                {events.map((e) => (
+                  <Link
+                    key={e.id}
+                    to="/event"
+                    className="block border-2 border-dashed border-border rounded-lg p-3 hover:bg-muted/40"
+                  >
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                      {e.subtype} · {e.sessies[0].datum}
+                    </p>
+                    <p className="text-sm font-medium text-foreground mt-1">{e.titel}</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {e.locatie_naam}, {e.adres_gemeente}
+                    </p>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Upcoming trainings */}
-          <div className="col-span-1">
-            <div className="flex items-baseline justify-between mb-3">
-              <h2 className="text-base font-semibold text-foreground">Upcoming trainings</h2>
-              <Link to="/agenda" className="text-sm text-foreground underline hover:text-muted-foreground">
-                Alle opleidingen
-              </Link>
-            </div>
-            <div className="space-y-3">
-              {trainings.map((t) => (
-                <Link
-                  key={t.id}
-                  to="/agenda"
-                  className="block border-2 border-dashed border-border rounded-lg p-3 hover:bg-muted/40"
-                >
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                    {t.subtype} · {t.sessies[0].datum}
-                  </p>
-                  <p className="text-sm font-medium text-foreground mt-1">{t.titel}</p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {t.locatie_naam}, {t.adres_gemeente}
-                  </p>
+            {/* Upcoming trainings */}
+            <div>
+              <div className="flex items-baseline justify-between mb-3">
+                <h2 className="text-base font-semibold text-foreground">Upcoming trainings</h2>
+                <Link to="/agenda" className="text-sm text-foreground underline hover:text-muted-foreground">
+                  Alle opleidingen
                 </Link>
-              ))}
+              </div>
+              <div className="space-y-3">
+                {trainings.map((t) => (
+                  <Link
+                    key={t.id}
+                    to="/agenda"
+                    className="block border-2 border-dashed border-border rounded-lg p-3 hover:bg-muted/40"
+                  >
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                      {t.subtype} · {t.sessies[0].datum}
+                    </p>
+                    <p className="text-sm font-medium text-foreground mt-1">{t.titel}</p>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {t.locatie_naam}, {t.adres_gemeente}
+                    </p>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </section>
