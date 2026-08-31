@@ -138,26 +138,74 @@ const Index = () => {
         </section>
 
         {/* JOIN CTA */}
-        <section className="border-2 border-dashed border-border rounded-lg px-8 py-5 flex items-center justify-between gap-6 flex-wrap">
-          <div className="flex items-baseline gap-4 flex-wrap">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">Word lid</p>
-            <h1 className="text-lg font-semibold text-foreground">
-              De community van Belgische marketeers
-            </h1>
+        <section className="border-2 border-dashed border-border rounded-lg px-8 py-6 space-y-6">
+          <div className="flex items-center justify-between gap-6 flex-wrap">
+            <div className="flex items-baseline gap-4 flex-wrap">
+              <p className="text-xs uppercase tracking-widest text-muted-foreground">Word lid</p>
+              <h1 className="text-lg font-semibold text-foreground">
+                De community van Belgische marketeers
+              </h1>
+            </div>
+            <div className="flex gap-3 flex-wrap">
+              <Link
+                to="/word-lid"
+                className="inline-flex items-center px-4 py-2 rounded-md bg-foreground text-background text-sm font-medium hover:opacity-90"
+              >
+                Join BAM
+              </Link>
+              <Link
+                to="/word-lid"
+                className="inline-flex items-center px-4 py-2 rounded-md border border-border text-sm font-medium hover:bg-muted"
+              >
+                Ontdek lidmaatschappen
+              </Link>
+            </div>
           </div>
-          <div className="flex gap-3 flex-wrap">
-            <Link
-              to="/word-lid"
-              className="inline-flex items-center px-4 py-2 rounded-md bg-foreground text-background text-sm font-medium hover:opacity-90"
-            >
-              Join BAM
-            </Link>
-            <Link
-              to="/word-lid"
-              className="inline-flex items-center px-4 py-2 rounded-md border border-border text-sm font-medium hover:bg-muted"
-            >
-              Ontdek lidmaatschappen
-            </Link>
+          <div className="grid grid-cols-4 gap-4">
+            {[
+              {
+                tag: "Events",
+                copy: "Gratis toegang tot 10 events",
+                cta: "Alle Events",
+                to: "/agenda/events",
+              },
+              {
+                tag: "Trainings",
+                copy: "Alle opleidingen aan ledenprijs (-25%)",
+                cta: "Alle Opleidingen",
+                to: "/agenda",
+              },
+              {
+                tag: "Assessment",
+                copy: "Lorem ipsum dolores sit amet",
+                cta: "Start je Scan",
+                to: "/word-lid",
+              },
+              {
+                tag: "IAB",
+                copy: "Belgium's Accelerator for Digital Marketing",
+                cta: "Ontdek",
+                to: "/word-lid",
+              },
+            ].map((b) => (
+              <div
+                key={b.tag}
+                className="border-2 border-dashed border-border rounded-lg p-5 flex flex-col justify-between min-h-[160px]"
+              >
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
+                    {b.tag}
+                  </p>
+                  <p className="text-sm text-foreground leading-snug">{b.copy}</p>
+                </div>
+                <Link
+                  to={b.to}
+                  className="text-sm text-foreground underline hover:text-muted-foreground font-medium mt-4 self-start"
+                >
+                  {b.cta}
+                </Link>
+              </div>
+            ))}
           </div>
         </section>
 
