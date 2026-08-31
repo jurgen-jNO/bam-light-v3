@@ -100,7 +100,7 @@ const Index = () => {
                 {events.map((e) => (
                   <Link
                     key={e.id}
-                    to="/event"
+                    to="/agenda?type=events"
                     className="block border-2 border-dashed border-border rounded-lg p-3 hover:bg-muted/40"
                   >
                     <p className="text-xs uppercase tracking-widest text-muted-foreground">
