@@ -66,10 +66,41 @@ const Index = () => {
         {/* HERO + Upcoming events & trainings */}
         <section className="grid grid-cols-3 gap-6">
           {/* Hero image/video */}
-          <div className="col-span-2 border-2 border-dashed border-border rounded-lg flex items-center justify-center bg-muted/30 self-stretch">
-            <div className="text-center">
-              <p className="text-sm uppercase tracking-widest text-muted-foreground mb-2">Hero</p>
-              <p className="text-lg text-foreground">Image / video — BAM community in actie</p>
+          <div className="col-span-2 border-2 border-dashed border-border rounded-lg flex items-center justify-center bg-muted/30 self-stretch relative overflow-hidden group">
+            <div className="text-center px-6">
+              <p className="text-sm uppercase tracking-widest text-muted-foreground mb-2">
+                {heroSlides[heroIndex].label}
+              </p>
+              <p className="text-lg text-foreground">
+                {heroSlides[heroIndex].caption}
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label="Vorige visual"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border-2 border-border bg-background/80 flex items-center justify-center hover:bg-muted text-foreground"
+            >
+              <span className="text-lg leading-none">‹</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label="Volgende visual"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full border-2 border-border bg-background/80 flex items-center justify-center hover:bg-muted text-foreground"
+            >
+              <span className="text-lg leading-none">›</span>
+            </button>
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {heroSlides.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setHeroIndex(i)}
+                  aria-label={`Visual ${i + 1}`}
+                  className={`w-1.5 h-1.5 rounded-full transition-colors ${i === heroIndex ? "bg-foreground" : "bg-muted-foreground/40"}`}
+                />
+              ))}
             </div>
           </div>
 
