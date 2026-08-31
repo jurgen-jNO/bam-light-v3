@@ -56,7 +56,7 @@ const Index = () => {
         {/* HERO + Upcoming events & trainings */}
         <section className="grid grid-cols-3 gap-6">
           {/* Hero image/video */}
-          <div className="col-span-2 border-2 border-dashed border-border rounded-lg aspect-[4/3] flex items-center justify-center bg-muted/30">
+          <div className="col-span-2 border-2 border-dashed border-border rounded-lg flex items-center justify-center bg-muted/30 self-stretch">
             <div className="text-center">
               <p className="text-sm uppercase tracking-widest text-muted-foreground mb-2">Hero</p>
               <p className="text-lg text-foreground">Image / video — BAM community in actie</p>
