@@ -25,6 +25,15 @@ const corporateMembers = [
 
 
 const Index = () => {
+  const heroSlides = [
+    { label: "Hero", caption: "Image / video — BAM community in actie" },
+    { label: "Event", caption: "Foto — BAM Marketing Awards 2025" },
+    { label: "Community", caption: "Foto — Think tank Sustainability" },
+  ];
+  const [heroIndex, setHeroIndex] = useState(0);
+  const go = (dir: number) =>
+    setHeroIndex((i) => (i + dir + heroSlides.length) % heroSlides.length);
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <MainNavigation />
