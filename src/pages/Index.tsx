@@ -18,6 +18,13 @@ const articles = [
   { titel: "Community-led growth in B2B", auteur: "Marie Peeters", datum: "20 apr 2026" },
 ];
 
+const articlesRow2 = [
+  { titel: "Sustainability reporting als marketingkatalysator", auteur: "Liesbeth Maes", datum: "14 apr 2026" },
+  { titel: "First-party data zonder cookies", auteur: "Pieter Verhoeven", datum: "10 apr 2026" },
+  { titel: "De terugkeer van branded entertainment", auteur: "Eva De Smet", datum: "3 apr 2026" },
+  { titel: "Creativiteit meetbaar maken", auteur: "Jens Vandenberghe", datum: "28 mrt 2026" },
+];
+
 const corporateMembers = [
   "Proximus", "KBC", "Telenet", "Colruyt", "Bpost", "Brussels Airlines",
   "Delhaize", "AG Insurance", "Belfius", "Engie", "Luminus", "DPG Media",
