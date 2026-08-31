@@ -5,11 +5,10 @@ import { agendaMockData } from "@/data/agendaMockData";
 
 const upcoming = agendaMockData
   .filter((i) => !i.is_archived)
-  .sort((a, b) => a.sessies[0].datum.localeCompare(b.sessies[0].datum))
-  .slice(0, 6);
+  .sort((a, b) => a.sessies[0].datum.localeCompare(b.sessies[0].datum));
 
-const events = upcoming.filter((i) => i.type === "event").slice(0, 3);
-const trainings = upcoming.filter((i) => i.type === "opleiding").slice(0, 3);
+const events = upcoming.filter((i) => i.type === "event").slice(0, 2);
+const trainings = upcoming.filter((i) => i.type === "opleiding").slice(0, 2);
 
 const articles = [
   { titel: "De staat van marketing in België 2026", auteur: "Redactie BAM", datum: "12 mei 2026" },
@@ -54,19 +53,20 @@ const Index = () => {
         </section>
 
 
-        {/* HERO image/video */}
-        <section className="border-2 border-dashed border-border rounded-lg aspect-[21/9] flex items-center justify-center bg-muted/30">
-          <div className="text-center">
-            <p className="text-sm uppercase tracking-widest text-muted-foreground mb-2">Hero</p>
-            <p className="text-lg text-foreground">Image / video — BAM community in actie</p>
+        {/* HERO + Upcoming events & trainings */}
+        <section className="grid grid-cols-3 gap-6">
+          {/* Hero image/video */}
+          <div className="col-span-2 border-2 border-dashed border-border rounded-lg aspect-[4/3] flex items-center justify-center bg-muted/30">
+            <div className="text-center">
+              <p className="text-sm uppercase tracking-widest text-muted-foreground mb-2">Hero</p>
+              <p className="text-lg text-foreground">Image / video — BAM community in actie</p>
+            </div>
           </div>
-        </section>
 
-        {/* Upcoming events & trainings */}
-        <section className="grid grid-cols-2 gap-6">
-          <div>
-            <div className="flex items-baseline justify-between mb-4">
-              <h2 className="text-xl font-semibold text-foreground">Upcoming events</h2>
+          {/* Upcoming events */}
+          <div className="col-span-1">
+            <div className="flex items-baseline justify-between mb-3">
+              <h2 className="text-base font-semibold text-foreground">Upcoming events</h2>
               <Link to="/agenda/events" className="text-sm text-foreground underline hover:text-muted-foreground">
                 Alle events
               </Link>
@@ -76,7 +76,7 @@ const Index = () => {
                 <Link
                   key={e.id}
                   to="/event"
-                  className="block border-2 border-dashed border-border rounded-lg p-4 hover:bg-muted/40"
+                  className="block border-2 border-dashed border-border rounded-lg p-3 hover:bg-muted/40"
                 >
                   <p className="text-xs uppercase tracking-widest text-muted-foreground">
                     {e.subtype} · {e.sessies[0].datum}
@@ -89,9 +89,11 @@ const Index = () => {
               ))}
             </div>
           </div>
-          <div>
-            <div className="flex items-baseline justify-between mb-4">
-              <h2 className="text-xl font-semibold text-foreground">Upcoming trainings</h2>
+
+          {/* Upcoming trainings */}
+          <div className="col-span-1">
+            <div className="flex items-baseline justify-between mb-3">
+              <h2 className="text-base font-semibold text-foreground">Upcoming trainings</h2>
               <Link to="/agenda" className="text-sm text-foreground underline hover:text-muted-foreground">
                 Alle opleidingen
               </Link>
@@ -101,7 +103,7 @@ const Index = () => {
                 <Link
                   key={t.id}
                   to="/agenda"
-                  className="block border-2 border-dashed border-border rounded-lg p-4 hover:bg-muted/40"
+                  className="block border-2 border-dashed border-border rounded-lg p-3 hover:bg-muted/40"
                 >
                   <p className="text-xs uppercase tracking-widest text-muted-foreground">
                     {t.subtype} · {t.sessies[0].datum}
