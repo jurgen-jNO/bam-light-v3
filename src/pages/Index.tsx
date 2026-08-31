@@ -217,7 +217,7 @@ const Index = () => {
         </section>
 
         {/* Recent articles */}
-        <section>
+        <section className="mt-8">
           <div className="flex items-baseline justify-between mb-4">
             <h2 className="text-xl font-semibold text-foreground">Recente artikels</h2>
             <Link to="/artikels" className="text-sm text-foreground underline hover:text-muted-foreground">
