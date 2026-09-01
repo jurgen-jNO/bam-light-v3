@@ -297,7 +297,7 @@ const CmsSolo = () => {
         <div className="border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6 mt-6 rounded-lg">
           <h2 className="text-lg font-semibold text-destructive mb-3">Comments voor Sander</h2>
           <div className="space-y-2 text-sm text-foreground">
-            <p>Registratie bevat enkel de noodzakelijke gegevens: persoonsgegevens, adres, facturatie en opt-in's.</p>
+            <p>Individuele registratieflow</p>
             <p>Na verzenden ontvangt het lid een bevestigingsmail met een persoonlijke link om het profiel te vervolledigen (login aanmaken, profielfoto uploaden, interesses kiezen).</p>
             <p>De registratieflow kan in 1 of 2 talen (NL/FR) bestaan.</p>
           </div>
