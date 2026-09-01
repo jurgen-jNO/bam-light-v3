@@ -1,3 +1,4 @@
+import { Database } from "lucide-react";
 import { FlowShell, Section, Grid2, Field, Summary, Checkbox, UploadBox, inputCls, useStep } from "@/components/inschrijven/FlowShell";
 
 const steps = [
@@ -25,6 +26,13 @@ const InschrijvenYouth = () => {
       setStep={setStep}
       onSubmit={() => setSubmitted(true)}
       submitted={submitted}
+      bottomContent={
+        <div className="max-w-[1200px] mx-auto w-full px-6 pb-6 flex justify-end">
+          <a href="/cms/youth" className="inline-flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors" title="CMS youth-registratie beheer">
+            <Database className="w-5 h-5" />
+          </a>
+        </div>
+      }
       successContent={
         <p className="text-sm text-foreground/70 leading-relaxed mb-2">
           Bedankt! We controleren je leeftijdsbewijs en activeren je <strong>Youth</strong> profiel
