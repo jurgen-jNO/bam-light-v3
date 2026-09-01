@@ -32,6 +32,9 @@ interface FormState {
   interests: string[];
   // Opt-ins
   newsletter: boolean;
+  events: boolean;
+  partners: boolean;
+  thinktank: boolean;
   terms: boolean;
 }
 
