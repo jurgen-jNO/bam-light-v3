@@ -381,7 +381,7 @@ const InschrijvenSolo = () => {
                   <Checkbox
                     checked={form.partners}
                     onChange={(v) => update("partners", v)}
-                    label="BAM partners & sponsors mogen mij informatie sturen"
+                    label="BAM partners mogen mij informatie sturen"
                   />
                   <Checkbox
                     checked={form.thinktank}
