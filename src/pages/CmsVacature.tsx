@@ -74,12 +74,12 @@ const CmsVacature = () => {
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Tewerkstelling *</label>
-                  <Select>
+                <Select>
                     <SelectTrigger><SelectValue placeholder="Selecteer" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="voltijds">Voltijds</SelectItem>
-                      <SelectItem value="deeltijds">Deeltijds</SelectItem>
-                      <SelectItem value="4-5">4/5</SelectItem>
+                      <SelectItem value="4-5">4/5de</SelectItem>
+                      <SelectItem value="halftijds">Halftijds</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
