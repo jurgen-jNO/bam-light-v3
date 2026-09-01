@@ -253,8 +253,7 @@ const CmsVacature = () => {
 
         {/* Developer comments */}
         <div className="border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6 mt-6 rounded-lg">
-          <h2 className="text-lg font-semibold text-destructive mb-3">Comments</h2>
-          <p className="text-sm text-muted-foreground mb-4">Opmerkingen voor de developer — niet zichtbaar op de live pagina.</p>
+          <h2 className="text-lg font-semibold text-destructive mb-3">Comments voor Sander</h2>
           <div className="space-y-2 text-sm text-foreground">
             <p>Een vacature gaat automatisch live op de publicatiedag en blijft 4 weken live staan.</p>
             <p>Dan krijgt de verantwoordelijke van het bedrijf een e-mailnotificatie: "Is de vacature ingevuld? Y/N"</p>
