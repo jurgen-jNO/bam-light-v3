@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
