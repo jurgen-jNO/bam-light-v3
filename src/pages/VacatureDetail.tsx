@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Briefcase, MapPin, Clock, Users, Building2, Mail, Globe, Calendar, Send } from "lucide-react";
+import { ArrowLeft, Briefcase, MapPin, Clock, Users, Building2, Mail, Globe, Calendar, Send, Database } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 
@@ -183,6 +183,12 @@ const VacatureDetail = () => {
           </aside>
         </div>
       </main>
+
+      <div className="max-w-[1200px] mx-auto w-full px-6 pb-6 flex justify-end">
+        <a href="/docs/db-structuur-bedrijf.html" className="inline-flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors" title="Database structuur">
+          <Database className="w-5 h-5" />
+        </a>
+      </div>
 
       <Footer />
     </div>
