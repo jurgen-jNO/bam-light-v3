@@ -131,15 +131,8 @@ const CmsVacature = () => {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Sollicitatiewijze *</label>
-                  <Select>
-                    <SelectTrigger><SelectValue placeholder="Selecteer" /></SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="email">Via e-mail</SelectItem>
-                      <SelectItem value="extern">Externe sollicitatielink</SelectItem>
-                      <SelectItem value="form">Formulier op website</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <label className="text-sm font-medium">Contact persoon *</label>
+                  <Input placeholder="Naam contactpersoon" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">E-mailadres / URL voor sollicitaties *</label>
