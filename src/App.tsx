@@ -36,6 +36,7 @@ import AccountBedrijf from "./pages/AccountBedrijf.tsx";
 import Vacatures from "./pages/Vacatures.tsx";
 import VacatureNieuw from "./pages/VacatureNieuw.tsx";
 import VacatureDetail from "./pages/VacatureDetail.tsx";
+import CmsVacature from "./pages/CmsVacature.tsx";
 import ArtikelDetail from "./pages/ArtikelDetail.tsx";
 import Artikels from "./pages/Artikels.tsx";
 import BamMagazine from "./pages/BamMagazine.tsx";
@@ -125,6 +126,7 @@ const App = () => (
           <Route path="/vacatures" element={<Vacatures />} />
           <Route path="/vacature" element={<VacatureDetail />} />
           <Route path="/vacature/:id" element={<VacatureDetail />} />
+          <Route path="/cms/vacature" element={<CmsVacature />} />
           <Route path="/artikel" element={<ArtikelDetail />} />
           <Route path="/artikel/:slug" element={<ArtikelDetail />} />
           <Route path="/artikels" element={<Artikels />} />

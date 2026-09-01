@@ -185,7 +185,7 @@ const VacatureDetail = () => {
       </main>
 
       <div className="max-w-[1200px] mx-auto w-full px-6 pb-6 flex justify-end">
-        <a href="/docs/db-structuur-bedrijf.html" className="inline-flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors" title="Database structuur">
+        <a href="/cms/vacature" className="inline-flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors" title="CMS vacature beheer">
           <Database className="w-5 h-5" />
         </a>
       </div>
