@@ -107,12 +107,16 @@ const CmsVacature = () => {
                   <Input placeholder="Postcode" />
                 </div>
               </div>
-              <div className="flex items-center justify-between border border-border rounded-md p-4">
-                <div>
-                  <p className="text-sm font-medium">Remote / hybride werken mogelijk</p>
-                  <p className="text-xs text-muted-foreground">Wordt getoond als badge bij de vacature</p>
-                </div>
-                <Switch />
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Work mode</label>
+                <Select>
+                  <SelectTrigger><SelectValue placeholder="Selecteer work mode" /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="onsite">On-site</SelectItem>
+                    <SelectItem value="hybride">Hybride</SelectItem>
+                    <SelectItem value="remote">Remote</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </section>
 
