@@ -114,11 +114,11 @@ const CmsSolo = () => {
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Functie *</label>
+                  <label className="text-sm font-medium">Functie</label>
                   <Input placeholder="bv. Marketing Manager" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Bedrijf *</label>
+                  <label className="text-sm font-medium">Bedrijf</label>
                   <Input placeholder="bv. Bedrijf NV" />
                 </div>
               </div>
