@@ -250,6 +250,16 @@ const CmsVacature = () => {
             </section>
           </div>
         </div>
+
+        {/* Developer comments */}
+        <div className="border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6 mt-6 rounded-lg">
+          <h2 className="text-lg font-semibold text-destructive mb-3">Comments</h2>
+          <p className="text-sm text-muted-foreground mb-4">Opmerkingen voor de developer — niet zichtbaar op de live pagina.</p>
+          <Textarea
+            rows={4}
+            placeholder="Laat een opmerking achter voor de developer (bv. veld-X moet verplicht zijn, extra validatie nodig op datum...)"
+          />
+        </div>
       </main>
 
       <Footer />
