@@ -179,10 +179,6 @@ const CmsVacature = () => {
                 <label className="text-sm font-medium">Publicatiedatum</label>
                 <Input type="date" />
               </div>
-              <div className="flex items-center justify-between border border-border rounded-md p-3">
-                <p className="text-sm font-medium">Uitgelichte vacature</p>
-                <Switch />
-              </div>
             </section>
 
             {/* Bedrijf */}
