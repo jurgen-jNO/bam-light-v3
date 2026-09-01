@@ -27,7 +27,27 @@ const CmsVacature = () => {
               <p className="text-sm text-muted-foreground">CMS / Content beheer / Vacatures / Nieuw</p>
             </div>
           </div>
-          <div className="flex gap-3">
+          <div className="flex items-center gap-3">
+            {/* NL / FR taal toggle */}
+            <div className="flex items-center gap-2 bg-background border border-border rounded-lg px-3 py-1.5">
+              <Languages className="w-4 h-4 text-muted-foreground" />
+              <button
+                onClick={() => setLang("nl")}
+                className={`px-2.5 py-1 rounded text-sm font-medium transition-colors ${
+                  lang === "nl" ? "bg-black text-white" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                NL
+              </button>
+              <button
+                onClick={() => setLang("fr")}
+                className={`px-2.5 py-1 rounded text-sm font-medium transition-colors ${
+                  lang === "fr" ? "bg-black text-white" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                FR
+              </button>
+            </div>
             <Button variant="outline" className="gap-2">
               <Eye className="w-4 h-4" /> Preview
             </Button>
