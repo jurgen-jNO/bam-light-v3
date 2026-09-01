@@ -194,6 +194,11 @@ const CmsVacature = () => {
                 <label className="text-sm font-medium">Publicatiedatum</label>
                 <Input type="date" />
               </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Views</label>
+                <Input type="number" defaultValue={0} disabled className="bg-muted" />
+                <p className="text-xs text-muted-foreground">Aantal weergaven van de vacature (automatisch bijgehouden)</p>
+              </div>
             </section>
 
             {/* Bedrijf */}
