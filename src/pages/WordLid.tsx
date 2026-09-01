@@ -16,6 +16,7 @@ interface Package {
   tagline: string;
   audience: string;
   price: string;
+  priceEoy: string;
   duration: string;
   benefits: string[];
   details: string[];
@@ -28,6 +29,7 @@ const packages: Package[] = [
     tagline: "Individueel lidmaatschap",
     audience: "Freelancers, zelfstandigen, start-ups",
     price: "€ 475 excl. BTW / jaar",
+    priceEoy: "€ 158 excl. BTW",
     duration: "12 maanden vanaf intekendatum — automatisch verlengd (3m vooropzeg)",
     benefits: [
       "10 gratis event-deelnames",
@@ -52,6 +54,7 @@ const packages: Package[] = [
     tagline: "Bedrijfslidmaatschap (klein & middengroot)",
     audience: "KMO's en middelgrote bedrijven",
     price: "€ 3.115 excl. BTW / jaar",
+    priceEoy: "€ 1.038 excl. BTW",
     duration: "Loopt af op 31/12 — pro rata facturatie eerste jaar",
     benefits: [
       "Gratis event-deelname voor àlle medewerkers",
@@ -77,6 +80,7 @@ const packages: Package[] = [
     tagline: "Corporate lidmaatschap",
     audience: "+250 medewerkers of groepen met meerdere entiteiten",
     price: "Op maat",
+    priceEoy: "Op maat",
     duration: "Loopt af op 31/12 — pro rata facturatie eerste jaar",
     benefits: [
       "Gratis event-deelname voor àlle medewerkers van alle entiteiten",
@@ -101,6 +105,7 @@ const packages: Package[] = [
     tagline: "Lidmaatschap voor docenten",
     audience: "Docenten marketing & communicatie",
     price: "€ 160 incl. BTW / jaar",
+    priceEoy: "€ 53 incl. BTW",
     duration: "12 maanden vanaf intekendatum",
     benefits: [
       "10 gratis event-deelnames",
@@ -123,6 +128,7 @@ const packages: Package[] = [
     tagline: "Lidmaatschap -25 jaar",
     audience: "Studenten & young marketers onder 25",
     price: "Gratis",
+    priceEoy: "Gratis",
     duration: "Per jaar — verlengbaar mits geldig bewijs",
     benefits: [
       "+10 gratis events per jaar (first in, first served)",
