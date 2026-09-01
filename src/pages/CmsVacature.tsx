@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { ArrowLeft, Save, Eye, Upload, Calendar } from "lucide-react";
+import { ArrowLeft, Save, Eye, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const CmsVacature = () => {
@@ -195,20 +195,6 @@ const CmsVacature = () => {
                   </SelectContent>
                 </Select>
                 <p className="text-xs text-muted-foreground">Logo en bedrijfsgegevens worden automatisch overgenomen</p>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Bedrijfslogo (optioneel overschrijven)</label>
-                <div className="border-2 border-dashed border-border rounded-md p-6 text-center text-muted-foreground hover:border-foreground/40 cursor-pointer transition-colors">
-                  <Upload className="w-6 h-6 mx-auto mb-2" />
-                  <p className="text-sm">Upload logo (PNG/SVG)</p>
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Vacaturebeeld (hero)</label>
-                <div className="border-2 border-dashed border-border rounded-md p-6 text-center text-muted-foreground hover:border-foreground/40 cursor-pointer transition-colors">
-                  <Upload className="w-6 h-6 mx-auto mb-2" />
-                  <p className="text-sm">Upload beeld (1200×630)</p>
-                </div>
               </div>
             </section>
 
