@@ -135,12 +135,12 @@ const CmsVacature = () => {
                   <Input placeholder="Naam contactpersoon" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">E-mailadres / URL voor sollicitaties *</label>
-                  <Input placeholder="jobs@bedrijf.be of https://..." />
+                  <label className="text-sm font-medium">URL vacature op de bedrijfssite</label>
+                  <Input placeholder="https://..." />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Contactpersoon sollicitaties</label>
-                  <Input placeholder="Naam contactpersoon" />
+                  <label className="text-sm font-medium">E-mailadres sollicitaties</label>
+                  <Input placeholder="jobs@bedrijf.be" />
                 </div>
               </div>
             </section>
