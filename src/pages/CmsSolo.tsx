@@ -216,6 +216,10 @@ const CmsSolo = () => {
                   <label htmlFor="optin-partners" className="text-sm">Communicatie van BAM partners & sponsors</label>
                 </div>
                 <div className="flex items-center gap-3">
+                  <Checkbox id="optin-thinktank" />
+                  <label htmlFor="optin-thinktank" className="text-sm">Ik wil deelnemen aan een Think Tank of Community</label>
+                </div>
+                <div className="flex items-center gap-3">
                   <Checkbox id="optin-voorwaarden" />
                   <label htmlFor="optin-voorwaarden" className="text-sm">Akkoord met algemene voorwaarden & privacybeleid *</label>
                 </div>
