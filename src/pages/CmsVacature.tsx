@@ -100,23 +100,22 @@ const CmsVacature = () => {
                   <Input placeholder="bv. €3.500 – €4.500 / maand" />
                 </div>
               </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Locatie *</label>
-                <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Locatie *</label>
                   <Input placeholder="Stad / gemeente" />
-                  <Input placeholder="Postcode" />
                 </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Work mode</label>
-                <Select>
-                  <SelectTrigger><SelectValue placeholder="Selecteer work mode" /></SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="onsite">On-site</SelectItem>
-                    <SelectItem value="hybride">Hybride</SelectItem>
-                    <SelectItem value="remote">Remote</SelectItem>
-                  </SelectContent>
-                </Select>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Work mode</label>
+                  <Select>
+                    <SelectTrigger><SelectValue placeholder="Selecteer work mode" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="onsite">On-site</SelectItem>
+                      <SelectItem value="hybride">Hybride</SelectItem>
+                      <SelectItem value="remote">Remote</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
             </section>
 
