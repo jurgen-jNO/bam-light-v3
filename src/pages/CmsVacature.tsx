@@ -222,7 +222,7 @@ const CmsVacature = () => {
             <section className="bg-background border border-border rounded-lg p-6 space-y-4">
               <h2 className="font-semibold border-b border-border pb-3">SEO & Categorie</h2>
               <div className="space-y-2">
-                <label className="text-sm font-medium">URL slug *</label>
+                <label className="text-sm font-medium">URL slug</label>
                 <Input placeholder="/vacature/digital-marketeer" />
               </div>
               <div className="space-y-2">
