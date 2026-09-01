@@ -255,9 +255,20 @@ const CmsVacature = () => {
         <div className="border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6 mt-6 rounded-lg">
           <h2 className="text-lg font-semibold text-destructive mb-3">Comments</h2>
           <p className="text-sm text-muted-foreground mb-4">Opmerkingen voor de developer — niet zichtbaar op de live pagina.</p>
+          <div className="space-y-2 text-sm text-foreground">
+            <p>Een vacature gaat automatisch live op de publicatiedag en blijft 4 weken live staan.</p>
+            <p>Dan krijgt de verantwoordelijke van het bedrijf een e-mailnotificatie: "Is de vacature ingevuld? Y/N"</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li><strong>Y</strong> → gearchiveerd (maar nog beschikbaar in de back-end van het bedrijf en BAM)</li>
+              <li><strong>N</strong> → eenmalig verleng met 4 weken</li>
+            </ul>
+            <p>Daarna wordt ze automatisch in het archief gezet.</p>
+            <p>Vacatures kunnen in 1 of 2 talen bestaan.</p>
+          </div>
           <Textarea
-            rows={4}
+            rows={3}
             placeholder="Laat een opmerking achter voor de developer (bv. veld-X moet verplicht zijn, extra validatie nodig op datum...)"
+            className="mt-4"
           />
         </div>
       </main>
