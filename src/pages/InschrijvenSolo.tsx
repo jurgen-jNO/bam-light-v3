@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { ArrowLeft, ArrowRight, Check, Mail, Upload, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Database, Mail, Upload, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
@@ -530,6 +530,12 @@ const InschrijvenSolo = () => {
         </div>
 
       </main>
+
+      <div className="max-w-[1200px] mx-auto w-full px-6 pb-6 flex justify-end">
+        <a href="/cms/solo" className="inline-flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors" title="CMS solo-registratie beheer">
+          <Database className="w-5 h-5" />
+        </a>
+      </div>
 
       <Footer />
     </div>
