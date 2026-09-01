@@ -156,6 +156,10 @@ const CmsYouth = () => {
                   <label htmlFor="optin-future" className="text-sm">Ik wil deel uitmaken van de Future Marketeers Community</label>
                 </div>
                 <div className="flex items-center gap-3">
+                  <Checkbox id="optin-thinktank" />
+                  <label htmlFor="optin-thinktank" className="text-sm">Ik wil deelnemen aan een Think Tank of Community</label>
+                </div>
+                <div className="flex items-center gap-3">
                   <Checkbox id="optin-voorwaarden" />
                   <label htmlFor="optin-voorwaarden" className="text-sm">Akkoord met algemene voorwaarden & privacybeleid *</label>
                 </div>
