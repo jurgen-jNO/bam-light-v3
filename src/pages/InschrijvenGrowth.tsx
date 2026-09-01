@@ -126,7 +126,11 @@ const InschrijvenGrowth = () => {
             </p>
           </div>
           <div className="space-y-3 border-t border-dashed border-foreground/30 pt-5">
-            <Checkbox checked={false} onChange={() => {}} label={<>Ik ga akkoord met de <a href="#terms" className="underline">algemene voorwaarden</a> en het <a href="#privacy" className="underline">privacybeleid</a>. *</>} />
+            <Checkbox checked={false} onChange={() => {}} label="Ja, ik wil de BAM nieuwsbrief ontvangen" />
+            <Checkbox checked={false} onChange={() => {}} label="Ik wil op de hoogte gebracht worden van events & opleidingen" />
+            <Checkbox checked={false} onChange={() => {}} label="BAM partners mogen mij informatie sturen" />
+            <Checkbox checked={false} onChange={() => {}} label="Ik wil deelnemen aan een Think Tank of Community" />
+            <Checkbox checked={false} onChange={() => {}} label={<>Ik ga akkoord met de <a href="#terms" className="underline">algemene voorwaarden</a> & het <a href="#privacy" className="underline">privacybeleid</a>. *</>} />
           </div>
         </Section>
       )}
