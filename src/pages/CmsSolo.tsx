@@ -205,7 +205,7 @@ const CmsSolo = () => {
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <Checkbox id="optin-nieuwsbrief" />
-                  <label htmlFor="optin-nieuwsbrief" className="text-sm">BAM nieuwsbrief (maandelijks)</label>
+                  <label htmlFor="optin-nieuwsbrief" className="text-sm">BAM nieuwsbrief</label>
                 </div>
                 <div className="flex items-center gap-3">
                   <Checkbox id="optin-events" />
