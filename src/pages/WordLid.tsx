@@ -208,6 +208,9 @@ const WordLid = () => {
                   <p className="text-sm font-semibold text-foreground">
                     {pkg.price}
                   </p>
+                  <p className="text-[11px] text-foreground/55 mt-0.5">
+                    Tot het einde van het jaar (2026): {pkg.priceEoy}
+                  </p>
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-dashed border-foreground/30">
@@ -286,6 +289,9 @@ const WordLid = () => {
                   </p>
                   <p className="text-sm font-semibold text-foreground">
                     {active.price}
+                  </p>
+                  <p className="text-[11px] text-foreground/55 mt-1">
+                    Tot het einde van het jaar (2026): {active.priceEoy}
                   </p>
                 </div>
                 <div className="border border-dashed border-foreground/30 p-3">
