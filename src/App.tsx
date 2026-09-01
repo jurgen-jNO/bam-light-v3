@@ -37,6 +37,7 @@ import Vacatures from "./pages/Vacatures.tsx";
 import VacatureNieuw from "./pages/VacatureNieuw.tsx";
 import VacatureDetail from "./pages/VacatureDetail.tsx";
 import CmsVacature from "./pages/CmsVacature.tsx";
+import CmsSolo from "./pages/CmsSolo.tsx";
 import ArtikelDetail from "./pages/ArtikelDetail.tsx";
 import Artikels from "./pages/Artikels.tsx";
 import BamMagazine from "./pages/BamMagazine.tsx";
