@@ -55,7 +55,7 @@ const initialForm: FormState = {
   vat: "", invoiceEmail: "",
   password: "", passwordConfirm: "",
   photo: null, interests: [],
-  newsletter: false, terms: false,
+  newsletter: false, events: false, partners: false, thinktank: false, terms: false,
 };
 
 const InschrijvenSolo = () => {
