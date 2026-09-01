@@ -62,7 +62,12 @@ const CmsVacature = () => {
           <div className="lg:col-span-2 space-y-6">
             {/* Algemeen */}
             <section className="bg-background border border-border rounded-lg p-6 space-y-4">
-              <h2 className="font-semibold text-lg border-b border-border pb-3">Algemeen</h2>
+              <div className="flex items-center justify-between border-b border-border pb-3">
+                <h2 className="font-semibold text-lg">Algemeen</h2>
+                <span className="text-xs font-medium uppercase tracking-wide bg-black text-white px-2 py-1 rounded">
+                  {lang === "nl" ? "Nederlandstalige versie" : "Version française"}
+                </span>
+              </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Functietitel *</label>
                 <Input placeholder="bv. Digital Marketeer" />
