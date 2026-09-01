@@ -264,11 +264,6 @@ const CmsVacature = () => {
             <p>Daarna wordt ze automatisch in het archief gezet.</p>
             <p>Vacatures kunnen in 1 of 2 talen bestaan.</p>
           </div>
-          <Textarea
-            rows={3}
-            placeholder="Laat een opmerking achter voor de developer (bv. veld-X moet verplicht zijn, extra validatie nodig op datum...)"
-            className="mt-4"
-          />
         </div>
       </main>
 
