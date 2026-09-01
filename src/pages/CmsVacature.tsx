@@ -102,17 +102,9 @@ const CmsVacature = () => {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Locatie *</label>
-                <div className="grid md:grid-cols-3 gap-4">
+                <div className="grid md:grid-cols-2 gap-4">
                   <Input placeholder="Stad / gemeente" />
                   <Input placeholder="Postcode" />
-                  <Select>
-                    <SelectTrigger><SelectValue placeholder="Gewest" /></SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="vla">Vlaanderen</SelectItem>
-                      <SelectItem value="wal">Wallonië</SelectItem>
-                      <SelectItem value="bru">Brussel</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
               </div>
               <div className="flex items-center justify-between border border-border rounded-md p-4">
