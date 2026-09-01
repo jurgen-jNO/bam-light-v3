@@ -5,10 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { ArrowLeft, Save, Eye, Calendar } from "lucide-react";
+import { ArrowLeft, Save, Eye, Calendar, Languages } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const CmsVacature = () => {
+  const [lang, setLang] = useState<"nl" | "fr">("nl");
   return (
     <div className="min-h-screen bg-muted/30">
       <MainNavigation />
@@ -25,7 +27,27 @@ const CmsVacature = () => {
               <p className="text-sm text-muted-foreground">CMS / Content beheer / Vacatures / Nieuw</p>
             </div>
           </div>
-          <div className="flex gap-3">
+          <div className="flex items-center gap-3">
+            {/* NL / FR taal toggle */}
+            <div className="flex items-center gap-2 bg-background border border-border rounded-lg px-3 py-1.5">
+              <Languages className="w-4 h-4 text-muted-foreground" />
+              <button
+                onClick={() => setLang("nl")}
+                className={`px-2.5 py-1 rounded text-sm font-medium transition-colors ${
+                  lang === "nl" ? "bg-black text-white" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                NL
+              </button>
+              <button
+                onClick={() => setLang("fr")}
+                className={`px-2.5 py-1 rounded text-sm font-medium transition-colors ${
+                  lang === "fr" ? "bg-black text-white" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                FR
+              </button>
+            </div>
             <Button variant="outline" className="gap-2">
               <Eye className="w-4 h-4" /> Preview
             </Button>
@@ -40,7 +62,12 @@ const CmsVacature = () => {
           <div className="lg:col-span-2 space-y-6">
             {/* Algemeen */}
             <section className="bg-background border border-border rounded-lg p-6 space-y-4">
-              <h2 className="font-semibold text-lg border-b border-border pb-3">Algemeen</h2>
+              <div className="flex items-center justify-between border-b border-border pb-3">
+                <h2 className="font-semibold text-lg">Algemeen</h2>
+                <span className="text-xs font-medium uppercase tracking-wide bg-black text-white px-2 py-1 rounded">
+                  {lang === "nl" ? "Nederlandstalige versie" : "Version française"}
+                </span>
+              </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Functietitel *</label>
                 <Input placeholder="bv. Digital Marketeer" />
