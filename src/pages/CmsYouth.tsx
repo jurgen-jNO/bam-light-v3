@@ -141,15 +141,19 @@ const CmsYouth = () => {
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <Checkbox id="optin-nieuwsbrief" />
-                  <label htmlFor="optin-nieuwsbrief" className="text-sm">BAM nieuwsbrief voor studenten & young marketers</label>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Checkbox id="optin-future" />
-                  <label htmlFor="optin-future" className="text-sm">Ik wil deel uitmaken van de Future Marketeers community</label>
+                  <label htmlFor="optin-nieuwsbrief" className="text-sm">BAM nieuwsbrief</label>
                 </div>
                 <div className="flex items-center gap-3">
                   <Checkbox id="optin-events" />
                   <label htmlFor="optin-events" className="text-sm">Uitnodigingen voor events & opleidingen</label>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Checkbox id="optin-partners" />
+                  <label htmlFor="optin-partners" className="text-sm">Communicatie van BAM partners & sponsors</label>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Checkbox id="optin-future" />
+                  <label htmlFor="optin-future" className="text-sm">Ik wil deel uitmaken van de Future Marketeers Community</label>
                 </div>
                 <div className="flex items-center gap-3">
                   <Checkbox id="optin-voorwaarden" />
