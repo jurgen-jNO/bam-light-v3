@@ -371,15 +371,29 @@ const InschrijvenSolo = () => {
                   <Checkbox
                     checked={form.newsletter}
                     onChange={(v) => update("newsletter", v)}
-                    label="Ja, ik wil de maandelijkse BAM nieuwsbrief ontvangen."
+                    label="Ja, ik wil de BAM nieuwsbrief ontvangen"
+                  />
+                  <Checkbox
+                    checked={form.events}
+                    onChange={(v) => update("events", v)}
+                    label="Ik wil op de hoogte gebracht worden van events & opleidingen"
+                  />
+                  <Checkbox
+                    checked={form.partners}
+                    onChange={(v) => update("partners", v)}
+                    label="BAM partners & sponsors mogen mij informatie sturen"
+                  />
+                  <Checkbox
+                    checked={form.thinktank}
+                    onChange={(v) => update("thinktank", v)}
+                    label="Ik wil deelnemen aan een Think Tank of Community"
                   />
                   <Checkbox
                     checked={form.terms}
                     onChange={(v) => update("terms", v)}
                     label={
                       <>
-                        Ik ga akkoord met de <a href="#terms" className="underline">algemene voorwaarden</a> en
-                        het <a href="#privacy" className="underline">privacybeleid</a>. *
+                        Ik ga akkoord met de <a href="#terms" className="underline">algemene voorwaarden</a> & het <a href="#privacy" className="underline">privacybeleid</a>. *
                       </>
                     }
                   />
