@@ -124,14 +124,14 @@ const CmsVacature = () => {
               <h2 className="font-semibold text-lg border-b border-border pb-3">Sollicitatie</h2>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Sollicitatie-einddatum *</label>
+                  <label className="text-sm font-medium">Sollicitatie-einddatum</label>
                   <div className="relative">
                     <Input type="date" />
                     <Calendar className="w-4 h-4 absolute right-3 top-3 text-muted-foreground pointer-events-none" />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Contact persoon *</label>
+                  <label className="text-sm font-medium">Contact persoon</label>
                   <Input placeholder="Naam contactpersoon" />
                 </div>
                 <div className="space-y-2">
