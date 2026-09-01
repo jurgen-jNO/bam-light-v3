@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { ArrowLeft, Save, Eye, Upload, Calendar } from "lucide-react";
+import { ArrowLeft, Save, Eye, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const CmsVacature = () => {
