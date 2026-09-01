@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 const CmsVacature = () => {
   return (
     <div className="min-h-screen bg-muted/30">
-      <Header />
       <MainNavigation />
 
       <main className="container mx-auto px-6 py-8 max-w-5xl">
