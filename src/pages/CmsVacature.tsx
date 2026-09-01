@@ -131,7 +131,7 @@ const CmsVacature = () => {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Contact persoon</label>
+                  <label className="text-sm font-medium">Contactpersoon</label>
                   <Input placeholder="Naam contactpersoon" />
                 </div>
                 <div className="space-y-2">
