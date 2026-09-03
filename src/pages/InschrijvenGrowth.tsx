@@ -1,3 +1,4 @@
+import { Database } from "lucide-react";
 import { FlowShell, Section, Grid2, Field, Summary, Checkbox, inputCls, useStep } from "@/components/inschrijven/FlowShell";
 
 const steps = [
