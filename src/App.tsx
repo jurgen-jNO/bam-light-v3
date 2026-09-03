@@ -38,6 +38,7 @@ import VacatureNieuw from "./pages/VacatureNieuw.tsx";
 import VacatureDetail from "./pages/VacatureDetail.tsx";
 import CmsVacature from "./pages/CmsVacature.tsx";
 import CmsSolo from "./pages/CmsSolo.tsx";
+import CmsGrowth from "./pages/CmsGrowth.tsx";
 import CmsYouth from "./pages/CmsYouth.tsx";
 
 import ArtikelDetail from "./pages/ArtikelDetail.tsx";
