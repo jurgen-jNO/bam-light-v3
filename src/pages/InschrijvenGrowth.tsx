@@ -1,3 +1,4 @@
+import { Database } from "lucide-react";
 import { FlowShell, Section, Grid2, Field, Summary, Checkbox, inputCls, useStep } from "@/components/inschrijven/FlowShell";
 
 const steps = [
@@ -24,12 +25,19 @@ const InschrijvenGrowth = () => {
       successSecondaryLabel="Terug naar home"
       successSecondaryHref="/"
       bottomContent={
-        step === 2 && (
-          <div className="mt-8 border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
-            <p className="text-[10px] uppercase tracking-widest text-destructive/80 mb-1">[ betaalmethode ]</p>
-            <h2 className="text-lg font-bold text-foreground">Enkel via factuur of ook via online betaling?</h2>
+        <>
+          {step === 2 && (
+            <div className="mt-8 border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6">
+              <p className="text-[10px] uppercase tracking-widest text-destructive/80 mb-1">[ betaalmethode ]</p>
+              <h2 className="text-lg font-bold text-foreground">Enkel via factuur of ook via online betaling?</h2>
+            </div>
+          )}
+          <div className="max-w-[1200px] mx-auto w-full px-6 pb-6 flex justify-end">
+            <a href="/cms/growth" className="inline-flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors" title="CMS growth-registratie beheer">
+              <Database className="w-5 h-5" />
+            </a>
           </div>
-        )
+        </>
       }
       successContent={
         <>

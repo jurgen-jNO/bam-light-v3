@@ -38,6 +38,7 @@ import VacatureNieuw from "./pages/VacatureNieuw.tsx";
 import VacatureDetail from "./pages/VacatureDetail.tsx";
 import CmsVacature from "./pages/CmsVacature.tsx";
 import CmsSolo from "./pages/CmsSolo.tsx";
+import CmsGrowth from "./pages/CmsGrowth.tsx";
 import CmsYouth from "./pages/CmsYouth.tsx";
 
 import ArtikelDetail from "./pages/ArtikelDetail.tsx";
@@ -131,6 +132,7 @@ const App = () => (
           <Route path="/vacature/:id" element={<VacatureDetail />} />
           <Route path="/cms/vacature" element={<CmsVacature />} />
           <Route path="/cms/solo" element={<CmsSolo />} />
+          <Route path="/cms/growth" element={<CmsGrowth />} />
           <Route path="/cms/youth" element={<CmsYouth />} />
 
           <Route path="/artikel" element={<ArtikelDetail />} />
