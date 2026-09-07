@@ -183,10 +183,6 @@ const CmsEventQuiz = () => {
                 <label className="text-sm font-medium">Niet-leden (€ excl. btw) *</label>
                 <Input type="number" placeholder="99" />
               </div>
-              <div className="flex items-center gap-3 pt-1">
-                <Switch defaultChecked />
-                <span className="text-sm text-muted-foreground">Inschrijving per team (groepsboeking)</span>
-              </div>
             </section>
 
             {/* Sprekers */}
