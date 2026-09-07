@@ -327,6 +327,13 @@ export default function EventBigQuiz() {
           </div>
         </div>
       )}
+
+      <div className="max-w-[1200px] mx-auto w-full px-4 pb-6 flex justify-end">
+        <a href="/cms/event-quiz" className="inline-flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors" title="CMS Big Marketing Quiz beheer">
+          <Database className="w-5 h-5" />
+        </a>
+      </div>
+
       <Footer />
     </div>
   );
