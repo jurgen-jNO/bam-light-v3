@@ -261,7 +261,6 @@ export default function EventBigQuiz() {
               <button id="inschrijven" onClick={() => setModal(true)} className="w-full rounded bg-neutral-900 px-4 py-3 font-medium text-white hover:bg-black">
                 Inschrijven ›
               </button>
-              <p className="text-center text-xs text-neutral-500">Contacteer Nathalie Prieto</p>
             </div>
 
             {/* Aanwezigheid / capaciteit */}
