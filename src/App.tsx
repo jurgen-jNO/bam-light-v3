@@ -137,6 +137,7 @@ const App = () => (
           <Route path="/cms/growth" element={<CmsGrowth />} />
           <Route path="/cms/youth" element={<CmsYouth />} />
           <Route path="/cms/event-meerdaagse" element={<CmsEventMeerdaagse />} />
+          <Route path="/cms/event-quiz" element={<CmsEventQuiz />} />
 
           <Route path="/artikel" element={<ArtikelDetail />} />
           <Route path="/artikel/:slug" element={<ArtikelDetail />} />
