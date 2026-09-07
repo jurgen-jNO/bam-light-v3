@@ -84,13 +84,13 @@ const CmsEventQuiz = () => {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Eventtype *</label>
-                <Select defaultValue="quiz">
+                <Select defaultValue="eendagsevent">
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="quiz">Quiz</SelectItem>
-                    <SelectItem value="netwerk">Netwerkevent</SelectItem>
+                    <SelectItem value="eendagsevent">Eendagsevent</SelectItem>
+                    <SelectItem value="meerdaagsevent">Meerdaagsevent</SelectItem>
                     <SelectItem value="award">Award</SelectItem>
-                    <SelectItem value="talk">Talk / panel</SelectItem>
+                    <SelectItem value="congress">Congress</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
