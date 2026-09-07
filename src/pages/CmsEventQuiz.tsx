@@ -59,29 +59,6 @@ const CmsEventQuiz = () => {
           </div>
         </div>
 
-        {/* Headerbeeld preview */}
-        <div className="mb-6">
-          <div className="relative w-full aspect-[1852/600] rounded-lg overflow-hidden border border-border bg-muted">
-            <img
-              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1852&h=600&fit=crop"
-              alt="Headerbeeld — Big Marketing Quiz"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-6 text-white">
-              <p className="text-xs uppercase tracking-wider text-white/80 mb-1">Event</p>
-              <h2 className="text-2xl font-bold">Big Marketing Quiz — 2026</h2>
-              <p className="text-sm text-white/90 mt-1">8 oktober 2026 · 19:00 – 23:00 · BAM, Dilbeek</p>
-            </div>
-            <button className="absolute top-4 right-4 bg-black/70 hover:bg-black/90 text-white text-sm rounded-lg px-3 py-1.5 flex items-center gap-2">
-              <ImageIcon className="w-4 h-4" /> Headerbeeld wijzigen
-            </button>
-          </div>
-          <p className="text-xs text-muted-foreground mt-2">
-            Headerbeeld (desktop) — aanbevolen 1852×600 px. Een apart mobiel headerbeeld (400×256) kan in de zijbalk onder 'Beelden' worden geüpload.
-          </p>
-        </div>
-
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Main content column */}
           <div className="lg:col-span-2 space-y-6">
