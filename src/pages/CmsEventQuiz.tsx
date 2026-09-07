@@ -76,8 +76,6 @@ const CmsEventQuiz = () => {
                   <ImageIcon className="w-6 h-6" />
                   <span>Klik om een headerbeeld te uploaden</span>
                   <span className="text-xs">Aanbevolen: 1852×600 px (desktop), 400×256 px (mobiel)</span>
-                </div>
-                <p className="text-xs text-muted-foreground">Het headerbeeld verschijnt bovenaan de eventpagina, boven de titel en USP's</p>
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Titel event *</label>
