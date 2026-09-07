@@ -96,7 +96,7 @@ const CmsEventQuiz = () => {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">USP's (teaser) *</label>
-                <Textarea rows={4} placeholder="1 USP per lijn, bv.&#10;Het ultieme marketingfeest van het jaar&#10;Test je kennis tegen de scherpste marketingbreinen" />
+                <Textarea rows={4} placeholder="1 USP per lijn" />
                 <p className="text-xs text-muted-foreground">Elke lijn wordt een bullet in het teaserblok</p>
               </div>
               <div className="space-y-2">
