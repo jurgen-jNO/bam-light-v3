@@ -266,22 +266,6 @@ const CmsEventQuiz = () => {
               </div>
             </section>
 
-            {/* Beelden */}
-            <section className="bg-background border border-border rounded-lg p-6 space-y-4">
-              <h2 className="font-semibold border-b border-border pb-3">Beelden</h2>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Header image (desktop) *</label>
-                <div className="border border-dashed border-border rounded-lg p-4 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <ImageIcon className="w-4 h-4" /> Upload (1852×600)
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Header image (mobiel) *</label>
-                <div className="border border-dashed border-border rounded-lg p-4 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <ImageIcon className="w-4 h-4" /> Upload (400×256)
-                </div>
-              </div>
-            </section>
 
             {/* Contact & sponsors */}
             <section className="bg-background border border-border rounded-lg p-6 space-y-4">
