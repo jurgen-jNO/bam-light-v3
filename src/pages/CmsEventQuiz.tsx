@@ -11,7 +11,7 @@ import { useState } from "react";
 
 const CmsEventQuiz = () => {
   const [lang, setLang] = useState<"nl" | "fr">("nl");
-  const [rounds, setRounds] = useState<number[]>([0, 1, 2, 3]);
+  const [rounds, setRounds] = useState<number[]>([0]);
 
   return (
     <div className="min-h-screen bg-muted/30">
