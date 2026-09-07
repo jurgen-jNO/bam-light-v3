@@ -346,11 +346,8 @@ const CmsEventQuiz = () => {
         <div className="border-2 border-dashed border-destructive/50 bg-destructive/[0.03] p-6 mt-6 rounded-lg">
           <h2 className="text-lg font-semibold text-destructive mb-3">Comments voor Sander</h2>
           <div className="space-y-2 text-sm text-foreground">
-            <p>Eendaags event — Big Marketing Quiz.</p>
-            <p>Het programma is een repeater met tijdslot, titel, omschrijving, onderwerpen en presentator per blok.</p>
-            <p>Inschrijving per team (groepsboeking); aanwezigheid/capaciteit wordt in de sidebar getoond.</p>
-            <p>Tarieven: BAM-leden gratis (0 invullen), niet-leden betalend. Eén datum, start- en einduur.</p>
-            <p>Events kunnen in 1 of 2 talen bestaan.</p>
+            <p>Het aantal aanwezigen wordt enkel weergegeven indien er min 5 inschrijvingen zijn.</p>
+            <p>Het aantal nog beschikbare plaatsen enkel als er nog maar 20% plaatsen beschikbaar zijn.</p>
           </div>
         </div>
       </main>
