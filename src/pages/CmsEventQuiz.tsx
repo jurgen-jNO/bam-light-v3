@@ -183,6 +183,15 @@ const CmsEventQuiz = () => {
                 <label className="text-sm font-medium">Niet-leden (€ excl. btw) *</label>
                 <Input type="number" placeholder="99" />
               </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Early Bird (€ excl. btw)</label>
+                <Input type="number" placeholder="bv. 69" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Early Bird geldig tot</label>
+                <Input type="date" />
+                <p className="text-xs text-muted-foreground">Datum tot wanneer de Early Bird-prijs geldig is</p>
+              </div>
             </section>
 
             {/* Sprekers */}
