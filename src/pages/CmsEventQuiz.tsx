@@ -339,6 +339,7 @@ const CmsEventQuiz = () => {
           <div className="space-y-2 text-sm text-foreground">
             <p>Het aantal aanwezigen wordt enkel weergegeven indien er min 5 inschrijvingen zijn.</p>
             <p>Het aantal nog beschikbare plaatsen enkel als er nog maar 20% plaatsen beschikbaar zijn.</p>
+            <p>Elk programma onderdeel heeft zijn eigen spreker — zichtbaar als dat onderdeel is opgeklapt (check Figma files). Onderaan worden alle sprekers van elk onderdeel nog eens weergegeven.</p>
           </div>
         </div>
       </main>
