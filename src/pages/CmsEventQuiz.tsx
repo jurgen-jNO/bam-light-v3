@@ -82,23 +82,17 @@ const CmsEventQuiz = () => {
                 <label className="text-sm font-medium">Titel event *</label>
                 <Input placeholder="bv. BIG Marketing Quiz" />
               </div>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Editie / jaartal *</label>
-                  <Input placeholder="bv. 2026" />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Eventtype *</label>
-                  <Select defaultValue="quiz">
-                    <SelectTrigger><SelectValue /></SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="quiz">Quiz</SelectItem>
-                      <SelectItem value="netwerk">Netwerkevent</SelectItem>
-                      <SelectItem value="award">Award</SelectItem>
-                      <SelectItem value="talk">Talk / panel</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Eventtype *</label>
+                <Select defaultValue="quiz">
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="quiz">Quiz</SelectItem>
+                    <SelectItem value="netwerk">Netwerkevent</SelectItem>
+                    <SelectItem value="award">Award</SelectItem>
+                    <SelectItem value="talk">Talk / panel</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">USP's (teaser) *</label>
