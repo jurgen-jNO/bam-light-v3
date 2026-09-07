@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, Menu, X, Mail, Phone } from "lucide-react";
+import { ChevronDown, Menu, X, Mail, Phone, Database } from "lucide-react";
 import MainNavigation from "@/components/MainNavigation";
 import Footer from "@/components/Footer";
 import ArtikelShare from "@/components/ArtikelShare";
@@ -326,6 +326,13 @@ export default function EventDetail() {
           </div>
         </div>
       )}
+
+      <div className="max-w-[1200px] mx-auto w-full px-4 pb-6 flex justify-end">
+        <a href="/cms/event-meerdaagse" className="inline-flex items-center justify-center text-foreground/40 hover:text-foreground transition-colors" title="CMS meerdaagse opleiding beheer">
+          <Database className="w-5 h-5" />
+        </a>
+      </div>
+
       <Footer />
     </div>
   );

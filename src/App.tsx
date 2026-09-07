@@ -40,6 +40,7 @@ import CmsVacature from "./pages/CmsVacature.tsx";
 import CmsSolo from "./pages/CmsSolo.tsx";
 import CmsGrowth from "./pages/CmsGrowth.tsx";
 import CmsYouth from "./pages/CmsYouth.tsx";
+import CmsEventMeerdaagse from "./pages/CmsEventMeerdaagse.tsx";
 
 import ArtikelDetail from "./pages/ArtikelDetail.tsx";
 import Artikels from "./pages/Artikels.tsx";
@@ -134,6 +135,7 @@ const App = () => (
           <Route path="/cms/solo" element={<CmsSolo />} />
           <Route path="/cms/growth" element={<CmsGrowth />} />
           <Route path="/cms/youth" element={<CmsYouth />} />
+          <Route path="/cms/event-meerdaagse" element={<CmsEventMeerdaagse />} />
 
           <Route path="/artikel" element={<ArtikelDetail />} />
           <Route path="/artikel/:slug" element={<ArtikelDetail />} />
